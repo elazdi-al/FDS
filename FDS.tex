@@ -1,0 +1,266 @@
+\documentclass[12pt,openany]{book}
+
+
+% Load packages
+\usepackage[utf8]{inputenc} % for unicode input
+\usepackage{geometry} % for page layout
+\usepackage{graphicx} % for including images
+\usepackage{hyperref} % for hyperlinks
+\usepackage{tocbibind} % includes the bibliography in the table of contents
+\usepackage{amsmath} % for advanced math formatting
+\usepackage{amsfonts} % for mathematical fonts
+\usepackage{amssymb} % for mathematical symbols
+\usepackage{lipsum} % generates filler text
+\usepackage{fancyhdr}
+\usepackage{amsthm} % for theorem environments
+\usepackage{amsmath}
+\usepackage[table]{xcolor} % for cell coloring
+\usepackage{colortbl} % for cell coloring
+\usepackage{graphicx} % for scaling the table
+\usepackage{booktabs} % For professional looking tables
+\usepackage[table]{xcolor} % For cell coloring
+\usepackage[normalem]{ulem} % For underlining
+
+% Document geometry (page size, margins)
+\geometry{a4paper, left=25mm, right=25mm, top=30mm, bottom=30mm}
+% Custom page style for centered page numbers
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[C]{\thepage} % center page number
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+
+% Document begins
+\begin{document}
+
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    
+    
+    \vspace{0.5cm}
+    \Huge
+    Fundamentals of digital systems
+    \vspace{0.5cm}
+    
+    \LARGE
+    Ali EL AZDI
+    
+    \vfill
+    
+    A description or preface here
+    
+    February 19, 2024
+
+    
+\end{titlepage}
+
+\cleardoublepage
+% Table of Contents
+\tableofcontents
+
+% List of Figures (Uncomment if needed)
+% \listoffigures
+
+% List of Tables (Uncomment if needed)
+% \listoftables
+
+\mainmatter% Chapter 1
+\chapter{Number Systems}
+
+
+% Section 1.1
+\section{Digital Representations}
+\text{In digital representation, a number is represented by an ordered n-tuple (a Digit-vector string) : }
+\begin{itemize}
+    \item[] In a digital representation, a number is represented by an ordered n-tuple:
+    \begin{itemize}
+        \item[] The n-tuple is called a \textbf{digit vector}, each element is a \textbf{digit}
+        \item[] The number of digits $n$ is called the precision of the representation. (careful! leftward indexing)
+        
+    
+    \end{itemize}
+\end{itemize}
+\[ X  = (X _{n-1}, X _{n-1}, \ldots, X _{0}) \]
+\begin{itemize}
+    \item[] Each digit is given \textbf{a set of values} $D_{i}$ 
+    (eg. For base 10 representation of numbers, $D_i = \{0,1,2, \dots, 9\}$)
+    \item[] the \textbf{Set size}, the maximum number of representable digit vectors  is : $K = \prod_{i=0}^{n-1} |D_{i}|$
+\end{itemize}
+
+
+
+  
+  
+
+
+
+
+\subsection{(Non)Redundant Number Systems}
+     A number system is nonredundant if each digit-vector represents a different integer
+
+\subsection{Weighted Number Systems}
+The rule of representation if a Weighted (Positional) Number Systems is as follows :
+$\;\displaystyle\sum_{i=0}^{n-1} X_{i}W_{i}$ where $W = (W_{n-1}, W_{n-2}, \dots, W_{0})$
+
+\subsection{Radix Systems}
+When weights are in this format : 
+\[
+\begin{cases}
+   $$W_{0} = 1 \\
+    W_{i+1} = W_{i}R_{i} \;\; \text{with } 1 \leq i \leq n-1$$
+    \end{cases} \]
+
+
+
+
+
+Also written :
+$W_{0} = 1, \; \prod_{j=0}^{i-1} R_{j}$
+
+\subsection{Fixed and Mixed-Radix Number Systems}
+\begin{itemize}
+    \item[] In a \textbf{fixed-radix system}, all elements of the radix-vector have the same value \( r \) (\textit{the radix})
+    \item[] The weight vector in a fixed-radix system is given by:
+    \begin{equation*}
+      W = \left( r^{n-1}, r^{n-2}, \ldots, r^2, r, 1 \right)
+    \end{equation*}
+    and the integer \( x \) becomes:
+    \begin{equation*}
+      x = \sum_{i=0}^{n-1} X_i \times r^i
+    \end{equation*}
+    \item[] In a \textbf{mixed-radix system}, the elements of the radix-vector differ
+  \end{itemize}
+  \subsection*{Example: Decimal Number System}
+The decimal number system has the following characteristics:
+\begin{itemize}
+    \item Radix \(r = 10\), indicating it is a fixed-radix system.
+\end{itemize}
+The weight vector \(W\) is defined as:
+\begin{equation*}
+    W = \left(10^{n-1}, 10^{n-2}, \ldots, 10^2, 10, 1\right)
+\end{equation*}
+An integer \(x\) in this system is represented by:
+\begin{equation*}
+    x = \sum_{i=0}^{n-1} X_i \times 10^i
+\end{equation*}
+For example:
+\begin{equation*}
+    854703 = 8 \times 10^5 + 5 \times 10^4 + 4 \times 10^3 + 7 \times 10^2 + 0 \times 10^1 + 3 \times 10^0
+\end{equation*}
+
+In contrast, the representation can be fixed or mixed:
+\begin{description}
+    \item[Fixed:] This category includes:
+    \begin{itemize}
+        \item Decimal – radix 10
+        \item Binary – radix 2
+        \item Octal – radix 8
+        \item Hexadecimal – radix 16
+    \end{itemize}
+    \item[Mixed:] An example of mixed representation is the way time is represented in terms of hours, minutes, and seconds:
+    \begin{itemize}
+        \item Radix-vector \(R = (24, 60, 60)\)
+        \item Weight-vector \(W = (3600, 60, 1)\)
+    \end{itemize}
+\end{description}
+
+\subsection{Canonical Number Systems}
+
+\begin{itemize}
+  \item[] In a \textbf{canonical number system}, the set of values for a digit \( D_i \) is with \( |D_i| = R_i \), the corresponding element of the radix vector
+  \begin{equation*}
+    D_i = \{0, 1, \ldots, R_i - 1\}
+  \end{equation*}
+  \item[] Canonical digit sets with fixed radix:
+  \begin{itemize}
+    \item Decimal: \{0, 1, \ldots, 9\}
+    \item Binary: \{0, 1\}
+    \item Hexadecimal: \{0, 1, 2, \ldots, 15\}
+  \end{itemize}
+  \item[] Range of values of \( x \) represented with \( n \) fixed-radix-\( r \) digits:
+  \begin{equation*}
+    0 \leq x \leq r^n - 1
+  \end{equation*}
+  A system with fixed positive radix r and a canonical set of digit values is called a radix-r conventional number system.
+\end{itemize}
+\newpage
+\section{Binary/Octal/Hexadecimal to/from Decimal}
+\section*{Conversion Table}
+\begin{itemize}
+  \item[] The hexadecimal system supplements 0-9 digits with the letters A-F.
+  \vspace{-5px}
+  \item[] \textit{Remark.} Programming languages often use the prefix 0x to denote a hexadecimal number.
+\end{itemize}
+
+% Define the color for the table cells
+\definecolor{cellblue}{rgb}{0.88, 0.94, 0.97}
+\definecolor{cellpink}{rgb}{0.96, 0.88, 0.89}
+\definecolor{cellgreen}{rgb}{0.906, 1, 0.831}
+\vspace{-20px}
+
+\begin{table}[ht]
+    \centering
+    \caption{Conversion table up to 15.}
+    \vspace{10px}
+    \label{my-label}
+    \begin{tabular}{@{}cccc@{}}
+    \toprule
+    \textbf{Decimal} & \textbf{Binary} & \textbf{Octal} & \textbf{Hexadecimal} \\ \midrule
+     0 & \cellcolor{cellgreen}0000 & \cellcolor{cellblue}00 & \cellcolor{cellpink}0 \\
+     1 & \cellcolor{cellgreen}0001 & \cellcolor{cellblue}01 & \cellcolor{cellpink}1 \\
+     2 & \cellcolor{cellgreen}0010 & \cellcolor{cellblue}02 & \cellcolor{cellpink}2 \\
+     3 & \cellcolor{cellgreen}0011 & \cellcolor{cellblue}03 & \cellcolor{cellpink}3 \\
+     4 & \cellcolor{cellgreen}0100 & \cellcolor{cellblue}04 & \cellcolor{cellpink}4 \\
+     5 & \cellcolor{cellgreen}0101 & \cellcolor{cellblue}05 & \cellcolor{cellpink}5 \\
+     6 & \cellcolor{cellgreen}0110 & \cellcolor{cellblue}06 & \cellcolor{cellpink}6 \\
+     7 & \cellcolor{cellgreen}0111 & \cellcolor{cellblue}07 & \cellcolor{cellpink}7 \\
+     8 & \cellcolor{cellgreen}1000 & \cellcolor{cellblue}10 & \cellcolor{cellpink}8 \\
+     9 & \cellcolor{cellgreen}1001 & \cellcolor{cellblue}11 & \cellcolor{cellpink}9 \\
+    10 & \cellcolor{cellgreen}1010 & \cellcolor{cellblue}12 & \cellcolor{cellpink}A \\
+    11 & \cellcolor{cellgreen}1011 & \cellcolor{cellblue}13 & \cellcolor{cellpink}B \\
+    12 & \cellcolor{cellgreen}1100 & \cellcolor{cellblue}14 & \cellcolor{cellpink}C \\
+    13 & \cellcolor{cellgreen}1101 & \cellcolor{cellblue}15 & \cellcolor{cellpink}D \\
+    14 & \cellcolor{cellgreen}1110 & \cellcolor{cellblue}16 & \cellcolor{cellpink}E \\
+    15 & \cellcolor{cellgreen}1111 & \cellcolor{cellblue}17 & \cellcolor{cellpink}F \\\bottomrule
+    \end{tabular}
+    \end{table}
+    
+    To convert a binary number to hexadecimal, group the binary digits in sets of four, starting from the right. Each group of four binary digits corresponds to one hexadecimal digit.
+
+    \textbf{Example:}
+    \begin{align*}
+    \text{Binary:} & \quad \underline{1010}\,\underline{1100} \\
+    \text{Hexadecimal:} & \quad A\,C \quad (\text{Since } \underline{1010}_2 = A_{16} \text{ and } \underline{1100}_2 = C_{16})
+    \end{align*}
+    
+    To convert a binary number to octal, group the binary digits in sets of three, also starting from the right. Each group of three binary digits corresponds to one octal digit.
+    
+    \textbf{Example:}
+    \begin{align*}
+    \text{Binary:} & \quad \,\,\,\underline{100}\,\underline{101}\,\underline{110} \\
+    \text{Octal:} & \quad 4\,5\,6 \quad (\text{Since } \underline{100}_2 = 4_8, \underline{101}_2 = 5_8, \text{ and } \underline{110}_2 = 6_8)
+    \end{align*}
+
+
+
+% Chapter 2
+\chapter{Literature Review}
+\lipsum[4-5]
+
+% Section 2.1
+\section{Previous Work}
+\lipsum[6]
+
+% Add more chapters as needed
+
+\backmatter% Bibliography
+% Replace 'sample.bib' with your actual bibliography file name
+% \bibliographystyle{plain}
+% \bibliography{sample}
+
+\end{document}
