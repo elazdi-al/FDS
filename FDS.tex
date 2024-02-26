@@ -1,4 +1,4 @@
-\documentclass[12pt,openany]{book}
+\documentclass[12pt,openany, tikz,border=10pt]{book}
 
 
 % Load packages
@@ -20,6 +20,9 @@
 \usepackage{booktabs} % For professional looking tables
 \usepackage[table]{xcolor} % For cell coloring
 \usepackage[normalem]{ulem} % For underlining
+\usepackage[document]{ragged2e}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,math,arrows.meta}
 
 % Document geometry (page size, margins)
 \geometry{a4paper, left=25mm, right=25mm, top=30mm, bottom=30mm}
@@ -75,7 +78,6 @@
 
 % Section 1.1
 \section{Digital Representations}
-\text{In digital representation, a number is represented by an ordered n-tuple (a Digit-vector string) : }
 \begin{itemize}
     \item[] In a digital representation, a number is represented by an ordered n-tuple:
     \begin{itemize}
@@ -89,7 +91,7 @@
 \begin{itemize}
     \item[] Each digit is given \textbf{a set of values} $D_{i}$ 
     (eg. For base 10 representation of numbers, $D_i = \{0,1,2, \dots, 9\}$)
-    \item[] the \textbf{Set size}, the maximum number of representable digit vectors  is : $K = \prod_{i=0}^{n-1} |D_{i}|$
+    \item[] The \textbf{set size}, the maximum number of representable digit vectors is: $K = \prod_{i=0}^{n-1} |D_{i}|$
 \end{itemize}
 
 
@@ -105,7 +107,7 @@
 
 \subsection{Weighted Number Systems}
 The rule of representation if a Weighted (Positional) Number Systems is as follows :
-$\;\displaystyle\sum_{i=0}^{n-1} X_{i}W_{i}$ where $W = (W_{n-1}, W_{n-2}, \dots, W_{0})$
+$$\;\displaystyle\sum_{i=0}^{n-1} X_{i}W_{i}$$ where $$W = (W_{n-1}, W_{n-2}, \dots, W_{0})$$
 
 \subsection{Radix Systems}
 When weights are in this format : 
@@ -138,7 +140,7 @@ $W_{0} = 1, \; \prod_{j=0}^{i-1} R_{j}$
   \subsection*{Example: Decimal Number System}
 The decimal number system has the following characteristics:
 \begin{itemize}
-    \item Radix \(r = 10\), indicating it is a fixed-radix system.
+    \item Radix \(r = 10\), it's a fixed-radix system.
 \end{itemize}
 The weight vector \(W\) is defined as:
 \begin{equation*}
@@ -153,20 +155,20 @@ For example:
     854703 = 8 \times 10^5 + 5 \times 10^4 + 4 \times 10^3 + 7 \times 10^2 + 0 \times 10^1 + 3 \times 10^0
 \end{equation*}
 
-In contrast, the representation can be fixed or mixed:
+\subsubsection{Examples of Fixed and Mixed radix systems}
 \begin{description}
-    \item[Fixed:] This category includes:
-    \begin{itemize}
-        \item Decimal – radix 10
-        \item Binary – radix 2
-        \item Octal – radix 8
-        \item Hexadecimal – radix 16
-    \end{itemize}
-    \item[Mixed:] An example of mixed representation is the way time is represented in terms of hours, minutes, and seconds:
-    \begin{itemize}
-        \item Radix-vector \(R = (24, 60, 60)\)
-        \item Weight-vector \(W = (3600, 60, 1)\)
-    \end{itemize}
+  \item[Fixed:] The base of number systems.
+  \begin{itemize}
+      \item Decimal – radix 10
+      \item Binary – radix 2
+      \item Octal – radix 8
+      \item Hexadecimal – radix 16
+  \end{itemize}
+  \item[Mixed:] An example of a mixed radix representation, such as time:
+  \begin{itemize}
+      \item Radix-vector \(R = (24, 60, 60)\)
+      \item Weight-vector \(W = (3600, 60, 1)\)
+  \end{itemize}
 \end{description}
 
 \subsection{Canonical Number Systems}
@@ -230,37 +232,255 @@ In contrast, the representation can be fixed or mixed:
     \end{tabular}
     \end{table}
     
-    To convert a binary number to hexadecimal, group the binary digits in sets of four, starting from the right. Each group of four binary digits corresponds to one hexadecimal digit.
 
-    \textbf{Example:}
-    \begin{align*}
-    \text{Binary:} & \quad \underline{1010}\,\underline{1100} \\
-    \text{Hexadecimal:} & \quad A\,C \quad (\text{Since } \underline{1010}_2 = A_{16} \text{ and } \underline{1100}_2 = C_{16})
-    \end{align*}
+    \subsection{Convertion examples}    
+    \subsubsection*{Binary to Decimal:}
+
     
-    To convert a binary number to octal, group the binary digits in sets of three, also starting from the right. Each group of three binary digits corresponds to one octal digit.
+      To convert a binary number to decimal, multiply each bit by two raised to the power of its position number, starting from zero on the right.
+
+
+
+    \begin{flalign*}
+    & \text{Binary:}       & \underline{1} \underline{0} \underline{1} \underline{1} & \\
+    & \text{Decimal:}      & 1 \times 2^3 + 0 \times 2^2 + 1 \times 2^1 + 1 \times 2^0 = 8 + 0 + 2 + 1 = 11 &
+    \end{flalign*}
     
-    \textbf{Example:}
-    \begin{align*}
-    \text{Binary:} & \quad \,\,\,\underline{100}\,\underline{101}\,\underline{110} \\
-    \text{Octal:} & \quad 4\,5\,6 \quad (\text{Since } \underline{100}_2 = 4_8, \underline{101}_2 = 5_8, \text{ and } \underline{110}_2 = 6_8)
-    \end{align*}
+    \newpage
+
+    \subsubsection*{Decimal to Binary:}
+
+    Let's convert the decimal number \( 25_{10} \) to binary.
+
+    \begin{tabular}{rclr}
+    $25 \div 2$ & = & 12 & remainder 1 (LSB) \\
+    $12 \div 2$ & = & 6  & remainder 0 \\
+    $6 \div 2$  & = & 3  & remainder 0 \\
+    $3 \div 2$  & = & 1  & remainder 1 \\
+    $1 \div 2$  & = & 0  & remainder 1 (MSB) \\
+    \end{tabular}
+
+    \vspace*{10px}
+    Thus, the binary representation of \( 25_{10} \) is \( 11001_2 \) (reading the remainders in reverse).
+   
+
+    \vspace*{10px}
+    \textit{Personal Remark} The trick is always to try to answer the question, what's the biggest power of 2 I need to form the number?. For 157, the biggest power would be $2^{7} = 128$, then $128+64$ is greater than 157, $128 + 32$ is still greater than 157, $128 + 16 = 144$, and so on to obtain : $128+16+8+4+1=157$ which can be written as $2^7 + 2^4 + 2^3 + 2^2 + 2^0 = 157$. Written in binary as $ 10011101_{2} $
+
+    \subsubsection*{Octal to Decimal:}
+    
+    Each octal digit is converted to decimal by multiplying it by eight raised to the power of its position number, starting from zero on the right.
+    
+    \begin{flalign*}
+    & \text{Octal:}        & \underline{2} \underline{5} \underline{7} & \\
+    & \text{Decimal:}      & 2 \times 8^2 + 5 \times 8^1 + 7 \times 8^0 = 128 + 40 + 7 = 175 &
+    \end{flalign*}
+    \subsubsection*{Decimal to Octal:}
+ To convert the decimal number \(93_{10}\) to octal.
+    
+    \begin{tabular}{rclr}
+    $93 \div 8$ & = & 11 & remainder 5 \\
+    $11 \div 8$ & = & 1  & remainder 3 \\
+    $1 \div 8$  & = & 0  & remainder 1 \\
+    \end{tabular}
+    
+    \vspace*{10px}
+    Thus, the octal representation of \(93_{10}\) is \(135_8\) (reading the remainders in reverse).
+    
+    \subsubsection*{Hexadecimal to Decimal:}
+
+    To convert the hexadecimal number \( \text{1A3}_{16} \) to decimal.
+
+    \begin{flalign*}
+    & \text{Hexadecimal:}       & \underline{1} \underline{A} \underline{3} & \\
+    & \text{Decimal:}           & 1 \times 16^2 + A \times 16^1 + 3 \times 16^0 & \\
+    &                           & 1 \times 256 + 10 \times 16 + 3 \times 1 & \\
+    &                           & 256 + 160 + 3 & \\
+    &                           & 419 &
+    \end{flalign*}
+
+    Here, \( \text{A} \) in hexadecimal corresponds to \( 10 \) in decimal.
 
 
 
-% Chapter 2
-\chapter{Literature Review}
-\lipsum[4-5]
+    
 
-% Section 2.1
-\section{Previous Work}
-\lipsum[6]
 
-% Add more chapters as needed
+    
+    \subsubsection*{Decimal to Hexadecimal:}
+  
+    To convert the decimal number \(291_{10}\) to hexadecimal.
+    
+    \begin{tabular}{rclr}
+    $291 \div 16$ & = & 18 & remainder 3 \\
+    $18 \div 16$  & = & 1  & remainder 2 \\
+    $1 \div 16$   & = & 0  & remainder 1 \\
+    \end{tabular}
+    
+    \vspace*{10px}
+    Thus, the hexadecimal representation of \(291_{10}\) is \(123_{16}\) (reading the remainders in reverse).
+    
 
-\backmatter% Bibliography
-% Replace 'sample.bib' with your actual bibliography file name
-% \bibliographystyle{plain}
-% \bibliography{sample}
+
+    \section{Octal/Hexadecimal to/from Binary}
+    \section*{Bit-Vector Representation Summary}
+
+    \begin{itemize}
+      \item Digit-vectors for binary, octal, and hexadecimal systems are represented using bit-vectors. In binary, 0 and 1 are directly represented as 0 and 1.
+      \item In systems like octal or hexadecimal, a digit is a bit-vector of length \( k \), where \( k \) is the number of bits needed to represent the base.$$k=\log_{2}(r)$$
+      with r the radix of the system (eg. 8 for octal convertion).
+      \item For example, the hexadecimal digit \( B \) is represented as the bit-vector 1101 in binary. \textit{We obtain a length 4 bit-vector because the base is 16 and \( \log_{2}(16) = 4 \)}
+    \end{itemize}
+
+    \subsubsection*{Binary to Octal:}
+
+    To convert a binary number to octal, group every three binary digits into a single octal digit, because \( k = \log_2 8 = 3 \).
+    
+    \begin{flalign*}
+    & \text{Binary:}       & \underline{010}\,\underline{000}\,\underline{100}\,\underline{110} & \\
+    & \text{Octal:}        & 2_8\,0_8\,4_8\,6_8 &
+    \end{flalign*}
+    
+    \subsubsection*{Binary to Hexadecimal:}
+    
+    To convert a binary number to hexadecimal, group every four binary digits into a single hexadecimal digit, because \( k = \log_2 16 = 4 \).
+    
+    \begin{flalign*}
+    & \text{Binary:}       & \underline{1011}\,\underline{1110}\,\underline{1010}\,\underline{1101} & \\
+    & \text{Hexadecimal:}  & B_{16}\,E_{16}\,A_{16}\,D_{16} &
+    \end{flalign*}
+    
+
+
+    \subsubsection*{Octal to Hexadecimal:}
+    Convert the octal number to binary, then group the binary digits in sets of four and convert each group to its hexadecimal equivalent.
+    
+    \begin{flalign*}
+    & \text{Octal:}        & \underline{2} \underline{5} \underline{7} & \\
+    & \text{Binary:}       & 010 \, 101 \, 111 & \text{ (Octal to binary)} \\
+    & \text{Binary grouped:} & \underline{0101} \, \underline{0111} & \\
+    & \text{Hexadecimal:}  & 5 \, 7 & \text{ (Binary to hexadecimal)}
+    \end{flalign*}    
+
+    \section{Representation of
+    Signed Integers}
+    \subsection{Sign-Magnitude Representation (SM)}
+
+    A signed integer \( x \) is represented by a pair \( (x_s, x_m) \), where \( x_s \) is the \textit{sign} and \( x_m \) is the \textit{magnitude} (positive integer).
+
+    \begin{itemize}
+        \item[] The sign (positive, negative) is represented by a the most significant bit (MSB) of the digit vector:
+        \begin{itemize}
+            \item[] \( 0 \rightarrow \) positive
+            \item[] \( 1 \rightarrow \) negative
+        \end{itemize}
+        \item[] The magnitude can be represented as any positive integer. In a conventional radix-\( r \) system, the range of \( n \)-digit magnitude is:
+        \[ 0 \leq x_m \leq r^n - 1 \]
+    \end{itemize}
+
+    \begin{itemize}
+      \item[-] Examples:
+      \begin{align*}
+          01010101_2 &= +85_{10} \\
+          01111111_2 &= +127_{10} \\
+          00000000_2 &= +0_{10} \\
+          11010101_2 &= -85_{10} \\
+          11111111_2 &= -127_{10} \\
+          10000000_2 &= -0_{10} \\
+      \end{align*}
+  \end{itemize}
+  \newpage
+  Note: The Sign-and-Magnitude representation is considered a redundant system because both \( 00000000_2 \) and \( 10000000_2 \) represent zero.
+
+  \begin{itemize}
+    \item[] \textit{SM} consists of an equal number of positive and negative integers.
+    \item[] An \( n \)-bit integer in sign-and-magnitude lies within the range \textit{(because of 0's double representation and that MSB is used for the sign)}: 
+    $$ [-\left(2^{n-1} - 1\right), +\left(2^{n-1} - 1\right)] $$ 
+    \item[] Main disadvantage of SM: complex digital circuits for arithmetic operations (addition, subtraction, etc.).
+\end{itemize}
+
+\section{True-and-Complement (TC)}
+
+\subsection{Mapping}
+\begin{itemize}
+    \item[] A signed integer \( x \) is represented by a positive integer \( x_R \), \( C \) is a positive integer called the \textit{complementation constant}.
+    \[ x_R \equiv x \mod C \]
+    
+    \item[] For \( |x| < C \), by the definition of the modulo function, we have:
+    \[
+    x_R = 
+    \begin{cases} 
+    x & \text{if } x \geq 0 \quad \text{(True form)} \\
+    C - |x| = C + x & \text{if } x < 0 \quad \text{(Complement form)}
+    \end{cases}
+    \]
+\end{itemize}
+
+\subsection{Unambiguous Representation}
+\begin{itemize}
+    \item[] To have an unambiguous representation, the two regions should not overlap, translating to the condition:
+    \[ \max |x| < \frac{C}{2} \]
+\end{itemize}
+
+
+\subsection{Converse Mapping}
+\begin{itemize}
+    \item[] Converse mapping:
+    \[
+    x = 
+    \begin{cases} 
+    x_R & \text{if } x_R < \frac{C}{2} \quad \text{(Positive values)} \\
+    x_R - C & \text{if } x_R > \frac{C}{2} \quad \text{(Negative values)}
+    \end{cases}
+    \]
+    \item[] When \( x_R = \frac{C}{2} \), it is usually assigned to \( x = -\frac{C}{2} \).
+    \item[] Asymmetrical representation simplifies sign detection.
+
+\end{itemize}
+
+\section{Two's Complement System}
+This is the True-and-Compelement system with \( C = 2^n \), where \( n \) is the number of bits used to represent the integer.
+\begin{itemize}
+    \item[] Range is asymmetrical:
+    \[ -2^{n-1} \leq x \leq 2^{n-1} - 1\]
+    \item[] The representation of zero is unique.
+\end{itemize}
+
+
+\subsection{Sign Detection in Two's Complement System}
+
+\begin{itemize}
+  \item[] Since $|x| < C/2$ and assuming the sign is 0 for positive and 1 for negative numbers:
+\end{itemize}
+
+\[
+\text{sign}(x) = 
+\begin{cases} 
+0 & \text{if } x_R < C/2 \\
+1 & \text{if } x_R \geq C/2
+\end{cases}
+\]
+
+\begin{itemize}
+  \item[] Therefore, the sign is determined from the most-significant bit:
+\end{itemize}
+
+\[
+\text{sign}(x) = 
+\begin{cases} 
+0 & \text{if } x_{n-1} = 0 \\
+1 & \text{if } x_{n-1} = 1
+\end{cases}
+\quad \text{equivalent to} \quad \text{sign}(x) = x_{n-1}
+\]
+\subsection{Mapping from Bit-Vectors to Values}
+The value of an integer represented by a bit-vector $b_{n-1}b_{n-2}\ldots b_1b_0$ can be universally expressed as:
+\[
+\text{Value} = (-2^{n-1} \cdot b_{n-1}) + \sum_{i=0}^{n-2} b_i \cdot 2^i
+\]
+where $b_{n-1}$ is the MSB (sign bit) and is $0$ for non-negative numbers and $1$ for negative numbers.
+
+
+
 
 \end{document}
