@@ -4,7 +4,6 @@
 % Load packages
 \usepackage[utf8]{inputenc} % for unicode input
 \usepackage{geometry} % for page layout
-\usepackage{graphicx} % for including images
 \usepackage{hyperref} % for hyperlinks
 \usepackage{tocbibind} % includes the bibliography in the table of contents
 \usepackage{amsmath} % for advanced math formatting
@@ -22,6 +21,10 @@
 \usepackage[normalem]{ulem} % For underlining
 \usepackage[document]{ragged2e}
 \usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
 \usetikzlibrary{arrows.meta,calc,decorations.markings,math,arrows.meta}
 
 % Document geometry (page size, margins)
@@ -48,21 +51,27 @@
     \vspace{0.5cm}
     \Huge
     Fundamentals of digital systems
-    \vspace{0.5cm}
-    
-    \LARGE
-    Ali EL AZDI
+    \vspace{10px}
+    \newline
+    \text{ \large Ali EL AZDI}
+
+
+    \text{ \Large IC BA2 - Mirjana Stojilović}
     
     \vfill
-    
-    A description or preface here
-    
+    \large
     February 19, 2024
 
     
 \end{titlepage}
+\begin{center}
+    \vspace*{1cm}
+    \textbf{Introduction}
+    \newline
+    \paragraph[short]{}{This document is designed to offer a LaTeX-styled overview of the Fundamentals of Digital Systems course, emphasizing brevity and clarity. Should there be any inaccuracies or areas for improvement, please do not hesitate to reach out to me at ali.elazdi@epfl.ch for corrections. Hoping to provide an experience similar to the one provided by past generations of students in other subjects. }
+\end{center}
 
-\cleardoublepage
+
 % Table of Contents
 \tableofcontents
 
@@ -140,7 +149,7 @@ $W_{0} = 1, \; \prod_{j=0}^{i-1} R_{j}$
   \subsection*{Example: Decimal Number System}
 The decimal number system has the following characteristics:
 \begin{itemize}
-    \item Radix \(r = 10\), it's a fixed-radix system.
+    \item[-] Radix \(r = 10\), it's a fixed-radix system.
 \end{itemize}
 The weight vector \(W\) is defined as:
 \begin{equation*}
@@ -480,7 +489,421 @@ The value of an integer represented by a bit-vector $b_{n-1}b_{n-2}\ldots b_1b_0
 \]
 where $b_{n-1}$ is the MSB (sign bit) and is $0$ for non-negative numbers and $1$ for negative numbers.
 
+\subsubsection{Examples}
+  \begin{itemize}
+      \item[] $X = 011011_2 = 0 \cdot 2^5 + 1 \cdot 2^4 + 1 \cdot 2^3 + 0 \cdot 2^2 + 1 \cdot 2^1 + 1 \cdot 2^0 = 16 + 8 + 2 + 1 = 27_{10}$
+      \item[] $X = 11011_2 = -1 \cdot 2^4 + 1 \cdot 2^3 + 0 \cdot 2^2 + 1 \cdot 2^1 + 1 \cdot 2^0 = -16 + 8 + 2 + 1 = -5_{10}$
+      \item[] $X = 10000000_2 = -1 \cdot 2^7 = -128_{10}$
+      \item[] $X = 10000011_2 = -1 \cdot 2^7 + 1 \cdot 2^1 + 1 \cdot 2^0 = -128 + 2 + 1 = -125_{10}$
+  \end{itemize}
+  
+  \subsection{Change of Sign in Two's Complement System}
 
 
+  The two's complement system represents negative numbers by inverting the bits of their positive counterparts and adding one. This process is equivalent to subtracting the number from $2^n$.
+  
+  For an $n$-bit number $x$:
+  \[
+  z = -x = (\sim x) + 1 = C - x_R
+  \]
+  where $(\sim x)$ is the bitwise NOT of $x$ and $x_R$ is the decimal representation of $x$.
+  
+
+  
+
+
+  \subsection*{Examples}
+  Converting $+17$ to $-17$:
+  \[
+  \begin{aligned}
+  +17_{10} &= 00010001_2 \\
+  -17_{10} &= \overline{00010001_2} + 1 = 11101111_2 \\
+  2^8 - 17 &= 256 - 17 = 239 = 11101111_2
+  \end{aligned}
+  \]
+  
+  Converting $-99$ to $+99$:
+  \[
+  \begin{aligned}
+  -99_{10} &= 10011101_2 \\
+  +99_{10} &= \overline{10011101_2} + 1 = 01100011_2 && (TC) \\
+  2^8 - 99 &= 256 - 99 = 157 = 01100011_2 \; (Substracting \; 99 \; from \; 256)
+  \end{aligned}
+  \]
+
+  \section{Range Extension
+  and Arithmetic Shifts}
+\subsection{Range Extension}
+
+
+
+\begin{itemize}
+  \item[] Performed when a value \( x \) represented by a digit-vector of \( n \) bits needs to be represented by a digit-vector of \( m \) bits, where \( m > n \).
+  \item[] \( x \) is equal to \( z \) with
+  \begin{align*}
+      X &= (X_{n-1}, X_{n-2}, \ldots, X_1, X_0) \\
+      Z &= (Z_{m-1}, Z_{m-2}, \ldots, Z_1, Z_0)
+  \end{align*}
+\end{itemize}
+
+{\small \section[]{Range Extension Algorithm in SM}}
+
+\begin{itemize}
+    \item[] In sign-and-magnitude system, the range-extension algorithm is defined as:
+    \begin{align*}
+        z_s &= x_s \text{ (sign bit)} \\
+        Z_i &= 0 \quad \text{for } i = m - 1, m - 2, \ldots, n \\
+        Z_i &= X_i \quad \text{for } i = n - 1, \ldots, 0
+    \end{align*}
+    \item[] Example: Consider \( X = 11010101_2 = -45_{10} \) and \( X = 100101101_2 = -45_{10} \).
+    \item[] The algorithm extends the range of \( X \) by adding zeros to the left of the most significant bit, preserving the sign bit.
+\end{itemize}
+
+
+\subsection[]{Arithmetic Shifts}
+
+
+\begin{itemize}
+    \item[] Two elementary transformations often used in arithmetic operations are scaling (multiplying and dividing) by the radix.
+    \item[] In the conventional radix-2 number system for integers:
+    \begin{itemize}
+        \item[] Left arithmetic shift: multiplication by 2, expressed as \( z = 2x \).
+        \item[] Right arithmetic shift: division by 2, expressed as \( z = 2^{-1}x - \varepsilon \), where \( |\varepsilon| < 1 \) and the value of \( \varepsilon \) is such that it makes \( z \) an integer. \textit{The value of \( \varepsilon \) is the remainder of the division}.
+        
+    \end{itemize}
+\end{itemize}
+
+\subsection{Left Arithmetic Shift in Sign-and-Magnitude System}
+
+\begin{itemize}
+    \item[] Algorithm (assuming the overflow does not occur):
+    \begin{align*}
+        z_s &= x_s \text{ (sign bit retained)} \\
+        Z_{i+1} &= X_i, \quad \text{for } i = 0, \ldots, n-2 \\
+        Z_0 &= 0 \text{ (insert zero at the least significant bit)}
+    \end{align*}
+    \subsubsection*{Example:}
+    \begin{itemize}
+        \item[] Given \( X = 100101101_2 = -45_{10} \),
+        \item[] The left arithmetic shift \( SL(X) \) would be \( 101011010_2 = -90_{10} \).
+    \end{itemize}
+\end{itemize}
+
+\subsection{Right Arithmetic Shift in Sign-and-Magnitude System}
+
+\begin{itemize}
+    \item[] Algorithm:
+    \begin{align*}
+        z_s &= x_s \text{ (sign bit retained)} \\
+        Z_{i-1} &= X_i, \quad \text{for } i = 1, \ldots, n - 1 \\
+        Z_{n-1} &= 0 \text{ (insert zero at the most significant bit)}
+    \end{align*}
+    \item[] Example:
+    \begin{itemize}
+        \item[] Given \( X = 100101101_2 = -45_{10} \),
+        \item[] The right arithmetic shift \( SR(X) \) would be \( 100010110_2 = -22_{10} \).
+    \end{itemize}
+\end{itemize}
+
+\newpage
+\subsection{Left Arithmetic Shift in Two's Complement System}
+
+\begin{itemize}
+    \item[] Algorithm (assuming that overflow does not occur):
+    \begin{align*}
+        Z_{i+1} &= X_{i}, \quad \text{for } i = 0, \ldots, n-2 \\
+        Z_{0} &= 0 \text{ (insert zero at the least significant bit)}
+    \end{align*}
+    \item[] Examples:
+    \begin{itemize}
+        \item[] Given \( X = 00110101_2 = 13_{10} \),
+        \item[] The left arithmetic shift \( SL(X) \) is \( 01101010_2 = 26_{10} \).
+        \item[] Given \( Y = 11010101_2 = -11_{10} \),
+        \item[] The left arithmetic shift \( SL(Y) \) is \( 10101010_2 = -22_{10} \).
+    \end{itemize}
+\end{itemize}
+
+
+
+\subsection{Right Arithmetic Shift in Two's Complement System}
+
+
+\begin{itemize}
+    \item[] Algorithm (assuming that overflow does not occur):
+    \begin{align*}
+        Z_{n-1} &= X_{n-1} \\
+        Z_{i-1} &= X_i, \quad \text{for } i = 1, \ldots, n-1
+    \end{align*}
+    The most significant bit (MSB) is duplicated to keep the sign of the number the same.
+    \item[] Examples:
+    \begin{itemize}
+        \item[] For $X = 001101_2 = 13_{10}$, the right arithmetic shift is $SR(X) = 000110_2 = 6_{10}$.
+        \item[] For $Y = 110101_2 = -11_{10}$ (in two's complement), the right arithmetic shift is $SR(Y) = 111010_2 = -6_{10}$.
+    \end{itemize}
+\end{itemize}
+
+
+\section{Hamming Weight and Distance}
+
+
+\subsection{Hamming Weight (HW)}
+\begin{itemize}
+    \item[] The Hamming weight of a binary sequence is the number of symbols that are equal to one (1s).
+    \item[] For example, the Hamming weight of \( 11010101 \) is 5, as there are five 1s in the bit sequence.
+\end{itemize}
+
+\subsection{Hamming Distance (HD)}
+\begin{itemize}
+    \item[] The Hamming distance between two binary sequences of equal length is the number of positions at which the corresponding symbols are different.
+    \item[] For example, the Hamming distance between \( 11010101 \) and \( 01000111 \) is 3, as they differ in three positions.
+\end{itemize}
+
+
+\section{Binary Coded Decimal (BCD)}
+
+Binary Coded Decimal (BCD) represents decimal numbers where each decimal digit is encoded as a four-bit binary number. This method allows decimal numbers to be represented in a format that is easy for digital systems to process.
+
+\subsection{BCD Encoding}
+
+\begin{itemize}
+    \item In BCD, each of the decimal digits \(0\) through \(9\) is represented by a four-bit binary number, ranging from \(0000\) to \(1001\).
+    \item Binary values from \(1010_2\)($10_{10}$) to \(1111_{2}\)($15_{10}$) are not used in standard BCD encoding.
+    \item For example, 25 is represented as \(\underline{{0010 \; 0101}}_{2}\).
+\end{itemize}
+
+\subsection{Conversion Algorithms}
+
+\subsubsection{From BCD to Decimal}
+
+To convert a BCD-encoded number to its decimal representation:
+
+\begin{verbatim}
+1. Initialize i to the highest index of BCD digits (n-1), D to 0.
+2. While i is greater than or equal to 0:
+   a. Multiply D by 10.
+   b. Add the decimal value of the BCD digit at index i to D.
+   c. Decrement i.
+\end{verbatim}
+
+\subsubsection{From Decimal to BCD}
+
+To convert a decimal number to its BCD representation:
+
+\begin{verbatim}
+1. Initialize i to 0, D to the decimal number.
+2. While D is not equal to 0:
+   a. Calculate D mod 10 and store it as the current BCD digit.
+   b. Divide D by 10.
+   c. Increment i.
+\end{verbatim}
+
+\newpage
+\section{Gray Code Conversion Algorithm}
+\begin{itemize}
+    \item[] \textbf{Rule for Conversion}:
+    \begin{itemize}
+        \item[] For bit \( i \) in the Gray code, look at bits \( i \) and \( i+1 \) in the binary code (bit \( n \) in binary is zero if \( i+1 = n \)).
+        \item[] If bits \( i \) and \( i+1 \) in the binary are the same, bit \( i \) in the Gray code is 0.
+        \item[] If they are different, bit \( i \) in the Gray code is 1.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Example}
+\text{To convert the binary number 1011 to Gray code.}
+
+\begin{enumerate}
+    \item[] let: \(\underline{1011}_{2} = b_3b_2b_1b_0 \).
+    \item[] Apply the conversion rule:
+    \begin{itemize}
+        \item[] \( g_3 = b_3 \) since there is no \( b_4 \) (assume \( b_4 = 0 \)).
+        \item[] \( g_2 = b_3 \oplus b_2 \).
+        \item[] \( g_1 = b_2 \oplus b_1 \).
+        \item[] \( g_0 = b_1 \oplus b_0 \).
+    \end{itemize}
+    \item[] Calculate the Gray code bits:
+    \begin{itemize}
+        \item[] \( g_3 = 1 \oplus 0 = 1 \text{\; as \( b_{4} \) doesn't exist and is thus a 0} \).
+        \item[] \( g_2 = 1 \oplus 0 = 1 \).
+        \item[] \( g_1 = 0 \oplus 1 = 1 \).
+        \item[] \( g_0 = 1 \oplus 1 = 0 \).
+    \end{itemize}
+    \item[] The Gray code is: \( g_3g_2g_1g_0 = \underline{1110}_{\text{gray code}} \).
+\end{enumerate}
+
+
+\chapter{Number Systems (Part II)}
+
+\section{Addition and Subtraction
+of Unsigned Integers}
+\textit{Personal Remark. In case this is not clear, this video explains it pretty good:\newline \url{https://www.youtube.com/watch?v=sJXTo3EZoxM}}
+\subsection{Addition of Binary Numbers}
+
+To add binary numbers, follow these rules:
+\begin{itemize}
+    \item[] \(0 + 0 = 0\)
+    \item[] \(0 + 1 = 1\)
+    \item[] \(1 + 0 = 1\)
+    \item[] \(1 + 1 = 10\) (0 and carry 1 to the next higher bit)
+    \item[] \(1 + 1 + 1 = 11\) (1 and carry 1 to the next higher bit)
+\end{itemize}
+
+\subsection*{Example:}
+
+Adding \(1101_2\) and \(1011_2\):
+
+\[
+\begin{array}{cccccc}
+& 1 & 1 & 1 & 0 & \text{(Carry)} \\
+\hline
+ & 1 & 1 & 0 & 1 & \\
++ & 1 & 0 & 1 & 1 & \\
+\hline
+1 & 1 & 0 & 0 & 0 & \\
+\end{array}
+\]
+
+
+\newpage
+\subsection{Subtracting Two Binary Numbers}
+Works exactly like subtracting decimal numbers, but with a borrow of 2 instead of 10.
+
+The rules for binary subtraction include:
+\begin{itemize}
+    \item[] \(0 - 0 = 0\)
+    \item[] \(1 - 0 = 1\)
+    \item[] \(1 - 1 = 0\)
+    \item[] \(0 - 1 = 1\) (with a borrow from the next higher bit)
+\end{itemize}
+
+\subsection*{Example:}
+
+Subtracting \(1000_2\) from \(1101_2\):
+
+\[
+\begin{array}{cccccc}
+ & 1 & 1 & 0 & 1 & \\
+- & 1 & 0 & 0 & 0 & \\
+\hline
+ & 0 & 1 & 0 & 1 & \\
+\end{array}
+\]
+
+
+Therefore, the difference between $1101_2$ and $1011_2$ is $0010_2$.
+
+\section{\large Overflow and Underflow in Unsigned Binary Arithmetic}
+
+\subsection{Overflow}
+
+Overflow in unsigned binary arithmetic occurs when the sum of two numbers exceeds the maximum value that can be represented by the given number of bits. For an \(n\)-bit unsigned number, the maximum value that can be represented is \(2^n - 1\). If the result of an addition is greater than this maximum value, the system experiences overflow, leading to an incorrect result.
+
+\textbf{Example:} Consider adding two 4-bit unsigned numbers \(1111_2\) and \(0001_2\):
+
+\[
+\begin{array}{cccccc}
+ & 1 & 1 & 1 & 1 & \\
++ & 0 & 0 & 0 & 1 & \\
+\hline
+1 & 0 & 0 & 0 & 0 & \\
+\end{array}
+\]
+
+The result \(10000_2\) is a 5-bit number, but only the 4 least significant bits \(0000_2\) are kept in a 4-bit system, leading to overflow.
+\newpage
+\subsection{Underflow}
+
+Underflow in unsigned binary arithmetic occurs when the result of a subtraction is less than 0, which is not representable in unsigned arithmetic. Since unsigned numbers cannot represent negative values, any operation that would result in a negative value causes underflow.
+
+\textbf{Example:} Consider subtracting a larger 4-bit unsigned number \(1010_2\) from a smaller one \(0100_2\):
+
+\[
+\begin{array}{cccccc}
+ & 0 & 1 & 0 & 0 & \\
+- & 1 & 0 & 1 & 0 & \\
+\hline
+\end{array}\]
+\vspace{-15px}
+\begin{align*}
+    \text{underflow}
+\end{align*} 
+
+Since the result would be negative, which cannot be represented in unsigned arithmetic, this situation is considered underflow.
+
+
+\section{Two’s Complement
+Addition and Subtraction}
+\subsection*{Graphical Representation}
+
+\begin{wrapfigure}{r}{0.5\textwidth} % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
+  \centering
+  \includegraphics[width=0.41\textwidth]{circle-twoscomplement.png} % Replace 'path_to_image.png' with the actual path to your image file
+  \caption{Circular representation of two's complement}
+\end{wrapfigure}
+
+In two's complement arithmetic, a circular graphical representation can be used to illustrate the addition and subtraction of numbers:
+\begin{itemize}
+  \item[-] Moving \textbf{clockwise} from 0 represents the \textit{addition} of positive numbers.
+  \item[-] Moving \textbf{counterclockwise} represents the \textit{subtraction} of positive numbers.
+  \item[-] Crossing the line where the sign changes indicates a \textit{change of sign} from positive to negative or vice versa.
+  \item[] \textbf{Examples:}
+    \begin{itemize}
+        \item[] The addition of two positive numbers, such as \(2 + 3\), is shown by moving clockwise from 0 to 2 and then moving 3 more steps clockwise, resulting in 5.
+        \item[] The subtraction of a smaller number from a larger number, such as \(5 - 3\), is shown by moving clockwise from 0 to 5 and then moving 3 steps counterclockwise, resulting in 2.  
+    \end{itemize}
+\end{itemize}
+
+\subsection{Addition and Subtraction}
+\subsection{Addition}
+Given two \(n\)-bit numbers \(A\) and \(B\), their sum in two's complement arithmetic is obtained by directly adding them together as binary numbers:
+\begin{equation}
+    \text{Sum} = A + B
+\end{equation}
+If there is an overflow, i.e., a carry out of the most significant bit (MSB), it is discarded. The result is also represented in \(n\) bits.
+
+\subsection{Subtraction}
+To subtract one \(n\)-bit number \(B\) from another \(A\) using two's complement arithmetic, convert \(B\) to its two's complement and then add it to \(A\):
+\begin{enumerate}
+    \item Find the two's complement of \(B\), denoted as \(\bar{B}\), by inverting all the bits of \(B\) and adding \(1\).
+    \item Add \(A\) to the two's complement of \(B\):
+    \begin{equation}
+        \text{Difference} = A + \bar{B}
+    \end{equation}
+\end{enumerate}
+As with addition, discard any overflow from the MSB.
+
+
+\section{Binary Multiplication}
+
+\begin{proof}[Proof]
+    Let $X$ and $Y$ be two numbers, then their product can be represented as:
+    \begin{align*}
+    X \cdot Y &= X \cdot \left( -Y_{n-1} \cdot 2^{n-1} + X \sum_{i=0}^{n-2} Y_i \cdot 2^i \right) \\
+    &= -X \cdot Y_{n-1} \cdot 2^{n-1} + X \sum_{i=0}^{n-2} Y_i \cdot 2^i \\
+    &= -Y_{n-1} \cdot X \cdot 2^{n-1} + Y_{n-2} \cdot X \cdot 2^{n-2} + \ldots + Y_2 \cdot X \cdot 2^2 + Y_1 \cdot X \cdot 2^1 + Y_0 \cdot X \cdot 2^0
+    \end{align*}
+\end{proof}
+    
+  
+
+\newpage
+Binary multiplication operates similarly to decimal multiplication but is performed bit by bit. Here is a clearer example illustrating the multiplication of two binary numbers:
+
+\begin{align*}
+    & \text{Multiplicand} & 1101 & \quad & \text{(This is the number to be multiplied)}\\
+    & \text{Multiplier} & \times \; 0011 & & \text{(This number multiplies the multiplicand)}\\
+    \cline{2-4}
+    && 1101 & & \text{(Multiply by 1, the least significant bit of the multiplier)}\\
+    &+& 11010 & & \text{(Multiply by 1, add one zero to the right, (left shift, $<<1$))}\\
+    &+& 000000 & & \text{(Multiply by 0, add two zeros to the right, (left shift, $<<2$))}\\
+    &+& 0000000 & & \text{(Multiply by 0, add three zeros to the right, (left shift, $<<3$))}\\
+    \cline{2-4}
+    && 1000111 & & \text{(Sum of the partial products)}
+\end{align*}
+
+
+
+
+\chapter{Number Systems (Part III)}
+Incoming...
 
 \end{document}
