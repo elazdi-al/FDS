@@ -31,12 +31,13 @@
 \geometry{a4paper, left=25mm, right=25mm, top=30mm, bottom=30mm}
 % Custom page style for centered page numbers
 \pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot[C]{\thepage} % center page number
+\fancyhf{} % Clear all header and footer fields
+\fancyhead[RE]{\leftmark} % 'LE' for Left Even pages - Chapter number and name
+\fancyhead[RO]{Notes by Ali EL AZDI} % 'LO' for Left Odd pages - Custom message
+\fancyfoot[CE,CO]{\thepage} % Centered page number in the footer for both even and odd pages
+
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-
-
 
 % Document begins
 \begin{document}
@@ -904,6 +905,532 @@ Binary multiplication operates similarly to decimal multiplication but is perfor
 
 
 \chapter{Number Systems (Part III)}
-Incoming...
+    \section{Fixed-Point
+    Number Representation}  
+
+Let \(x\) be an integer :
+$x  = x_{int} + x{fr}$, with $x_{int}$ the integer part and $x_{fr}$ the fractional part.
+
+Let \( X \) be a digit-vector:
+
+\[ X = (X_{m-1} X_{m-2} \dots X_1 X_0 \; . \;  X_{-1} X_{-2} \dots X_{-f}) \]
+
+where
+\begin{itemize}
+  \item[] \( X_{m-1} \) to \( X_0 \) represent the integer component
+  \item[] \( X_{-1} \) to \( X_{-f} \) represent the fractional component
+  \item[] The dot (.) represents the radix point (assumed to be fixed)
+\end{itemize}
+\vskip 0.5cm
+For unsigned numbers:
+\[ x = \sum_{i=-f}^{m-1} X_i \cdot 2^i \]
+
+\vskip 0.5cm
+For signed numbers in two's complement:
+
+\[ x = -X_{m-1} \cdot 2^{m-1} + \sum_{i=-f}^{m-2} X_i \cdot 2^i \]
+
+\newpage
+    \subsection{Examples of Fixed-Point Numbers}
+    \subsubsection{ Decimal Numbers}
+
+    \begin{itemize}
+        \item[] Decimal number system with \( m = 5, f = 5 \)
+        \item[] Example decimal digit vector
+        \[
+        x = (10077.01690)
+        \]
+        \[
+        x = 1 \cdot 10^4 + 7 \cdot 10^1 + 7 \cdot 10^0 + 1 \cdot 10^{-2} + 6 \cdot 10^{-3} + 9 \cdot 10^{-4}
+        \]
+        \[
+        = 10000 + 70 + 7 + 0.01 + 0.006 + 0.0009
+        \]
+        \[
+        = 10077.0169
+        \]
+        \item[] Most negative (min):
+        \[
+        x_{\text{min}} = -99999.99999 = \frac{-9999999999}{10^5}
+        \]
+        \item[] Largest number (max, positive):
+        \[
+        x_{\text{max}} = +99999.99999 = \frac{+9999999999}{10^5}
+        \]
+    \end{itemize}
+
+    \subsubsection{Unsigned Binary Numbers}
+
+    \begin{itemize}
+        \item[] Unsigned with \( m = 3, f = 4 \)
+        \item[] Example binary digit vector
+        \[
+            X = 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 + 0 \cdot 2^{-1} + 1 \cdot 2^{-2} + 1 \cdot 2^{-3} + 1 \cdot 2^{-4} = 5.4375 \]
+
+        \item[] Smallest number (min):
+        \[
+        x_{\text{min}} = 000.0000_2 = 0
+        \]
+        \item[] Largest number (max):
+        \[
+        x_{\text{max}} = 111.1111_2 = 7 + \frac{15}{16} = 7,9375
+        \]
+    \end{itemize}
+    
+    \subsubsection{Sign-and-Magnitude Binary Numbers}
+    \begin{itemize}
+        \item[] Sign-and-magnitude with \( m = 5, f = 3 \)
+        \item[] Example binary digit vector
+        \[
+            X = (-1)^{1} \cdot (1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 + 1 \cdot 2^{-1} + 1 \cdot 2^{-2} + 0 \cdot 2^{-3}) = -5.75
+        \]
+        \item[] Most negative number (min):
+        \[
+            x_{\text{min}} = 1 1111.111_2 = -15 + \frac{7}{8} = -15.875
+        \]
+        \item[] Largest number (max, positive):
+        \[
+            x_{\text{max}} = 0 1111.111_2 = 15 + \frac{7}{8} = 15.875
+        \]
+    \end{itemize}
+      
+    \section{Concepts of
+    Finite Precision Math}
+    \subsection{Precision}
+    Let \( X \) be a digit-vector:
+    \[ X = (X_{m-1} X_{m-2} \dots X_1 X_0 \; . \;  X_{-1} X_{-2} \dots X_{-f}) \]
+
+    Precision is the maximum number of non zero bits.
+    $$Precision(x) = m + f$$ with \(m\) the number of bits for the integer part and \(f\) the number of bits for the fractional part.
+
+    \subsection{Resolution}
+    Resolution is the smallest non-zero number that can be represented.
+
+    $$Resolution(x) = 2^{-f}$$
+
+
+    \subsection{Range}
+    The range of a fixed-point number is the difference between the largest and smallest numbers that can be represented.
+
+    \[Range(x) = x_{\text{max}} - x_{\text{min}}\]
+    \newblock
+    \newline
+    In two's complement, the range is given by:
+    \[ Range(x) = \displaystyle\sum_{i=-f}^{m-2} 2^i - \left( -2^{m-1} \right)\]
+
+    \subsection{Accuracy}
+    Accuracy is the maximum difference between a real value and the represented value.
+
+    $$Accuracy(x) = \frac{Resolution(x)}{2}$$
+
+    \subsection{Dynamic Range}
+    The dynamic range is the ratio of the largest and the smallest positive number that can be represented.
+
+    $$Dynamic \; Range(x) = \frac{x_{\text{max}}}{x_{\text{min}}}$$
+
+    \textit{In two's complement :}
+    $$Dynamic \; Range(x) = \frac{2^{m-1}}{2^{-f}} = 2^{m-1+f}$$
+
+    \section{Floating-Point Number Representation}
+    \textit{Personal Remark. Please take the time to really understand this part. It is crucial for the understanding of the rest of the course. Take some time to understand the vocabulary and its meaning.}\newline
+    \vskip 0.5cm
+    A real number that is exactly representable in a computer is called a \textbf{floating-point number}. 
+    \subsection{Significand, Base, Exponent}
+    A floating-point number consits of a \textbf{significand} (or mantissa), a \textbf{base} (or radix), and an \textbf{exponent}.
+\begin{itemize}
+  \item[] the signed \textit{significand} (also called \textit{mantissa}) \( M^* \)
+  \item[] the signed \textit{exponent} \( E \)
+\end{itemize}
+
+where \( b \) is a constant called the \textit{base}
+
+\[ x = M^* \times b^E \]
+
+This reminds us of the usual scientific notation, base 10:
+\begin{itemize}
+  \item[] \( +35200 = +3.52 \times 10^4 \) (Coefficient)
+  \item[] \( -0.099 = -9.9 \times 10^{-2} \) (Exponent)
+\end{itemize}
+
+\subsection{Benefits }
+\begin{enumerate}
+    \item \textit{Consider 32-bit two's complement signed integers}
+    
+    The dynamic range for a 32-bit two's complement signed integer can be expressed as:
+    \begin{equation*}
+    \text{Dynamic Range}_1 (x) = \frac{\lvert x \rvert_{\text{max}}}{\lvert x_{\text{positive, nonzero}} \rvert_{\text{min}}} = \frac{\lvert -2^{32-1} \rvert}{2^0} = 2^{31} \approx 2 \cdot 10^9
+    \end{equation*}
+    
+    \item \textit{Consider 32-bit floating-point number, with 24-bits significand and 8-bit exponent in two's complement}
+       
+   {$\text{Dynamic Range}_2 (x) = \frac{\lvert x \rvert_{\text{max}}}{\lvert x_{\text{positive, nonzero}} \rvert_{\text{min}}}$ $$= \frac{(2^{23} - 1) \cdot 2^{(2^{8-1}) - 1}}{2^{-128}} = \frac{(2^{23} - 1) \cdot 2^{127}}{2^{-128}} = (2^{23} - 1) \cdot 2^{255} \approx 5 \cdot 10^{83}$$}
+
+    
+    \item \textit{Dynamic range increase}
+    
+    Comparing the two dynamic ranges:
+    \begin{equation*}
+    \frac{\text{Dynamic Range}_2 (x)}{\text{Dynamic Range}_1 (x)} \approx 10^{74}
+    \end{equation*}
+\end{enumerate}
+\newpage
+
+
+\begin{enumerate}
+
+        \item \textit{Consider a fixed-point number with 8 fractional bits}
+        \begin{equation*}
+            \text{Resolution}_1(x) = 2^{-8}
+        \end{equation*}
+    
+        \item \textit{Consider 32-bit floating-point number, with 24-bits significand in sign-and-magnitude and 8-bit exponent in two's complement}
+        \begin{equation*}
+            \text{Resolution}_2(x) = 2^0 \cdot 2^{-2(8-1)} = 2^{-2^7} = 2^{-128}
+        \end{equation*}
+    
+        \item \textit{Improved resolution}
+        \begin{equation*}
+            \frac{\text{Resolution}_2(x)}{\text{Resolution}_1(x)} = \frac{2^{-128}}{2^{-8}} = 2^{-120}
+        \end{equation*}
+    \end{enumerate}
+
+
+    
+    \subsection{Representation}
+    \begin{itemize}
+        \item[] We will be focusing on the following digit-vector:
+        \[
+        X = (\underbrace{S}_{\text{\color{purple}Sign}}E_{m-1}E_{m-2}\dots E_1E_0\underbrace{M_{n-1}M_{n-2}\dots M_0}_{\text{\color{purple}Magnitude}})
+        \]
+
+
+    The floating-point representation becomes
+    \[
+    x = (-1)^s \times M \times b^E
+    \]
+    where \( s \in \{0, 1\} \) is the \textbf{sign}, and \( M \) is the \textbf{magnitude} of the signed significant
+    \vskip 0.5cm
+    \textbf{In the rest of the lecture, we assume significand is represented in sign-and-magnitude.}
+    \end{itemize}
+
+
+    \subsubsection[short]{Normalization}
+    The goal of normalization is to represent the number such that the magnitude (\(M\)) is within the range \(1 \leq M < 2\). This means that the leading digit before the binary point is always 1. Here are examples to demonstrate this process:
+
+    \begin{itemize}
+        \item[] \textbf{Positive Example}:
+        \begin{itemize}
+            \item[] Given: \( +1010.1000_2 \)
+            \item[] Normalize: \( +1.1010_2 \times 2^3 \)
+            \item[] Decimal Conversion: \( 1.3125 \times 8 = 10.5 \)
+            \item[] Explanation: The binary number \(1010.1000_2\) is normalized by shifting the binary point such that the first digit is 1, and adjusting the exponent (\(2^3\)) accordingly. The equivalent decimal number is \(10.5\).
+        \end{itemize}
+    \newpage
+        \item[] \textbf{Negative Example}:
+        \begin{itemize}
+            \item[] Given: \( -(0.00000011)_2 \)
+            \item[] Normalize: \( -1.1_2 \times 2^{-7} \)
+            \item[] Decimal Conversion: \( -(1.5)_{10} \times 2^{-7} = -0.01171875 \)
+            \item[] Explanation: The binary number \(0.00000011_2\) is normalized by shifting the binary point to get a leading 1, and adjusting the exponent (\(2^{-7}\)) to reflect the shift. The equivalent decimal number is \(-0.01171875\).
+        \end{itemize}
+    \end{itemize}
+    
+    \subsubsection{Why Normalize?}
+    
+    Normalization removes redundancy from floating-point representation, making it unique. Consider these examples to understand the redundancy in non-normalized representations:
+
+        \[
+            \begin{aligned}
+            & + (1010)_2 \times 2^{-2} = 10 \times 2^{-2} = 2.5; \\
+            & + (1.01)_2 \times 2^{1} = 1.25 \times 2^{1} = 2.5; \\
+            & + (0101)_2 \times 2^{-1} = 5 \times 2^{-1}  = 2.5; \\
+            \end{aligned}
+            \]
+
+    
+    In these cases, different representations lead to the same decimal value, illustrating redundancy. Normalization ensures that each number has a unique floating-point representation. 
+    \vskip 0.5cm
+    \textbf{Conclusion}: Floating-point representation is \textcolor{red}{redundant unless it is normalized}. By normalizing, we ensure a unique and efficient representation for computational purposes.
+\vskip 0.5cm
+    In normalized floating-point representation, the leading digit is always 1 and is omitted as a hidden bit to save space, with the remaining digits representing the fraction part of the significand :
+    \begin{itemize}
+        \item[] \( +(101.001)_2 \times 2^{-4} \Rightarrow +(1.01001)_2 \times 2^{-2} \Rightarrow +(.01001)_2 \times 2^{-2} \)
+    \end{itemize}
+
+
+
+
+\newpage
+\subsection{Biased Representation}
+
+Given a binary number with $n$ bits, the value of the biased representation can be calculated as follows:
+
+\[
+x = \sum_{i=0}^{n-1} X_i \cdot 2^i - B
+\]
+
+Where $X_i$ represents the $i^{th}$ bit of the binary number (starting from 0 for the least significant bit), and $B$ is the bias, which is calculated by:
+
+\[
+B = 2^{(n-1)} - 1
+\]
+
+
+The exponent thus becomes : 
+\[ e = \sum_{i=0}^{n-1} E_i \cdot 2^i - (2^{(n-1)} - 1) \]
+
+For instance, with a 3-bit binary number, the bias $B$ is $2^{(3-1)} - 1 = 3$. Therefore, the biased representation maps binary numbers to the integer range from $-B$ to $2^n - 1 - B$.
+
+\subsubsection{Example}
+
+For a 3-bit binary number, the biased representations would be:
+
+\begin{center}
+\begin{tabular}{ccc}
+\textbf{Decimal} & \textbf{Binary} & \textbf{Biased Decimal} \\
+\hline
+7 & 111 & 4 \\
+6 & 110 & 3 \\
+5 & 101 & 2 \\
+4 & 100 & 1 \\
+3 & 011 & 0 \\
+2 & 010 & -1 \\
+1 & 001 & -2 \\
+0 & 000 & -3 \\
+\end{tabular}
+\end{center}
+
+Note that the minimum exponent in the biased representation is zero so that the representation of FP zero value is all zeros (zero sign, exponent, and mantissa).
+
+\newpage
+\section*{Summary of the Floating-Point Representation}
+Let the binary vector : 
+\[ X = (S E_{m-1}E_{m-2}\dots E_1E_0 \; . \; M_{n-1}M_{n-2}\dots M_0) \]
+
+\begin{itemize}
+    \item[] $(m)$-bit exponent
+    \begin{itemize}
+      \item[-] Biased, $B = 2^{m-1} - 1$
+    \end{itemize}
+    \item[] $(n + 1)$-bit significand
+    \begin{itemize}
+      \item[-] Sign-and-magnitude
+      \item[-] Normalized, one hidden bit
+    \end{itemize}
+
+  \end{itemize}
+
+  \[
+x = (-1)^S \times \left(1 + \sum_{i=1}^{n} M_{n-i}2^{-i} \right) \times 2^{\left(\sum_{j=0}^{m-1} E_j2^j\right) - (2^{m-1} - 1)}
+\]
+\subsection{Rounding}
+\begin{itemize}
+    \item[] The result of a floating-point operation is a real number that, to be represented exactly, might require a significand with an infinite number of digits.
+    \begin{itemize}
+        \item[] For a representation close to the exact result, we perform \textbf{rounding}.
+    \end{itemize}
+    \item[] Consider the real number \( x_{\text{real}} \) and the consecutive floating-point numbers \( F_1 \) and \( F_2 \), such that \( F_1 \leq x_{\text{real}} \leq F_2 \).
+    \begin{itemize}
+        \item[] We can perform several types of rounding:
+        \begin{itemize}
+            \item[] Round to nearest (tie to even)
+            \item[] Round towards zero (truncation)
+            \item[] Round towards plus or towards minus infinity
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+\begin{itemize}
+    \item[-] Round to nearest (tie to even)
+    \[ R_{\text{near}}(x_{\text{real}}) = 
+    \begin{cases} 
+    F_1, & \text{if } |x_{\text{real}} - F_1| < |x_{\text{real}} - F_2| \\
+    F_2, & \text{if } |x_{\text{real}} - F_1| > |x_{\text{real}} - F_2| \\
+    \text{even}(F_1, F_2), & \text{if } |x_{\text{real}} - F_1| = |x_{\text{real}} - F_2|
+    \end{cases}
+    \]
+    
+    \item[-] Round towards zero (truncation)
+    \[ R_{\text{zero}}(x_{\text{real}}) = 
+    \begin{cases} 
+    F_1, & \text{if } x_{\text{real}} \geq 0 \\
+    F_2, & \text{if } x_{\text{real}} < 0
+    \end{cases}
+    \]
+    
+    \item[-] Round towards plus or minus (negative) infinity
+    \[ R_{\text{pinf}}(x_{\text{real}}) = F_2 \]
+    \[ R_{\text{ninf}}(x_{\text{real}}) = F_1 \]
+\end{itemize}
+
+\section*{Examples of Rounding Methods}
+
+Let's consider \( x_{\text{real}} = 2.5 \), \( F_1 = 2 \), and \( F_2 = 3 \) for our examples.
+
+\subsection*{Round to nearest (tie to even)}
+\[ R_{\text{near}}(2.5) = \text{even}(2, 3) = 2 \]
+Since both \( F_1 \) and \( F_2 \) are equidistant from \( x_{\text{real}} \), we choose the even number which is \( 2 \).
+
+\subsection*{Round towards zero (truncation)}
+\[ R_{\text{zero}}(2.5) = 2 \]
+Since \( x_{\text{real}} \) is positive, we round towards zero, resulting in \( F_1 \).
+
+\subsection*{Round towards plus infinity}
+\[ R_{\text{pinf}}(2.5) = 3 \]
+When rounding towards plus infinity, we choose \( F_2 \).
+
+\subsection*{Round towards minus infinity}
+\[ R_{\text{ninf}}(2.5) = 2 \]
+When rounding towards minus infinity, we choose \( F_1 \).
+
+Now let's consider a negative value \( x_{\text{real}} = -2.5 \), \( F_1 = -3 \), and \( F_2 = -2 \).
+
+\subsection*{Round towards zero (truncation) for negative value}
+\[ R_{\text{zero}}(-2.5) = -2 \]
+Since \( x_{\text{real}} \) is negative, we round towards zero, resulting in \( F_2 \).
+
+\subsection*{Round towards plus infinity for negative value}
+\[ R_{\text{pinf}}(-2.5) = -2 \]
+When rounding towards plus infinity for a negative number, we choose the larger number, which is \( F_2 \).
+
+\subsection*{Round towards minus infinity for negative value}
+\[ R_{\text{ninf}}(-2.5) = -3 \]
+When rounding towards minus infinity for a negative number, we choose the smaller number, which is \( F_1 \).
+
+
+\newpage 
+\section{IEEE 754 Standard}
+\section*{FP Format in IEEE 754}
+
+Exactly what we described:
+\begin{itemize}
+    \item[] \( (n + 1) \)-bit significand
+    \begin{itemize}
+        \item Sign-and-magnitude
+        \item Normalized, one hidden bit
+    \end{itemize}
+    \item[] \( m \)-bit exponent
+    \begin{itemize}
+        \item Biased, \( B = 2^{m-1} - 1 \)
+    \end{itemize}
+\end{itemize}
+
+Let \( X \) a digit-vector represented as:
+\[ X = (S E_{m-1} E_{m-2} \ldots E_1 E_0 . M_{n-1} M_{n-2} \ldots M_1 M_0) \]
+
+\underline{Basic and extended formats:}
+\begin{itemize}
+    \item[+] Basic formats:
+    \begin{itemize}
+        \item Single precision (32 bits)
+        \begin{itemize}
+            \item Sign \( S \): 1 bit
+            \item Exponent \( E \): 8 bits
+            \item Fraction \( F \): 23 bits
+        \end{itemize}
+        \item Double precision (64 bits)
+        \begin{itemize}
+            \item Sign \( S \): 1 bit
+            \item Exponent \( E \): 11 bits
+            \item Fraction \( F \): 52 bits
+        \end{itemize}
+    \end{itemize}
+    \item[+] Default round to nearest (ties to even)
+\end{itemize}
+
+\newpage
+\subsection{Special Values}
+The IEEE 754 standard defines special values with unique bit patterns:
+
+\begin{description}
+    \item[Floating-point zero:] is represented by all zeros in both the exponent and the significand fields.
+    \begin{align*}
+        \text{Positive zero: } &0 \quad 00000000 \quad 00000000000000000000000 \\
+        \text{Negative zero: } &1 \quad 00000000 \quad 00000000000000000000000
+    \end{align*}
+    The most significant bit (the sign bit) differentiates between positive and negative zero.
+
+    \item[Positive and negative infinity:] are represented by all ones in the exponent field and all zeros in the significand field.
+    \begin{align*}
+        \text{Positive infinity: } &0 \quad 11111111 \quad 00000000000000000000000 \\
+        \text{Negative infinity: } &1 \quad 11111111 \quad 00000000000000000000000
+    \end{align*}
+
+    \item[NaN (Not a Number):] is represented by all ones in the exponent field and a non-zero significand field.
+    \begin{align*}
+        \text{NaN (example): } &- \quad 11111111 \quad 10000000000000000000000
+    \end{align*}
+    NaN values represent indeterminate or undefined results, such as the square root of a negative number. The sign bit can be either 0 or 1, but the significand must not be all zeros.
+\end{description}
+
+\subsection{Overflow, underflow, and others}
+\begin{description}
+    \item[Overflow:] Occurs when the rounded value is too large to be represented by the floating-point format.
+    \begin{itemize}
+        \item The result is set to positive or negative infinity, depending on the sign.
+    \end{itemize}
+    
+    \item[Underflow:] Happens when the rounded value is too small to be represented.
+    \begin{itemize}
+        \item Typically, the result is set to a denormalized number or zero.
+    \end{itemize}
+    
+    \item[Division by zero:] Occurs when a finite non-zero number is divided by zero.
+    \begin{itemize}
+        \item The result is set to positive or negative infinity, based on the sign of the numerator.
+    \end{itemize}
+    
+    \item[Inexact result:] Occurs when the result of an operation is not an exact floating-point number.
+    \begin{itemize}
+        \item The result is rounded to the nearest representable value.
+    \end{itemize}
+    
+    \item[Invalid:] This flag is set when the result of an operation is not a real number (NaN).
+    \begin{itemize}
+        \item Examples include the square root of a negative number or the indeterminate form 0/0.
+    \end{itemize}
+\end{description}
+
+\section*{IEEE 754}
+\subsection*{Example: Converting single-precision FP to decimal}
+
+Find the decimal equivalent of
+\[ X = (1\ 01111100\ 01000000000000000000000) \]
+
+Solution:
+\begin{itemize}
+    \item[-] Sign \( S = 1 \), hence negative.
+    \item[-] Exponent \( E = 01111100 \) represents the biased exponent. To find the actual exponent:
+    \[ E_{\text{actual}} = 124 - (2^7 - 1) = 124 - 127 = -3 \]
+    \item[-] Mantissa (including the hidden bit) \( M = 1.01 \) in binary represents:
+    \[ M = 1 + 2^{-2} = 1.25 \]
+    \item[-] Result:
+    \[ x = -1.25 \times 2^{-3} = -0.15625 \]
+\end{itemize}
+
+\subsection*{Example: Converting decimal to single-precision FP}
+
+Find the single-precision FP equivalent of \( x = -0.8125 \)
+
+Solution:
+\begin{itemize}
+    \item[-] Sign \( = 1 \), negative.
+    \item[-] Fraction bits can be obtained using multiplication by 2.
+    \item[-] Converting \( 0.8125 \) to binary by successive multiplication:
+    \begin{align*}
+        0.8125 \times 2 &= 1.625 \rightarrow 1 \\
+        0.625 \times 2 &= 1.25 \rightarrow 1 \\
+        0.25 \times 2 &= 0.5 \rightarrow 0 \\
+        0.5 \times 2 &= 1.0 \rightarrow 1
+    \end{align*}
+    Stop when the fractional part becomes zero.
+    \item[-] Mantissa \( M \) in binary is \( 0.1101 \), normalized is \( 1.101 \times 2^{-1} \).
+    \item[-] Exponent adjustment:
+    \[ E_{\text{actual}} = -1 \]
+    \[ E = E_{\text{actual}} + B = -1 + (2^7 - 1) = 126 \]
+    \item[-] Result:
+    \[ X = (1\ 01111110\ 10100000000000000000000) \]
+\end{itemize}
+
+
 
 \end{document}
