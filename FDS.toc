@@ -76,3 +76,9 @@
 \contentsline {section}{\numberline {3.4}IEEE 754 Standard}{29}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Special Values}{30}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Overflow, underflow, and others}{30}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}Number Systems (Part IV)}{32}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Fixed Point Arithmetic}{32}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Addition and Subtraction}{32}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Multiplication}{33}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Floating-Point Arithmetic}{34}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}An Example in Binary}{37}{subsection.4.2.1}%
