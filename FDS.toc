@@ -82,3 +82,13 @@
 \contentsline {subsection}{\numberline {4.1.2}Multiplication}{33}{subsection.4.1.2}%
 \contentsline {section}{\numberline {4.2}Floating-Point Arithmetic}{34}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}An Example in Binary}{37}{subsection.4.2.1}%
+\contentsline {chapter}{\numberline {5}Number Systems (Part V)}{39}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Low precision computer arithmetic}{39}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Challenges and limitations}{39}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Block Floating Point}{40}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Digital Logic Circuits}{41}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introduction to Digital Logic Circuits}{41}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}The simplest binary logic element}{41}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}The simplest binary logic element}{41}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Truth Tables}{43}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Logic Gates}{44}{section.6.3}%

@@ -25,6 +25,8 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{wrapfig}
+\usepackage{circuitikz}
+\usetikzlibrary{fit} % Add the missing TikZ library
 
 \usetikzlibrary{arrows.meta,calc,decorations.markings,math,arrows.meta}
 
@@ -70,7 +72,7 @@
     \vspace*{1cm}
     \textbf{Introduction}
     \newline
-    \paragraph[short]{}{This document is designed to offer a LaTeX-styled overview of the Fundamentals of Digital Systems course, emphasizing brevity and clarity. Should there be any inaccuracies or areas for improvement, please do not hesitate to reach out to me at ali.elazdi@epfl.ch for corrections. Hoping to provide an experience similar to the one provided by past generations of students in other subjects. }
+    \paragraph[short]{}{This document is designed to offer a LaTeX-styled overview of the Fundamentals of Digital Systems course, emphasizing brevity and clarity. Should there be any inaccuracies or areas for improvement, please do not hesitate to reach out to me at ali.elazdi@epfl.ch for corrections. Hoping to provide an experience similar to the one provided by past generations of students in other subjects. Also, for the latest version of this pdf file, as the update on drive may take some time, you can find it on my github repository at the following link: \url{https://github.com/elazdi-al/FDS/blob/main/FDS.pdf}}
 \end{center}
 
 
@@ -899,7 +901,7 @@ Binary multiplication operates similarly to decimal multiplication but is perfor
     &+& 000000 & & \text{(Multiply by 0, add two zeros to the right, (left shift, $<<2$))}\\
     &+& 0000000 & & \text{(Multiply by 0, add three zeros to the right, (left shift, $<<3$))}\\
     \cline{2-4}
-    && 1000111 & & \text{(Sum of the partial products)}
+    && 100111 & & \text{(Sum of the partial products)}
 \end{align*}
 
 
@@ -1679,6 +1681,288 @@ Let's add two binary floating-point numbers: $1.01 \times 2^3$ and $1.1 \times 2
 \end{enumerate}
 
 So, our final result is $10.00 \times 2^3$ in binary, which is $8$ in decimal.
+
+
+\chapter{Number Systems (Part V)}
+
+
+
+
+\begin{text}
+    This small chapter concludes the Number Systems chapter with a some modern applications of low precision computing.
+\end{text}
+\section{Low precision computer arithmetic}
+
+
+\begin{itemize}
+  \item[] AI is taking on an increasingly important role
+  \item[] Deep Neural Networks (DNNs) are the most widespread
+  \begin{itemize}
+    \item[] E.g., Large Language Models (LLM) generate human-like content
+  \end{itemize}
+  \item[] Challenge: exponential size growth
+  \begin{itemize}
+    \item[] GPT3 has 175 billion parameters
+  \end{itemize}
+  \item[] Large models mean
+  \begin{itemize}
+    \item[] A lot of data, any computations
+    \item[] ...and we want the result quickly!
+    \item[] Luckily, ML models are tolerant to small errors
+  \end{itemize}
+\end{itemize}
+
+\section{Challenges and limitations}
+\begin{itemize}
+    \item[] 32-bit or 64-bit floating-point formats
+    \begin{itemize}
+      \item[] Arithmetic units are large (many bits $\Rightarrow$ high area, high energy)
+      \item[] We can put fewer units per chip (e.g., less compute power in GPU)
+        \begin{itemize}
+          \item[] Poor arithmetic density (in number of ops / 1mm$^2$)
+          \item[] Fewer units, fewer computations
+        \end{itemize}
+      \item[] The model predictions are accurate, but it takes a long time to compute them
+    \end{itemize}
+    \item[] Fixed-point or integer formats
+    \begin{itemize}
+      \item[] Arithmetic units are smaller and faster (approx. 10x area savings)
+      \item[] Better arithmetic density and lower delays
+      \item[] The errors due to limited dynamic range are too significant for most ML models; the accuracy of their predictions suffers
+    \end{itemize}
+    \item[] New number formats are needed: the best of both worlds
+  \end{itemize}
+
+
+
+  \section{Block Floating Point}
+  \section*{Block Floating Point}
+
+Imagine a block (vector) of binary numbers in FP (Floating Point) format, where each vector element has its own S (Sign), M (Mantissa), and E (Exponent).
+
+\[
+\begin{array}{|c|c|c|}
+\hline
+S_1 & E_1 & M_1 \\
+\hline
+S_2 & E_2 & M_2 \\
+\hline
+\vdots & \vdots & \vdots \\
+\hline
+S_n & E_n & M_n \\
+\hline
+\end{array}
+\]
+
+If the exponents in the block are not too different, we could use a single shared exponent per block.
+
+\begin{tikzpicture}
+    \node (E) at (0,0) {$E_{\text{block}}$ (shared)};
+    \node (S1) at (3,0.5) {$S_1$};
+    \node (M1) at (4,0.5) {$M_1$};
+    \node[draw,fit=(S1) (M1),inner sep=1.65mm] (table1) {}; % Drawing a rectangle around S1 and M1
+    \node (S2) at (3,-0.5) {$S_2$};
+    \node (M2) at (4,-0.5) {$M_2$};
+    \node[draw,fit=(S2) (M2),inner sep=1.75mm] (table1) {}; % Drawing a rectangle around S1 and M1
+    \node (Sn) at (3,-1.5) {$S_n$};
+    \node (Mn) at (4,-1.5) {$M_n$};
+    \node[draw,fit=(Sn) (Mn),inner sep=1.65mm] (table1) {}; % Drawing a rectangle around S1 and M1
+
+    \draw[->] (E) -- (S2);
+    \draw[->] (E) -- (S1);
+    \draw[->] (E) -- (Sn);
+    \end{tikzpicture}
+    
+
+\textit{In BFP with shared Exponent:}
+\begin{itemize}
+    \item[] Find the largest exponent in the block of FP numbers. This will be the shared exponent \( E_{\text{block}} \).
+    \item[] Calculate the difference \( d_i = E_{\text{block}} - E_i \) between the shared exponent and each of the other exponents \( E_i \) in the block.
+    \item[] Adjust the mantissa by right-shifting the signed mantissa of each number by \( d_i \). As a result of these adjustments, the mantissa in BFP cannot be normalized, and there is no hidden bit.
+\end{itemize}
+
+\chapter{Digital Logic Circuits}
+\section{Introduction to Digital Logic Circuits}
+The smallest unit of Digital Information is a binary value 1 or 0.
+\subsection{The simplest binary logic element}
+Similarly, a switch can either be open or closed. 
+Let $x$ an input variable.
+\begin{itemize}
+    \item[-] Open ($x=0$) \;
+    \begin{tikzpicture}
+        \draw (0,0) -- (2,0);
+        \draw (2,0) -- (2.5,0.5);
+        \draw (3,0) -- (4,0);
+        \filldraw [black] (2,0) circle (2pt);
+        \filldraw [black] (3,0) circle (2pt);
+    \end{tikzpicture}
+
+    \item[-] Closed ($x=1$)
+    \begin{tikzpicture}
+        \draw (0,0) -- (2,0);
+        \draw (2,0) -- (4,0);
+        \filldraw [black] (2,0) circle (2pt);
+        \filldraw [black] (3,0) circle (2pt);
+
+    \end{tikzpicture}
+\end{itemize}
+
+\vspace*{10px}
+
+The symbol for a switch controlled by an input variable:
+
+\vspace*{10px}
+\hspace*{130px}
+\begin{tikzpicture}
+    \draw (0,0) -- (1,0) -- (1.5,0) -- (2,0) -- (3,0);
+    \draw (1.5,0) -- (1.5,-0.5);
+    
+    \draw (1,0) -- (1,1) -- (2,1) -- (2,0);
+    \node at (1.5,0.5) {$S$};
+    \node at (1.5,-0.75) {$x$};
+\end{tikzpicture}
+
+
+\subsection{The simplest binary logic element}
+
+
+\begin{figure}[htp] % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
+    \centering
+    \includegraphics[width=0.41\textwidth]{circuits/6.1.2.png} % Replace 'path_to_image.png' with the actual path to your image file
+    \caption{Light controlled by a single switch}
+  \end{figure}
+
+
+\newpage
+\section*{Two-Variable Logic Functions}
+\textbf{Series and Parallel Connections}
+\newline
+\vspace{10px}
+\textit{Remark. The choice of symbols is not random $\cdot, +,$ respectively similar to multiplication and addition.}
+\vspace{20px}
+\begin{figure}[htp] % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
+    \centering
+    \includegraphics[width=0.41\textwidth]{circuits/6.1.3.png} % Replace 'path_to_image.png' with the actual path to your image file
+    \caption{Logic AND function}
+    \text{$L(x_{1}, x_{2}) = x_{1} \cdot x_{2}$, with $\cdot$ the AND operator}
+  \end{figure}
+
+
+ 
+
+\begin{figure}[htp] % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
+    \centering
+    \includegraphics[width=0.5\textwidth]{circuits/6.1.3_2.png} % Replace 'path_to_image.png' with the actual path to your image file
+    \caption{Circular representation of two's complement}
+    \text{$L(x_{1}, x_{2}) = x_{1} + x_{2}$, with $+$ the OR operator}
+  \end{figure}
+
+
+\begin{figure}[htp] % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
+    \centering
+    \includegraphics[width=0.5\textwidth]{circuits/6.1.3_3.png} % Replace 'path_to_image.png' with the actual path to your image file
+    \caption{A series-parallel connection of three switches}
+    \text{The corresponding Logic Function is $L(x_{1}, x_{2}, x_{3}) = (x_{1} + x_{2}) \cdot x_{3}$} \newline
+    \textit{Smaller circuits separated by parentheses}
+  \end{figure}
+
+
+  \begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{circuits/6.1.3_4.png} % Adjust the path to your image
+    \caption{NOT GATE} % Caption for the figure
+    \label{fig:notgate} % Label for referencing the figure in the text
+    \medskip % Adds some vertical space (optional)
+    \text{The corresponding Logic Function is \(L(x) = \bar{x}\), \textit{ with \(\bar{x}\) the complement of \(x\).}}
+  \end{figure}
+  \newpage
+  \section{Truth Tables}
+  Logical operations can be defined in the form of a truth table
+  \begin{itemize}
+      \item[] AND
+      \begin{equation*}
+          L(x_1, x_2) = x_1 \cdot x_2
+      \end{equation*}
+      where \( L = 1 \) if \( x_1 = 1 \) and \( x_2 = 1 \), \( L = 0 \) otherwise.
+      
+      \item[] OR
+      \begin{equation*}
+          L(x_1, x_2) = x_1 + x_2
+      \end{equation*}
+      where \( L = 1 \) if \( x_1 = 1 \) or \( x_2 = 1 \), or if \( x_1 = x_2 = 1 \), \( L = 0 \) if \( x_1 = x_2 = 0 \).
+  \end{itemize}
+  
+  \begin{center}
+  \begin{tabular}{ c c | c | c }
+      \( x_1 \) & \( x_2 \) & AND & OR \\
+      \hline
+      0 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 1 \\
+      1 & 0 & 0 & 1 \\
+      1 & 1 & 1 & 1 \\
+      
+  \end{tabular}
+\end{center}
+
+
+\textit{For n logical variables we get $2^n$ rows}.\newline
+For example : 
+\begin{itemize}
+  \item[] AND
+  \begin{equation*}
+      L(x_1, x_2, x_3) = x_1 \cdot x_2 \cdot x_3
+  \end{equation*}
+  where \( L = 1 \) if \( x_1 = x_2 = x_3 = 1 \), \( L = 0 \) otherwise.
+  
+  \item[] OR
+  \begin{equation*}
+      L(x_1, x_2, x_3) = x_1 + x_2 + x_3
+  \end{equation*}
+  where \( L = 0 \) if \( x_1 = x_2 = x_3 = 0 \), \( L = 1 \) otherwise.
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{ c c c | c | c }
+
+  \( x_1 \) & \( x_2 \) & \( x_3 \) & AND & OR \\
+  \hline
+  0 & 0 & 0 & 0 & 0 \\
+  0 & 0 & 1 & 0 & 1 \\
+  0 & 1 & 0 & 0 & 1 \\
+  0 & 1 & 1 & 0 & 1 \\
+  1 & 0 & 0 & 0 & 1 \\
+  1 & 0 & 1 & 0 & 1 \\
+  1 & 1 & 0 & 0 & 1 \\
+  1 & 1 & 1 & 1 & 1 \\
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item[] NOT, with $L(x) = \bar{x}$      
+\end{itemize}
+\begin{center}
+    \begin{tabular}{ c c | c | c }
+        \( x \) & \( \bar{x} \) & NOT \\
+        \hline
+        0 & 0 & 0 \\
+        0 & 1 & 0 \\
+    \end{tabular}
+  \end{center}
+
+  \subsection*{Precedence Table for Logic Operations}
+
+  \begin{center}
+    \begin{tabular}{cccl}
+    \toprule
+    \textbf{Precedence (Priority)} & \textbf{Operator} & \textbf{Operation} & \textbf{Description} \\
+    \midrule
+    1 & \(\overline{x}\) & NOT & Negation of A \\
+    2 & \(x_{1} \cdot x_{2}\) & AND & Conjunction of A and B \\
+    3 & \(x_{1} + x_{2}\) & OR & Disjunction of A and B \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+
+    \section{Logic Gates}
 
 
 \end{document}
