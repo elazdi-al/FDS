@@ -27,6 +27,12 @@
 \usepackage{wrapfig}
 \usepackage{circuitikz}
 \usepackage{tikz}
+\usepackage{caption}
+\usepackage{venndiagram}
+\usepackage{multicol} % Import multicol package
+
+
+\usetikzlibrary{circuits.logic.US}
 \usetikzlibrary{arrows.meta, positioning, calc}
 \usetikzlibrary{fit} % Add the missing TikZ library
 
@@ -222,7 +228,7 @@ For example:
 
 \begin{table}[ht]
     \centering
-    \caption{Conversion table up to 15.}
+    \caption*{Conversion table up to 15.}
     \vspace{10px}
     \label{my-label}
     \begin{tabular}{@{}cccc@{}}
@@ -843,7 +849,7 @@ Addition and Subtraction}
 \begin{wrapfigure}{r}{0.5\textwidth} % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
   \centering
   \includegraphics[width=0.41\textwidth]{circle-twoscomplement.png} % Replace 'path_to_image.png' with the actual path to your image file
-  \caption{Circular representation of two's complement}
+  \caption*{Circular representation of two's complement}
 \end{wrapfigure}
 
 In two's complement arithmetic, a circular graphical representation can be used to illustrate the addition and subtraction of numbers:
@@ -1171,7 +1177,7 @@ This reminds us of the usual scientific notation, base 10:
 Given a binary number with $n$ bits, the value of the biased representation can be calculated as follows:
 
 \[
-x = \sum_{i=0}^{n-1} X_i \cdot 2^i - B
+x = (\sum_{i=0}^{n-1} X_i) \cdot 2^i - B
 \]
 
 Where $X_i$ represents the $i^{th}$ bit of the binary number (starting from 0 for the least significant bit), and $B$ is the bias, which is calculated by:
@@ -1182,7 +1188,7 @@ B = 2^{(n-1)} - 1
 
 
 The exponent thus becomes : 
-\[ e = \sum_{i=0}^{n-1} E_i \cdot 2^i - (2^{(n-1)} - 1) \]
+\[ e = (\sum_{i=0}^{n-1} E_i \cdot 2^i) - (2^{(n-1)} - 1) \]
 
 For instance, with a 3-bit binary number, the bias $B$ is $2^{(3-1)} - 1 = 3$. Therefore, the biased representation maps binary numbers to the integer range from $-B$ to $2^n - 1 - B$.
 
@@ -1444,30 +1450,30 @@ Solution:
 Let \( x \) and \( y \) be two fixed-point numbers with the same number of integer and fractional bits. The sum and difference of \( x \) and \( y \) can be calculated as follows:
  $$x + y = x_{int} + y_{int} + x_{fr} + y_{fr}$$ 
  $$x - y = x_{int} - y_{int} + x_{fr} - y_{fr}$$
+ 
+ \subsection{Multiplication}
+ 
+ 
+ \begin{align*}
+     \begin{array}{r@{}c@{}l}
+         & 010.11 & \text{\quad Multiplicand} \\
+       \times & 011.01 & \text{\quad Multiplier} \\ \cline{1-2}
+         & 000000 & \text{\quad First partial product (always zero), sign-extended} \\ 
+       + & \; \; \; \; 001011\phantom{.00} & \text{\quad 1 x multiplicand, sign-extended} \\ \cline{1-2}
+         & 001011 & \text{\quad Intermediate result, sign-extended} \\ 
+       + & \phantom{0}00000\phantom{.0} & \text{\quad 0 x multiplicand, left-shifted by 1 place and sign-extended} \\ \cline{1-2}
+         & 00001011\phantom{} & \text{\quad Intermediate result, sign-extended} \\ 
+       + & \phantom{00}001011\phantom{000} & \text{\quad 1 x multiplicand, left-shifted by 2 places and sign-extended} \\ \cline{1-2}
+         & 00010111 & \text{\quad Intermediate result, sign-extended} \\ 
+       + & 001011\phantom{00} & \text{\quad 1 x multiplicand, left-shifted by 3 places and sign-extended} \\ \cline{1-2}
+         & 001001111 & \text{\quad Intermediate result, sign-extended} \\ 
+       + & 000000\phantom{00}& \text{\quad 0 x multiplicand, left-shifted by 4 places and sign-extended} \\ \cline{1-2}
+         & 0010001111 & \text{\quad Result, integer} \\
+     \end{array} & \text{\quad convert to fixed-point now}
+  \end{align*}
 
-\subsection*{Examples}
-
-\subsection*{Addition}
-\begin{align*}
-& \phantom{X} & & \; \; \; 011011 & &(Carry) \\
-& & &000101.110 & &= 5.75 \\
-& & &001100.011 & &= 12.375 \\
-&\cline{2-4}
-& & &010010.001 & &= 18.125
-\end{align*}
-        
-\subsection*{Substraction}
-
-\begin{align*}
-    & \phantom{-}1110000\ 110 & & (Carry) \\
-    & \phantom{-}000101.110 &&= 5.75 \\
-    & -001100.011 &&= 12.375 \\
-    &\cline{2-4}
-    & \phantom{000}111001.011 &&= -6.625
-    \end{align*}
-
-\newpage
-\subsection*{In two's complement}
+ \newpage
+\section{In two's complement}
 Given two fixed-point numbers $x$ and $y$, the addition or subtraction in two's complement is given by:
 \begin{equation}
 x \pm y = \left( -X_{(m_x-1)}2^{(m_x-1)} + \sum_{i=-f_x}^{m_x-2} X_i2^i \right) \pm \left( -Y_{(m_y-1)}2^{(m_y-1)} + \sum_{i=-f_y}^{m_y-2} Y_i2^i \right)
@@ -1482,28 +1488,6 @@ Where:
     \item[] The smallest fractional-part exponent is $\min(-f_x, -f_y)$. Consequently, the number of bits for the resulting fractional component is $\max(f_x, f_y)$.
 \end{itemize}
 
-\subsection{Multiplication}
-
-
-\begin{align*}
-    \begin{array}{r@{}c@{}l}
-        & 010.11 & \text{\quad Multiplicand} \\
-      \times & 011.01 & \text{\quad Multiplier} \\ \cline{1-2}
-        & 000000 & \text{\quad First partial product (always zero), sign-extended} \\ 
-      + & \; \; \; \; 001011\phantom{.00} & \text{\quad 1 x multiplicand, sign-extended} \\ \cline{1-2}
-        & 001011 & \text{\quad Intermediate result, sign-extended} \\ 
-      + & \phantom{0}00000\phantom{.0} & \text{\quad 0 x multiplicand, left-shifted by 1 place and sign-extended} \\ \cline{1-2}
-        & 00001011\phantom{} & \text{\quad Intermediate result, sign-extended} \\ 
-      + & \phantom{00}001011\phantom{000} & \text{\quad 1 x multiplicand, left-shifted by 2 places and sign-extended} \\ \cline{1-2}
-        & 00010111 & \text{\quad Intermediate result, sign-extended} \\ 
-      + & 001011\phantom{00} & \text{\quad 1 x multiplicand, left-shifted by 3 places and sign-extended} \\ \cline{1-2}
-        & 001001111 & \text{\quad Intermediate result, sign-extended} \\ 
-      + & 000000\phantom{00}& \text{\quad 0 x multiplicand, left-shifted by 4 places and sign-extended} \\ \cline{1-2}
-        & 0010001111 & \text{\quad Result, integer} \\
-    \end{array} & \text{\quad convert to fixed-point now}
- \end{align*}
-
-\newpage
 
 \subsection*{Multiplication in Two's Complement}
 \begin{itemize}
@@ -1600,7 +1584,7 @@ Where:
     
     \begin{table}[h]
     \centering
-    \caption{Floating-point operations based on the signs of the operands.}
+    \caption*{Floating-point operations based on the signs of the operands.}
     \begin{tabular}{ccc}
     \toprule
     FP operation & Signs of the operands & Effective operation \\
@@ -1831,7 +1815,7 @@ The symbol for a switch controlled by an input variable:
 \begin{figure}[htp] % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
     \centering
     \includegraphics[width=0.41\textwidth]{circuits/6.1.2.png} % Replace 'path_to_image.png' with the actual path to your image file
-    \caption{Light controlled by a single switch}
+    \caption*{Light controlled by a single switch}
   \end{figure}
 
 
@@ -1845,7 +1829,7 @@ The symbol for a switch controlled by an input variable:
 \begin{figure}[htp] % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
     \centering
     \includegraphics[width=0.41\textwidth]{circuits/6.1.3.png} % Replace 'path_to_image.png' with the actual path to your image file
-    \caption{Logic AND function}
+    \caption*{Logic AND function}
     \text{$L(x_{1}, x_{2}) = x_{1} \cdot x_{2}$, with $\cdot$ the AND operator}
   \end{figure}
 
@@ -1855,7 +1839,7 @@ The symbol for a switch controlled by an input variable:
 \begin{figure}[htp] % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
     \centering
     \includegraphics[width=0.5\textwidth]{circuits/6.1.3_2.png} % Replace 'path_to_image.png' with the actual path to your image file
-    \caption{Circular representation of two's complement}
+    \caption*{Circular representation of two's complement}
     \text{$L(x_{1}, x_{2}) = x_{1} + x_{2}$, with $+$ the OR operator}
   \end{figure}
 
@@ -1863,7 +1847,7 @@ The symbol for a switch controlled by an input variable:
 \begin{figure}[htp] % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
     \centering
     \includegraphics[width=0.5\textwidth]{circuits/6.1.3_3.png} % Replace 'path_to_image.png' with the actual path to your image file
-    \caption{A series-parallel connection of three switches}
+    \caption*{A series-parallel connection of three switches}
     \text{The corresponding Logic Function is $L(x_{1}, x_{2}, x_{3}) = (x_{1} + x_{2}) \cdot x_{3}$} \newline
     \textit{Smaller circuits separated by parentheses}
   \end{figure}
@@ -1872,7 +1856,7 @@ The symbol for a switch controlled by an input variable:
   \begin{figure}[htp]
     \centering
     \includegraphics[width=0.5\textwidth]{circuits/6.1.3_4.png} % Adjust the path to your image
-    \caption{NOT GATE} % Caption for the figure
+    \caption*{NOT GATE} % Caption for the figure
     \label{fig:notgate} % Label for referencing the figure in the text
     \medskip % Adds some vertical space (optional)
     \text{The corresponding Logic Function is \(L(x) = \bar{x}\), \textit{ with \(\bar{x}\) the complement of \(x\).}}
@@ -1908,14 +1892,17 @@ The symbol for a switch controlled by an input variable:
 
 
 \textit{For n logical variables we get $2^n$ rows}.\newline
-For example : 
+\vspace*{-10px}
+\subsection*{For example :}
+\vspace*{-2px}
 \begin{itemize}
   \item[] AND
+\vspace*{-5px}
   \begin{equation*}
       L(x_1, x_2, x_3) = x_1 \cdot x_2 \cdot x_3
   \end{equation*}
   where \( L = 1 \) if \( x_1 = x_2 = x_3 = 1 \), \( L = 0 \) otherwise.
-  
+  \vspace*{-5px}
   \item[] OR
   \begin{equation*}
       L(x_1, x_2, x_3) = x_1 + x_2 + x_3
@@ -1998,6 +1985,7 @@ For example :
     
         $$f(x_1,\ldots,  x_n) = x_1 \cdot \ldots \cdot x_n$$
     \subsection{OR GATE}
+    \text{True if at least one input is true.}
     \vspace*{10px}
     \begin{center}
     \begin{circuitikz}
@@ -2021,7 +2009,7 @@ For example :
         (myor.out) -- ++(0.5,0) node[right] {$x_1 + \ldots + x_n$};
         
         % Adding a diagonal dotted line to visually indicate multiple inputs
-        \draw[dotted, line width=1pt] ($(myor.in 1) + (-1,0.2)$) -- ($(myor.in 2) + (-1,-0.2)$);
+        \draw[dotted, line width=1pt] ($(myor.in 1) + (-1,0.02)$) -- ($(myor.in 2) + (-1,-0.03)$);
     \end{circuitikz}
 \end{center}
     
@@ -2029,6 +2017,7 @@ For example :
     $$f(x_1,\ldots, x_n) = x_1 + \ldots + x_n$$
     
     \subsection{NOT GATE}
+    \text{True if input is false, and vice versa.}
     \vspace*{5px}
     \begin{center}
         
@@ -2041,6 +2030,7 @@ For example :
     $$f(x) = \bar{x}$$
 
     \subsection{DOUBLE NOT GATE (BUFFER)}
+    \text{A buffer is a gate that does not change the input signal.}
     \vspace*{5px}
     \begin{center}
         \begin{circuitikz}[scale=1, transform shape]
@@ -2050,10 +2040,276 @@ For example :
             (not2.out) -- ++(0.5,0) node[right] {$x$}; % Extend the output line and add label x (same as input, because double NOT)
         \end{circuitikz}
     \end{center}
-    $$f(x) = x$$
+    $$f(x) = x = \bar{\bar{x}}$$
+    
+\subsection{NAND GATE}
+    \noindent % Prevents indentation to align everything to the left.
+    \begin{minipage}[c]{0.30\textwidth} % Adjust the width as needed for the first circuit
+        \centering % Center the content
+        \begin{circuitikz} 
+            \draw
+            (0,0) node[nand port] (nand1) {}
+            (nand1.in 1) node[anchor=east] {$x_1$}
+            (nand1.in 2) node[anchor=east] {$x_2$}
+            (nand1.out) node[anchor=west] {$\overline{x_1 \cdot x_2}$};
+        \end{circuitikz}
+    \end{minipage}%
+    \hfill % Adds horizontal space between the minipages
+    {\large $\equiv$} % Larger equivalence sign for better visibility
+    \hfill % Adds horizontal space between the equivalence sign and the second circuit
+    \begin{minipage}[c]{0.45\textwidth} % Adjust the width as needed for the second circuit
+        \centering % Center the content
+        \begin{circuitikz} 
+            \draw
+            (0,0) node[and port] (and1) {}
+            (and1.in 1) node[anchor=east] {$x_1$}
+            (and1.in 2) node[anchor=east] {$x_2$}
+            (and1.out) -- ++(1,0) node[not port, anchor=in] (not1) {}
+            (not1.out) node[anchor=west] {$\overline{x_1 \cdot x_2}$};
+        \end{circuitikz}
+    \end{minipage}
+        \hspace*{100px}
+
+        \subsection{NOR GATE}
+    \noindent % Prevents indentation to align everything to the left.
+    \begin{minipage}[c]{0.30\textwidth} % Adjust the width as needed for the first circuit
+        \centering % Center the content
+        \begin{circuitikz} 
+            \draw
+            (0,0) node[nor port] (nor1) {}
+            (nor1.in 1) node[anchor=east] {$x_1$}
+            (nor1.in 2) node[anchor=east] {$x_2$}
+            (nor1.out) node[anchor=west] {$\overline{x_1 + x_2}$};
+        \end{circuitikz}
+    \end{minipage}%
+    \hfill % Adds horizontal space between the minipages
+    {\large $\equiv$} % Larger equivalence sign for better visibility
+    \hfill % Adds horizontal space between the equivalence sign and the second circuit
+    \begin{minipage}[c]{0.45\textwidth} % Adjust the width as needed for the second circuit
+        \centering % Center the content
+        \begin{circuitikz} 
+            \draw
+            (0,0) node[or port] (or1) {}
+            (or1.in 1) node[anchor=east] {$x_1$}
+            (or1.in 2) node[anchor=east] {$x_2$}
+            (or1.out) -- ++(1,0) node[not port, anchor=in] (not1) {}
+            (not1.out) node[anchor=west] {$\overline{x_1 + x_2}$};
+        \end{circuitikz}
+    \end{minipage}
+        \hspace*{100px}
+\newpage
+\subsection{Example of Complex Logic Circuit}
+  
+    \begin{center}
+        \begin{figure}[htp] % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
+            \centering
+            \includegraphics[width=0.41\textwidth]{circuits/6.3.9.png} % Replace 'path_to_image.png' with the actual path to your image file
+          \end{figure}
+    \end{center}
+
+    \vspace{-60px}
+    $$f(x_1, x_2)=x_1 x_2 + \bar{\,x_{1}}\bar{\, x_2}$$
+    \vspace{-20px}
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{cc|c}
+        \hline
+        $x_1$ & $x_2$ & $f(x_1, x_2)$ \\
+        \hline
+        0 & 0 & 1 \\
+        0 & 1 & 0 \\
+        1 & 0 & 0 \\
+        1 & 1 & 1 \\
+        \hline
+        \end{tabular}
+        \caption*{Corresponding logic table }
+        \label{table:your_label}
+        \end{table}
+        
+    
+\section{Analysis of a Logic Network}
+\text{Here we'll be looking at sequences of 0s and 1s sent by the input variables.} : 
+\begin{figure}[ht]
+    \centering
+    % Left Image
+    \begin{minipage}{0.60\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{circuits/6.4.png}
+      \caption*{$f(x_{1}, x_{2}) = \bar{\; x_1} + x_1 x_2 $}      \label{fig:left_image}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.37\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{circuits/6.4_2.png} % 
+      \caption*{\small Timing diagram representing the variations in electrical current magnitude over time}
+      \label{fig:right_image}
+    \end{minipage}
+  \end{figure}
+
+  \newpage
+  \section*{Checking for Equivalence of Logic Networks}
+
+  Two logic networks, represented by functions \( f \) and \( g \), are equivalent if:
+  \begin{itemize}
+    \item[] Their truth tables are identical, which is a verification through perfect induction.
+    \item[] A sequence of algebraic manipulations using Boolean algebra can transform one logic expression into the other.
+    \item[] Their Venn diagrams are the same, providing a simple visual aid for equivalence.
+  \end{itemize}
+  
+  \section*{Finding the Best Equivalent Network (Out of Scope)}
+  
+  The best equivalent logic network is the simplest and cheapest in terms of the number of logic gates used. The process of finding the best equivalent expression is called \emph{minimization} and can be achieved through:
+  \begin{itemize}
+    \item[] A sequence of algebraic transformations, although it's not always clear which transformations to apply.
+    \item[] Using the Karnaugh map, which is simpler than a truth table but becomes unmanageable by hand for more than 4 inputs.
+    \item[] Automated techniques in synthesis tools (software) which can handle more complex networks efficiently.
+  \end{itemize}
+  
+\section{The Venn Diagram}
+A Venn diagram is a visual representation of the relationships between sets. Each set is represented by a circle. The overlapping parts of circles represent common elements.
+
+\begin{figure}[htp] % This line sets the wrapfigure environment to place the figure on the right side and occupy half the text width
+    \centering
+    \includegraphics[width=0.60\textwidth]{circuits/6.5.png}
+
+    \text{\small \; Basic Venn diagram representations}
+  \end{figure}
+
+
+
+    
+\begin{center}
+  \begin{tikzpicture}
+    % First drawing
+    \node[circle, draw, minimum size=3cm, label=135:$x$] (A) at (0,0) {};
+    \node[circle, draw, minimum size=3cm, label=45:$y$] (B) at (1.5,0) {};
+    \begin{scope}
+      \clip (0,0) circle (1.5cm);
+      \clip (1.5,0) circle (1.5cm);
+      \fill[gray!50] (A) circle (1.5cm);
+    \end{scope}
+    \node at (0.75,-2) {$xy$};
+  
+    % Second drawing, shifted by 6.5cm to the right
+    \begin{scope}[shift={(6.5,0)}] % Applying the calculated shift
+      \begin{scope}[blend mode=screen]
+        \node[circle, draw, minimum size=3cm, fill=gray, fill opacity=0.5, label=135:$x$] (A) at (0,0) {};
+        \node[circle, draw, minimum size=3cm, fill=gray, fill opacity=0.5, label=45:$y$] (B) at (1.5,0) {};
+      \end{scope}
+      \node at (0.75,-2) {$x + y$};
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+  \section{Network Equivalence Verification}
+  
+        Venn Diagram Approach
+
+    \[
+        xy + \overline{x}z + yz \stackrel{?}{=} xy + \bar{x}z
+    \]
+
+
+    \noindent % Ensures no indentation for the entire group
+    \begin{minipage}{.33\textwidth}
+        \centering % Center the content inside the minipage
+        \begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
+            \fillACapB
+        \end{venndiagram3sets}
+        xy % Replace with your desired caption or label
+    \end{minipage}%
+    \begin{minipage}{.33\textwidth}
+        \centering
+        \begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
+            \fillCNotA
+        \end{venndiagram3sets}
+        $\bar{x}z$
+    \end{minipage}%
+    \begin{minipage}{.33\textwidth}
+        \centering
+        \begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
+            \fillBCapC
+        \end{venndiagram3sets}
+        $yz$
+    \end{minipage}
+
+    \vspace{10px}
+Thus, the two expressions are equivalent. \newline \vspace*{20px}
+    \noindent % Prevents indentation to align everything to the left.
+    \begin{minipage}[c]{0.30\textwidth} % Adjust the width as needed for the first circuit
+        \centering % Center the content
+        \begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
+            \fillACapB
+            \fillOnlyC
+            \fillBCapC
+        \end{venndiagram3sets}
+        $ xy + \overline{x}z + yz $
+    \end{minipage}%
+    \hfill % Adds horizontal space between the minipages
+    {\large $\equiv$} % Larger equivalence sign for better visibility
+    \hfill % Adds horizontal space between the equivalence sign and the second circuit
+    \begin{minipage}[c]{0.45\textwidth} % Adjust the width as needed for the second circuit
+        \centering % Center the content
+        \begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
+            \fillACapB
+            \fillOnlyC
+            \fillBCapC
+        \end{venndiagram3sets}
+        $ xy + \bar{x}z$
+    \end{minipage}
+        \hspace*{100px}
+
+
+
+
+
+        \section{Boolean Algebra}
+        \subsection{Axioms}
+        \begin{multicols}{2} % Start a two-column environment
+            \begin{enumerate}
+                \item[1a.] $0 \cdot 0 = 0$
+                \item[1b.] $1 + 1 = 2$
+                \item[2a.] $1 \cdot 1 = 1$
+                \item[2b.] $0 + 0 = 0$
+                \item[3a.] $0 \cdot 1 = 1 \cdot 0 = 0$
+                \item[3b.] $1 + 0 = 0 + 1 = 1$
+                \item[4a.] If $x = 0$, then $\bar{x} = 1$
+                \item[4b.] If $x = 1$, then $\bar{x} = 0$
+                \item[5a.] $x \cdot 0 = 0$
+                \item[5b.] $x + 1 = 1$
+                \item[6a.] $x \cdot 1 = x$
+                \item[6b.] $x + 0 = x$
+                \item[7a.] $x \cdot x = x$
+                \item[7b.] $x + x = x$
+                \item[8a.] $x \cdot \bar{x} = 0$
+                \item[8b.] $x + \bar{x} = 1$
+                \item[9.] $\bar{x} = x$
+                \item[10.] Commutative Property:
+                \begin{enumerate}
+                  \item Multiplication: \( x \cdot y = y \cdot x \)
+                  \item Addition: \( x + y = y + x \)
+                \end{enumerate}
+                \item[11.] Associative Property:
+                \begin{enumerate}
+                  \item Multiplication: \( x \cdot (y \cdot z) = (x \cdot y) \cdot z \)
+                  \item Addition: \( x + (y + z) = (x + y) + z \)
+                \end{enumerate}
+                \item[12.] Distributive Property:
+                \begin{enumerate}
+                  \item Multiplication over Addition: \( x \cdot (y + z) = x \cdot y + x \cdot z \)
+                  \item The last equation is not valid for the distributive property and should be omitted.
+                \end{enumerate}
+            \end{enumerate}
+            \end{multicols} % End the two-column environment
+            
+        
+        
+        
+
+
+
     
 
 
-    
-    
+
 \end{document}

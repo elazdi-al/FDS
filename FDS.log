@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.19)  7 MAR 2024 16:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.19)  7 MAR 2024 20:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -669,25 +669,138 @@ File: pgflibrarycurvilinear.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@circ@res@count=\count333
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/circuitikz/pgfcircquadpoles.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/circuitikz/pgfcircmultipoles.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/circuitikz/pgfcirclabel.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/circuitikz/pgfcircvoltage.tex
 \pgfcirc@labelshift=\dimen315
-) (/usr/local/texlive/2023/texmf-dist/tex/generic/circuitikz/pgfcirccurrent.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/circuitikz/pgfcircflow.tex)) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+) (/usr/local/texlive/2023/texmf-dist/tex/generic/circuitikz/pgfcirccurrent.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/circuitikz/pgfcircflow.tex)) (/usr/local/texlive/2023/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/03/12 v3.6j Customizing captions (AR)
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/03/12 v2.4 caption3 kernel (AR)
+\caption@tempdima=\dimen316
+\captionmargin=\dimen317
+\caption@leftmargin=\dimen318
+\caption@rightmargin=\dimen319
+\caption@width=\dimen320
+\caption@indent=\dimen321
+\caption@parindent=\dimen322
+\caption@hangindent=\dimen323
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count334
+\c@continuedfloat=\count335
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: wrapfig package is loaded.
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/venndiagram/venndiagram.sty
+Package: venndiagram 2018/06/07 v1.2 (NLCT) Venn diagrams
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+ (/usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks53
+\XKV@tempa@toks=\toks54
+)
+\XKV@depth=\count336
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+\@venn@Ax=\skip88
+\@venn@Ay=\skip89
+\@venn@Bx=\skip90
+\@venn@By=\skip91
+\@venn@Cx=\skip92
+\@venn@Cy=\skip93
+\@venn@w=\skip94
+\@venn@h=\skip95
+\@venn@intersect@i@x=\skip96
+\@venn@intersect@i@y=\skip97
+\@venn@intersect@ii@x=\skip98
+\@venn@intersect@ii@y=\skip99
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
+\c@tracingmulticols=\count337
+\mult@box=\box75
+\multicol@leftmargin=\dimen324
+\c@unbalance=\count338
+\c@collectmore=\count339
+\doublecol@number=\count340
+\multicoltolerance=\count341
+\multicolpretolerance=\count342
+\full@width=\dimen325
+\page@free=\dimen326
+\premulticols=\dimen327
+\postmulticols=\dimen328
+\multicolsep=\skip100
+\multicolbaselineskip=\skip101
+\partial@page=\box76
+\last@line=\box77
+\maxbalancingoverflow=\dimen329
+\mult@rightbox=\box78
+\mult@grightbox=\box79
+\mult@firstbox=\box80
+\mult@gfirstbox=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\@tempa=\box101
+\@tempa=\box102
+\@tempa=\box103
+\@tempa=\box104
+\@tempa=\box105
+\@tempa=\box106
+\@tempa=\box107
+\@tempa=\box108
+\@tempa=\box109
+\@tempa=\box110
+\@tempa=\box111
+\@tempa=\box112
+\@tempa=\box113
+\@tempa=\box114
+\@tempa=\box115
+\@tempa=\box116
+\@tempa=\box117
+\c@minrows=\count343
+\c@columnbadness=\count344
+\c@finalcolumnbadness=\count345
+\last@try=\dimen330
+\multicolovershoot=\dimen331
+\multicolundershoot=\dimen332
+\mult@nat@firstbox=\box118
+\colbreak@box=\box119
+\mc@col@check@num=\count346
+) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/circuits/tikzlibrarycircuits.logic.US.code.tex (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/circuits/tikzlibrarycircuits.logic.code.tex (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/circuits/tikzlibrarycircuits.code.tex (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.markings.code.tex (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen333
+\pgfdecoratedremainingdistance=\dimen334
+\pgfdecoratedinputsegmentcompleteddistance=\dimen335
+\pgfdecoratedinputsegmentremainingdistance=\dimen336
+\pgf@decorate@distancetomove=\dimen337
+\pgf@decorate@repeatstate=\count347
+\pgfdecorationsegmentamplitude=\dimen338
+\pgfdecorationsegmentlength=\dimen339
+)
+\tikz@lib@dec@box=\box120
+) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.markings.code.tex))
+\tikz@lib@circ@count=\count348
+\tikzcircuitssizeunit=\dimen340
+)) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/shapes/circuits/pgflibraryshapes.gates.logic.US.code.tex (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/shapes/circuits/pgflibraryshapes.gates.logic.code.tex))) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
 File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.markings.code.tex (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen316
-\pgfdecoratedremainingdistance=\dimen317
-\pgfdecoratedinputsegmentcompleteddistance=\dimen318
-\pgfdecoratedinputsegmentremainingdistance=\dimen319
-\pgf@decorate@distancetomove=\dimen320
-\pgf@decorate@repeatstate=\count334
-\pgfdecorationsegmentamplitude=\dimen321
-\pgfdecorationsegmentlength=\dimen322
-)
-\tikz@lib@dec@box=\box75
-) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.markings.code.tex)) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarymath.code.tex
-\tikz@math@for@depth=\count335
-\tikz@math@dimen=\dimen323
-\tikz@math@toks=\toks53
+) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarymath.code.tex
+\tikz@math@for@depth=\count349
+\tikz@math@dimen=\dimen341
+\tikz@math@toks=\toks55
 )
 
 LaTeX Warning: Unused global option(s):
@@ -696,37 +809,37 @@ LaTeX Warning: Unused global option(s):
 (./FDS.aux)
 \openout1 = `FDS.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Info: Redefining \microtypecontext on input line 48.
-Package microtype Info: Applying patch `item' on input line 48.
-Package microtype Info: Applying patch `toc' on input line 48.
-Package microtype Info: Applying patch `eqnum' on input line 48.
-Package microtype Info: Applying patch `footnote' on input line 48.
-Package microtype Info: Applying patch `verbatim' on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Info: Redefining \microtypecontext on input line 54.
+Package microtype Info: Applying patch `item' on input line 54.
+Package microtype Info: Applying patch `toc' on input line 54.
+Package microtype Info: Applying patch `eqnum' on input line 54.
+Package microtype Info: Applying patch `footnote' on input line 54.
+Package microtype Info: Applying patch `verbatim' on input line 54.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 48.
+LaTeX Info: Redefining \showhyphens on input line 54.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -767,31 +880,33 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 48.
+Package hyperref Info: Link coloring OFF on input line 54.
 (./FDS.out) (./FDS.out)
 \@outlinefile=\write4
 \openout4 = `FDS.out'.
 
  (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count336
-\scratchdimen=\dimen324
-\scratchbox=\box76
-\nofMPsegments=\count337
-\nofMParguments=\count338
-\everyMPshowfont=\toks54
-\MPscratchCnt=\count339
-\MPscratchDim=\dimen325
-\MPnumerator=\count340
-\makeMPintoPDFobject=\count341
-\everyMPtoPDFconversion=\toks55
+\scratchcounter=\count350
+\scratchdimen=\dimen342
+\scratchbox=\box121
+\nofMPsegments=\count351
+\nofMParguments=\count352
+\everyMPshowfont=\toks56
+\MPscratchCnt=\count353
+\MPscratchDim=\dimen343
+\MPnumerator=\count354
+\makeMPintoPDFobject=\count355
+\everyMPtoPDFconversion=\toks57
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package ragged2e Info: ABD: executing \RaggedRight on input line 48.
+Package ragged2e Info: ABD: executing \RaggedRight on input line 54.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
  [1
 
 
@@ -800,13 +915,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 83.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 83.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -854,7 +969,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 ]
 Chapter 1.
 
-Overfull \hbox (3.76382pt too wide) in paragraph at lines 109--110
+Overfull \hbox (3.76382pt too wide) in paragraph at lines 115--116
 []\OT1/cmr/m/n/12 (-20) The \OT1/cmr/bx/n/12 (-20) set size\OT1/cmr/m/n/12 (-20) , the max-i-mum num-ber of rep-re-sentable digit vec-tors is: $\OML/cmm/m/it/12 K \OT1/cmr/m/n/12 (-20) = [][] \OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 D[]\OMS/cmsy/m/n/12 j$  
  []
 
@@ -862,7 +977,7 @@ Overfull \hbox (3.76382pt too wide) in paragraph at lines 109--110
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.145     \item[]
+l.151     \item[]
                   The weight vector in a fixed-radix system is given by: [1
 
 ]
@@ -877,14 +992,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.198     \item D
+l.204     \item D
                  ecimal: \{0, 1, \ldots, 9\} [2{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 198.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 204.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 198.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 204.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -897,14 +1012,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.208 \newpage
+l.214 \newpage
                [3]
-Overfull \hbox (0.10352pt too wide) in paragraph at lines 214--215
+Overfull \hbox (0.10352pt too wide) in paragraph at lines 220--221
 []\OT1/cmr/m/it/12 (+18) Remark. \OT1/cmr/m/n/12 (+18) Programming languages often use the prefix 0x to denote a hexadecimal 
  []
 
 
-Overfull \hbox (0.10922pt too wide) in paragraph at lines 255--256
+Overfull \hbox (0.10922pt too wide) in paragraph at lines 261--262
 \OT1/cmr/m/n/12 (+11) To convert a binary number to decimal, multiply each bit by two raised to the power of 
  []
 
@@ -919,13 +1034,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.264     \newpage
-                   [4
-pdfTeX warning (ext4): destination with the same identifier (name{table.1.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.264     \newpage
-                  ]
+l.270     \newpage
+                   [4]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -937,9 +1047,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.329     \begin{tabular}
+l.335     \begin{tabular}
                          {rclr} [5]
-Overfull \hbox (0.18053pt too wide) in paragraph at lines 352--353
+Overfull \hbox (0.18053pt too wide) in paragraph at lines 358--359
 \OT1/cmr/m/n/12 (+16) To convert a binary number to octal, group every three binary digits into a single octal 
  []
 
@@ -954,7 +1064,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.378     \end{flalign*}
+l.384     \end{flalign*}
                          [6]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -964,12 +1074,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [7]
-Overfull \hbox (0.13065pt too wide) in paragraph at lines 414--415
+Overfull \hbox (0.13065pt too wide) in paragraph at lines 420--421
 []\OT1/cmr/m/n/12 (+9) Main dis-ad-van-tage of SM: com-plex dig-i-tal cir-cuits for arith-metic op-er-a-tions (ad-di- 
  []
 
 
-Overfull \hbox (0.2073pt too wide) in paragraph at lines 436--437
+Overfull \hbox (0.2073pt too wide) in paragraph at lines 442--443
 []\OT1/cmr/m/n/12 (+4) To have an un-am-bigu-ous rep-re-sen-ta-tion, the two re-gions should not over-lap, trans- 
  []
 
@@ -1041,10 +1151,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [16]
-<circle-twoscomplement.png, id=578, 696.201pt x 544.434pt>
+<circle-twoscomplement.png, id=624, 696.201pt x 544.434pt>
 File: circle-twoscomplement.png Graphic file (type png)
 <use circle-twoscomplement.png>
-Package pdftex.def Info: circle-twoscomplement.png  used on input line 845.
+Package pdftex.def Info: circle-twoscomplement.png  used on input line 851.
 (pdftex.def)             Requested size: 186.65175pt x 145.96071pt.
 
 
@@ -1054,12 +1164,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[17
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.866 \end{equation}
-                     <./circle-twoscomplement.png>]
+[17 <./circle-twoscomplement.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1068,7 +1173,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [18]
-Overfull \hbox (5.56796pt too wide) detected at line 907
+Overfull \hbox (5.56796pt too wide) detected at line 913
 []
  []
 
@@ -1092,7 +1197,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [21]
-Overfull \hbox (0.18372pt too wide) in paragraph at lines 1032--1033
+Overfull \hbox (0.18372pt too wide) in paragraph at lines 1038--1039
 \OT1/cmr/m/n/12 (+8) The dynamic range is the ratio of the largest and the smallest positive number that can 
  []
 
@@ -1104,7 +1209,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [22]
-Overfull \hbox (0.17007pt too wide) in paragraph at lines 1064--1065
+Overfull \hbox (0.17007pt too wide) in paragraph at lines 1070--1071
 []\OT1/cmr/m/n/12 (+12) The dynamic range for a 32-bit two's complement signed integer can be expressed 
  []
 
@@ -1116,7 +1221,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [23]
-Overfull \hbox (1.4305pt too wide) in paragraph at lines 1091--1092
+Overfull \hbox (1.4305pt too wide) in paragraph at lines 1097--1098
 []\OT1/cmr/m/it/12 (-20) Consider 32-bit floating-point num-ber, with 24-bits sig-nif-i-cand in sign-and-magnitude 
  []
 
@@ -1136,7 +1241,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [25]
-Overfull \hbox (0.20299pt too wide) in paragraph at lines 1208--1209
+Overfull \hbox (0.20299pt too wide) in paragraph at lines 1214--1215
 []\OT1/cmr/m/n/12 (+17) Note that the min-i-mum ex-po-nent in the bi-ased rep-re-sen-ta-tion is zero so that the rep-re- 
  []
 
@@ -1148,7 +1253,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [26]
-Overfull \hbox (0.17743pt too wide) in paragraph at lines 1237--1238
+Overfull \hbox (0.17743pt too wide) in paragraph at lines 1243--1244
 []\OT1/cmr/m/n/12 (+16) Consider the real number $\OML/cmm/m/it/12 x[]$ \OT1/cmr/m/n/12 (+16) and the consecutive floating-point numbers $\OML/cmm/m/it/12 F[]$ \OT1/cmr/m/n/12 (+16) and 
  []
 
@@ -1176,12 +1281,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [29]
-Overfull \hbox (0.13405pt too wide) in paragraph at lines 1354--1356
+Overfull \hbox (0.13405pt too wide) in paragraph at lines 1360--1362
 \OT1/cmr/m/n/12 (+9) The most significant bit (the sign bit) differentiates between positive and negative 
  []
 
 
-Overfull \hbox (0.1573pt too wide) in paragraph at lines 1372--1373
+Overfull \hbox (0.1573pt too wide) in paragraph at lines 1378--1379
 []\OT1/cmr/m/n/12 (-10) Occurs when the rounded value is too large to be rep-re-sented by the floating- 
  []
 
@@ -1202,13 +1307,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [31]
 Chapter 4.
-[32
 
-]
-Overfull \hbox (91.72404pt too wide) detected at line 1504
+Overfull \hbox (91.72404pt too wide) detected at line 1473
 []
  []
 
+[32
+
+]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1217,25 +1323,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [33]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[34]
-Overfull \hbox (21.11414pt too wide) in paragraph at lines 1548--1549
+Overfull \hbox (21.11414pt too wide) in paragraph at lines 1532--1533
 []\OT1/cmr/bx/n/12 (-20) Four main steps to com-pute the re-sult of floating-point ad-di-tion/subtraction:  
  []
 
 
-Overfull \hbox (0.17284pt too wide) in paragraph at lines 1575--1576
+Overfull \hbox (0.17284pt too wide) in paragraph at lines 1559--1560
 []\OT1/cmr/m/n/12 (+20) After round-ing, if the sig-nif-i-cand over-flows (e.g., car-ries out dur-ing ad-di- 
  []
 
 
-Overfull \hbox (0.12521pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (0.12521pt too wide) in paragraph at lines 1570--1570
 [][]\OT1/cmr/bx/n/17.28 (-9) Step 1: Floating-Point Ad-di-tion/Subtraction De-tailed 
  []
 
@@ -1243,7 +1341,7 @@ Overfull \hbox (0.12521pt too wide) in paragraph at lines 1586--1586
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (0.1871pt too wide) in paragraph at lines 1617--1618
+Overfull \hbox (0.1871pt too wide) in paragraph at lines 1601--1602
 \OT1/cmr/m/n/12 (+5) After the initial addition or subtraction, the result may not always be in the normalized 
  []
 
@@ -1254,8 +1352,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[35]
-Overfull \hbox (0.1008pt too wide) in paragraph at lines 1629--1630
+[34]
+Overfull \hbox (0.1008pt too wide) in paragraph at lines 1613--1614
 \OT1/cmr/m/n/12 (+4) After nor-mal-iza-tion, the next step is to round the re-sult to fit within the tar-get floating- 
  []
 
@@ -1266,12 +1364,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[36
-pdfTeX warning (ext4): destination with the same identifier (name{table.4.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1643         \end{itemize}
-                            ]
+[35]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[36]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1280,16 +1381,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [37]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[38]
 Chapter 5.
-[39
+[38
 
 ]
 
@@ -1299,40 +1392,35 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[40]
+[39]
 Chapter 6.
-<circuits/6.1.2.png, id=741, 401.5pt x 210.7875pt>
+<circuits/6.1.2.png, id=778, 401.5pt x 210.7875pt>
 File: circuits/6.1.2.png Graphic file (type png)
 <use circuits/6.1.2.png>
-Package pdftex.def Info: circuits/6.1.2.png  used on input line 1833.
+Package pdftex.def Info: circuits/6.1.2.png  used on input line 1817.
 (pdftex.def)             Requested size: 186.65175pt x 97.99266pt.
-[41
+[40
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1838 \newpage
-                <./circuits/6.1.2.png>]
-<circuits/6.1.3.png, id=748, 497.86pt x 219.82124pt>
+ <./circuits/6.1.2.png>]
+<circuits/6.1.3.png, id=785, 497.86pt x 219.82124pt>
 File: circuits/6.1.3.png Graphic file (type png)
 <use circuits/6.1.3.png>
-Package pdftex.def Info: circuits/6.1.3.png  used on input line 1847.
+Package pdftex.def Info: circuits/6.1.3.png  used on input line 1831.
 (pdftex.def)             Requested size: 186.65175pt x 82.41263pt.
-<circuits/6.1.3_2.png, id=749, 542.025pt x 250.9375pt>
+<circuits/6.1.3_2.png, id=786, 542.025pt x 250.9375pt>
 File: circuits/6.1.3_2.png Graphic file (type png)
 <use circuits/6.1.3_2.png>
-Package pdftex.def Info: circuits/6.1.3_2.png  used on input line 1857.
+Package pdftex.def Info: circuits/6.1.3_2.png  used on input line 1841.
 (pdftex.def)             Requested size: 227.62206pt x 105.38153pt.
-<circuits/6.1.3_3.png, id=750, 590.205pt x 288.07625pt>
+<circuits/6.1.3_3.png, id=787, 590.205pt x 288.07625pt>
 File: circuits/6.1.3_3.png Graphic file (type png)
 <use circuits/6.1.3_3.png>
-Package pdftex.def Info: circuits/6.1.3_3.png  used on input line 1865.
+Package pdftex.def Info: circuits/6.1.3_3.png  used on input line 1849.
 (pdftex.def)             Requested size: 227.62206pt x 111.1009pt.
-<circuits/6.1.3_4.png, id=751, 590.205pt x 288.07625pt>
+<circuits/6.1.3_4.png, id=788, 590.205pt x 288.07625pt>
 File: circuits/6.1.3_4.png Graphic file (type png)
 <use circuits/6.1.3_4.png>
-Package pdftex.def Info: circuits/6.1.3_4.png  used on input line 1874.
+Package pdftex.def Info: circuits/6.1.3_4.png  used on input line 1858.
 (pdftex.def)             Requested size: 227.62206pt x 111.1009pt.
 
 
@@ -1342,22 +1430,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[42
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1880   \newpage
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6.3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1880   \newpage
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1880   \newpage
-                  <./circuits/6.1.3.png> <./circuits/6.1.3_2.png> <./circuits/6.1.3_3.png>]
+[41 <./circuits/6.1.3.png> <./circuits/6.1.3_2.png> <./circuits/6.1.3_3.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1365,12 +1438,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[43
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6.5}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1943 \end{itemize}
-                     <./circuits/6.1.3_4.png>]
+[42 <./circuits/6.1.3_4.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[43]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1379,6 +1455,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [44]
+<circuits/6.3.9.png, id=818, 825.0825pt x 568.1225pt>
+File: circuits/6.3.9.png Graphic file (type png)
+<use circuits/6.3.9.png>
+Package pdftex.def Info: circuits/6.3.9.png  used on input line 2106.
+(pdftex.def)             Requested size: 186.65175pt x 128.51555pt.
+<circuits/6.4.png, id=819, 1491.5725pt x 533.995pt>
+File: circuits/6.4.png Graphic file (type png)
+<use circuits/6.4.png>
+Package pdftex.def Info: circuits/6.4.png  used on input line 2137.
+(pdftex.def)             Requested size: 273.14923pt x 97.78531pt.
+<circuits/6.4_2.png, id=820, 1082.0425pt x 979.66pt>
+File: circuits/6.4_2.png Graphic file (type png)
+<use circuits/6.4_2.png>
+Package pdftex.def Info: circuits/6.4_2.png  used on input line 2143.
+(pdftex.def)             Requested size: 168.4381pt x 152.48851pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1386,23 +1478,57 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[45] (./FDS.aux)
+[45 <./circuits/6.3.9.png> <./circuits/6.4.png (PNG copy)> <./circuits/6.4_2.png (PNG copy)>]
+<circuits/6.5.png, id=829, 523.9575pt x 124.465pt>
+File: circuits/6.5.png Graphic file (type png)
+<use circuits/6.5.png>
+Package pdftex.def Info: circuits/6.5.png  used on input line 2173.
+(pdftex.def)             Requested size: 273.14923pt x 64.88739pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[46 <./circuits/6.5.png>]
+Overfull \hbox (7.51143pt too wide) in paragraph at lines 2245--2247
+ [][] 
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[47]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[48] (./FDS.aux)
 Package rerunfilecheck Info: File `FDS.out' has not changed.
-(rerunfilecheck)             Checksum: 86AE82BFDCF1A01276CCD90C74FB2EAA;16150.
+(rerunfilecheck)             Checksum: C9F1DDDAD90FBE512167E64A967C052E;17544.
  ) 
 Here is how much of TeX's memory you used:
- 42805 strings out of 476025
- 992704 string characters out of 5790017
- 1871388 words of memory out of 5000000
- 62392 multiletter control sequences out of 15000+600000
- 525547 words of font info for 127 fonts, out of 8000000 for 9000
+ 45581 strings out of 476025
+ 1052863 string characters out of 5790017
+ 1883388 words of memory out of 5000000
+ 65095 multiletter control sequences out of 15000+600000
+ 528056 words of font info for 141 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,80p,1019b,751s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,17n,81p,1019b,851s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on FDS.pdf (51 pages, 541167 bytes).
+Output written on FDS.pdf (54 pages, 675702 bytes).
 PDF statistics:
- 908 PDF objects out of 1000 (max. 8388607)
- 797 compressed objects within 8 object streams
- 216 named destinations out of 1000 (max. 500000)
- 30451 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 988 PDF objects out of 1000 (max. 8388607)
+ 867 compressed objects within 9 object streams
+ 237 named destinations out of 1000 (max. 500000)
+ 34639 words of extra memory for PDF output out of 35830 (max. 10000000)
 
