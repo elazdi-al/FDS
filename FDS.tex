@@ -26,6 +26,8 @@
 \usepackage{algpseudocode}
 \usepackage{wrapfig}
 \usepackage{circuitikz}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc}
 \usetikzlibrary{fit} % Add the missing TikZ library
 
 \usetikzlibrary{arrows.meta,calc,decorations.markings,math,arrows.meta}
@@ -1963,6 +1965,95 @@ For example :
     \end{center}
 
     \section{Logic Gates}
+    \vspace*{10px}
 
 
+    \subsection{AND GATE}
+    \begin{center}
+    \vspace*{10px}
+        \begin{circuitikz}
+            \draw
+            (0,2) node[and port] (myand) {}
+            (myand.in 1) node[left=0.5cm] (a) {$x_1$} to[short, o-] (myand.in 1)
+            (myand.in 2) node[left=0.5cm] (b) {$x_2$} to[short, o-] (myand.in 2)
+            (myand.out) to[short, -o] ++(0.5,0) node[right] (out) {$x_1 \cdot x_2$};
+        \end{circuitikz}
+        $$f(x_1, x_2) = x_1 \cdot x_2$$
+\end{center}        
+    \subsection{AND GATE (n-variables)}
+    \vspace*{5px}
+    \begin{center}
+    \begin{circuitikz}
+        \draw
+        (0,0) node[and port] (myand) {}
+        (myand.in 1) -- ++(-1,0) node[left] {$x_1$}
+        (myand.in 2) -- ++(-1,0) node[left] {$x_n$}
+        (myand.out) -- ++(0.5,0) node[right] {$ x_1 \cdot \ldots \cdot x_n$};
+        
+        % Adding a diagonal dotted line to visually indicate multiple inputs
+        \draw[dotted] ($(myand.in 1) + (-1,0.2)$) -- ($(myand.in 2) + (-1,-0.2)$);
+    \end{circuitikz}
+\end{center}
+    
+    
+        $$f(x_1,\ldots,  x_n) = x_1 \cdot \ldots \cdot x_n$$
+    \subsection{OR GATE}
+    \vspace*{10px}
+    \begin{center}
+    \begin{circuitikz}
+        \draw
+        (0,2) node[or port] (myor) {}
+        (myor.in 1) node[left=0.5cm] (a) {$x_1$} to[short, o-] (myor.in 1)
+        (myor.in 2) node[left=0.5cm] (b) {$x_2$} to[short, o-] (myor.in 2)
+        (myor.out) to[short, -o] ++(0.5,0) node[right] (out) {$x_1 + x_2$};
+    \end{circuitikz}
+\end{center}
+    $$f(x_1, x_2) = x_1 + x_2$$ 
+    \newpage
+    \subsection{OR GATE (n-variables)}
+    \vspace*{5px}
+    \begin{center}
+    \begin{circuitikz}
+        \draw
+        (0,0) node[or port] (myor) {}
+        (myor.in 1) -- ++(-1,0) node[left] {$x_1$}
+        (myor.in 2) -- ++(-1,0) node[left] {$x_n$}
+        (myor.out) -- ++(0.5,0) node[right] {$x_1 + \ldots + x_n$};
+        
+        % Adding a diagonal dotted line to visually indicate multiple inputs
+        \draw[dotted, line width=1pt] ($(myor.in 1) + (-1,0.2)$) -- ($(myor.in 2) + (-1,-0.2)$);
+    \end{circuitikz}
+\end{center}
+    
+    
+    $$f(x_1,\ldots, x_n) = x_1 + \ldots + x_n$$
+    
+    \subsection{NOT GATE}
+    \vspace*{5px}
+    \begin{center}
+        
+        \begin{circuitikz}[scale=1, transform shape]
+            \draw (0,0) node[not port] (not) {}
+            (not.in) -- ++(-0.5,0) node[left] {$x$} % Extend the input line and add label A
+            (not.out) -- ++(0.5,0) node[right] {$\bar{x}$}; % Extend the output line and add label Q
+        \end{circuitikz}
+    \end{center}
+    $$f(x) = \bar{x}$$
+
+    \subsection{DOUBLE NOT GATE (BUFFER)}
+    \vspace*{5px}
+    \begin{center}
+        \begin{circuitikz}[scale=1, transform shape]
+            \draw (0,0) node[not port] (not1) {}
+            (not1.in) -- ++(-0.5,0) node[left] {$x$} % Extend the input line and add label x
+            (not1.out) -- ++(1,0) node[not port, anchor=in] (not2) {}
+            (not2.out) -- ++(0.5,0) node[right] {$x$}; % Extend the output line and add label x (same as input, because double NOT)
+        \end{circuitikz}
+    \end{center}
+    $$f(x) = x$$
+    
+
+
+    
+    
 \end{document}
