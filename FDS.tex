@@ -30,7 +30,9 @@
 \usepackage{caption}
 \usepackage{venndiagram}
 \usepackage{multicol} % Import multicol package
-
+\usepackage{amsmath}
+\usepackage{colortbl}
+\usepackage{hhline}
 
 \usetikzlibrary{circuits.logic.US}
 \usetikzlibrary{arrows.meta, positioning, calc}
@@ -2283,7 +2285,7 @@ Thus, the two expressions are equivalent. \newline \vspace*{20px}
                 \item[7b.] $x + x = x$
                 \item[8a.] $x \cdot \bar{x} = 0$
                 \item[8b.] $x + \bar{x} = 1$
-                \item[9.] $\bar{x} = x$
+                \item[9.] $\bar{\bar{x}} = x$
                 \item[10.] Commutative Property:
                 \begin{enumerate}
                   \item Multiplication: \( x \cdot y = y \cdot x \)
@@ -2297,7 +2299,7 @@ Thus, the two expressions are equivalent. \newline \vspace*{20px}
                 \item[12.] Distributive Property:
                 \begin{enumerate}
                   \item Multiplication over Addition: \( x \cdot (y + z) = x \cdot y + x \cdot z \)
-                  \item The last equation is not valid for the distributive property and should be omitted.
+                  \item $\quad x + y \cdot z = (x + y) \cdot (x + z)$
                 \end{enumerate}
             \end{enumerate}
             \end{multicols} % End the two-column environment
@@ -2305,11 +2307,440 @@ Thus, the two expressions are equivalent. \newline \vspace*{20px}
         
         
         
+\section{Logic Synthesis}
+\subsection{Minterms and Maxterms}
+\textit{Personal Remark. I changed the expression of the function for the product as it was clearer to my sens} \newline
+\vspace{10px}
+\textit{Personal Remark.2. This process ressembles a lot what we've seen in AICC I, with CNF and DNF.} \newline
+\vspace{10px}
+\textit{These two functions correspond to ways of representing binary numbers like we're used but using n-variable vectors. Here i is the number we're representing $m_i$ the corresponding "variable" minterm representation and $M_i$ maxterm's}\newline
+\vspace{10px}
+Let a product of n variables $f(x_{1}, x_{2}, \ldots, x_{n}) = \prod_{j=1}^{n}x_{j} = x_{1} \times x_{2} \ldots \times x_n = i = m_i$ in which each of the n variables only appear once, this is called a \textbf{minterm}. \newline
+\vspace{5px}
+Let a sum of n variables $f(x_{1}, x_{2}, \ldots, x_{n}) = \sum_{j=1}^{n}x_{j} = x_{1} + x_{2} + \ldots + x_n = i = M_i$ in which each of the n variables only appear once, this is called a \textbf{maxterm}. \newline
+
+\subsection{Examples}
+\subsubsection*{Minterms}
+\textit{To make it simple, $1 \rightarrow x, \; 0 \rightarrow \overline{x} $} \newline
+Let $ n = 3, i = 5$:\newline
+$ 5 = \underline{101}_2$
+thus $m_5 = x_1 \overline{x}_2 x_3$ \newline
+\vspace*{10px}
+Let $n=5, i=3$:\newline
+$ 3 = \underline{00011}_2$
+thus $m_3 = \overline{x}_1 \overline{x}_2 x_3 \overline{x}_4 \overline{x}_5$ \newline
+
+\newpage
+\subsubsection{Maxterms}
+Maxterms are calculated as $M_i = \overline{m}_i$ \newline
+Let $ n = 3, i = 5$:
+\newline \textit{Using De Morgan's Law :}
+\begin{itemize}
+    \item[]We have :
+    \begin{itemize}
+        \item[] $m_5 = x_1 \overline{x}_2 x_3$
+    \end{itemize}
+    \item[]thus :
+    \begin{itemize}
+        \item[] $M_5 = \overline{m_5} =  \overline{x_1 \overline{x}_2 x_3} = \overline{x}_1 + x_2 + \overline{x}_3$ \newline
+    \end{itemize}
+\end{itemize}
+
+Let $n=5, i=3$:
+\begin{itemize}
+    \item[]We have :
+    \begin{itemize}
+        \item[] $m_3 = \overline{x}_1 \overline{x}_2 x_3 \overline{x}_4 \overline{x}_5$
+    \end{itemize}
+    \item[]thus :
+    \begin{itemize}
+        \item[] $M_3 = \overline{m_3} =  \overline{\overline{x}_1 \overline{x}_2 \overline{x_3} x_4 x_5} = x_1 + x_2 + x_3 + \overline{x}_4 + \overline{x}_5$ \newline
+    \end{itemize}
+\end{itemize}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|>{\columncolor[HTML]{E0E0E0}}c|>{\columncolor[HTML]{B2DFDB}}c|}
+    \hline
+    \rowcolor[HTML]{FFFFFF} 
+    \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}Row number} & \(x_1\) & \(x_2\) & \(x_3\) & Minterm & Maxterm \\ \hhline{|>{\arrayrulecolor[HTML]{FFFFFF}}->{\arrayrulecolor{black}}|-|-|-|-|-|}
+    0 & 0 & 0 & 0 & \(m_0 = \overline{x_1} \overline{x_2} \overline{x_3}\) & \(M_0 = x_1 + x_2 + x_3\) \\ \hline
+    1 & 0 & 0 & 1 & \(m_1 = \overline{x_1} \overline{x_2} x_3\) & \(M_1 = x_1 + x_2 + \overline{x_3}\) \\ \hline
+    2 & 0 & 1 & 0 & \(m_2 = \overline{x_1} x_2 \overline{x_3}\) & \(M_2 = x_1 + \overline{x_2} + x_3\) \\ \hline
+    3 & 0 & 1 & 1 & \(m_3 = \overline{x_1} x_2 x_3\) & \(M_3 = x_1 + \overline{x_2} + \overline{x_3}\) \\ \hline
+    4 & 1 & 0 & 0 & \(m_4 = x_1 \overline{x_2} \overline{x_3}\) & \(M_4 = \overline{x_1} + x_2 + x_3\) \\ \hline
+    5 & 1 & 0 & 1 & \(m_5 = x_1 \overline{x_2} x_3\) & \(M_5 = \overline{x_1} + x_2 + \overline{x_3}\) \\ \hline
+    6 & 1 & 1 & 0 & \(m_6 = x_1 x_2 \overline{x_3}\) & \(M_6 = \overline{x_1} + \overline{x_2} + x_3\) \\ \hline
+    7 & 1 & 1 & 1 & \(m_7 = x_1 x_2 x_3\) & \(M_7 = \overline{x_1} + \overline{x_2} + \overline{x_3}\) \\ \hline
+    \end{tabular}
+    \end{table}
 
 
 
+    \newpage
+\subsection{Sum-of-Product (SOP) Form and Product-of-Sum (POS) Form}
+For a function f represented by a table, the rows where $f=1$ are represented by a sum of minterms, and the rows where $f=0$ are represented by a product of maxterms. \newline
+\textit{Remark} This is not the most optimal implementation of a function. \newline
+
+\subsubsection{Sum-of-Product (SOP) Form}
+\vspace*{10px}
+Consider a function \( f \) of \( n = 3 \) variables and the truth table below
+
+Canonical SOP form:
+\[
+f(x_1, x_2, x_3) = \sum (m_1, m_4, m_5, m_6) = \sum m(1, 4, 5, 6)
+\]
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \( x_1 \) & \( x_2 \) & \( x_3 \) & \( f \) \\
+        \hline
+        0 & 0 & 0 & 0 \\
+        \hline
+        \rowcolor{blue!25}
+        0 & 0 & 1 & 1 \\
+        \hline
+        0 & 1 & 0 & 0 \\
+        \hline
+        0 & 1 & 1 & 0 \\
+        \hline
+        \rowcolor{blue!25}
+        1 & 0 & 0 & 1 \\
+        \hline
+        \rowcolor{blue!25}
+        1 & 0 & 1 & 1 \\
+        \hline
+        \rowcolor{blue!25}
+        1 & 1 & 0 & 1 \\
+        \hline
+        1 & 1 & 1 & 0 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+Thus the canonical SOP form :
+\begin{align*}
+    &f(x_1, x_2, x_3) = \overline{x_1} \overline{x_2} x_3 + x_1 \overline{x_2} \overline{x_3} + x_1 \overline{x_2} x_3 + x_1 x_2 \overline{x_3} \\
+    &= (\overline{x_1} + x_1) x_2 x_3 + \overline{x_1} (\overline{x_2} + x_2) x_3 \\
+    &= 1 \cdot x_2 x_3 + \overline{x_1} \cdot 1 \cdot x_3 \\
+    &= x_2 x_3 + \overline{x_1} x_3
+    \end{align*}
+
+
+\subsubsection{Product-of-Sum (POS) Form}
+Consider a function \( f \) of \( n = 3 \) variables and the truth table below
+\begin{center}
+    \begin{tabular}{ccc|c}
+    \( x_1 \) & \( x_2 \) & \( x_3 \) & \( f \) \\
+    \hline
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 1 \\
+    0 & 1 & 0 & 0 \\
+    0 & 1 & 1 & 0 \\
+    1 & 0 & 0 & 1 \\
+    1 & 0 & 1 & 1 \\
+    1 & 1 & 0 & 1 \\
+    1 & 1 & 1 & 0 \\
+    \end{tabular}
+    \end{center}
+\[
+f(x_1, x_2, x_3) = \prod (M_0, M_2, M_3, M_7)
+\]
+
+\[
+f(x_1, x_2, x_3) = M_0 \cdot M_2 \cdot M_3 \cdot M_7
+\]
+
+\[
+f(x_1, x_2, x_3) = (x_1 + x_2 + x_3)(x_1 + \overline{x_2} + x_3)(\overline{x_1} + x_2 + \overline{x_3})
+\]
+
+
+Complementing f :
+\[
+\overline{f}(x_1, x_2, x_3) = m_0 + m_2 + m_3 + m_7 = \overline{M_0} + \overline{M_2} + \overline{M_3} + \overline{M_7}
+\]
+
+\[
+\overline{f}(x_1, x_2, x_3) = \overline{M_0 \cdot M_2 \cdot M_3 \cdot M_7}
+\]
+
+By De Morgan's theorem
+
+\[
+f(x_1, x_2, x_3) = m_0 + m_2 + m_3 + m_7 = \overline{f}
+\]
+
+\textit{Personal Remark. Don't forget the objective here, these are just two ways, equivalent ways, to represent a function only using ORs and ANDs.}
+
+\section{NAND and NOR Logic Networks}
+
+
+\subsection{NAND GATE}
+    \noindent % Prevents indentation to align everything to the left.
+    \begin{minipage}[c]{0.30\textwidth} % Adjust the width as needed for the first circuit
+        \centering % Center the content
+        \begin{circuitikz} 
+            \draw
+            (0,0) node[nand port] (nand1) {}
+            (nand1.in 1) node[anchor=east] {$x_1$}
+            (nand1.in 2) node[anchor=east] {$x_2$}
+            (nand1.out) node[anchor=west] {$\overline{x_1 \cdot x_2}$};
+        \end{circuitikz}
+    \end{minipage}%
+    \hfill % Adds horizontal space between the minipages
+    {\large $\equiv$} % Larger equivalence sign for better visibility
+    \hfill % Adds horizontal space between the equivalence sign and the second circuit
+    \begin{minipage}[c]{0.35\textwidth} % Adjust the width as needed for the second circuit
+        \centering % Center the content
+        \begin{minipage}[c]{1\textwidth} % Adjust the width as needed for the second circuit
+            \centering
+            \includegraphics[width=1\textwidth]{circuits/6.9.1.png} % Replace 'path_to_image.png' with the actual path to your image file
+\end{minipage}
+    \end{minipage}
+        \hspace*{100px}
+
+        $$f(x_1, x_2) = \overline{x_1 \cdot x_2} = \overline{x_1} + \overline{x_2}$$
+
+
+        \subsubsection*{Logic Network with NAND Gates}
+
+Implement the following function in the SOP form with NAND gates:
+\begin{equation}
+f = x_2 + \overline{x_1 x_3}
+\end{equation}
+
+Algorithm: start by applying double inversion and, then, De Morgan's theorem to simplify the expression:
+\begin{align}
+f &= x_2 + \overline{x_1 x_3} \\
+&= \overline{\overline{x_2 + x_1 \overline{x_3}}} \\
+&= \overline{\overline{x_2} \cdot \overline{x_1 \overline{x_3}}}
+\end{align}
+
+        \subsection{NOR GATE}
+    \noindent % Prevents indentation to align everything to the left.
+    \begin{minipage}[c]{0.30\textwidth} % Adjust the width as needed for the first circuit
+        \centering % Center the content
+        \begin{circuitikz}
+            \draw
+            (0,0) node[nor port] (nor1) {}
+            (nor1.in 1) node[anchor=east] {$x_1$}
+            (nor1.in 2) node[anchor=east] {$x_2$}
+            (nor1.out) node[anchor=west] {$\overline{x_1 + x_2}$};
+        \end{circuitikz}
+    \end{minipage}%
+    \hfill % Adds horizontal space between the minipages
+    {\large $\equiv$} % Larger equivalence sign for better visibility
+    \hfill % Adds horizontal space between the equivalence sign and the second circuit
+    \begin{minipage}[c]{0.6\textwidth} % Adjust the width as needed for the second circuit
+                \centering
+                \includegraphics[width=0.6\textwidth]{circuits/6.9.2.png} % Replace 'path_to_image.png' with the actual path to your image file
+    \end{minipage}
+        \hspace*{100px}
+
+        $$f(x_1, x_2) = \overline{x_1 + x_2} = \overline{x_1} \cdot \overline{x_2}$$
+
+        
+
+ \subsubsection*{Logic Network with NOR Gates}
+Implement the following function in the POS form with NOR gates:
+\begin{equation}
+f = (x_1 + x_2)(x_2 + x_3)
+\end{equation}
+
+Algorithm: start by applying double inversion and, then, De Morgan's theorem to simplify the expression:
+\begin{align}
+f &= (x_1 + x_2)(x_2 + \overline{x_3}) \\
+&= \overline{\overline{(x_1 + x_2)(x_2 + \overline{x_3})}} \\
+&= \overline{\overline{(x_1 + x_2)} + \overline{(x_2 + \overline{x_3})}}
+\end{align}
+\section{Incompelitely Defined Functions}
+\subsection{Don't Care Condition}
+Don't care conditions occur in logic design when certain input combinations never occur, or their corresponding outputs do not affect the system behavior. 
+
+\subsection{Example}
+Consider \( x_1 \) and \( x_2 \) as inputs controlling two doors to a lion's cage. Here, \( x_1 \) is the control for the outer door and \( x_2 \) for the inner door. The truth table is as follows:
+
+\begin{center}
+    \begin{tabular}{cc|c|l}
+    \( x_1 \) & \( x_2 \) & \( f \) & Behavior \\
+    \hline
+    0 & 0 & 0 & Doors closed \\
+    0 & 1 & 1 & Outer closed, inner open \\
+    1 & 0 & 1 & Outer open, inner closed \\
+    1 & 1 & X & Doors open (don't care) \\
+    \end{tabular}
+\end{center}
+
+The condition where both doors are open is a 'don't care' because it should never happen for safety reasons.
+
+\subsection{Incomplete Functions}
+A logic function with 'don't care' conditions is termed 'incompletely defined'. These conditions can be exploited to optimize the circuit by choosing don't care outputs to simplify the logic expression.
+
+\subsection{Sum of Products (SOP) Example}
+For the lion's cage control, with 'don't cares' the function can be expressed as:
+\[ f = \sum m(1,2) + D(3) \]
+
+\begin{itemize}
+    \item Assuming \( D(3) = 0 \), the function simplifies to:
+    \[ f = \overline{x_1} x_2 + x_1 \overline{x_2} \]
+    using 5 gates and 8 inputs.
+    \item Assuming \( D(3) = 1 \), the function simplifies further to:
+    \[ f = x_1 \bar{x}_2 + x_1 = x_1 + x_2 \]
+    using an OR gate and redundancy rules.
+\end{itemize}
+
+\textit{Adding don't care values sometimes allows for a simpler implementation.}
+\section{Even and Odd Detectors (XNOR and XOR Gates)}
+\subsection{XOR Gate}
+\textit{True when one and only one input is True}
+The exclusif OR (XOR) gate is represented with the table below :
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \( x_1 \) & \( x_2 \) & \( f \) \\
+    \hline
+    0 & 0 & 0 \\
+ 0 & 1 & 1 \\
+    1 & 0 & 1 \\
+    0 & 1 & 0 \\
+    \hline
+    \end{tabular}
+    \end{table}
+
+and looks like:
+\vspace*{-10px}
+\begin{center}
+    \begin{minipage}[c]{0.45\textwidth} % Adjust the width as needed for the second circuit
+        \centering
+        \includegraphics[width=0.45\textwidth]{circuits/6.11.1.png} % Replace 'path_to_image.png' with the actual path to your image file
+    \end{minipage}
+\end{center}
+
+\subsection{XNOR Gate}
+The exclusif NOR (XNOR) gate is represented with the table below :
+\textit{True when both inputs are the same.}
+\vspace*{-10px}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \( x_1 \) & \( x_2 \) & \( f \) \\
+    \hline
     
+    0 & 0 & 1 \\
+    0 & 1 & 0 \\
+    1 & 0 & 0 \\
+    1 & 1 & 1 \\
+    \hline
+    \end{tabular}
+    \end{table}
+
+    and looks like:
+\begin{center}
+    \begin{minipage}[c]{0.45\textwidth} % Adjust the width as needed for the second circuit
+        \centering
+        \includegraphics[width=0.45\textwidth]{circuits/6.11.2.png} % Replace 'path_to_image.png' with the actual path to your image file
+    \end{minipage}
+\end{center}
+
+\section{Design Example}
+\subsection{Number Display}
+Here we will be designing a logic circuit to drive a seven-segment display .
+\begin{center}
+    \begin{minipage}[c]{0.80\textwidth} % Adjust the width as needed for the second circuit
+        \centering
+        \includegraphics[width=0.80\textwidth]{circuits/6.12.1.png} 
+    \end{minipage}
+\end{center}
+We can derive one logic function per output of the table below:
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+      \hline
+      \multicolumn{2}{|c|}{} & \multicolumn{7}{c|}{Output} \\
+      \hhline{|~|-|-------|}
+      \( S_1 \) & \( S_0 \) & a & b & c & d & e & f & g \\
+      \hline
+      0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0 \\
+      \hline
+      0 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\
+      \hline
+      1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 1 \\
+      \hline
+      1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 1 \\
+      \hline
+    \end{tabular}
+  \end{table}
+\vspace{-10px}
+  \begin{align*}
+    a(s_0, s_1) &= M_1 = s_1 + \overline{s_0} \\
+    b(s_0, s_1) &= 1 \\
+    c(s_0, s_1) &= M_2 = s_1 + s_0 \\
+    d(s_0, s_1) &= M_1 = s_1 + \overline{s_0} = a(s_0, s_1) \\
+    e(s_0, s_1) &= M_1 \cdot M_3 = m_0 + m_2 = s_1 \overline{s_0} + s_1s_0 = \overline{s_0} \\
+    f(s_0, s_1) &= m_0 = \overline{s_1 s_0} \\
+    g(s_0, s_1) &= M_0 \cdot M_1 = m_2 + m_3 = s_1 \overline{s_0} + s_1s_0 = s_1
+    \end{align*}
+
+\newpage
+\subsection{Multiplexer}
+A \textit{multiplexer}, or MUX, is a circuit that selects one of several inputs to pass to the output based on the value of one or more select inputs.\newline
+\noindent % Prevents indentation to align everything to the left.
+\begin{minipage}[c]{0.45\textwidth} % Adjust the width as needed for the first circuit
+    \centering % Center the content
+    \includegraphics[width=0.9\linewidth]{circuits/6.12.2.png} % Adjust the image width as needed
+\end{minipage}%
+\hfill % Adds horizontal space between the minipages
+{\large $\equiv$} % Larger equivalence sign for better visibility
+\hfill % Adds horizontal space between the equivalence sign and the second circuit
+\begin{minipage}[c]{0.50\textwidth} % Adjust the width as needed for the second circuit
+    \centering
+    \includegraphics[width=0.6\linewidth]{circuits/6.12.2_2.png} % Adjust the image width as needed
+\end{minipage}
+Reading the truth table, we can derive the following logic functions:
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{cccc}
+      \hline
+      $s$ & $x_1$ & $x_2$ & $f$ \\
+      \hline
+      0 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 1 & 0 & 1 \\
+      0 & 1 & 1 & 1 \\
+      1 & 0 & 0 & 0 \\
+      1 & 0 & 1 & 1 \\
+      1 & 1 & 0 & 0 \\
+      1 & 1 & 1 & 1 \\
+      \hline
+    \end{tabular}
+  \end{table}
+\[
+f(s, x_1, x_2) = \overline{s} x_1 x_2 + \overline{s} x_1 \overline{x_2} + s \overline{x_1} x_2 + s x_1 x_2
+\]
+
+\[
+f(s, x_1, x_2) = \overline{s}x_1 (\overline{x_2} + x_2) + s(\overline{x_1} + x_1)x_2
+\]
+
+\[
+= \overline{s}x_1 + sx_2
+\]
 
 
 
+If there are \( n \) inputs to select from, the number of select signals required in a MUX can be determined by:
+
+\[
+\text{Number of select signals} = \left\lceil \log_2 n \right\rceil
+\]
+
+\textit{Examples:}
+\begin{itemize}
+    \item[] Two inputs: one select signal to choose between inputs indexed as `0' and `1'
+    \item[] Four inputs: two select signals (indices 0, 1, 2, 3)
+    \item[] Eight inputs: three select signals (indices 0, 1, 2, \ldots, 7)
+\end{itemize}
 \end{document}

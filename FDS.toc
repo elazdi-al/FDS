@@ -107,3 +107,24 @@
 \contentsline {section}{\numberline {6.6}Network Equivalence Verification}{47}{section.6.6}%
 \contentsline {section}{\numberline {6.7}Boolean Algebra}{47}{section.6.7}%
 \contentsline {subsection}{\numberline {6.7.1}Axioms}{47}{subsection.6.7.1}%
+\contentsline {section}{\numberline {6.8}Logic Synthesis}{48}{section.6.8}%
+\contentsline {subsection}{\numberline {6.8.1}Minterms and Maxterms}{48}{subsection.6.8.1}%
+\contentsline {subsection}{\numberline {6.8.2}Examples}{48}{subsection.6.8.2}%
+\contentsline {subsubsection}{Maxterms}{49}{section*.67}%
+\contentsline {subsection}{\numberline {6.8.3}Sum-of-Product (SOP) Form and Product-of-Sum (POS) Form}{50}{subsection.6.8.3}%
+\contentsline {subsubsection}{Sum-of-Product (SOP) Form}{50}{section*.69}%
+\contentsline {subsubsection}{Product-of-Sum (POS) Form}{50}{section*.70}%
+\contentsline {section}{\numberline {6.9}NAND and NOR Logic Networks}{51}{section.6.9}%
+\contentsline {subsection}{\numberline {6.9.1}NAND GATE}{51}{subsection.6.9.1}%
+\contentsline {subsection}{\numberline {6.9.2}NOR GATE}{51}{subsection.6.9.2}%
+\contentsline {section}{\numberline {6.10}Incompelitely Defined Functions}{52}{section.6.10}%
+\contentsline {subsection}{\numberline {6.10.1}Don't Care Condition}{52}{subsection.6.10.1}%
+\contentsline {subsection}{\numberline {6.10.2}Example}{52}{subsection.6.10.2}%
+\contentsline {subsection}{\numberline {6.10.3}Incomplete Functions}{52}{subsection.6.10.3}%
+\contentsline {subsection}{\numberline {6.10.4}Sum of Products (SOP) Example}{52}{subsection.6.10.4}%
+\contentsline {section}{\numberline {6.11}Even and Odd Detectors (XNOR and XOR Gates)}{53}{section.6.11}%
+\contentsline {subsection}{\numberline {6.11.1}XOR Gate}{53}{subsection.6.11.1}%
+\contentsline {subsection}{\numberline {6.11.2}XNOR Gate}{53}{subsection.6.11.2}%
+\contentsline {section}{\numberline {6.12}Design Example}{54}{section.6.12}%
+\contentsline {subsection}{\numberline {6.12.1}Number Display}{54}{subsection.6.12.1}%
+\contentsline {subsection}{\numberline {6.12.2}Multiplexer}{55}{subsection.6.12.2}%
