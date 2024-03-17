@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.19)  14 MAR 2024 17:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.19)  17 MAR 2024 15:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1507,7 +1507,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [47]
-Overfull \hbox (0.15317pt too wide) in paragraph at lines 2316--2316
+Overfull \hbox (0.15317pt too wide) in paragraph at lines 2346--2346
 \OT1/cmr/m/it/12 (+14) but us-ing n-variable vec-tors. Here i is the num-ber we're rep-re-sent-ing $\OML/cmm/m/it/12 m[]$ \OT1/cmr/m/it/12 (+14) the cor-re-spond- 
  []
 
@@ -1535,15 +1535,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [50]
-<circuits/6.9.1.png, id=957, 617.30624pt x 202.7575pt>
+<circuits/6.9.1.png, id=966, 617.30624pt x 202.7575pt>
 File: circuits/6.9.1.png Graphic file (type png)
 <use circuits/6.9.1.png>
-Package pdftex.def Info: circuits/6.9.1.png  used on input line 2498.
+Package pdftex.def Info: circuits/6.9.1.png  used on input line 2530.
 (pdftex.def)             Requested size: 159.33821pt x 52.33516pt.
-<circuits/6.9.2.png, id=958, 617.30624pt x 173.64874pt>
+<circuits/6.9.2.png, id=967, 617.30624pt x 173.64874pt>
 File: circuits/6.9.2.png Graphic file (type png)
 <use circuits/6.9.2.png>
-Package pdftex.def Info: circuits/6.9.2.png  used on input line 2537.
+Package pdftex.def Info: circuits/6.9.2.png  used on input line 2569.
 (pdftex.def)             Requested size: 163.8912pt x 46.10149pt.
 
 
@@ -1562,15 +1562,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [52]
-<circuits/6.11.1.png, id=979, 204.765pt x 148.555pt>
+<circuits/6.11.1.png, id=988, 204.765pt x 148.555pt>
 File: circuits/6.11.1.png Graphic file (type png)
 <use circuits/6.11.1.png>
-Package pdftex.def Info: circuits/6.11.1.png  used on input line 2617.
+Package pdftex.def Info: circuits/6.11.1.png  used on input line 2649.
 (pdftex.def)             Requested size: 92.18567pt x 66.88086pt.
-<circuits/6.11.2.png, id=980, 228.855pt x 174.6525pt>
+<circuits/6.11.2.png, id=989, 228.855pt x 174.6525pt>
 File: circuits/6.11.2.png Graphic file (type png)
 <use circuits/6.11.2.png>
-Package pdftex.def Info: circuits/6.11.2.png  used on input line 2644.
+Package pdftex.def Info: circuits/6.11.2.png  used on input line 2676.
 (pdftex.def)             Requested size: 92.18567pt x 70.35277pt.
 
 
@@ -1581,10 +1581,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [53 <./circuits/6.11.1.png> <./circuits/6.11.2.png>]
-<circuits/6.12.1.png, id=989, 410.53375pt x 186.6975pt>
+<circuits/6.12.1.png, id=998, 410.53375pt x 186.6975pt>
 File: circuits/6.12.1.png Graphic file (type png)
 <use circuits/6.12.1.png>
-Package pdftex.def Info: circuits/6.12.1.png  used on input line 2654.
+Package pdftex.def Info: circuits/6.12.1.png  used on input line 2686.
 (pdftex.def)             Requested size: 291.35844pt x 132.49916pt.
 
 
@@ -1595,15 +1595,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [54 <./circuits/6.12.1.png>]
-<circuits/6.12.2.png, id=996, 561.09625pt x 325.215pt>
+<circuits/6.12.2.png, id=1005, 561.09625pt x 325.215pt>
 File: circuits/6.12.2.png Graphic file (type png)
 <use circuits/6.12.2.png>
-Package pdftex.def Info: circuits/6.12.2.png  used on input line 2693.
+Package pdftex.def Info: circuits/6.12.2.png  used on input line 2725.
 (pdftex.def)             Requested size: 184.37135pt x 106.85977pt.
-<circuits/6.12.2_2.png, id=997, 375.4025pt x 349.305pt>
+<circuits/6.12.2_2.png, id=1006, 375.4025pt x 349.305pt>
 File: circuits/6.12.2_2.png Graphic file (type png)
 <use circuits/6.12.2_2.png>
-Package pdftex.def Info: circuits/6.12.2_2.png  used on input line 2700.
+Package pdftex.def Info: circuits/6.12.2_2.png  used on input line 2732.
 (pdftex.def)             Requested size: 136.57462pt x 127.08218pt.
 
 
@@ -1618,18 +1618,18 @@ Package rerunfilecheck Info: File `FDS.out' has not changed.
 (rerunfilecheck)             Checksum: 42BA218AF696A697A6AF486A8AE3C179;20535.
  ) 
 Here is how much of TeX's memory you used:
- 45722 strings out of 476025
- 1055540 string characters out of 5790017
- 1883388 words of memory out of 5000000
+ 45731 strings out of 476025
+ 1055603 string characters out of 5790017
+ 1885388 words of memory out of 5000000
  65177 multiletter control sequences out of 15000+600000
  528333 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,81p,1019b,851s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on FDS.pdf (61 pages, 861672 bytes).
+Output written on FDS.pdf (61 pages, 863035 bytes).
 PDF statistics:
- 1151 PDF objects out of 1200 (max. 8388607)
- 1007 compressed objects within 11 object streams
- 281 named destinations out of 1000 (max. 500000)
+ 1163 PDF objects out of 1200 (max. 8388607)
+ 1019 compressed objects within 11 object streams
+ 290 named destinations out of 1000 (max. 500000)
  34818 words of extra memory for PDF output out of 35830 (max. 10000000)
 

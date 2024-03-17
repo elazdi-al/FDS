@@ -2267,10 +2267,10 @@ Thus, the two expressions are equivalent. \newline \vspace*{20px}
 
         \section{Boolean Algebra}
         \subsection{Axioms}
-        \begin{multicols}{2} % Start a two-column environment
+        \begin{multicols}{3} % Start a two-column environment
             \begin{enumerate}
                 \item[1a.] $0 \cdot 0 = 0$
-                \item[1b.] $1 + 1 = 2$
+                \item[1b.] $1 + 1 = 1$
                 \item[2a.] $1 \cdot 1 = 1$
                 \item[2b.] $0 + 0 = 0$
                 \item[3a.] $0 \cdot 1 = 1 \cdot 0 = 0$
@@ -2286,6 +2286,7 @@ Thus, the two expressions are equivalent. \newline \vspace*{20px}
                 \item[8a.] $x \cdot \bar{x} = 0$
                 \item[8b.] $x + \bar{x} = 1$
                 \item[9.] $\bar{\bar{x}} = x$
+                \item[] \vspace*{20px}
                 \item[10.] Commutative Property:
                 \begin{enumerate}
                   \item Multiplication: \( x \cdot y = y \cdot x \)
@@ -2296,12 +2297,41 @@ Thus, the two expressions are equivalent. \newline \vspace*{20px}
                   \item Multiplication: \( x \cdot (y \cdot z) = (x \cdot y) \cdot z \)
                   \item Addition: \( x + (y + z) = (x + y) + z \)
                 \end{enumerate}
+                \vspace*{60px}
                 \item[12.] Distributive Property:
                 \begin{enumerate}
                   \item Multiplication over Addition: \( x \cdot (y + z) = x \cdot y + x \cdot z \)
                   \item $\quad x + y \cdot z = (x + y) \cdot (x + z)$
                 \end{enumerate}
-            \end{enumerate}
+              
+                    \item[13.] Absorption (covering):
+                    \begin{enumerate}
+                        \item $x + x \cdot y = x$
+                        \item[b.] $x \cdot (x + y) = x$
+                    \end{enumerate}
+                    \item[14.] Combining:
+                    \begin{enumerate}
+                        \item $x \cdot y + x \cdot \bar{y} = x$
+                        \item $(x + y) \cdot (x + \bar{y}) = x$ 
+                    \end{enumerate}
+                    \vspace*{20px}
+                    \item[15.] DeMorgan's theorem:
+                    \begin{enumerate}
+                        \item $\bar{x} \cdot \bar{y} = \overline{x + y}$
+                        \item $\bar{x} + \bar{y} = \overline{x \cdot y}$
+                    \end{enumerate}
+                    \item[16.] Redundancy:
+                    \begin{enumerate}
+                        \item $x + \bar{x} \cdot y = x + y$
+                        \item $x \cdot (\bar{x} + y) = x \cdot y$
+                    \end{enumerate}
+                    \item[17.] Consensus:
+                    \begin{enumerate}
+                        \item $x \cdot y + y \cdot z + \bar{x} \cdot z = x \cdot y + \bar{x} \cdot z$
+                        \item $(x + y) \cdot (y + z) \cdot (\bar{x} + z) = (x + y) \cdot (\bar{x} + z)$
+                    \end{enumerate}
+                \end{enumerate}
+           
             \end{multicols} % End the two-column environment
             
         
@@ -2319,13 +2349,15 @@ Let a product of n variables $f(x_{1}, x_{2}, \ldots, x_{n}) = \prod_{j=1}^{n}x_
 \vspace{5px}
 Let a sum of n variables $f(x_{1}, x_{2}, \ldots, x_{n}) = \sum_{j=1}^{n}x_{j} = x_{1} + x_{2} + \ldots + x_n = i = M_i$ in which each of the n variables only appear once, this is called a \textbf{maxterm}. \newline
 
+\vspace*{-10px}
 \subsection{Examples}
 \subsubsection*{Minterms}
 \textit{To make it simple, $1 \rightarrow x, \; 0 \rightarrow \overline{x} $} \newline
+
 Let $ n = 3, i = 5$:\newline
+
 $ 5 = \underline{101}_2$
 thus $m_5 = x_1 \overline{x}_2 x_3$ \newline
-\vspace*{10px}
 Let $n=5, i=3$:\newline
 $ 3 = \underline{00011}_2$
 thus $m_3 = \overline{x}_1 \overline{x}_2 x_3 \overline{x}_4 \overline{x}_5$ \newline
