@@ -128,3 +128,8 @@
 \contentsline {section}{\numberline {6.12}Design Example}{54}{section.6.12}%
 \contentsline {subsection}{\numberline {6.12.1}Number Display}{54}{subsection.6.12.1}%
 \contentsline {subsection}{\numberline {6.12.2}Multiplexer}{55}{subsection.6.12.2}%
+\contentsline {chapter}{\numberline {7}}{56}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Adders}{56}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Addition of two 1-bit binary numbers}{56}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Binary Addition Examples}{56}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Half-Adder}{57}{subsection.7.1.3}%
