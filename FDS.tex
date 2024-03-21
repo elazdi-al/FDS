@@ -560,7 +560,7 @@ where $b_{n-1}$ is the MSB (sign bit) and is $0$ for non-negative numbers and $1
   \end{align*}
 \end{itemize}
 
-{\small \section[]{Range Extension Algorithm in SM}}
+\small \section{Range Extension Algorithm in SM}
 
 \begin{itemize}
     \item[] In sign-and-magnitude system, the range-extension algorithm is defined as:
@@ -574,7 +574,7 @@ where $b_{n-1}$ is the MSB (sign bit) and is $0$ for non-negative numbers and $1
 \end{itemize}
 
 
-\subsection[]{Arithmetic Shifts}
+\subsection{Arithmetic Shifts}
 
 
 \begin{itemize}
@@ -2336,7 +2336,7 @@ Thus, the two expressions are equivalent. \newline \vspace*{20px}
             
         
         
-        
+\chapter{Digital Logic Circuits (PART II)}
 \section{Logic Synthesis}
 \subsection{Minterms and Maxterms}
 \textit{Personal Remark. I changed the expression of the function for the product as it was clearer to my sens} \newline
@@ -2778,7 +2778,7 @@ If there are \( n \) inputs to select from, the number of select signals require
 
 
 
-\chapter[]{Digital Logic Circuits (PART III)}
+\chapter{Digital Logic Circuits (PART III)}
 \section{Adders}
 \subsection{Addition of two 1-bit binary numbers}
 In this section, we will be adding two 1-bit binary numbers. The truth table is as follows:
@@ -2874,4 +2874,89 @@ Also represented as :
     \end{minipage}
 
 \end{center}
+\newpage
+
+\subsection{Addition of Two N-Bit Binary Numbers}
+A binary \textit{n}-bit adder computes the sum of two \textit{n}-bit numbers $x$ and $y$ within the range of $0 \leq x, y \leq 2^n - 1$, with a carry-in $c_{\text{in}} \in \{0, 1\}$. It produces:
+
+\begin{itemize}
+  \item[] A sum $s$, where $0 \leq s \leq 2^n - 1$.
+  \item[] A carry-out $c_{\text{out}} \in \{0, 1\}$, satisfying the equation:
+\end{itemize}
+
+\begin{equation}
+    x + y + c_{\text{in}} = 2^n c_{\text{out}} + s
+\end{equation}
+
+The solution to the equation is given by:
+
+\begin{equation}
+    s = (x + y + c_{\text{in}}) \mod 2^n
+\end{equation}
+
+\begin{equation}
+    c_{\text{out}} = 
+    \begin{cases} 
+        1 & \text{if } (x + y + c_{\text{in}}) \geq 2^n (overflow)\\
+        0 & \text{otherwise}
+    \end{cases}
+    = \left\lfloor \frac{(x + y + c_{\text{in}})}{2^n} \right\rfloor
+\end{equation}
+\subsection{Addition of Two N-Bit Binary Numbers}
+
+\begin{itemize}
+  \item[] It is impractical to start from the truth tables for \( n \)-bit addition.
+  \item[] Iterative approach:
+  \begin{itemize}
+    \item[] Add each pair of bits at the position \( i \), where \( 0 \leq i < n \).
+    \item[] The addition at the bit position \( i \) needs to include a carry-in at the position \( i \) (corresponding to the carry-out at the position \( i - 1 \)).
+  \end{itemize}
+  \item[] The 1-bit adder reduces to a primitive module (new block that summarizes the circuit) called \textit{full-adder (FA)} with three binary inputs and two binary outputs such that \( x_i + y_i + c_i = 2c_{i+1} + s_i \).
+\end{itemize}
+\newpage
+\subsection{Full-Adder}
+\subsubsection{Addition of Two 1-Bit Binary Numbers with the Input Carry (i.e., three 1-bit numbers)}
+\begin{itemize}
+  \item[] Truth table:
+  \begin{center}
+    \begin{tabular}{cccc|cc}
+      \( x_i \) & \( y_i \) & \( c_i \) & & \( s_i \) & \( c_{i+1} \) \\
+      \hline
+      0 & 0 & 0 & & 0 & 0 \\
+      0 & 0 & 1 & & 1 & 0 \\
+      0 & 1 & 0 & & 1 & 0 \\
+      0 & 1 & 1 & & 0 & 1 \\
+      1 & 0 & 0 & & 1 & 0 \\
+      1 & 0 & 1 & & 0 & 1 \\
+      1 & 1 & 0 & & 0 & 1 \\
+      1 & 1 & 1 & & 1 & 1 \\
+    \end{tabular}
+  \end{center}
+  \item[] Logical expressions:
+  \begin{align*}
+    s_i &= x_i \oplus y_i \oplus c_i \\
+    &= (x_i \oplus y_i)c_i' + (x_i \oplus y_i)'c_i \\
+    &= (x_i \oplus y_i)c_i + x_i y_i
+  \end{align*}
+  \begin{align*}
+    c_{i+1} &= x_i y_i c_i' + x_i y_i' c_i + x_i' y_i c_i + x_i y_i c_i \\
+    &= x_i y_i + (x_i \oplus y_i)c_i
+  \end{align*}
+  \item[] Optimized expression for \( c_{i+1} \):
+  \[ c_{i+1} = x_i y_i + x_i c_i + y_i c_i \]
+\end{itemize}
+
+\section*{Full-Adder From Half-Adders}
+\begin{itemize}
+  \item Recall half-adder:
+  \[ s = x \oplus y \]
+  \[ c = xy \]
+  \item Full-adder:
+  \begin{align*}
+    s_i &= x_i \oplus y_i \oplus c_i \\
+    c_{i+1} &= (x_i \oplus y_i)c_i + x_i y_i
+  \end{align*}
+\end{itemize}
+
+
 \end{document}

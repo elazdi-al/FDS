@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.19)  20 MAR 2024 13:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.19)  21 MAR 2024 18:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -946,7 +946,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4])
+[4]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[5])
 \tf@toc=\write5
 \openout5 = `FDS.toc'.
 
@@ -958,17 +966,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[6
-
-]
+[6]
 Chapter 1.
 
 Overfull \hbox (3.76382pt too wide) in paragraph at lines 117--118
@@ -981,6 +979,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
                    \relax 
 l.153     \item[]
                   The weight vector in a fixed-radix system is given by: [1
+
 
 ]
 
@@ -1153,7 +1152,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [16]
-<circle-twoscomplement.png, id=739, 696.201pt x 544.434pt>
+<circle-twoscomplement.png, id=766, 696.201pt x 544.434pt>
 File: circle-twoscomplement.png Graphic file (type png)
 <use circle-twoscomplement.png>
 Package pdftex.def Info: circle-twoscomplement.png  used on input line 853.
@@ -1175,8 +1174,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [18]
-Overfull \hbox (5.56796pt too wide) detected at line 915
-[]
+Overfull \hbox (0.20735pt too wide) in paragraph at lines 903--904
+[]\OT1/cmr/m/n/10.95 (+17) Binary multiplication operates similarly to decimal multiplication but is performed bit by bit. 
  []
 
 
@@ -1199,8 +1198,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [21]
-Overfull \hbox (0.18372pt too wide) in paragraph at lines 1040--1041
-\OT1/cmr/m/n/12 (+8) The dynamic range is the ratio of the largest and the smallest positive number that can 
+Overfull \hbox (0.11354pt too wide) in paragraph at lines 1026--1027
+\OT1/cmr/m/n/10.95 (+19) The range of a fixed-point number is the difference between the largest and smallest numbers 
  []
 
 
@@ -1211,10 +1210,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [22]
-Overfull \hbox (0.17007pt too wide) in paragraph at lines 1072--1073
-[]\OT1/cmr/m/n/12 (+12) The dynamic range for a 32-bit two's complement signed integer can be expressed 
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1223,10 +1218,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [23]
-Overfull \hbox (1.4305pt too wide) in paragraph at lines 1099--1100
-[]\OT1/cmr/m/it/12 (-20) Consider 32-bit floating-point num-ber, with 24-bits sig-nif-i-cand in sign-and-magnitude 
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1235,6 +1226,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [24]
+Overfull \hbox (0.10963pt too wide) in paragraph at lines 1153--1154
+\OT1/cmr/m/n/10.95 (+8) Normalization re-moves re-dun-dancy from floating-point rep-re-sen-ta-tion, mak-ing it unique. Con- 
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1243,10 +1238,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [25]
-Overfull \hbox (0.20299pt too wide) in paragraph at lines 1216--1217
-[]\OT1/cmr/m/n/12 (+17) Note that the min-i-mum ex-po-nent in the bi-ased rep-re-sen-ta-tion is zero so that the rep-re- 
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1255,10 +1246,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [26]
-Overfull \hbox (0.17743pt too wide) in paragraph at lines 1245--1246
-[]\OT1/cmr/m/n/12 (+16) Consider the real number $\OML/cmm/m/it/12 x[]$ \OT1/cmr/m/n/12 (+16) and the consecutive floating-point numbers $\OML/cmm/m/it/12 F[]$ \OT1/cmr/m/n/12 (+16) and 
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1283,15 +1270,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [29]
-Overfull \hbox (0.13405pt too wide) in paragraph at lines 1362--1364
-\OT1/cmr/m/n/12 (+9) The most significant bit (the sign bit) differentiates between positive and negative 
- []
-
-
-Overfull \hbox (0.1573pt too wide) in paragraph at lines 1380--1381
-[]\OT1/cmr/m/n/12 (-10) Occurs when the rounded value is too large to be rep-re-sented by the floating- 
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1310,7 +1288,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [31]
 Chapter 4.
 
-Overfull \hbox (91.72404pt too wide) detected at line 1475
+Overfull \hbox (55.01936pt too wide) detected at line 1475
 []
  []
 
@@ -1325,13 +1303,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [33]
-Overfull \hbox (21.11414pt too wide) in paragraph at lines 1534--1535
-[]\OT1/cmr/bx/n/12 (-20) Four main steps to com-pute the re-sult of floating-point ad-di-tion/subtraction:  
- []
-
-
-Overfull \hbox (0.17284pt too wide) in paragraph at lines 1561--1562
-[]\OT1/cmr/m/n/12 (+20) After round-ing, if the sig-nif-i-cand over-flows (e.g., car-ries out dur-ing ad-di- 
+Overfull \hbox (0.13126pt too wide) in paragraph at lines 1567--1568
+[]\OT1/cmr/m/n/10.95 (+11) Identify and mark results that are special values (e.g., infinity, NaN) based on 
  []
 
 
@@ -1343,11 +1316,6 @@ Overfull \hbox (0.12521pt too wide) in paragraph at lines 1572--1572
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (0.1871pt too wide) in paragraph at lines 1603--1604
-\OT1/cmr/m/n/12 (+5) After the initial addition or subtraction, the result may not always be in the normalized 
- []
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -1355,8 +1323,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [34]
-Overfull \hbox (0.1008pt too wide) in paragraph at lines 1615--1616
-\OT1/cmr/m/n/12 (+4) After nor-mal-iza-tion, the next step is to round the re-sult to fit within the tar-get floating- 
+Overfull \hbox (0.18427pt too wide) in paragraph at lines 1615--1616
+\OT1/cmr/m/n/10.95 (+15) After normalization, the next step is to round the result to fit within the target floating-point 
+ []
+
+
+Overfull \hbox (0.1418pt too wide) in paragraph at lines 1625--1626
+[]\OT1/cmr/bx/n/10.95 (+5) Round Down (Towards Zero): \OT1/cmr/m/n/10.95 (+5) Always round towards zero, truncating any 
  []
 
 
@@ -1375,18 +1348,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [36]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[37]
 Chapter 5.
-[38
+[37
 
 ]
+Overfull \hbox (0.22006pt too wide) in paragraph at lines 1729--1730
+\OT1/cmr/m/n/10.95 (+17) Imagine a block (vector) of binary numbers in FP (Floating Point) format, where each vector 
+ []
+
+
+Overfull \hbox (0.10983pt too wide) in paragraph at lines 1767--1768
+[]\OT1/cmr/m/n/10.95 (+4) Find the largest exponent in the block of FP numbers. This will be the shared exponent 
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1394,32 +1368,32 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[39]
+[38]
 Chapter 6.
-<circuits/6.1.2.png, id=894, 401.5pt x 210.7875pt>
+<circuits/6.1.2.png, id=914, 401.5pt x 210.7875pt>
 File: circuits/6.1.2.png Graphic file (type png)
 <use circuits/6.1.2.png>
 Package pdftex.def Info: circuits/6.1.2.png  used on input line 1819.
 (pdftex.def)             Requested size: 186.65175pt x 97.99266pt.
-[40
+[39
 
  <./circuits/6.1.2.png>]
-<circuits/6.1.3.png, id=901, 497.86pt x 219.82124pt>
+<circuits/6.1.3.png, id=921, 497.86pt x 219.82124pt>
 File: circuits/6.1.3.png Graphic file (type png)
 <use circuits/6.1.3.png>
 Package pdftex.def Info: circuits/6.1.3.png  used on input line 1833.
 (pdftex.def)             Requested size: 186.65175pt x 82.41263pt.
-<circuits/6.1.3_2.png, id=902, 542.025pt x 250.9375pt>
+<circuits/6.1.3_2.png, id=922, 542.025pt x 250.9375pt>
 File: circuits/6.1.3_2.png Graphic file (type png)
 <use circuits/6.1.3_2.png>
 Package pdftex.def Info: circuits/6.1.3_2.png  used on input line 1843.
 (pdftex.def)             Requested size: 227.62206pt x 105.38153pt.
-<circuits/6.1.3_3.png, id=903, 590.205pt x 288.07625pt>
+<circuits/6.1.3_3.png, id=923, 590.205pt x 288.07625pt>
 File: circuits/6.1.3_3.png Graphic file (type png)
 <use circuits/6.1.3_3.png>
 Package pdftex.def Info: circuits/6.1.3_3.png  used on input line 1851.
 (pdftex.def)             Requested size: 227.62206pt x 111.1009pt.
-<circuits/6.1.3_4.png, id=904, 590.205pt x 288.07625pt>
+<circuits/6.1.3_4.png, id=924, 590.205pt x 288.07625pt>
 File: circuits/6.1.3_4.png Graphic file (type png)
 <use circuits/6.1.3_4.png>
 Package pdftex.def Info: circuits/6.1.3_4.png  used on input line 1860.
@@ -1432,7 +1406,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[41 <./circuits/6.1.3.png> <./circuits/6.1.3_2.png> <./circuits/6.1.3_3.png>]
+[40 <./circuits/6.1.3.png> <./circuits/6.1.3_2.png> <./circuits/6.1.3_3.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1440,7 +1414,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[42 <./circuits/6.1.3_4.png>]
+[41 <./circuits/6.1.3_4.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[42]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1449,25 +1431,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [43]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[44]
-<circuits/6.3.9.png, id=933, 825.0825pt x 568.1225pt>
+<circuits/6.3.9.png, id=953, 825.0825pt x 568.1225pt>
 File: circuits/6.3.9.png Graphic file (type png)
 <use circuits/6.3.9.png>
 Package pdftex.def Info: circuits/6.3.9.png  used on input line 2108.
 (pdftex.def)             Requested size: 186.65175pt x 128.51555pt.
-<circuits/6.4.png, id=934, 1491.5725pt x 533.995pt>
+<circuits/6.4.png, id=954, 1491.5725pt x 533.995pt>
 File: circuits/6.4.png Graphic file (type png)
 <use circuits/6.4.png>
 Package pdftex.def Info: circuits/6.4.png  used on input line 2139.
 (pdftex.def)             Requested size: 273.14923pt x 97.78531pt.
-<circuits/6.4_2.png, id=935, 1082.0425pt x 979.66pt>
+<circuits/6.4_2.png, id=955, 1082.0425pt x 979.66pt>
 File: circuits/6.4_2.png Graphic file (type png)
 <use circuits/6.4_2.png>
 Package pdftex.def Info: circuits/6.4_2.png  used on input line 2145.
@@ -1480,8 +1454,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[45 <./circuits/6.3.9.png> <./circuits/6.4.png (PNG copy)> <./circuits/6.4_2.png (PNG copy)>]
-<circuits/6.5.png, id=944, 523.9575pt x 124.465pt>
+[44 <./circuits/6.3.9.png> <./circuits/6.4.png (PNG copy)> <./circuits/6.4_2.png (PNG copy)>]
+<circuits/6.5.png, id=964, 523.9575pt x 124.465pt>
 File: circuits/6.5.png Graphic file (type png)
 <use circuits/6.5.png>
 Package pdftex.def Info: circuits/6.5.png  used on input line 2175.
@@ -1494,7 +1468,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[46 <./circuits/6.5.png>]
+[45 <./circuits/6.5.png>]
 Overfull \hbox (7.51143pt too wide) in paragraph at lines 2247--2249
  [][] 
  []
@@ -1506,11 +1480,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[47]
-Overfull \hbox (0.15317pt too wide) in paragraph at lines 2346--2346
-\OT1/cmr/m/it/12 (+14) but us-ing n-variable vec-tors. Here i is the num-ber we're rep-re-sent-ing $\OML/cmm/m/it/12 m[]$ \OT1/cmr/m/it/12 (+14) the cor-re-spond- 
- []
-
+[46]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1518,7 +1488,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[48]
+[47]
+Chapter 7.
+[48
+
+]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1535,17 +1509,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [50]
-<circuits/6.9.1.png, id=991, 617.30624pt x 202.7575pt>
+Overfull \hbox (0.19035pt too wide) in paragraph at lines 2506--2507
+[]\OT1/cmr/m/it/10.95 (+18) Personal Remark. Don't forget the objective here, these are just two ways, equivalent ways, to 
+ []
+
+<circuits/6.9.1.png, id=1015, 617.30624pt x 202.7575pt>
 File: circuits/6.9.1.png Graphic file (type png)
 <use circuits/6.9.1.png>
 Package pdftex.def Info: circuits/6.9.1.png  used on input line 2530.
 (pdftex.def)             Requested size: 159.33821pt x 52.33516pt.
-<circuits/6.9.2.png, id=992, 617.30624pt x 173.64874pt>
+<circuits/6.9.2.png, id=1016, 617.30624pt x 173.64874pt>
 File: circuits/6.9.2.png Graphic file (type png)
 <use circuits/6.9.2.png>
 Package pdftex.def Info: circuits/6.9.2.png  used on input line 2569.
 (pdftex.def)             Requested size: 163.8912pt x 46.10149pt.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1562,17 +1539,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [52]
-<circuits/6.11.1.png, id=1013, 204.765pt x 148.555pt>
+Overfull \hbox (12.67868pt too wide) in paragraph at lines 2626--2626
+[]\OT1/cmr/bx/n/17.28 (-20) Even and Odd De-tec-tors (XNOR and XOR Gates)  
+ []
+
+<circuits/6.11.1.png, id=1037, 204.765pt x 148.555pt>
 File: circuits/6.11.1.png Graphic file (type png)
 <use circuits/6.11.1.png>
 Package pdftex.def Info: circuits/6.11.1.png  used on input line 2649.
 (pdftex.def)             Requested size: 92.18567pt x 66.88086pt.
-<circuits/6.11.2.png, id=1014, 228.855pt x 174.6525pt>
+<circuits/6.11.2.png, id=1038, 228.855pt x 174.6525pt>
 File: circuits/6.11.2.png Graphic file (type png)
 <use circuits/6.11.2.png>
 Package pdftex.def Info: circuits/6.11.2.png  used on input line 2676.
 (pdftex.def)             Requested size: 92.18567pt x 70.35277pt.
-
+<circuits/6.12.1.png, id=1039, 410.53375pt x 186.6975pt>
+File: circuits/6.12.1.png Graphic file (type png)
+<use circuits/6.12.1.png>
+Package pdftex.def Info: circuits/6.12.1.png  used on input line 2686.
+(pdftex.def)             Requested size: 291.35844pt x 132.49916pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1581,12 +1566,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [53 <./circuits/6.11.1.png> <./circuits/6.11.2.png>]
-<circuits/6.12.1.png, id=1023, 410.53375pt x 186.6975pt>
-File: circuits/6.12.1.png Graphic file (type png)
-<use circuits/6.12.1.png>
-Package pdftex.def Info: circuits/6.12.1.png  used on input line 2686.
-(pdftex.def)             Requested size: 291.35844pt x 132.49916pt.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1595,12 +1574,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [54 <./circuits/6.12.1.png>]
-<circuits/6.12.2.png, id=1030, 561.09625pt x 325.215pt>
+<circuits/6.12.2.png, id=1054, 561.09625pt x 325.215pt>
 File: circuits/6.12.2.png Graphic file (type png)
 <use circuits/6.12.2.png>
 Package pdftex.def Info: circuits/6.12.2.png  used on input line 2725.
 (pdftex.def)             Requested size: 184.37135pt x 106.85977pt.
-<circuits/6.12.2_2.png, id=1031, 375.4025pt x 349.305pt>
+<circuits/6.12.2_2.png, id=1055, 375.4025pt x 349.305pt>
 File: circuits/6.12.2_2.png Graphic file (type png)
 <use circuits/6.12.2_2.png>
 Package pdftex.def Info: circuits/6.12.2_2.png  used on input line 2732.
@@ -1614,16 +1593,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [55 <./circuits/6.12.2.png> <./circuits/6.12.2_2.png>]
-Chapter 7.
+Chapter 8.
 [56
 
 ]
-<circuits/7.1.3.png, id=1044, 532.99126pt x 358.33875pt>
+<circuits/7.1.3.png, id=1068, 532.99126pt x 358.33875pt>
 File: circuits/7.1.3.png Graphic file (type png)
 <use circuits/7.1.3.png>
 Package pdftex.def Info: circuits/7.1.3.png  used on input line 2865.
 (pdftex.def)             Requested size: 163.8912pt x 110.18713pt.
-<circuits/7.1.3_2.png, id=1045, 656.4525pt x 214.8025pt>
+<circuits/7.1.3_2.png, id=1069, 656.4525pt x 214.8025pt>
 File: circuits/7.1.3_2.png Graphic file (type png)
 <use circuits/7.1.3_2.png>
 Package pdftex.def Info: circuits/7.1.3_2.png  used on input line 2873.
@@ -1636,23 +1615,39 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[57 <./circuits/7.1.3.png> <./circuits/7.1.3_2.png>] (./FDS.aux)
+[57 <./circuits/7.1.3.png> <./circuits/7.1.3_2.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[58]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[59] (./FDS.aux)
 Package rerunfilecheck Info: File `FDS.out' has not changed.
-(rerunfilecheck)             Checksum: BECA0DA659F2BBC599FE47E23EF4E3CC;21218.
+(rerunfilecheck)             Checksum: 43E6026C9669D6B1A5D3EB21C495935E;22513.
  ) 
 Here is how much of TeX's memory you used:
- 45759 strings out of 476025
- 1056092 string characters out of 5790017
- 1885388 words of memory out of 5000000
- 65195 multiletter control sequences out of 15000+600000
- 528333 words of font info for 144 fonts, out of 8000000 for 9000
+ 45810 strings out of 476025
+ 1056736 string characters out of 5790017
+ 1886388 words of memory out of 5000000
+ 65209 multiletter control sequences out of 15000+600000
+ 530287 words of font info for 159 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,81p,1019b,851s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on FDS.pdf (63 pages, 929335 bytes).
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on FDS.pdf (65 pages, 1006300 bytes).
 PDF statistics:
- 1202 PDF objects out of 1440 (max. 8388607)
- 1052 compressed objects within 11 object streams
- 298 named destinations out of 1000 (max. 500000)
- 34868 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 1257 PDF objects out of 1440 (max. 8388607)
+ 1097 compressed objects within 11 object streams
+ 309 named destinations out of 1000 (max. 500000)
+ 41556 words of extra memory for PDF output out of 42996 (max. 10000000)
 
