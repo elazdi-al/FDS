@@ -730,16 +730,16 @@ To convert a decimal number to its BCD representation:
     \item[] Apply the conversion rule:
     \begin{itemize}
         \item[] \( g_3 = b_3 \) since there is no \( b_4 \) (assume \( b_4 = 0 \)).
-        \item[] \( g_2 = b_3 \oplus b_2 \).
-        \item[] \( g_1 = b_2 \oplus b_1 \).
-        \item[] \( g_0 = b_1 \oplus b_0 \).
+        \item[] \( g_2 = b_3 \xor b_2 \).
+        \item[] \( g_1 = b_2 \xor b_1 \).
+        \item[] \( g_0 = b_1 \xor b_0 \).
     \end{itemize}
     \item[] Calculate the Gray code bits:
     \begin{itemize}
-        \item[] \( g_3 = 1 \oplus 0 = 1 \text{\; as \( b_{4} \) doesn't exist and is thus a 0} \).
-        \item[] \( g_2 = 1 \oplus 0 = 1 \).
-        \item[] \( g_1 = 0 \oplus 1 = 1 \).
-        \item[] \( g_0 = 1 \oplus 1 = 0 \).
+        \item[] \( g_3 = 1 \xor 0 = 1 \text{\; as \( b_{4} \) doesn't exist and is thus a 0} \).
+        \item[] \( g_2 = 1 \xor 0 = 1 \).
+        \item[] \( g_1 = 0 \xor 1 = 1 \).
+        \item[] \( g_0 = 1 \xor 1 = 0 \).
     \end{itemize}
     \item[] The Gray code is: \( g_3g_2g_1g_0 = \underline{1110}_{\text{gray code}} \).
 \end{enumerate}
@@ -2837,7 +2837,10 @@ In this section, we will be adding two 1-bit binary numbers. The truth table is 
 
 \newpage
 \subsection{Half-Adder}
-Now let's take a look to the corresponding truth table
+\textit{Personal Remark. The circuits shown in this part might seem a bit overwhelming, I suggest you first try to understand what the full and half adders are, then try to understand the corresponding circuits.} 
+\newline
+\vspace{10px}
+A half adder is a digital circuit that adds two single-bit binary numbers and outputs a sum and a carry. 
 
 
 \begin{table}[h!]
@@ -2911,11 +2914,12 @@ The solution to the equation is given by:
     \item[] Add each pair of bits at the position \( i \), where \( 0 \leq i < n \).
     \item[] The addition at the bit position \( i \) needs to include a carry-in at the position \( i \) (corresponding to the carry-out at the position \( i - 1 \)).
   \end{itemize}
-  \item[] The 1-bit adder reduces to a primitive module (new block that summarizes the circuit) called \textit{full-adder (FA)} with three binary inputs and two binary outputs such that \( x_i + y_i + c_i = 2c_{i+1} + s_i \).
+  \item[] The 1-bit adder reduces to a primitive module (new block that summarizes the circuit) called \textit{full-adder (FA)} with three binary inputs and two binary outputs such that \newline \( x_i + y_i + c_i = 2c_{i+1} + s_i \).
 \end{itemize}
 \newpage
 \subsection{Full-Adder}
-\subsubsection{Addition of Two 1-Bit Binary Numbers with the Input Carry (i.e., three 1-bit numbers)}
+A full adder, on the other hand, is a digital circuit that adds three single-bit binary numbers: the two bits to be added plus an additional carry-in bit. This carry-in bit is the carry from the addition of two lower significant bits. The full adder outputs a sum and a carry-out.
+
 \begin{itemize}
   \item[] Truth table:
   \begin{center}
@@ -2934,29 +2938,65 @@ The solution to the equation is given by:
   \end{center}
   \item[] Logical expressions:
   \begin{align*}
-    s_i &= x_i \oplus y_i \oplus c_i \\
-    &= (x_i \oplus y_i)c_i' + (x_i \oplus y_i)'c_i \\
-    &= (x_i \oplus y_i)c_i + x_i y_i
-  \end{align*}
-  \begin{align*}
-    c_{i+1} &= x_i y_i c_i' + x_i y_i' c_i + x_i' y_i c_i + x_i y_i c_i \\
-    &= x_i y_i + (x_i \oplus y_i)c_i
-  \end{align*}
-  \item[] Optimized expression for \( c_{i+1} \):
-  \[ c_{i+1} = x_i y_i + x_i c_i + y_i c_i \]
+    s_i &= \bar{x_i}\bar{y_i} c_i + \bar{x}_i y_i \bar{c}_i + x_i \bar{y}_i \bar{c}_i + x_i y_i c_i \\
+    &= (x_i y_i + \bar{x}_i \bar{y}_i)c_i + (\bar{x}_i y_i + x_i \bar{y}_i)\bar{c}_i \\
+    &= \overline{(x_i \xor y_i)}c_i + (x_i \xor y_i)\bar{c}_i = x_i \xor y_i \xor c_i \\
+    \\
+    c_{i+1} &= \bar{x}_i y_i c_i + x_i \bar{y}_i c_i + x_i y_i \bar{c}_i + x_i y_i c_i \\
+    &= (\bar{x}_i y_i + x_i \bar{y}_i)c_i + x_i y_i(\bar{c}_i + c_i) \\
+    &= (x_i \xor y_i)c_i + x_i y_i \\
+    &= x_i y_i + x_i c_i + y_i c_i \\
+    \end{align*}
+
+ 
 \end{itemize}
 
-\section*{Full-Adder From Half-Adders}
 \begin{itemize}
-  \item Recall half-adder:
-  \[ s = x \oplus y \]
-  \[ c = xy \]
-  \item Full-adder:
+  \item[] Thus:
   \begin{align*}
-    s_i &= x_i \oplus y_i \oplus c_i \\
-    c_{i+1} &= (x_i \oplus y_i)c_i + x_i y_i
+    s_i &= x_i \xor y_i \xor c_i \\
+    c_{i+1} &= (x_i \xor y_i)c_i + x_i y_i = x_i y_i + x_i c_i + y_i c_i
   \end{align*}
+  \item[] With Logic Circuit:
+
+
+\begin{center}
+    \begin{minipage}[c]{0.60\textwidth} % Adjust the width as needed for the second circuit
+        \centering
+        \includegraphics[width=0.60\textwidth]{circuits/8.1.6.png} % Replace 'path_to_image.png' with the actual path to your image file
+    \end{minipage}
+  
+    \end{center}
+
+    \vspace{10px}
+\item[] Also represented as :
+ \begin{center}
+  \begin{minipage}[c]{0.60\textwidth} % Adjust the width as needed for the second circuit
+      \centering
+      \includegraphics[width=0.60\textwidth]{circuits/8.1.6_2.png} % Replace 'path_to_image.png' with the actual path to your image file
+  \end{minipage}
+
+  \end{center}
 \end{itemize}
 
+
+\subsection{Basic Ripple-Carry Adder}
+Is a chain of full adders that add two \( n \)-bit binary numbers. It's called a \textbf{ripple-carry} adder because the carry-out of each full adder ripples (goes through the full adder chain) into the carry-in of the next full adder.
+
+\vspace{10px}
+
+It looks like this:
+\begin{center}
+    \begin{minipage}[c]{0.80\textwidth} % Adjust the width as needed for the second circuit
+        \centering
+        \includegraphics[width=0.80\textwidth]{circuits/8.1.7.png} % Replace 'path_to_image.png' with the actual path to your image file
+    \end{minipage}
+  
+    \end{center}
+
+
+\section{Subtractors}
+\textit{Same but with substraction and borrows.}
+\subsection{Subtraction of Two 1-Bit Binary Numbers}
 
 \end{document}

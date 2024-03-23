@@ -137,4 +137,6 @@
 \contentsline {subsection}{\numberline {8.1.4}Addition of Two N-Bit Binary Numbers}{58}{subsection.8.1.4}%
 \contentsline {subsection}{\numberline {8.1.5}Addition of Two N-Bit Binary Numbers}{58}{subsection.8.1.5}%
 \contentsline {subsection}{\numberline {8.1.6}Full-Adder}{59}{subsection.8.1.6}%
-\contentsline {subsubsection}{Addition of Two 1-Bit Binary Numbers with the Input Carry (i.e., three 1-bit numbers)}{59}{section*.78}%
+\contentsline {subsection}{\numberline {8.1.7}Basic Ripple-Carry Adder}{60}{subsection.8.1.7}%
+\contentsline {section}{\numberline {8.2}Subtractors}{60}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Subtraction of Two 1-Bit Binary Numbers}{60}{subsection.8.2.1}%
