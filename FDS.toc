@@ -140,3 +140,8 @@
 \contentsline {subsection}{\numberline {8.1.7}Basic Ripple-Carry Adder}{60}{subsection.8.1.7}%
 \contentsline {section}{\numberline {8.2}Subtractors}{60}{section.8.2}%
 \contentsline {subsection}{\numberline {8.2.1}Subtraction of Two 1-Bit Binary Numbers}{60}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Binary Subtraction Examples}{61}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Subtraction of Two N-Bit Unsigned Numbers}{61}{subsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.2.4}Full Subtractor}{61}{subsection.8.2.4}%
+\contentsline {subsection}{\numberline {8.2.5}N-Bit Ripple-Carry Subtractor}{62}{subsection.8.2.5}%
+\contentsline {section}{\numberline {8.3}Adders-Subtractors in two's complement}{62}{section.8.3}%

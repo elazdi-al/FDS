@@ -2998,5 +2998,155 @@ It looks like this:
 \section{Subtractors}
 \textit{Same but with substraction and borrows.}
 \subsection{Subtraction of Two 1-Bit Binary Numbers}
+In this section, we will be subtracting two 1-bit binary numbers. The truth table is as follows:
+\begin{itemize}
+    \item[] The resulting difference is at most on two bits:
+    \begin{itemize}
+        \item[-] the rightmost bit is called \textit{difference} (d)
+        \item[-] the leftmost bit is called \textit{borrow} (b); it is produced as a borrow-out when the subtrahend is greater than the minuend
+    \end{itemize}
+\end{itemize}
 
+Let $b$ be the borrow-in, $x$ be the minuend, and $y$ be the subtrahend and d the difference. 
+\[
+    \begin{array}{cccccc}
+        &$b$ \\
+        & &$x$\\
+        - & &$y$ \\
+        \hline
+         & &$d$ \\
+    \end{array}
+    \]
+
+\subsection{Binary Subtraction Examples}
+
+
+
+    \[
+        \begin{array}{cccc}
+        &0 & \\
+          & &0 & \\
+         - & &0 & \\
+        \hline
+         & &0 & \\
+        \end{array}
+        \]
+        \[
+        \begin{array}{cccc}
+          &1 & \\
+          & &0 & \\
+         - & &1 & \\
+        \hline
+        & &1 & \\
+        \end{array}
+        \]
+        \[
+        \begin{array}{cccc}
+         & 0 & \\
+         & &1 & \\
+         - & &0 & \\
+        \hline
+         & &1 & \\
+        \end{array}
+        \]
+        \[
+        \begin{array}{cccc}
+            & 0 & \\
+         & &1 & \\
+         - & &1 & \\
+        \hline
+         & &0 & \\
+        \end{array}
+        \]
+
+\subsection{Subtraction of Two N-Bit Unsigned Numbers}
+
+\begin{itemize}
+  \item[] It is impractical to start from the truth tables for \( n \)-bit subtraction.
+  \item[] Iterative approach
+  \begin{itemize}
+    \item[-] Subtract each pair of bits at the position \( i \), \( 0 \leq i < n \).
+    \item[-] The subtraction at the bit position \( i \) needs to include a borrow-in at position \( i \) (i.e., borrow-out at the position \( i - 1 \)).
+  \end{itemize}
+\end{itemize}
+
+\subsection{Full Subtractor}
+Subtraction of Two 1-Bit Binary Numbers Taking into Account the Input Borrow
+
+\begin{itemize}
+
+\item[] Truth table: \newline \vspace*{10px}
+\begin{tabular}{ccc|cc}
+\hline
+$x_i$ & $y_i$ & $b_i$ & $d_i$ & $b_{i+1}$ \\
+\hline
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 & 1 \\
+0 & 1 & 0 & 1 & 1 \\
+0 & 1 & 1 & 0 & 1 \\
+1 & 0 & 0 & 1 & 0 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 1 & 0 & 0 & 0 \\
+1 & 1 & 1 & 1 & 1 \\
+\hline
+\end{tabular}
+
+
+
+\item[]Logical expressions:
+\begin{align*}
+    d_i &= \bar{x_i}\bar{y_i} b_i + \bar{x_i} y_i \bar{b_i} + x_i \bar{y_i} \bar{b_i} + x_i y_i b_i \\
+        &= (\bar{x_i} \bar{y_i} + x_i y_i) b_i + (\bar{x_i} y_i + x_i \bar{y_i}) \bar{b_i} = \overline{(x_i \oplus y_i)} b_i + (x_i \oplus y_i) \bar{b_i} \\
+        &= x_i \oplus y_i \oplus b_i \\
+    \\
+    b_{i+1} &= \bar{x_i} \bar{y_i} b_i +\bar{x_i} y_i \bar{b_i} + \bar{x_i} y_i b_i + x_i y_i b_i \\
+        &= (\bar{x_i} \bar{y_i} b_i + \bar{x_i} y_i b_i) + (\bar{x_i} y_i \bar{b_i} + \bar{x_i} y_i b_i) + (\bar{x_i}y_ib_i + x_iy_ib_i) \\
+        &= \bar{x_i} b_i + \bar{x_i} y_i + y_i b_i \\
+    \end{align*}
+
+\item[] Also represented as : 
+\begin{center}
+    \begin{minipage}[c]{0.60\textwidth} % Adjust the width as needed for the second circuit
+        \centering
+        \includegraphics[width=0.60\textwidth]{circuits/8.2.4.png} % Replace 'path_to_image.png' with the actual path to your image file
+    \end{minipage}
+  
+    \end{center}
+\end{itemize}
+
+\subsection{N-Bit Ripple-Carry Subtractor}
+Subtracting Two N-bit Binary Numbers
+
+Starting from the least-significant digit, we subtract pairs of digits, progressing to the most-significant digit.
+
+\begin{center}
+    \begin{minipage}[c]{0.80\textwidth} % Adjust the width as needed for the second circuit
+        \centering
+        \includegraphics[width=0.70\textwidth]{circuits/8.2.5.png} % Replace 'path_to_image.png' with the actual path to your image file
+    \end{minipage}
+  
+    \end{center}
+
+\section{Adders-Subtractors in two's complement}
+\begin{itemize}
+    \item Recall that subtracting two numbers in two's complement format requires using the two's complement of one operand:
+      \begin{equation*}
+        X - Y = X + \overline{Y} + 1
+      \end{equation*}
+    \item $\overline{Y}$ is obtained by complementing each of the bits of $Y$
+    \item Assume a control signal $op$ determines which operation to perform ($op = 0$: addition, $op = 1$: subtraction)
+  \end{itemize}
+  
+  \[
+  \begin{array}{c|c}
+    op & f(X, Y) \\
+    \hline
+    0 & X + Y \\
+    1 & X + \overline{Y} + 1
+  \end{array}
+  \]
+  
+  \[
+  f(X, Y) = X + op \cdot Y + op \cdot \overline{Y} + op
+  \]
 \end{document}
