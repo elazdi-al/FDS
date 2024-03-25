@@ -144,4 +144,13 @@
 \contentsline {subsection}{\numberline {8.2.3}Subtraction of Two N-Bit Unsigned Numbers}{61}{subsection.8.2.3}%
 \contentsline {subsection}{\numberline {8.2.4}Full Subtractor}{61}{subsection.8.2.4}%
 \contentsline {subsection}{\numberline {8.2.5}N-Bit Ripple-Carry Subtractor}{62}{subsection.8.2.5}%
-\contentsline {section}{\numberline {8.3}Adders-Subtractors in two's complement}{62}{section.8.3}%
+\contentsline {section}{\numberline {8.3}Adders-Subtractors in two's complement}{63}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Fast Adders}{63}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Performance Matters}{63}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Examples of delays}{64}{subsection.8.4.2}%
+\contentsline {subsubsection}{Full Adder}{64}{section*.78}%
+\contentsline {subsubsection}{Full Adder-Subtractor}{64}{section*.79}%
+\contentsline {subsection}{\numberline {8.4.3}Summary of the Ripple-Carry Adder-Subtractor}{65}{subsection.8.4.3}%
+\contentsline {subsection}{\numberline {8.4.4}Carry-Select Adder}{66}{subsection.8.4.4}%
+\contentsline {section}{\numberline {8.5}Shifting}{66}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Barrel Shifter}{66}{subsection.8.5.1}%
