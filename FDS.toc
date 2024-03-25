@@ -87,7 +87,7 @@
 \contentsline {section}{\numberline {5.1}Low precision computer arithmetic}{37}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Challenges and limitations}{37}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Block Floating Point}{38}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Digital Logic Circuits}{39}{chapter.6}%
+\contentsline {chapter}{\numberline {6}Digital Logic}{39}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Introduction to Digital Logic Circuits}{39}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}The simplest binary logic element}{39}{subsection.6.1.1}%
 \contentsline {subsection}{\numberline {6.1.2}The simplest binary logic element}{39}{subsection.6.1.2}%
@@ -107,7 +107,7 @@
 \contentsline {section}{\numberline {6.6}Network Equivalence Verification}{46}{section.6.6}%
 \contentsline {section}{\numberline {6.7}Boolean Algebra}{46}{section.6.7}%
 \contentsline {subsection}{\numberline {6.7.1}Axioms}{46}{subsection.6.7.1}%
-\contentsline {chapter}{\numberline {7}Digital Logic Circuits (PART II)}{48}{chapter.7}%
+\contentsline {chapter}{\numberline {7}Digital Logic (PART II)}{48}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Logic Synthesis}{48}{section.7.1}%
 \contentsline {subsection}{\numberline {7.1.1}Minterms and Maxterms}{48}{subsection.7.1.1}%
 \contentsline {subsection}{\numberline {7.1.2}Examples}{48}{subsection.7.1.2}%
@@ -129,7 +129,7 @@
 \contentsline {section}{\numberline {7.5}Design Example}{54}{section.7.5}%
 \contentsline {subsection}{\numberline {7.5.1}Number Display}{54}{subsection.7.5.1}%
 \contentsline {subsection}{\numberline {7.5.2}Multiplexer}{55}{subsection.7.5.2}%
-\contentsline {chapter}{\numberline {8}Digital Logic Circuits (PART III)}{56}{chapter.8}%
+\contentsline {chapter}{\numberline {8}Digital Logic (PART III)}{56}{chapter.8}%
 \contentsline {section}{\numberline {8.1}Adders}{56}{section.8.1}%
 \contentsline {subsection}{\numberline {8.1.1}Addition of two 1-bit binary numbers}{56}{subsection.8.1.1}%
 \contentsline {subsection}{\numberline {8.1.2}Binary Addition Examples}{56}{subsection.8.1.2}%
@@ -154,3 +154,10 @@
 \contentsline {subsection}{\numberline {8.4.4}Carry-Select Adder}{66}{subsection.8.4.4}%
 \contentsline {section}{\numberline {8.5}Shifting}{66}{section.8.5}%
 \contentsline {subsection}{\numberline {8.5.1}Barrel Shifter}{66}{subsection.8.5.1}%
+\contentsline {subsubsection}{Shift Right by one position}{67}{section*.80}%
+\contentsline {subsubsection}{Shift Right by up to Three positions}{67}{section*.82}%
+\contentsline {subsection}{\numberline {8.5.2}Bidirectional Shifting by up to 7 positions}{68}{subsection.8.5.2}%
+\contentsline {chapter}{\numberline {9}Digital Logic (PART IV)}{69}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Transistors}{69}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}NMOS Transistor Switches}{69}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}PMOS Transistor Switches}{70}{subsection.9.1.2}%
