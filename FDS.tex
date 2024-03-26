@@ -569,7 +569,7 @@ where $b_{n-1}$ is the MSB (sign bit) and is $0$ for non-negative numbers and $1
         Z_i &= 0 \quad \text{for } i = m - 1, m - 2, \ldots, n \\
         Z_i &= X_i \quad \text{for } i = n - 1, \ldots, 0
     \end{align*}
-    \item[] Example: Consider \( X = 11010101_2 = -45_{10} \) and \( X = 100101101_2 = -45_{10} \).
+    \item[] Example: Consider \( X = 11010101_2 = -85_{10} \) and \( X = 100101101_2 = -45_{10} \).
     \item[] The algorithm extends the range of \( X \) by adding zeros to the left of the most significant bit, preserving the sign bit.
 \end{itemize}
 
@@ -3404,6 +3404,18 @@ The circuit (\textit{which might look a bit scary at first...}) looks like this:
 \chapter{Digital Logic (PART IV)}
 
 \section{Transistors}
+A Metal-Oxide-Semiconductor Field-Effect Transistor (MOSFET) is a transistor used for amplifying or switching electronic signals. It has three terminals:
+
+\begin{itemize}
+    \item \textbf{Drain (D)}: Current exits the transistor, with voltage \( V_D\).
+    \item \textbf{Gate (G)}: Controls the transistor operation, with voltage \( V_G\).
+    \item \textbf{Source (S)}: Current enters the transistor, with voltage \( V_S\).
+\end{itemize}
+
+
+
+The gate voltage (\( V_G \)) controls the current flow between the drain and source. When \( V_G \) exceeds a certain threshold, an electric field is created that allows current to flow, making the MOSFET act as an efficient electronic switch.
+
 \subsection{NMOS Transistor Switches}
 \small NMOS works like a switch that turns on to let electricity flow when you apply a certain voltage.
 
@@ -3417,7 +3429,7 @@ The digital representation of it looks like this :
     \end{center}
 
     \begin{itemize}
-        \item[-] Open ($x=0$)
+        \item[-] Open ($x=0$); $V_{G} = 0$
         \newline
         \noindent\begin{minipage}{0.5\textwidth}
             \begin{tikzpicture}
@@ -3429,12 +3441,13 @@ The digital representation of it looks like this :
             \end{tikzpicture}
         \end{minipage}%
         \begin{minipage}{0.30\textwidth}
+
             \centering
             \includegraphics[width=0.3\textwidth]{circuits/9.1.1_2.png} % Replace with actual file path
         \end{minipage}
     
      
-        \item[-] Closed ($x=1$)
+        \item[-] Closed ($x=1$); $V_{G} = V_D$
         \newline
         \noindent\begin{minipage}{0.5\textwidth}
             \begin{tikzpicture}
@@ -3452,6 +3465,7 @@ The digital representation of it looks like this :
 
 
     \subsection{PMOS Transistor Switches}
+    \textit{For french people, P like Porte, you push the door (need energy) to open it.}
     \small PMOS works like a switch that turns on to let electricity flow when you apply a certain voltage.
 
     The digital representation of it looks like this :
@@ -3463,7 +3477,7 @@ The digital representation of it looks like this :
         \end{minipage}
         \end{center}
     \begin{itemize}
-        \item[-] Open ($x=1$)
+        \item[-] Open ($x=1$); $V_{G} = V_D$
         \newline
         \noindent\begin{minipage}{0.5\textwidth}
             \begin{tikzpicture}
@@ -3480,7 +3494,7 @@ The digital representation of it looks like this :
         \end{minipage}
     
      
-        \item[-] Closed ($x=0$)
+        \item[-] Closed ($x=0$); $V_{G} = 0$
         \newline
         \noindent\begin{minipage}{0.5\textwidth}
             \begin{tikzpicture}
