@@ -3723,4 +3723,47 @@ When the slope of the curve is \(-1\), we have:
 \label{fig:voltage_transfer}
 \end{figure}
 
+\subsection{Ideal Waveforms and Real Waveforms}
+Until now, we have considered ideal waveforms in digital circuits like such :
+
+\begin{center}
+    
+
+\begin{tikzpicture}
+    % Grid
+    \draw[dashed, gray] (0,0) grid [step=1cm] (3,3);
+  
+    % Labels
+    \node [left] at (0,3) {V\textsubscript{DD}};
+    \node [left] at (0,2) {Gnd};
+    \node [left] at (0,1) {V\textsubscript{DD}};
+    \node [left] at (0,0) {Gnd};
+  
+    % IN signal
+    \draw[very thick, blue] (0,3) -- (1,3) -- (1,2) -- (2,2) -- (2,3) -- (3,3);
+    \node [above left, blue] at (0,2.25) {IN};
+  
+    % OUT signal
+    \draw[very thick, purple] (0,0) -- (1,0) -- (1,1) -- (2,1) -- (2,0) -- (3,0);
+    \node [below left, purple] at (0,0.75) {OUT};
+  \end{tikzpicture}
+\end{center}
+
+\newpage
+In real gates, the transition delay between GND and V\textsubscript{DD} is not instantaneous.
+Also, the output is not produced instantaneously, there is a \textbf{propagation delay}.
+
+\vspace*{10px}
+For example, let's consider the Real Waveform of a NOT gate:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{circuits/9.3.2.png} 
+    \end{figure}
+
+    With $t_r$ the rise time, $t_f$ the fall time, $t_{p,high-to-low}$ the propagation delay from high to low, and $t_{p,low-to-high}$ the propagation delay from low to high. \newline
+
+Propagation delay $t_p$ is the time when the voltage is at 50\% of the $V_{DD}$.\newline 
+\textbf{In general, $t_{p,high-to-low} \neq t_{p,low-to-high}$} \newline
+
+
 \end{document}

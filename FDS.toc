@@ -171,3 +171,4 @@
 \contentsline {subsection}{\numberline {9.2.1}Logic Values as Voltage Levels}{74}{subsection.9.2.1}%
 \contentsline {section}{\numberline {9.3}Voltage Transfer Characteristic}{75}{section.9.3}%
 \contentsline {subsection}{\numberline {9.3.1}CMOS Inverter (NOT gate)}{75}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Ideal Waveforms and Real Waveforms}{75}{subsection.9.3.2}%
