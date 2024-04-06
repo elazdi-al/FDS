@@ -172,3 +172,11 @@
 \contentsline {section}{\numberline {9.3}Voltage Transfer Characteristic}{75}{section.9.3}%
 \contentsline {subsection}{\numberline {9.3.1}CMOS Inverter (NOT gate)}{75}{subsection.9.3.1}%
 \contentsline {subsection}{\numberline {9.3.2}Ideal Waveforms and Real Waveforms}{75}{subsection.9.3.2}%
+\contentsline {section}{\numberline {9.4}Dynamic Operation}{77}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Fan-In and Fan-Out}{77}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}Parasitic Capacitance}{77}{subsection.9.4.2}%
+\contentsline {subsubsection}{Capacitive Effects and Circuit Speed}{77}{section*.95}%
+\contentsline {subsection}{\numberline {9.4.3}Power Dissipation}{77}{subsection.9.4.3}%
+\contentsline {section}{\numberline {9.5}Hazards in Digital Circuits}{78}{section.9.5}%
+\contentsline {chapter}{\numberline {10}Digital Logic and Verilog (PART V)}{79}{chapter.10}%
+\contentsline {section}{\numberline {10.1}CAD Design Flow: An Overview}{79}{section.10.1}%

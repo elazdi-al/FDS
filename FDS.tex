@@ -52,6 +52,8 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \newcommand*\xor{\oplus}
+\newcommand{\minidash}{\text{-}}
+
 % Document begins
 \begin{document}
 
@@ -3764,6 +3766,90 @@ For example, let's consider the Real Waveform of a NOT gate:
 
 Propagation delay $t_p$ is the time when the voltage is at 50\% of the $V_{DD}$.\newline 
 \textbf{In general, $t_{p,high-to-low} \neq t_{p,low-to-high}$} \newline
+\newpage
+\section{Dynamic Operation}
+
+In digital circuits, the operation and performance significantly depend on various factors like the design's ability to handle multiple inputs and outputs, as well as the inherent physical properties of the components used. 
+
+\subsection{Fan-In and Fan-Out}
+
+\textbf{Fan-In} refers to the maximum number of inputs a gate can handle. \textit{eg. $fan\minidash{}in(AND) = 2$}
+\vspace{10px}
+\newline
+\textbf{Fan-Out} refers to the maximum number of gates a gate can drive. \textit{eg. $fan\minidash{}out(NOT) = 1$}
+
+\subsection{Parasitic Capacitance}
+
+Within digital circuits, transistors not only perform switching operations but also exhibit capacitive behavior, leading to what is known as \textit{parasitic capacitance}. This phenomenon is particularly evident during the charging and discharging phases of operation.
+
+\subsubsection{Capacitive Effects and Circuit Speed}
+
+The equivalent capacitance at a logic gate's input, denoted $C_{IN}$, is the aggregate of parasitic capacitances from all transistor gates connected to it. This capacitance directly impacts the circuit's speed:
+\begin{itemize}
+    \item[] \textbf{Charging a Capacitor:} The voltage across a capacitor, $V_c(t)$, during charging follows the equation:
+    \[ V_c(t) = V_{DD}(1 - e^{-\frac{t}{RC}}) \]
+    where $V_{DD}$ is the supply voltage, $R$ is the resistance, and $C$ is the capacitance.
+    
+    \item[] \textbf{Discharging a Capacitor:} Conversely, during discharging, the voltage decays according to:
+    \[ V_c(t) = V_{DD}e^{-\frac{t}{RC}} \]
+\end{itemize}
+The speed of a circuit is inversely related to the fan-out, as higher loads increase the charging time of these parasitic capacitors.
+
+\subsection{Power Dissipation}
+
+We calculate $E_c$ the energy dissipated by the circuits and $P_D$ the power dissipated by the circuits as follows:
+\begin{equation}
+E_c = \frac{1}{2}CV^2
+\end{equation}
+\begin{equation}
+P_D = fCV^2
+\end{equation}
+where $f$ represents the switching frequency, $C$ the capacitance, and $V$ the voltage. 
+
+\section{Hazards in Digital Circuits}
+
+Hazards are unintended behaviors in digital circuits that can lead to errors in operation:
+\begin{itemize}
+    \item[] \textbf{Static Hazard:} Occurs when a signal unexpectedly changes levels momentarily, despite being intended to remain constant.
+    \item[] 
+        \centering
+        \includegraphics[width=0.3\textwidth]{circuits/9.5.png}
+       
+        
+    \item[] \textbf{Dynamic Hazard:} occurs
+    when a signal is supposed to
+    change: 1\;→\;0 or 0\;→\;1, occurs if such a change
+    involves a short oscillation before
+    the signal settles into its new level.
+    \item[] 
+        \centering
+        \includegraphics[width=0.3\textwidth]{circuits/9.5_1.png}
+\end{itemize}
+
+\chapter{Digital Logic and Verilog (PART V)}
+
+\section{CAD Design Flow: An Overview}
+The CAD design process encompasses several critical steps, ensuring the accurate realization of digital circuits. 
+
+
+
+\begin{itemize}
+    \item[]\textbf{Front End Tools:}
+    \begin{itemize}
+    \item \textbf{Design Entry:} The journey begins with the design entry, where the initial concept is articulated. This stage leverages intuition and experience, often utilizing Schematic Capture for graphical representations or Hardware Description Languages (HDLs) like Verilog and VHDL for textual descriptions.
+    \item \textbf{Logic Synthesis:} The design is then transformed into a logic gate structure, where HDL codes are converted into networks of logic gates. This process not only mirrors the intended circuit functionality through logic expressions but also optimizes the design for speed, size, and power efficiency.
+    \item \textbf{Functional Simulation:} This phase verifies the logical correctness of the design by simulating logic functions. Assuming perfect gates, it generates timing waveforms for detailed analysis, ensuring the design operates as expected under ideal conditions.
+ \end{itemize}
+ \item[]\textbf{Back End Tools:}
+    \begin{itemize}
+        \item \textbf{Physical Design:} Subsequently, the focus shifts to the physical layout, where the logic expressions are mapped onto a chip using available components. This involves the strategic placement of components and routing connections between them.
+    \item \textbf{Timing Simulation:} Recognizing real circuits incur delays, timing simulation assesses logic and wire propagation delays. This step is crucial to ensure the design meets all timing constraints, accounting for the physical realities of circuit implementation.
+    \item \textbf{Circuit Implementation:} The final step is the circuit's physical realization, where the design is brought to life in hardware form.
+    \end{itemize}
+    
+    
+\end{itemize}
+
 
 
 \end{document}
