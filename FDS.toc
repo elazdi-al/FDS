@@ -179,4 +179,4 @@
 \contentsline {subsection}{\numberline {9.4.3}Power Dissipation}{77}{subsection.9.4.3}%
 \contentsline {section}{\numberline {9.5}Hazards in Digital Circuits}{78}{section.9.5}%
 \contentsline {chapter}{\numberline {10}Digital Logic and Verilog (PART V)}{79}{chapter.10}%
-\contentsline {section}{\numberline {10.1}CAD Design Flow: An Overview}{79}{section.10.1}%
+\contentsline {section}{\numberline {10.1}CAD Design Flow}{79}{section.10.1}%
