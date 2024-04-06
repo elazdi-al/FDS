@@ -34,6 +34,9 @@
 \usepackage{colortbl}
 \usepackage{hhline}
 
+\usepackage{listings}
+
+
 \usetikzlibrary{circuits.logic.US}
 \usetikzlibrary{arrows.meta, positioning, calc}
 \usetikzlibrary{fit} % Add the missing TikZ library
@@ -54,6 +57,42 @@
 \newcommand*\xor{\oplus}
 \newcommand{\minidash}{\text{-}}
 
+%%%%%%%%%%%%%%%%%%% VHDL CODE STYLING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{courier}
+
+% Define your colors here
+\definecolor{keywordcolor}{rgb}{0.5,0.0,0.33}
+\definecolor{backgroundcolor}{rgb}{0.95,0.95,1.0}
+\definecolor{commentcolor}{rgb}{0.129,0.384,0.529}
+\definecolor{stringcolor}{rgb}{0.16,0.00,1.00}
+\definecolor{rulecolor}{rgb}{0.46,0.43,0.5}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5} % Add this line
+
+\lstdefinestyle{vhdlstyle}{
+  language=VHDL,
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{backgroundcolor},
+  commentstyle=\color{commentcolor}\ttfamily, % Add \ttfamily to ensure comments are in typewriter font
+  morecomment=[l][\color{commentcolor}\ttfamily]{//}, % Line comment in VHDL
+  morekeywords={module, input, output, wire, endmodule},
+  keywordstyle=\color{keywordcolor},
+stringstyle=\color{stringcolor},
+  showstringspaces=false,
+  frame=single,
+  rulecolor=\color{rulecolor}, % Frame color
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny\color{codegray},
+  tabsize=2
+}
+
+% Define your custom environment
+\lstnewenvironment{vhdl}
+  {\lstset{style=vhdlstyle}}
+  {}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document begins
 \begin{document}
 
@@ -3447,7 +3486,7 @@ The digital representation of it looks like this :
         \begin{minipage}{0.30\textwidth}
 
             \centering
-            \includegraphics[width=0.3\textwidth]{circuits/9.1.1_2.png} % Replace with actual file path
+            \includegraphics[width=0.3\textwidth]{circuits/9.1.1_3.png} % Replace with actual file path
         \end{minipage}
     
      
@@ -3463,7 +3502,7 @@ The digital representation of it looks like this :
         \end{minipage}%
         \begin{minipage}{0.30\textwidth}
             \centering
-            \includegraphics[width=0.30\textwidth]{circuits/9.1.1_3.png} % Replace with actual file path
+            \includegraphics[width=0.30\textwidth]{circuits/9.1.1_2.png} % Replace with actual file path
         \end{minipage}
     \end{itemize}
 
@@ -3831,8 +3870,9 @@ Hazards are unintended behaviors in digital circuits that can lead to errors in 
 \section{CAD Design Flow}
 The CAD design process encompasses several critical steps, ensuring the accurate realization of digital circuits. 
 
-    \centering
-    \includegraphics[width=0.8\textwidth]{circuits/10.1.png}
+\begin{center}
+    \includegraphics[width=0.67\textwidth]{circuits/10.1.png}
+\end{center}
 
 
 
@@ -3846,12 +3886,151 @@ The CAD design process encompasses several critical steps, ensuring the accurate
  \item[]\textbf{Back End Tools:}
     \begin{itemize}
         \item \textbf{Physical Design:} Subsequently, the focus shifts to the physical layout, where the logic expressions are mapped onto a chip using available components. This involves the strategic placement of components and routing connections between them.
-    \item \textbf{Timing Simulation:} Recognizing real circuits incur delays, timing simulation assesses logic and wire propagation delays. This step is crucial to ensure the design meets all timing constraints, accounting for the physical realities of circuit implementation.
+    \item \textbf{Timing Simulation:} This step is crucial to ensure the design meets all timing constraints, accounting for the physical realities of circuit implementation.
     \item \textbf{Circuit Implementation:} The final step is the circuit's physical realization, where the design is brought to life in hardware form.
     \end{itemize}
-    
-    
 \end{itemize}
+
+
+\section{Verilog HDL}
+\subsection{Structural Modeling with Logic Gates}
+In structural modeling, we use predefined modules (\textit{built-in representations of basic logic gates}) to construct complex circuits.\newline
+\vspace{5px}
+We use this logic gate instantiation statement to create a basic logic gate:
+\begin{vhdl}
+    gate_name [instance_name] (out_port, in_port{, in_port});
+\end{vhdl}
+[] indicates an optional parameter.\newline
+()  indicates a required parameter. \newline
+\{\} indicates that additional parameters can be added. \newline
+\vspace*{10px}
+With \textit{gate\_name} as the type of gate :\newline
+\textit{(not limited to these...)}
+
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        and  &  nor \\
+        nand &  buf \\
+        xor &  not \\
+        or &  xnor \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection{Examples}
+
+\begin{itemize}
+    \item[-] \textbf{AND Gate}:
+    \begin{vhdl}
+        and and1 (out, in1, in2);
+    \end{vhdl}
+    \item[-] \textbf{OR Gate}:
+    \begin{vhdl}
+        or or1 (out, in1, in2);
+    \end{vhdl}
+    \item[-] \textbf{NOT Gate}:
+    \begin{vhdl}
+        not not1 (out, in);
+    \end{vhdl}
+    \item[-] \textbf{NAND Gate}:
+    \begin{vhdl}
+        nand nand1 (out, in1, in2);
+    \end{vhdl}
+\end{itemize}
+\newpage
+\subsection{Verilog Syntax}
+\textbf{In a Nutshell}
+\begin{itemize}
+    \item[] \textbf{Naming Rules:}
+    \begin{itemize}
+      \item[] Begin with a letter.
+      \item[] Include letters, digits, underscore (\_), and dollar sign (\$).
+    \end{itemize}
+  
+    \item[] \textbf{Case Sensitivity:}
+    \begin{itemize}
+      \item[] Lowercase and uppercase are distinct (e.g., \texttt{a} $\neq$ \texttt{A}).
+    \end{itemize}
+  
+    \item[] \textbf{Style Guidelines:}
+    \begin{itemize}
+      \item[] Syntax is flexible with white spaces and line breaks.
+      \item[] Prioritize readability with proper indentation.
+    \end{itemize}
+  
+    \item[] \textbf{Comments:}
+    \begin{itemize}
+      \item[] Initiated by double slashes (//).
+    \end{itemize}
+  \end{itemize}
+
+  \subsection{Modules in Verilog}
+A circuit or subcircuit described in Verilog is encapsulated within a module. The module declaration includes the module name and its ports, which are the input and output connections to the module.
+\begin{vhdl}
+    module module_name [(port_name{, port_name})];
+        [input declarations]
+        [output declarations]
+        [wire declarations]
+        [logic gate instantiations]
+        [module instantiations]
+    //and many more
+    endmodule
+\end{vhdl}
+\textit{(words in purple are reserved keywords, words after two slashes are comments)} 
+\newpage 
+\subsection{Ports in Verilog}
+Ports are the input and output connections of a module. They are declared within the module declaration
+They can be in the following directions :
+\textbf{Port Types:}
+\begin{itemize}
+  \item[-] \texttt{input} -- for receiving signals.
+  \item[-] \texttt{output} -- for sending signals.
+  \item[-] \texttt{inout} -- for bi-directional signal flow.
+\end{itemize}
+
+\textbf{Port Declaration:}
+\begin{itemize}
+  \item[-] Syntax: 
+  \begin{vhdl}
+    port\_direction data\_type [port\_size] port\_name;
+\end{vhdl}
+  \item[-] Implicit type: Unspecified types default to wire.
+  \item[-] Vectors: Specify bit-width for multi-bit signals (e.g., [3:0] for 4 bits).
+\end{itemize}
+
+\textbf{Examples:}
+\begin{verbatim}
+input diff;            // Single-bit input named diff
+inout [15:0] data;     // 16-bit bidirectional port named data
+output [3:0] f;        // 4-bit output named f
+\end{verbatim}
+
+\subsubsection{Example - Full adder in Verilog}
+\begin{minipage}[t]{0.5\textwidth}
+
+\begin{vhdl}
+    // Structural modeling of a full-adder
+    module fulladd (a, b, c_in, s, c_out);
+    // ----- port definitions -----
+    input a, b, c_in;
+    output s, c_out;
+    // ----- intermediate signals -----
+    wire w1, w2, w3;
+    // ----- design implementation -----
+    and And1 (w1, a, b);
+    and And2 (w2, a, c_in);
+    and And3 (w3, b, c_in);
+    or Or1 (c_out, w1, w2, w3);
+    xor Xor1 (s, a, b, c_in);
+    endmodule
+
+\end{vhdl}
+\end{minipage}%
+\hfill % Adds horizontal space between the minipages
+\begin{minipage}[t]{0.45\textwidth}
+\includegraphics[width=\textwidth]{circuits/6.1.2.png} % Replace 'image.jpg' with the path to your image
+\end{minipage}
 
 
 
