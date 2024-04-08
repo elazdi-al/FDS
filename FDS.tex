@@ -35,8 +35,7 @@
 \usepackage{hhline}
 
 \usepackage{listings}
-
-
+\usepackage{adjustbox}
 \usetikzlibrary{circuits.logic.US}
 \usetikzlibrary{arrows.meta, positioning, calc}
 \usetikzlibrary{fit} % Add the missing TikZ library
@@ -3189,7 +3188,7 @@ Starting from the least-significant digit, we subtract pairs of digits, progress
   \]
   
   \[
-  f(X, Y) = X + op \cdot Y + op \cdot \overline{Y} + op
+  f(X, Y) = X + \overline{op} \cdot Y + op \cdot \overline{Y} + op
   \]
 
   \vspace*{10px}
@@ -3819,11 +3818,23 @@ In digital circuits, the operation and performance significantly depend on vario
 
 \subsection{Parasitic Capacitance}
 
-Within digital circuits, transistors not only perform switching operations but also exhibit capacitive behavior, leading to what is known as \textit{parasitic capacitance}. This phenomenon is particularly evident during the charging and discharging phases of operation.
+Parasitic capacitance refers to the unintended and inevitable capacitance present in transistor gates, termed as \textbf{gate parasitic capacitance} (this is like unwanted electrical 'baggage' that transistors carry which can slow things down and waste energy).
+\vskip 0.1in
+When multiple transistors connect to a single logic gate input, their individual parasitic capacitances combine to form an overall \textbf{equivalent per-input capacitance} \(C_{IN}\) (think of this as the total extra load the logic gate has to deal with). This combined capacitance:
 
+\vspace*{10px}
+The load capacitance (\(C_{LOAD}\)) that a logic gate must drive is equal to the input capacitance (\(C_{IN}\)) of the next gate it's connected to, meaning one gate's output has to push against the next gate's inherent electrical resistance to change its state.
+\begin{itemize}
+    \item[] Acts as a load (an electrical burden) on the gate that is outputting a signal to this input, affecting its performance.
+\end{itemize}
+
+The equivalent capacitance at a logic gate's input, denoted $C_{IN}$, is the aggregate of parasitic capacitances from all transistor gates connected to it. This capacitance directly impacts the circuit's speed.
+\vskip 0.1in
+
+For example, 
+we've seen that a NOT gate is a CMOS circuit with an NMOS and PMOS transistor. Thus, the parasitic capacitance of the NOT gate is the sum of the parasitic capacitance of the NMOS and PMOS transistors.
 \subsubsection{Capacitive Effects and Circuit Speed}
 
-The equivalent capacitance at a logic gate's input, denoted $C_{IN}$, is the aggregate of parasitic capacitances from all transistor gates connected to it. This capacitance directly impacts the circuit's speed:
 \begin{itemize}
     \item[] \textbf{Charging a Capacitor:} The voltage across a capacitor, $V_c(t)$, during charging follows the equation:
     \[ V_c(t) = V_{DD}(1 - e^{-\frac{t}{RC}}) \]
@@ -4006,31 +4017,99 @@ inout [15:0] data;     // 16-bit bidirectional port named data
 output [3:0] f;        // 4-bit output named f
 \end{verbatim}
 
-\subsubsection{Example - Full adder in Verilog}
-\begin{minipage}[t]{0.5\textwidth}
+\subsection{Example - Full adder in Verilog}
+\noindent
+\begin{adjustbox}{valign=t,minipage={.5\textwidth}}
+    \begin{vhdl}
+// Structural modeling of a full-adder
+module fulladd (a, b, c_in, s, c_out);
+// ----- port definitions -----
+input a, b, c_in;
+output s, c_out;
+// ----- intermediate signals -----
+wire w1, w2, w3;
+// ----- design implementation -----
+and And1 (w1, a, b);
+and And2 (w2, a, c_in);
+and And3 (w3, b, c_in);
+or Or1 (c_out, w1, w2, w3);
+xor Xor1 (s, a, b, c_in);
+endmodule
 
+    \end{vhdl}
+\end{adjustbox}
+\hfill
+\begin{adjustbox}{valign=t}
+\includegraphics[width=.45\textwidth]{circuits/10.2.4.png}
+\end{adjustbox}
+Which can be simplified to :\newline \vspace*{5px}
+\begin{minipage}{0.4\textwidth}
+
+\noindent
 \begin{vhdl}
-    // Structural modeling of a full-adder
-    module fulladd (a, b, c_in, s, c_out);
-    // ----- port definitions -----
-    input a, b, c_in;
-    output s, c_out;
-    // ----- intermediate signals -----
-    wire w1, w2, w3;
-    // ----- design implementation -----
-    and And1 (w1, a, b);
-    and And2 (w2, a, c_in);
-    and And3 (w3, b, c_in);
-    or Or1 (c_out, w1, w2, w3);
-    xor Xor1 (s, a, b, c_in);
-    endmodule
-
+module fulladd (a, b, c_in, s, c_out);
+input a, b, c_in;
+output s, c_out;
+and (w1, a, b);
+and (w2, a, c_in);
+and (w3, b, c_in);
+or (c_out, w1, w2, w3);
+xor (s, a, b, c_in);
+endmodule
 \end{vhdl}
-\end{minipage}%
-\hfill % Adds horizontal space between the minipages
-\begin{minipage}[t]{0.45\textwidth}
-\includegraphics[width=\textwidth]{circuits/6.1.2.png} % Replace 'image.jpg' with the path to your image
 \end{minipage}
+\subsection{Subcircuits in Verilog}
+
+\begin{itemize}
+    \item[] A Verilog module can be included as a subcircuit in another module.
+    \item[] Modules should be defined in the same source file, or the Verilog compiler must know the locations of the modules.
+    \item[] Module instantiation syntax:
+    \begin{itemize}
+        \item[] \begin{vhdl}
+{module\_name instance\_name ( .port\_name (expression));}
+        \end{vhdl}
+        \item[\textbf{Notes:}]
+        \begin{itemize}
+            \item \texttt{module\_name} and \texttt{instance\_name} are any valid identifiers.
+            \item \texttt{.port\_name} specifies the subcircuit's port to be connected.
+            \item Omitting \texttt{.port\_name} is possible if port order is identical to the subcircuit's definition, but not recommended due to error-proneness.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Example - Ripple-Carry Adder in Verilog}
+A four-bit ripple-carry adder is composed of four full-adder stages with interconnections for the carry bits.
+
+
+\begin{center}
+    \includegraphics[width=0.70\textwidth]{circuits/10.2.4_2.png}
+\end{center}`
+
+Written in VHDL : 
+\begin{vhdl}
+    module adder4 (Cin, A, B, S, Cout);
+    // Port definitions
+    input Cin;
+    input [3:0] A, B; // 4-bit vectors
+    output [3:0] S;   // 4-bit vector
+    output Cout;
+    
+    // Intermediate signals
+    wire [3:1] C; // 3-bit vector for carry bits
+    
+    // Design implementation using full-adder stages
+    fulladd stage0 (.c_in(Cin), .a(A[0]), .b(B[0]), .s(S[0]), .c_out(C[1]));
+    fulladd stage1 (.c_in(C[1]), .a(A[1]), .b(B[1]), .s(S[1]), .c_out(C[2]));
+    fulladd stage2 (.c_in(C[2]), .a(A[2]), .b(B[2]), .s(S[2]), .c_out(C[3]));
+    fulladd stage3 (.c_in(C[3]), .a(A[3]), .b(B[3]), .s(S[3]), .c_out(Cout));
+endmodule
+\end{vhdl}
+
+
+\chapter{Digital Logic and Verilog(PART VI)}
+\section{BUS}
+
+
 
 
 

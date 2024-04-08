@@ -176,7 +176,7 @@
 \contentsline {subsection}{\numberline {9.4.1}Fan-In and Fan-Out}{78}{subsection.9.4.1}%
 \contentsline {subsection}{\numberline {9.4.2}Parasitic Capacitance}{78}{subsection.9.4.2}%
 \contentsline {subsubsection}{Capacitive Effects and Circuit Speed}{78}{section*.95}%
-\contentsline {subsection}{\numberline {9.4.3}Power Dissipation}{78}{subsection.9.4.3}%
+\contentsline {subsection}{\numberline {9.4.3}Power Dissipation}{79}{subsection.9.4.3}%
 \contentsline {section}{\numberline {9.5}Hazards in Digital Circuits}{79}{section.9.5}%
 \contentsline {chapter}{\numberline {10}Digital Logic and Verilog (PART V)}{80}{chapter.10}%
 \contentsline {section}{\numberline {10.1}CAD Design Flow}{80}{section.10.1}%
@@ -186,4 +186,8 @@
 \contentsline {subsection}{\numberline {10.2.2}Verilog Syntax}{82}{subsection.10.2.2}%
 \contentsline {subsection}{\numberline {10.2.3}Modules in Verilog}{82}{subsection.10.2.3}%
 \contentsline {subsection}{\numberline {10.2.4}Ports in Verilog}{83}{subsection.10.2.4}%
-\contentsline {subsubsection}{Example - Full adder in Verilog}{83}{section*.97}%
+\contentsline {subsection}{\numberline {10.2.5}Example - Full adder in Verilog}{83}{subsection.10.2.5}%
+\contentsline {subsection}{\numberline {10.2.6}Subcircuits in Verilog}{84}{subsection.10.2.6}%
+\contentsline {subsection}{\numberline {10.2.7}Example - Ripple-Carry Adder in Verilog}{84}{subsection.10.2.7}%
+\contentsline {chapter}{\numberline {11}Digital Logic and Verilog(PART VI)}{85}{chapter.11}%
+\contentsline {section}{\numberline {11.1}BUS}{85}{section.11.1}%
