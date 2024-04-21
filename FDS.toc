@@ -105,8 +105,8 @@
 \contentsline {section}{\numberline {6.4}Analysis of a Logic Network}{44}{section.6.4}%
 \contentsline {section}{\numberline {6.5}The Venn Diagram}{45}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Network Equivalence Verification}{46}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Boolean Algebra}{46}{section.6.7}%
-\contentsline {subsection}{\numberline {6.7.1}Axioms}{46}{subsection.6.7.1}%
+\contentsline {section}{\numberline {6.7}Boolean Algebra}{47}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}Axioms}{47}{subsection.6.7.1}%
 \contentsline {chapter}{\numberline {7}Digital Logic (PART II)}{48}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Logic Synthesis}{48}{section.7.1}%
 \contentsline {subsection}{\numberline {7.1.1}Minterms and Maxterms}{48}{subsection.7.1.1}%
@@ -190,4 +190,4 @@
 \contentsline {subsection}{\numberline {10.2.6}Subcircuits in Verilog}{84}{subsection.10.2.6}%
 \contentsline {subsection}{\numberline {10.2.7}Example - Ripple-Carry Adder in Verilog}{84}{subsection.10.2.7}%
 \contentsline {chapter}{\numberline {11}Digital Logic and Verilog(PART VI)}{85}{chapter.11}%
-\contentsline {section}{\numberline {11.1}BUS}{85}{section.11.1}%
+\contentsline {section}{\numberline {11.1}Bus}{85}{section.11.1}%
