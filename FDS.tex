@@ -3847,7 +3847,7 @@ When weights are in this format :
 			      	
 			      	We calculate $E_c$ the energy dissipated by the circuits and $P_D$ the power dissipated by the circuits as follows:
 			      	\begin{equation}
-			      		E_c = \frac{1}{2}CV^2
+			      		E_{total} = E_{charge} + E_{discharge} = 2 \cdot \frac{1}{2}CV^2 = CV^2
 			      	\end{equation}
 			      	\begin{equation}
 			      		P_D = fCV^2
@@ -3860,10 +3860,13 @@ When weights are in this format :
 			      	\begin{itemize}
 			      		\item[] \textbf{Static Hazard:} Occurs when a signal unexpectedly changes levels momentarily, despite being intended to remain constant.
 			      		\item[] 
-			      		      \centering
-			      		      \includegraphics[width=0.3\textwidth]{circuits/9.5.png}
+			      		      \begin{center}
+                                \includegraphics[width=0.3\textwidth]{circuits/9.5.png}
+
+                              \end{center}
 			      		             
-			      		              
+			      		        
+        
 			      		\item[] \textbf{Dynamic Hazard:} occurs
 			      		      when a signal is supposed to
 			      		      change: 1\;→\;0 or 0\;→\;1, occurs if such a change

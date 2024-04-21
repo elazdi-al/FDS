@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.19)  20 APR 2024 20:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.19)  21 APR 2024 19:12
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -2072,7 +2072,7 @@ Package pdftex.def Info: circuits/9.5.png  used on input line 3864.
 <circuits/9.5_1.png, id=1470, 409.53pt x 95.35625pt>
 File: circuits/9.5_1.png Graphic file (type png)
 <use circuits/9.5_1.png>
-Package pdftex.def Info: circuits/9.5_1.png  used on input line 3874.
+Package pdftex.def Info: circuits/9.5_1.png  used on input line 3877.
 (pdftex.def)             Requested size: 136.57462pt x 31.80084pt.
 
 
@@ -2087,7 +2087,7 @@ Chapter 10.
 <circuits/10.1.png, id=1479, 953.5625pt x 135.50626pt>
 File: circuits/10.1.png Graphic file (type png)
 <use circuits/10.1.png>
-Package pdftex.def Info: circuits/10.1.png  used on input line 3883.
+Package pdftex.def Info: circuits/10.1.png  used on input line 3886.
 (pdftex.def)             Requested size: 305.01271pt x 43.34427pt.
 [80
 
@@ -2095,7 +2095,7 @@ Package pdftex.def Info: circuits/10.1.png  used on input line 3883.
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 3914.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 3917.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2116,7 +2116,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <circuits/10.2.4.png, id=1514, 385.44pt x 364.36125pt>
 File: circuits/10.2.4.png Graphic file (type png)
 <use circuits/10.2.4.png>
-Package pdftex.def Info: circuits/10.2.4.png  used on input line 4041.
+Package pdftex.def Info: circuits/10.2.4.png  used on input line 4044.
 (pdftex.def)             Requested size: 204.85846pt x 193.65538pt.
 
 
@@ -2130,7 +2130,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <circuits/10.2.4_2.png, id=1548, 458.71375pt x 150.5625pt>
 File: circuits/10.2.4_2.png Graphic file (type png)
 <use circuits/10.2.4_2.png>
-Package pdftex.def Info: circuits/10.2.4_2.png  used on input line 4083.
+Package pdftex.def Info: circuits/10.2.4_2.png  used on input line 4086.
 (pdftex.def)             Requested size: 318.66948pt x 104.60042pt.
 
 
@@ -2151,13 +2151,13 @@ Package rerunfilecheck Info: File `FDS.out' has not changed.
 Here is how much of TeX's memory you used:
  49057 strings out of 476025
  1107515 string characters out of 5790017
- 2144543 words of memory out of 5000000
+ 2144541 words of memory out of 5000000
  68200 multiletter control sequences out of 15000+600000
  533370 words of font info for 175 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,95p,1019b,1548s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on FDS.pdf (93 pages, 2374265 bytes).
+Output written on FDS.pdf (93 pages, 2374701 bytes).
 PDF statistics:
  1774 PDF objects out of 2073 (max. 8388607)
  1523 compressed objects within 16 object streams
