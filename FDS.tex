@@ -75,7 +75,7 @@
   backgroundcolor=\color{backgroundcolor},
   commentstyle=\color{commentcolor}\ttfamily, % Add \ttfamily to ensure comments are in typewriter font
   morecomment=[l][\color{commentcolor}\ttfamily]{//}, % Line comment in VHDL
-  morekeywords={module, input, output, wire, endmodule},
+  morekeywords={module, input, output, wire, endmodule, endcase, default:},
   keywordstyle=\color{keywordcolor},
 stringstyle=\color{stringcolor},
   showstringspaces=false,
@@ -480,10 +480,9 @@ When weights are in this format :
 	\end{itemize}
 	
 	\subsection{Unambiguous Representation}
-	\begin{itemize}
-		\item[] To have an unambiguous representation, the two regions should not overlap, translating to the condition:
-		      \[ \max |x| < \frac{C}{2} \]
-	\end{itemize}
+	To have an unambiguous representation, the two regions should not overlap, translating to the condition:
+		$\forall x, \max |x| < \frac{C}{2} $
+
 	
 	
 	\subsection{Converse Mapping}
@@ -585,78 +584,72 @@ When weights are in this format :
 		\end{aligned}
 	\]
 	
-	\section{Range Extension
-	and Arithmetic Shifts}
+	\section{Range Extension and Arithmetic Shifts}
 	\subsection{Range Extension}
-	
-	
 	
 	\begin{itemize}
 		\item[] Performed when a value \( x \) represented by a digit-vector of \( n \) bits needs to be represented by a digit-vector of \( m \) bits, where \( m > n \).
-		\item[] \( x \) is equal to \( z \) with
-		      \begin{align*}
-		      	X & = (X_{n-1}, X_{n-2}, \ldots, X_1, X_0) \\
-		      	Z & = (Z_{m-1}, Z_{m-2}, \ldots, Z_1, Z_0) 
-		      \end{align*}
+		\item[] \( x \) is represented as:
+			  \begin{align*}
+				  X & = (X_{n-1}, X_{n-2}, \ldots, X_1, X_0) \\
+				  Z & = (Z_{m-1}, Z_{m-2}, \ldots, Z_1, Z_0) 
+			  \end{align*}
 	\end{itemize}
 	
-	\small \section{Range Extension Algorithm in SM}
-	
+	\small \section{Range Extension Algorithm in Sign-and-Magnitude}
 	\begin{itemize}
 		\item[] In sign-and-magnitude system, the range-extension algorithm is defined as:
-		      \begin{align*}
-		      	z_s & = x_s \text{ (sign bit)}                          \\
-		      	Z_i & = 0 \quad \text{for } i = m - 1, m - 2, \ldots, n \\
-		      	Z_i & = X_i \quad \text{for } i = n - 1, \ldots, 0      
-		      \end{align*}
-		\item[] Example: Consider \( X = 11010101_2 = -85_{10} \) and \( X = 100101101_2 = -45_{10} \).
+			  \begin{align*}
+				  z_s & = x_s \text{ (sign bit)}                          \\
+				  Z_i & = 0 \quad \text{for } i = m - 1, m - 2, \ldots, n \\
+				  Z_i & = X_i \quad \text{for } i = n - 1, \ldots, 0      
+			  \end{align*}
+		\item[] Example: Consider \( X = 11010101_2 = -85_{10} \).
 		\item[] The algorithm extends the range of \( X \) by adding zeros to the left of the most significant bit, preserving the sign bit.
 	\end{itemize}
 	
 	
 	\subsection{Arithmetic Shifts}
 	
-	
 	\begin{itemize}
 		\item[] Two elementary transformations often used in arithmetic operations are scaling (multiplying and dividing) by the radix.
 		\item[] In the conventional radix-2 number system for integers:
-		      \begin{itemize}
-		      	\item[] Left arithmetic shift: multiplication by 2, expressed as \( z = 2x \).
-		      	\item[] Right arithmetic shift: division by 2, expressed as \( z = 2^{-1}x - \varepsilon \), where \( |\varepsilon| < 1 \) and the value of \( \varepsilon \) is such that it makes \( z \) an integer. \textit{The value of \( \varepsilon \) is the remainder of the division}.
-		      	              
-		      \end{itemize}
+			  \begin{itemize}
+				  \item[] Left arithmetic shift: multiplication by 2, expressed as \( z = 2x \).
+				  \item[] Right arithmetic shift: division by 2, expressed as \( z = x/2 \), with rounding towards zero when \( x \) is negative.
+			  \end{itemize}
 	\end{itemize}
 	
 	\subsection{Left Arithmetic Shift in Sign-and-Magnitude System}
 	
 	\begin{itemize}
 		\item[] Algorithm (assuming the overflow does not occur):
-		      \begin{align*}
-		      	z_s     & = x_s \text{ (sign bit retained)}                      \\
-		      	Z_{i+1} & = X_i, \quad \text{for } i = 0, \ldots, n-2            \\
-		      	Z_0     & = 0 \text{ (insert zero at the least significant bit)} 
-		      \end{align*}
-		      \subsubsection*{Example:}
-		      \begin{itemize}
-		      	\item[] Given \( X = 100101101_2 = -45_{10} \),
-		      	\item[] The left arithmetic shift \( SL(X) \) would be \( 101011010_2 = -90_{10} \).
-		      \end{itemize}
+			  \begin{align*}
+				  z_s     & = x_s \text{ (sign bit retained)}                      \\
+				  Z_{i+1} & = X_i, \quad \text{for } i = 0, \ldots, n-2            \\
+				  Z_0     & = 0 \text{ (insert zero at the least significant bit)} 
+			  \end{align*}
+			  \subsubsection*{Example:}
+			  \begin{itemize}
+				  \item[] Given \( X = 100101101_2 = -45_{10} \),
+				  \item[] The left arithmetic shift \( SL(X) \) would be \( 101011010_2 = -90_{10} \).
+			  \end{itemize}
 	\end{itemize}
 	
 	\subsection{Right Arithmetic Shift in Sign-and-Magnitude System}
 	
 	\begin{itemize}
 		\item[] Algorithm:
-		      \begin{align*}
-		      	z_s     & = x_s \text{ (sign bit retained)}                     \\
-		      	Z_{i-1} & = X_i, \quad \text{for } i = 1, \ldots, n - 1         \\
-		      	Z_{n-1} & = 0 \text{ (insert zero at the most significant bit)} 
-		      \end{align*}
+			  \begin{align*}
+				  z_s     & = x_s \text{ (sign bit retained)}                     \\
+				  Z_{i-1} & = X_i, \quad \text{for } i = 1, \ldots, n - 1         \\
+				  Z_{n-1} & = 0 \text{ (insert zero at the most significant bit)} 
+			  \end{align*}
 		\item[] Example:
-		      \begin{itemize}
-		      	\item[] Given \( X = 100101101_2 = -45_{10} \),
-		      	\item[] The right arithmetic shift \( SR(X) \) would be \( 100010110_2 = -22_{10} \).
-		      \end{itemize}
+			  \begin{itemize}
+				  \item[] Given \( X = 100101101_2 = -45_{10} \),
+				  \item[] The right arithmetic shift \( SR(X) \) would be \( 100010110_2 = -22_{10} \).
+			  \end{itemize}
 	\end{itemize}
 	
 	\newpage
@@ -664,18 +657,19 @@ When weights are in this format :
 	
 	\begin{itemize}
 		\item[] Algorithm (assuming that overflow does not occur):
-		      \begin{align*}
-		      	Z_{i+1} & = X_{i}, \quad \text{for } i = 0, \ldots, n-2          \\
-		      	Z_{0}   & = 0 \text{ (insert zero at the least significant bit)} 
-		      \end{align*}
+			  \begin{align*}
+				  Z_{i+1} & = X_{i}, \quad \text{for } i = 0, \ldots, n-2          \\
+				  Z_{0}   & = 0 \text{ (insert zero at the least significant bit)} 
+			  \end{align*}
 		\item[] Examples:
-		      \begin{itemize}
-		      	\item[] Given \( X = 00110101_2 = 13_{10} \),
-		      	\item[] The left arithmetic shift \( SL(X) \) is \( 01101010_2 = 26_{10} \).
-		      	\item[] Given \( Y = 11010101_2 = -11_{10} \),
-		      	\item[] The left arithmetic shift \( SL(Y) \) is \( 10101010_2 = -22_{10} \).
-		      \end{itemize}
+			  \begin{itemize}
+				  \item[] Given \( X = 00001101_2 = 13_{10} \),
+				  \item[] The left arithmetic shift \( SL(X) \) is \(00011010_2 = 26_{10} \).
+				  \item[] Given \( Y = 11010101_2 = -11_{10} \),
+				  \item[] The left arithmetic shift \( SL(Y) \) is \( 10101010_2 = -22_{10} \).
+			  \end{itemize}
 	\end{itemize}
+	
 	
 	
 	
@@ -691,8 +685,10 @@ When weights are in this format :
 		      The most significant bit (MSB) is duplicated to keep the sign of the number the same.
 		\item[] Examples:
 		      \begin{itemize}
-		      	\item[] For $X = 001101_2 = 13_{10}$, the right arithmetic shift is $SR(X) = 000110_2 = 6_{10}$.
-		      	\item[] For $Y = 110101_2 = -11_{10}$ (in two's complement), the right arithmetic shift is $SR(Y) = 111010_2 = -6_{10}$.
+		      	\item[] For $X = 001101_2 = 13_{10}$,
+				\item[] the right arithmetic shift is $SR(X) = 000110_2 = 6_{10}$.
+		      	\item[] For $Y = 110101_2 = -11_{10}$ (in two's complement),
+				\item[] the right arithmetic shift is $SR(Y) = 111010_2 = -6_{10}$.
 		      \end{itemize}
 	\end{itemize}
 	
@@ -789,7 +785,7 @@ When weights are in this format :
 	
 	\section{Addition and Subtraction
 	of Unsigned Integers}
-	\textit{Personal Remark. In case this is not clear, this video explains it pretty good:\newline \url{https://www.youtube.com/watch?v=sJXTo3EZoxM}}
+	\textit{Personal Remark. In case this is not clear, this video explains it pretty well:\newline \url{https://www.youtube.com/watch?v=sJXTo3EZoxM}}
 	\subsection{Addition of Binary Numbers}
 	
 	To add binary numbers, follow these rules:
@@ -843,9 +839,9 @@ When weights are in this format :
 	\]
 	
 	
-	Therefore, the difference between $1101_2$ and $1011_2$ is $0010_2$.
+	Therefore, the difference between $1101_2$ and $1011_2$ is $0101_2$.
 	
-	\section{\large Overflow and Underflow in Unsigned Binary Arithmetic}
+	\section{Overflow and Underflow in Unsigned Binary Arithmetic}
 	
 	\subsection{Overflow}
 	
@@ -962,7 +958,7 @@ When weights are in this format :
 		Number Representation}  
 		
 		Let \(x\) be an integer :
-		$x  = x_{int} + x{fr}$, with $x_{int}$ the integer part and $x_{fr}$ the fractional part.
+		$x  = x_{int} + x_{fr}$, with $x_{int}$ the integer part and $x_{fr}$ the fractional part.
 		
 		Let \( X \) be a digit-vector:
 		
@@ -1114,7 +1110,7 @@ When weights are in this format :
 			      		      	\text{Dynamic Range}_1 (x) = \frac{\lvert x \rvert_{\text{max}}}{\lvert x_{\text{positive, nonzero}} \rvert_{\text{min}}} = \frac{\lvert -2^{32-1} \rvert}{2^0} = 2^{31} \approx 2 \cdot 10^9
 			      		      \end{equation*}
 			      		          
-			      		\item \textit{Consider 32-bit floating-point number, with 24-bits significand and 8-bit exponent in two's complement}
+			      		\item \textit{Consider 32-bit floating-point number, with 24-bits significand and 8-bit exponent in Sign and Magnitude}
 			      		             
 			      		      {$\text{Dynamic Range}_2 (x) = \frac{\lvert x \rvert_{\text{max}}}{\lvert x_{\text{positive, nonzero}} \rvert_{\text{min}}}$ $$= \frac{(2^{23} - 1) \cdot 2^{(2^{8-1}) - 1}}{2^{-128}} = \frac{(2^{23} - 1) \cdot 2^{127}}{2^{-128}} = (2^{23} - 1) \cdot 2^{255} \approx 5 \cdot 10^{83}$$}
 			      		      
@@ -1138,7 +1134,7 @@ When weights are in this format :
 			      		          
 			      		\item \textit{Consider 32-bit floating-point number, with 24-bits significand in sign-and-magnitude and 8-bit exponent in two's complement}
 			      		      \begin{equation*}
-			      		      	\text{Resolution}_2(x) = 2^0 \cdot 2^{-2(8-1)} = 2^{-2^7} = 2^{-128}
+			      		      	\text{Resolution}_2(x) = 2^0 \cdot 2^{-2^(8-1)} = 2^{-2^7} = 2^{-128}
 			      		      \end{equation*}
 			      		          
 			      		\item \textit{Improved resolution}
@@ -1486,7 +1482,7 @@ When weights are in this format :
 			      	
 			      	
 			      	\chapter{Number Systems (Part IV)}
-			      	\section{Fixed Point Arithmetic}
+			      	\section{Fixed-Point Arithmetic}
 			      	\subsection{Addition and Subtraction}
 			      	
 			      	Let \( x \) and \( y \) be two fixed-point numbers with the same number of integer and fractional bits. The sum and difference of \( x \) and \( y \) can be calculated as follows:
@@ -2624,7 +2620,7 @@ When weights are in this format :
 			      		  & = \overline{\overline{(x_1 + x_2)(x_2 + \overline{x_3})}}               \\
 			      		  & = \overline{\overline{(x_1 + x_2)} + \overline{(x_2 + \overline{x_3})}} 
 			      	\end{align}
-			      	\section{Incompelitely Defined Functions}
+			      	\section{incompletely Defined Functions}
 			      	\subsection{Don't Care Condition}
 			      	Don't care conditions occur in logic design when certain input combinations never occur, or their corresponding outputs do not affect the system behavior. 
 			      	
@@ -2674,7 +2670,7 @@ When weights are in this format :
 			      			0         & 0         & 0       \\
 			      			0         & 1         & 1       \\
 			      			1         & 0         & 1       \\
-			      			0         & 1         & 0       \\
+			      			1         & 1         & 0       \\
 			      			\hline
 			      		\end{tabular}
 			      	\end{table}
@@ -3195,7 +3191,7 @@ When weights are in this format :
 			      	\begin{center}
 			      		\begin{minipage}[c]{0.90\textwidth} % Adjust the width as needed for the second circuit
 			      			\centering
-			      			\includegraphics[width=0.90\textwidth]{circuits/8.2.5.png} % Replace 'path_to_image.png' with the actual path to your image file
+			      			\includegraphics[width=0.90\textwidth]{circuits/8.3.png} % Replace 'path_to_image.png' with the actual path to your image file
 			      		\end{minipage}
 			      	\end{center}
 			      	
@@ -3441,6 +3437,7 @@ When weights are in this format :
 			      	        
 			      	\chapter{Digital Logic (PART IV)}
 			      	
+				
 			      	\section{Transistors}
 			      	A Metal-Oxide-Semiconductor Field-Effect Transistor (MOSFET) is a transistor used for amplifying or switching electronic signals. It has three terminals:
 			      	
@@ -3453,8 +3450,8 @@ When weights are in this format :
 			      	
 			      	
 			      	The gate voltage (\( V_G \)) controls the current flow between the drain and source. When \( V_G \) exceeds a certain threshold, an electric field is created that allows current to flow, making the MOSFET act as an efficient electronic switch.
-			      	
-			      	\subsection{NMOS Transistor Switches}
+			      \vspace*{20px}
+					\subsection{NMOS Transistor Switches}
 			      	\small NMOS works like a switch that turns on to let electricity flow when you apply a certain voltage.
 			      	
 			      	The digital representation of it looks like this :
@@ -3467,7 +3464,7 @@ When weights are in this format :
 			      			\includegraphics[width=0.35\textwidth]{circuits/9.1.1.png} 
 			      		\end{minipage}
 			      	\end{center}
-			      	
+			
 			      	\begin{itemize}
 			      		\item[-] Open ($x=0$); $V_{G} = 0$
 			      		      \newline
@@ -3503,7 +3500,8 @@ When weights are in this format :
 			      		\end{minipage}
 			      	\end{itemize}
 			      	
-			      	
+			    
+	
 			      	\subsection{PMOS Transistor Switches}
 			      	\textit{For french people, P like Porte, you push the door (need energy) to open it.}
 			      	\newline PMOS works like a switch that turns on to let electricity flow when you apply a certain voltage.
@@ -3977,6 +3975,20 @@ gate_name [instance_name] (out_port, in_port{, in_port});
 			      		      \end{itemize}
 			      	\end{itemize}
 			      	
+					  \subsection{Verilog Data Types and Numeric Literals}
+					  Verilog provides several data types and numeric notations to model different aspects of digital circuits. Below is a detailed explanation of these, along with prefixes used in numeric literals:
+					  
+					  \begin{itemize}
+						\item[] \textbf{wire}: A net data type used for connections that cannot store a value unless driven by a continuous assignment or connected through a module port.
+						\item[] \textbf{reg}: A variable data type that holds a binary value across simulation time steps, used within procedural blocks like `always`.
+						\item[] \textbf{integer}: Stores integer values, typically used in procedural logic for loop counters or arithmetic operations.
+						\item[] \textbf{bit}: A binary type (0 or 1), providing a two-state data type, also from SystemVerilog.
+						\item[] \textbf{vector}: Denotes buses or arrays. Defined by specifying a width, e.g.,\newline indicates an 8-bit wide bus.
+						\begin{vhdl}
+					  reg [7:0] my_bus; 
+						\end{vhdl}
+					  \end{itemize}
+
 			      	\subsection{Modules in Verilog}
 			      	A circuit or subcircuit described in Verilog is encapsulated within a module. The module declaration includes the module name and its ports, which are the input and output connections to the module.
 			      	\begin{vhdl}
@@ -3986,11 +3998,10 @@ module module_name [(port_name{, port_name})];
 [wire declarations]
 [logic gate instantiations]
 [module instantiations]
-//and many more
 endmodule
 			      	\end{vhdl}
 			      	\textit{(words in purple are reserved keywords, words after two slashes are comments)} 
-			      	\newpage 
+			  
 			      	\subsection{Ports in Verilog}
 			      	Ports are the input and output connections of a module. They are declared within the module declaration
 			      	They can be in the following directions :
@@ -4103,10 +4114,63 @@ fulladd stage0 (.c_in(Cin), .a(A[0]), .b(B[0]), .s(S[0]), .c_out(C[1]));
 fulladd stage1 (.c_in(C[1]), .a(A[1]), .b(B[1]), .s(S[1]), .c_out(C[2]));
 fulladd stage2 (.c_in(C[2]), .a(A[2]), .b(B[2]), .s(S[2]), .c_out(C[3]));
 fulladd stage3 (.c_in(C[3]), .a(A[3]), .b(B[3]), .s(S[3]), .c_out(Cout));
-			      		endmodule
+endmodule
 			      	\end{vhdl}
 			      	
 			      	
+					  \subsection{Behavioral Modeling in Verilog}
+
+					  Behavioral modeling in Verilog is one of the three modeling paradigms used in Verilog to describe digital circuits at a high level. This approach allows designers to specify how circuits should behave through procedural statements, similar to software programming. 
+					  					  
+					  \subsection{Operators in Verilog}				  
+					  \paragraph{Logical Operators}
+					  Logical operators are used for bit-wise or logical operations:
+					  \begin{itemize}
+						  \item[-] AND: \texttt{\&}
+						  \item[-] OR: \texttt{|}
+						  \item[-] NOT: \texttt{\~}
+						  \item[-] XOR: \texttt{\^}
+						  \item[-] XAND: \texttt{\^~}
+						  \item[-] NAND: \texttt{\&~}
+					  \end{itemize}
+					  
+					  \paragraph{Relational Operators}
+					  These operators are used to compare values:
+					  \begin{itemize}
+						  \item[-] Equal to: \texttt{==}
+						  \item[-] Not equal to: \texttt{!=}
+						  \item[-] Greater than: \texttt{>}
+						  \item[-] Less than: \texttt{<}
+						  \item[-] Greater than or equal to: \texttt{>=}
+						  \item[-] Less than or equal to: \texttt{<=}
+					  \end{itemize}
+					  
+					  \paragraph{Shift Operators}
+					  Shift operators are used to shift bits left or right in a vector:
+					  \begin{itemize}
+						  \item[-] Shift left: \texttt{<<}
+						  \item[-] Shift right: \texttt{>>}
+					  \end{itemize}
+					  
+					  \newpage
+					  \subsubsection{Switches}
+					  Switches in Verilog are typically modeled using the \texttt{case} statement, which allows for multi-way branching based on the value of a variable. Here is an example of how to model a simple switch:
+					  
+					  \begin{vhdl}
+always @(input_signal)
+begin
+	case (input_signal)
+		2'b00: output_signal = 4'b0001;
+		2'b01: output_signal = 4'b0010;
+		2'b10: output_signal = 4'b0100;
+		2'b11: output_signal = 4'b1000;
+		default: output_signal = 4'b0000;  % Handling unexpected values
+	endcase
+end
+					  \end{vhdl}
+					  
+					  In this example, the \texttt{input\_signal} determines which value is assigned to \texttt{output\_signal} based on its binary value. The \texttt{default} case is used to handle any unexpected values safely.
+					  
 			      	\chapter{Digital Logic and Verilog(PART VI)}
 			      	\section{Bus}
 			      	Digital systems are commonly composed of several modules exchanging data by means of a common set of interconnects (i.e., wires). The common set of wires is referred to as a \textbf{bus}:

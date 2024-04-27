@@ -24,7 +24,7 @@
 \contentsline {subsection}{\numberline {1.6.3}Change of Sign in Two's Complement System}{10}{subsection.1.6.3}%
 \contentsline {section}{\numberline {1.7}Range Extension and Arithmetic Shifts}{10}{section.1.7}%
 \contentsline {subsection}{\numberline {1.7.1}Range Extension}{10}{subsection.1.7.1}%
-\contentsline {section}{\numberline {1.8}Range Extension Algorithm in SM}{10}{section.1.8}%
+\contentsline {section}{\numberline {1.8}Range Extension Algorithm in Sign-and-Magnitude}{10}{section.1.8}%
 \contentsline {subsection}{\numberline {1.8.1}Arithmetic Shifts}{11}{subsection.1.8.1}%
 \contentsline {subsection}{\numberline {1.8.2}Left Arithmetic Shift in Sign-and-Magnitude System}{11}{subsection.1.8.2}%
 \contentsline {subsection}{\numberline {1.8.3}Right Arithmetic Shift in Sign-and-Magnitude System}{11}{subsection.1.8.3}%
@@ -44,7 +44,7 @@
 \contentsline {section}{\numberline {2.1}Addition and Subtraction of Unsigned Integers}{15}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Addition of Binary Numbers}{15}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}Subtracting Two Binary Numbers}{16}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}\large Overflow and Underflow in Unsigned Binary Arithmetic}{16}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Overflow and Underflow in Unsigned Binary Arithmetic}{16}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Overflow}{16}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Underflow}{17}{subsection.2.2.2}%
 \contentsline {section}{\numberline {2.3}Two’s Complement Addition and Subtraction}{17}{section.2.3}%
@@ -77,7 +77,7 @@
 \contentsline {subsection}{\numberline {3.4.1}Special Values}{30}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Overflow, underflow, and others}{30}{subsection.3.4.2}%
 \contentsline {chapter}{\numberline {4}Number Systems (Part IV)}{32}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Fixed Point Arithmetic}{32}{section.4.1}%
+\contentsline {section}{\numberline {4.1}Fixed-Point Arithmetic}{32}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Addition and Subtraction}{32}{subsection.4.1.1}%
 \contentsline {subsection}{\numberline {4.1.2}Multiplication}{32}{subsection.4.1.2}%
 \contentsline {section}{\numberline {4.2}In two's complement}{33}{section.4.2}%
@@ -118,7 +118,7 @@
 \contentsline {section}{\numberline {7.2}NAND and NOR Logic Networks}{51}{section.7.2}%
 \contentsline {subsection}{\numberline {7.2.1}NAND GATE}{51}{subsection.7.2.1}%
 \contentsline {subsection}{\numberline {7.2.2}NOR GATE}{51}{subsection.7.2.2}%
-\contentsline {section}{\numberline {7.3}Incompelitely Defined Functions}{52}{section.7.3}%
+\contentsline {section}{\numberline {7.3}incompletely Defined Functions}{52}{section.7.3}%
 \contentsline {subsection}{\numberline {7.3.1}Don't Care Condition}{52}{subsection.7.3.1}%
 \contentsline {subsection}{\numberline {7.3.2}Example}{52}{subsection.7.3.2}%
 \contentsline {subsection}{\numberline {7.3.3}Incomplete Functions}{52}{subsection.7.3.3}%
@@ -184,10 +184,17 @@
 \contentsline {subsection}{\numberline {10.2.1}Structural Modeling with Logic Gates}{81}{subsection.10.2.1}%
 \contentsline {subsubsection}{Examples}{81}{section*.96}%
 \contentsline {subsection}{\numberline {10.2.2}Verilog Syntax}{82}{subsection.10.2.2}%
-\contentsline {subsection}{\numberline {10.2.3}Modules in Verilog}{82}{subsection.10.2.3}%
-\contentsline {subsection}{\numberline {10.2.4}Ports in Verilog}{83}{subsection.10.2.4}%
-\contentsline {subsection}{\numberline {10.2.5}Example - Full adder in Verilog}{83}{subsection.10.2.5}%
-\contentsline {subsection}{\numberline {10.2.6}Subcircuits in Verilog}{84}{subsection.10.2.6}%
-\contentsline {subsection}{\numberline {10.2.7}Example - Ripple-Carry Adder in Verilog}{84}{subsection.10.2.7}%
-\contentsline {chapter}{\numberline {11}Digital Logic and Verilog(PART VI)}{85}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Bus}{85}{section.11.1}%
+\contentsline {subsection}{\numberline {10.2.3}Verilog Data Types and Numeric Literals}{82}{subsection.10.2.3}%
+\contentsline {subsection}{\numberline {10.2.4}Modules in Verilog}{82}{subsection.10.2.4}%
+\contentsline {subsection}{\numberline {10.2.5}Ports in Verilog}{83}{subsection.10.2.5}%
+\contentsline {subsection}{\numberline {10.2.6}Example - Full adder in Verilog}{83}{subsection.10.2.6}%
+\contentsline {subsection}{\numberline {10.2.7}Subcircuits in Verilog}{84}{subsection.10.2.7}%
+\contentsline {subsection}{\numberline {10.2.8}Example - Ripple-Carry Adder in Verilog}{84}{subsection.10.2.8}%
+\contentsline {subsection}{\numberline {10.2.9}Behavioral Modeling in Verilog}{85}{subsection.10.2.9}%
+\contentsline {subsection}{\numberline {10.2.10}Operators in Verilog}{85}{subsection.10.2.10}%
+\contentsline {paragraph}{Logical Operators}{85}{section*.97}%
+\contentsline {paragraph}{Relational Operators}{85}{section*.98}%
+\contentsline {paragraph}{Shift Operators}{85}{section*.99}%
+\contentsline {subsubsection}{Switches}{86}{section*.100}%
+\contentsline {chapter}{\numberline {11}Digital Logic and Verilog(PART VI)}{87}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Bus}{87}{section.11.1}%
