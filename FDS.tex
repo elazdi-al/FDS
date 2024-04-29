@@ -4208,17 +4208,22 @@ end
 					  
 \section{Tri-State Drivers}
 \text{
-A tri-state driver has a data \textbf{input}, \textbf{output}, and an \textbf{enable} input.}
+A tri-state driver has a data \textbf{input} $w$, \textbf{output} $f$, and an \textbf{enable} $e$ input.}
+\textit{When inactive, a tri-state driver's output enters a high-impedance state (Z), thus three possible states being logical 0, logical 1, or Z.}
+\newline
+\vskip 10px
+\begin{minipage}{0.25\textwidth}
+	\hspace*{40px}
+\centering
+\includegraphics[width=\textwidth]{circuits/11.2.png} % Replace with actual file path
 
-\vspace*{20px}
-\begin{minipage}{0.2\textwidth}
-	\hspace*{50px}
-	\centering
-	\includegraphics[width=\textwidth]{circuits/11.2.png} % Replace with actual file path
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\textwidth}
-	\hspace*{50px}
+	\begin{center}
+	Thus the following table:
+	\vskip 10px
+
 	\begin{tabular}{|c|c|c|c|}
 		\hline
 		e & w & f \\
@@ -4229,7 +4234,81 @@ A tri-state driver has a data \textbf{input}, \textbf{output}, and an \textbf{en
 		1 & 1 & 1  \\
 		\hline
 	\end{tabular}
+\end{center}
+\hspace*{40px}
 \end{minipage}
+
+\subsection{Types of Tri-State Drivers}
+
+
+	\begin{minipage}{0.3\textwidth}
+	\begin{center}
+		\textit{Enable active high}
+	\end{center}
+		\centering
+	\includegraphics[width=0.6\textwidth]{circuits/11.2.1.png} % Replace with actual file path
+	
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			e & w & f \\
+			\hline
+			0 & 0 & Z  \\
+			0 & 1 & Z  \\
+			1 & 0 & 1  \\
+			1 & 1 & 0  \\
+			\hline
+		\end{tabular}
+		\hfill
+	\end{minipage}
+\begin{vline}
+\begin{minipage}{0.3\textwidth}
+	\vskip 5px
+	\begin{center}
+		\textit{Enable active low}
+	\end{center}
+	\centering
+\includegraphics[width=0.6\textwidth]{circuits/11.2.1_2.png} % Replace with actual file path
+
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		e & w & f \\
+		\hline
+		0 & 0 & 0  \\
+		0 & 1 & 1  \\
+		1 & 0 & Z  \\
+		1 & 1 & Z  \\
+		\hline
+	\end{tabular}
+
+
+\hfill
+\end{minipage}
+\end{vline}
+\noindent
+\begin{vline}
+	\begin{minipage}{0.3\textwidth}
+		\begin{center}
+			\textit{Enable active low} \newline \textit{with inverted f}
+		\end{center}
+	
+		\vskip -10px
+		\centering
+	\includegraphics[width=0.6\textwidth]{circuits/11.2.1_3.png} % Replace with actual file path
+	
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			e & w & f \\
+			\hline
+			0 & 0 & 1  \\
+			0 & 1 & 0  \\
+			1 & 0 & Z  \\
+			1 & 1 & Z  \\
+			\hline
+		
+		\end{tabular}
+		\hfill
+	\end{minipage}
+\end{vline}
 \end{document}
 
 

@@ -201,3 +201,4 @@
 \contentsline {subsection}{\numberline {11.1.1}Using Multiplexers (MUXes)}{87}{subsection.11.1.1}%
 \contentsline {subsection}{\numberline {11.1.2}Without Multiplexers}{88}{subsection.11.1.2}%
 \contentsline {section}{\numberline {11.2}Tri-State Drivers}{88}{section.11.2}%
+\contentsline {subsection}{\numberline {11.2.1}Types of Tri-State Drivers}{88}{subsection.11.2.1}%
