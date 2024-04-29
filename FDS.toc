@@ -197,4 +197,7 @@
 \contentsline {paragraph}{Shift Operators}{85}{section*.99}%
 \contentsline {subsubsection}{Switches}{86}{section*.100}%
 \contentsline {chapter}{\numberline {11}Digital Logic and Verilog(PART VI)}{87}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Bus}{87}{section.11.1}%
+\contentsline {section}{\numberline {11.1}Bus Architecture}{87}{section.11.1}%
+\contentsline {subsection}{\numberline {11.1.1}Using Multiplexers (MUXes)}{87}{subsection.11.1.1}%
+\contentsline {subsection}{\numberline {11.1.2}Without Multiplexers}{88}{subsection.11.1.2}%
+\contentsline {section}{\numberline {11.2}Tri-State Drivers}{88}{section.11.2}%

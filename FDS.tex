@@ -4172,13 +4172,67 @@ end
 					  In this example, the \texttt{input\_signal} determines which value is assigned to \texttt{output\_signal} based on its binary value. The \texttt{default} case is used to handle any unexpected values safely.
 					  
 			      	\chapter{Digital Logic and Verilog(PART VI)}
-			      	\section{Bus}
-			      	Digital systems are commonly composed of several modules exchanging data by means of a common set of interconnects (i.e., wires). The common set of wires is referred to as a \textbf{bus}:
-			      	\begin{itemize}
-			      		\item[] Bus receives data from several modules (one at a time) and brings that data to the inputs of other modules.
-			      		\item[] Buses are typically \( n \)-bit wide, where \( n > 1 \).
-			      	\end{itemize}
-			      	In Verilog, \( n \)-bit and 1-bit signals are called \textit{vectors} and \textit{scalars}, respectively.
-			      	
+					  \section{Bus Architecture}
+
+					  \begin{minipage}{0.48\textwidth}
+						  A bus is a communication system that transfers data between components of a digital device. It is designed to connect parts of the motherboard or to link other hardware. In essence:
+						  \begin{itemize}
+							  \item A bus allows sequential data transmission from multiple sources to various destinations.
+							  \item Buses usually carry multiple bits simultaneously, typically more than one bit, to transmit data.
+						  \end{itemize}
+						  Within Verilog design, multiple-bit wires are termed as \textit{vectors}, and single-bit wires are called \textit{scalars}.
+					  \end{minipage}
+					  \hfill
+					  \begin{minipage}{0.48\textwidth}
+						  \centering
+						  \includegraphics[width=\textwidth]{circuits/11.1.png} % Replace with actual file path
+						  \captionof*{figure}{Illustration of an \(n\)-bit bus}
+					  \end{minipage}
+										  
+					  \subsection{Using Multiplexers (MUXes)}
+					  Multiplexers, or MUXes, direct signals from several input lines to a single output line. They select which input to transmit based on control signals.
+
+					  \begin{minipage}{0.48\textwidth}
+						A multiplexer can manage multiple \(n\)-bit data lines by using a select signal of \(m\) bits, where \(m\) is the minimum number of bits required to represent the number of inputs, calculated as \(m = \left\lceil \log_2(K) \right\rceil\).
+
+					\end{minipage}
+					\hfill
+					\begin{minipage}{0.48\textwidth}
+						\includegraphics[width=\textwidth]{circuits/11.1.1.png} % Replace with actual file path
+
+					\end{minipage}
+					  
+					  \subsection{Without Multiplexers} 
+					  
+					  Buses enable communication between different modules. However, directly connecting two outputs to one input can cause a short-circuit if they attempt to send conflicting signals. Employing multiplexers or tri-state drivers prevents this by ensuring that only one signal is transmitted at a time.
+					  
+\section{Tri-State Drivers}
+\text{
+A tri-state driver has a data \textbf{input}, \textbf{output}, and an \textbf{enable} input.}
+
+\vspace*{20px}
+\begin{minipage}{0.2\textwidth}
+	\hspace*{50px}
+	\centering
+	\includegraphics[width=\textwidth]{circuits/11.2.png} % Replace with actual file path
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+	\hspace*{50px}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		e & w & f \\
+		\hline
+		0 & 0 & Z  \\
+		0 & 1 & Z  \\
+		1 & 0 & 0  \\
+		1 & 1 & 1  \\
+		\hline
+	\end{tabular}
+\end{minipage}
+\end{document}
+
+
+
 			      	   	
 \end{document}
