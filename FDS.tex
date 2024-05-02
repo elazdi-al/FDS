@@ -75,7 +75,7 @@
   backgroundcolor=\color{backgroundcolor},
   commentstyle=\color{commentcolor}\ttfamily, % Add \ttfamily to ensure comments are in typewriter font
   morecomment=[l][\color{commentcolor}\ttfamily]{//}, % Line comment in VHDL
-  morekeywords={module, input, output, wire, endmodule, endcase, default:, tri},
+  morekeywords={module, input, output, wire, endmodule, endcase, default:, tri, assign},
   keywordstyle=\color{keywordcolor},
 stringstyle=\color{stringcolor},
   showstringspaces=false,
@@ -4414,9 +4414,60 @@ module my_circuit_behavioral (
 endmodule
 \end{vhdl}
 
-\subsection{Continuous Assignments}
+\subsection{Continuous Assignments in Verilog}
+\textbf{Keyword:} \texttt{assign}
+\subsubsection*{Definition}
+Continuous assignments are used in Verilog for assigning values to wires. The \texttt{assign} statement makes the left-hand side (LHS) of the assignment dynamically reflect any changes in the right-hand side (RHS) immediately.
 
-\subsubsection{Switches}
+\subsubsection*{Properties}
+\begin{itemize}
+    \item[-] Executes continuously: The assignment reacts to any change in the RHS variables and updates the LHS accordingly.
+    \item[-] Operates in parallel: The execution order in the code does not affect the simulation behavior.
+\end{itemize}
+
+\subsubsection*{Example}
+Consider the case where we want to perform a logical OR operation between two signals, \texttt{w7} and \texttt{w8}, and assign the result to signal \texttt{f}:
+
+\begin{vhdl}
+assign f = w7 | w8;
+\end{vhdl}
+
+In this example, whenever the value of \texttt{w7} or \texttt{w8} changes, \texttt{f} is automatically recalculated to reflect the new value.
+
+
+\subsection{Example - 2-to-1 MUX}
+Using what we've learned so far
+\vskip 10px
+\begin{adjustbox}{valign=t,minipage={.45\textwidth}}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{circuits/11.5.7.png}
+\end{center}
+\end{adjustbox}
+\hfill
+\hskip-40px
+\vline
+\hfill
+\noindent
+\begin{adjustbox}{valign=t,minipage={.48\textwidth}}
+\begin{vhdl}
+module my_circuit_structural (
+	input x1, x2, x3, x4,
+	output f
+	);
+	wire w1, w2, w3, w4, w5, w6, w7, w8;
+	and (w1, x1, x3);
+	not (w2, x2);
+	not (w3, x3);
+	and (w4, x2, x4);
+	or (w5, x1, w3);
+	or (w6, w2, x4);
+	or (w7, w1, w4);
+	and (w8, w5, w6);
+	or (f, w7, w8);
+	endmodule
+\end{vhdl}
+\end{adjustbox}
+\subsection{Switches}
 Switches in Verilog are typically modeled using the \texttt{case} statement, which allows for multi-way branching based on the value of a variable. Here is an example of how to model a simple switch:
 
 \begin{vhdl}

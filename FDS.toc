@@ -205,5 +205,6 @@
 \contentsline {subsection}{\numberline {11.5.5}Behavioral Modeling in Verilog}{88}{subsection.11.5.5}%
 \contentsline {subsection}{\numberline {11.5.6}Bit-wise Operators}{88}{subsection.11.5.6}%
 \contentsline {subsection}{\numberline {11.5.7}Example - Structural to Behavioral Modeling}{88}{subsection.11.5.7}%
-\contentsline {subsection}{\numberline {11.5.8}Continuous Assignments}{89}{subsection.11.5.8}%
-\contentsline {subsubsection}{Switches}{89}{section*.99}%
+\contentsline {subsection}{\numberline {11.5.8}Continuous Assignments in Verilog}{89}{subsection.11.5.8}%
+\contentsline {subsection}{\numberline {11.5.9}Example - 2-to-1 MUX}{90}{subsection.11.5.9}%
+\contentsline {subsection}{\numberline {11.5.10}Switches}{90}{subsection.11.5.10}%
