@@ -1,5 +1,24 @@
-*.out
+# Ignore LaTeX intermediate files
 *.aux
-.vscode
-*.gz
+*.log
+*.out
+*.synctex.gz
+*.toc
 
+# Ignore OS generated files
+.DS_Store
+
+# Ignore editor settings and local config files
+.vscode/
+.gitattributes
+
+# Include specific file types
+!*.pdf
+!*.py
+!*.🔥
+
+# Include image files in 'circuits' directory
+circuits/*.png
+
+# Specific files to be tracked
+!README.md
