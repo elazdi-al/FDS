@@ -203,24 +203,40 @@
 \contentsline {subsection}{\numberline {11.5.3}Parameters}{87}{subsection.11.5.3}%
 \contentsline {subsection}{\numberline {11.5.4}Nets}{88}{subsection.11.5.4}%
 \contentsline {subsection}{\numberline {11.5.5}Behavioral Modeling in Verilog}{88}{subsection.11.5.5}%
-\contentsline {subsection}{\numberline {11.5.6}Example - Structural to Behavioral Modeling}{88}{subsection.11.5.6}%
-\contentsline {subsubsection}{Switches}{88}{section*.97}%
-\contentsline {chapter}{\numberline {12}All of Verilog}{89}{chapter.12}%
-\contentsline {section}{\numberline {12.1}Verilog HDL}{89}{section.12.1}%
-\contentsline {subsection}{\numberline {12.1.1}Structural Modeling with Logic Gates}{89}{subsection.12.1.1}%
-\contentsline {subsubsection}{Examples}{89}{section*.98}%
-\contentsline {subsection}{\numberline {12.1.2}Verilog Syntax}{90}{subsection.12.1.2}%
-\contentsline {subsection}{\numberline {12.1.3}Modules in Verilog}{90}{subsection.12.1.3}%
-\contentsline {subsection}{\numberline {12.1.4}Ports in Verilog}{90}{subsection.12.1.4}%
-\contentsline {subsection}{\numberline {12.1.5}Example - Full adder in Verilog}{91}{subsection.12.1.5}%
-\contentsline {subsection}{\numberline {12.1.6}Subcircuits in Verilog}{91}{subsection.12.1.6}%
-\contentsline {subsection}{\numberline {12.1.7}Example - Ripple-Carry Adder in Verilog}{92}{subsection.12.1.7}%
-\contentsline {section}{\numberline {12.2}Complete Verilog Built-In Gate List}{92}{section.12.2}%
-\contentsline {section}{\numberline {12.3}Verilog Part 2.}{93}{section.12.3}%
-\contentsline {subsection}{\numberline {12.3.1}Scalar Signal Values}{93}{subsection.12.3.1}%
-\contentsline {subsection}{\numberline {12.3.2}Vector Signal Values}{93}{subsection.12.3.2}%
-\contentsline {subsection}{\numberline {12.3.3}Parameters}{93}{subsection.12.3.3}%
-\contentsline {subsection}{\numberline {12.3.4}Nets}{93}{subsection.12.3.4}%
-\contentsline {subsection}{\numberline {12.3.5}Behavioral Modeling in Verilog}{93}{subsection.12.3.5}%
-\contentsline {subsection}{\numberline {12.3.6}Example - Structural to Behavioral Modeling}{94}{subsection.12.3.6}%
-\contentsline {subsubsection}{Switches}{94}{section*.99}%
+\contentsline {subsection}{\numberline {11.5.6}Bit-wise Operators}{88}{subsection.11.5.6}%
+\contentsline {subsection}{\numberline {11.5.7}Example - Structural to Behavioral Modeling}{88}{subsection.11.5.7}%
+\contentsline {subsection}{\numberline {11.5.8}Continuous Assignments in Verilog}{89}{subsection.11.5.8}%
+\contentsline {subsection}{\numberline {11.5.9}Verilog Always Block}{90}{subsection.11.5.9}%
+\contentsline {subsection}{\numberline {11.5.10}If-Else Statements}{90}{subsection.11.5.10}%
+\contentsline {subsubsection}{Structure}{90}{section*.103}%
+\contentsline {subsection}{\numberline {11.5.11}Example - 2-to-1 MUX}{91}{subsection.11.5.11}%
+\contentsline {subsection}{\numberline {11.5.12}Case Statement}{91}{subsection.11.5.12}%
+\contentsline {subsubsection}{Syntax}{91}{section*.104}%
+\contentsline {subsubsection}{Example - Full Adder}{91}{section*.105}%
+\contentsline {chapter}{\numberline {12}All of Verilog}{92}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Verilog HDL}{93}{section.12.1}%
+\contentsline {subsection}{\numberline {12.1.1}Structural Modeling with Logic Gates}{93}{subsection.12.1.1}%
+\contentsline {subsubsection}{Examples}{93}{section*.106}%
+\contentsline {subsection}{\numberline {12.1.2}Verilog Syntax}{93}{subsection.12.1.2}%
+\contentsline {subsection}{\numberline {12.1.3}Modules in Verilog}{94}{subsection.12.1.3}%
+\contentsline {subsection}{\numberline {12.1.4}Ports in Verilog}{94}{subsection.12.1.4}%
+\contentsline {subsection}{\numberline {12.1.5}Example - Full adder in Verilog}{95}{subsection.12.1.5}%
+\contentsline {subsection}{\numberline {12.1.6}Subcircuits in Verilog}{95}{subsection.12.1.6}%
+\contentsline {subsection}{\numberline {12.1.7}Example - Ripple-Carry Adder in Verilog}{95}{subsection.12.1.7}%
+\contentsline {section}{\numberline {12.2}Complete Verilog Built-In Gate List}{96}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Verilog Part 2.}{96}{section.12.3}%
+\contentsline {subsection}{\numberline {12.3.1}Scalar Signal Values}{96}{subsection.12.3.1}%
+\contentsline {subsection}{\numberline {12.3.2}Vector Signal Values}{97}{subsection.12.3.2}%
+\contentsline {subsection}{\numberline {12.3.3}Parameters}{97}{subsection.12.3.3}%
+\contentsline {subsection}{\numberline {12.3.4}Nets}{97}{subsection.12.3.4}%
+\contentsline {subsection}{\numberline {12.3.5}Behavioral Modeling in Verilog}{97}{subsection.12.3.5}%
+\contentsline {subsection}{\numberline {12.3.6}Bit-wise Operators}{97}{subsection.12.3.6}%
+\contentsline {subsection}{\numberline {12.3.7}Example - Structural to Behavioral Modeling}{97}{subsection.12.3.7}%
+\contentsline {subsection}{\numberline {12.3.8}Continuous Assignments in Verilog}{98}{subsection.12.3.8}%
+\contentsline {subsection}{\numberline {12.3.9}Verilog Always Block}{99}{subsection.12.3.9}%
+\contentsline {subsection}{\numberline {12.3.10}If-Else Statements}{99}{subsection.12.3.10}%
+\contentsline {subsubsection}{Structure}{99}{section*.113}%
+\contentsline {subsection}{\numberline {12.3.11}Example - 2-to-1 MUX}{100}{subsection.12.3.11}%
+\contentsline {subsection}{\numberline {12.3.12}Case Statement}{100}{subsection.12.3.12}%
+\contentsline {subsubsection}{Syntax}{100}{section*.114}%
+\contentsline {subsubsection}{Example - Full Adder}{100}{section*.115}%

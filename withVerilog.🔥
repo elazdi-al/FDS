@@ -1,0 +1,52 @@
+from python import Python
+from algorithm import parallelize
+
+fn parse_latex_sections(filename:String) raises -> String:
+    var re:PythonObject = Python.import_module("re")
+    var subprocess:PythonObject = Python.import_module("subprocess")
+    var content:String
+    var modified_content:String
+
+    with open(filename, 'r') as file:
+        content = file.read()
+
+    
+    var sections = re.findall(r'\\section\{[^}]*Verilog[^}]*\}.*?(?=\\section|$)', content, flags=re.DOTALL)
+
+    if not sections:
+        print("No sections with 'Verilog' in their title were found.")
+        raise "No Verilog sections found in the LaTeX file."
+
+    
+    var verilog_chapter:String = "\n\\chapter{All of Verilog}\n\\newpage\n"
+
+    for section in sections:
+        
+        var clean_section:String = re.sub(r'\\chapter\{[^}]*\}', '', section)  
+        clean_section = re.sub(r'\\newpage', '', clean_section)  
+        verilog_chapter += clean_section + "\n"
+
+    
+    var end_document_pos = content.rfind('\\end{document}')
+    if end_document_pos != -1:
+        
+        modified_content = content[:end_document_pos] + verilog_chapter + content[end_document_pos:]
+    else:
+        
+        modified_content = content + verilog_chapter
+
+    
+    var new_filename:String = 'modified_' + filename
+    with open(new_filename, 'w') as file:
+        file.write(modified_content)
+
+    return new_filename
+
+fn main() raises:
+    var modified_file = parse_latex_sections('FDS.tex')
+    if modified_file:
+        Python.add_to_path(".")
+        var compile = Python.import_module("compile")
+        compile.compile_latex_to_pdf(modified_file)
+    else:
+        print("No modifications were made to the LaTeX file.")

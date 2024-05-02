@@ -56,6 +56,23 @@
 \newcommand*\xor{\oplus}
 \newcommand{\minidash}{\text{-}}
 
+\makeatletter
+\newcommand{\vspacer}[1]{%
+  % Check if we are in vertical mode
+  \ifvmode
+    % Insert the requested vertical space
+    \vskip#1\relax
+  \else
+    % We are in horizontal mode (within a paragraph)
+    \@bsphack
+    \vadjust{%
+      \vskip#1\relax
+    }%
+    \@esphack
+  \fi
+}
+\makeatother
+
 %%%%%%%%%%%%%%%%%%% VHDL CODE STYLING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{listings}
 \usepackage{xcolor}
@@ -75,7 +92,7 @@
   backgroundcolor=\color{backgroundcolor},
   commentstyle=\color{commentcolor}\ttfamily, % Add \ttfamily to ensure comments are in typewriter font
   morecomment=[l][\color{commentcolor}\ttfamily]{//}, % Line comment in VHDL
-  morekeywords={module, input, output, wire, endmodule, endcase, default:, tri},
+  morekeywords={module,input,output,wire,endmodule,endcase,default,tri,assign,always},
   keywordstyle=\color{keywordcolor},
 stringstyle=\color{stringcolor},
   showstringspaces=false,
@@ -91,6 +108,11 @@ stringstyle=\color{stringcolor},
 \lstnewenvironment{vhdl}
   {\lstset{style=vhdlstyle}}
   {}
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document begins
 \begin{document}
@@ -3900,8 +3922,7 @@ When weights are in this format :
 			      		      	\item \textbf{Circuit Implementation:} The final step is the circuit's physical realization, where the design is brought to life in hardware form.
 			      		      \end{itemize}
 			      	\end{itemize}
-			      	
-			      	
+			    
 			      	\section{Verilog HDL}
 					\textit{Personal Remark. this course will absolutely NOT suffize to make you a Verilog expert, please take some time to practice in an empty project, just representing in both structural and behavioral ways the circuits we've seen so far. }
 			      	\subsection{Structural Modeling with Logic Gates}
@@ -3917,7 +3938,6 @@ gate_name [instance_name] (out_port, in_port{, in_port});
 			      	\vspace*{10px}
 			      	With \textit{gate\_name} as the type of gate :\newline
 			      	\textit{(not limited to these...)}
-			      	
 			      	\begin{center}
 			      		\begin{tabular}{|c|c|}
 			      			\hline
@@ -4350,48 +4370,241 @@ tri z1
 Behavioral modeling in Verilog is one of the three modeling paradigms used in Verilog to describe digital circuits at a high level. This approach allows designers to specify how circuits should behave through procedural statements, similar to software programming. 
 \textit{Simplified: used when too hard to do in structural modeling.}  
 
+
+\subsection{Bit-wise Operators}
+Bit-wise operators in Verilog are used to perform operations on individual bits of a vector. The following are the bit-wise operators available in Verilog:
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Operator & Description \\
+		\hline
+		\& & Bit-wise AND \\
+		| & Bit-wise OR \\
+		\^{} & Bit-wise XOR \\
+		\~{} & Bit-wise NOT \\
+		\hline
+	\end{tabular}
+\end{center}
+
 \subsection{Example - Structural to Behavioral Modeling}
-Here's a quite complex circuit we've modeled in structural modeling :
+Here's a circuit we've modeled in structural modeling :
+\subsubsection*{Structural}
 \vskip 10px
 \noindent
 \begin{adjustbox}{valign=t,minipage={.45\textwidth}}
-
-\begin{vhdl}
-wire [3:0] a;
-\end{vhdl} 
+\begin{center}
+\includegraphics[width=0.9\textwidth]{circuits/11.5.7.png}
+\end{center}
 \end{adjustbox}
 \hfill
-\hskip-10px
+\hskip-40px
 \vline
 \hfill
 \noindent
-\begin{adjustbox}{valign=t,minipage={.45\textwidth}}
-	\textit{tri-states}
+\begin{adjustbox}{valign=t,minipage={.50\textwidth}}
 \begin{vhdl}
-tri z1 
+	module my_circuit_structural (
+		input x1, x2, x3, x4,
+		output f
+		);
+		wire w1, w2, w3, w4, w5, w6, w7, w8;
+		and (w1, x1, x3);
+		not (w2, x2);
+		not (w3, x3);
+		and (w4, x2, x4);
+		or (w5, x1, w3);
+		or (w6, w2, x4);
+		or (w7, w1, w4);
+		and (w8, w5, w6);
+		or (f, w7, w8);
+		endmodule
 \end{vhdl}
 \end{adjustbox}
-\subsubsection{Switches}
-Switches in Verilog are typically modeled using the \texttt{case} statement, which allows for multi-way branching based on the value of a variable. Here is an example of how to model a simple switch:
+\vspace*{10px}
+\subsubsection*{Behavioral}
+\begin{vhdl}
+module my_circuit_behavioral (
+	input x1, x2, x3, x4,
+	output f
+	);
+	wire w7, w8;
+	assign w7 = (x1 & x3) | (x2 & x4);
+	assign w8 = (x1 | ~x3) & (~x2 | x4);
+	assign f = w7 | w8;
+endmodule
+\end{vhdl}
+
+\subsection{Continuous Assignments in Verilog}
+\textbf{Keyword:} \texttt{assign}
+\subsubsection*{Definition}
+Continuous assignments are used in Verilog for assigning values to wires. The \texttt{assign} statement makes the left-hand side (LHS) of the assignment dynamically reflect any changes in the right-hand side (RHS) immediately.
+
+\subsubsection*{Properties}
+\begin{itemize}
+    \item[-] Executes continuously: The assignment reacts to any change in the RHS variables and updates the LHS accordingly.
+    \item[-] Operates in parallel: The execution order in the code does not affect the simulation behavior.
+\end{itemize}
+
+\subsubsection*{Example}
+Consider the case where we want to perform a logical OR operation between two signals, \texttt{w7} and \texttt{w8}, and assign the result to signal \texttt{f}:
 
 \begin{vhdl}
-always @(input_signal)
+assign f = w7 | w8;
+\end{vhdl}
+
+In this example, whenever the value of \texttt{w7} or \texttt{w8} changes, \texttt{f} is automatically recalculated to reflect the new value.
+
+
+
+\newpage
+\subsection{Verilog Always Block}
+\textbf{Keyword:} \texttt{always} \newline
+\vskip 5px
+The \texttt{always} block in Verilog is used for modeling combinational and sequential logic. It reacts to changes in input signals, ensuring that the block's internal logic is evaluated whenever necessary.
+
+\subsubsection*{Structure}
+\begin{vhdl}
+always @*
+	[begin]
+	[procedural assignment statements]
+	[if-else statements]
+	[case statements]
+	[while, repeat, and for loops]
+	[task and function calls]
+[end]
+\end{vhdl}
+
+In this block, the \texttt{always} keyword is followed by \texttt{@*}.
+
+\subsection{If-Else Statements}
+\textit{Personal Remark. uhm if you've been here until now I think you won't have much trouble understanding this...} \newline
+If an expression is true, the code within the begin-end block runs; multiple statements can be grouped in such a block. Optional else if and else clauses, when used, connect to the closest preceding if or else if statement.
+\noindent
+\subsubsection{Structure}
+\begin{vhdl}
+if (expression1)
 begin
-case (input_signal)
-2'b00: output_signal = 4'b0001;
-2'b01: output_signal = 4'b0010;
-2'b10: output_signal = 4'b0100;
-2'b11: output_signal = 4'b1000;
-default: output_signal = 4'b0000;  % Handling unexpected values
-endcase
+	statement;
+end
+else if (expression2)
+begin
+	statement;
+end
+else
+begin
+	statement;
 end
 \end{vhdl}
 
-In this example, the \texttt{input\_signal} determines which value is assigned to \texttt{output\_signal} based on its binary value. The \texttt{default} case is used to handle any unexpected values safely.
+\newpage
+\begin{adjustbox}{valign=t,minipage={1\textwidth}}
+\subsection{Example - 2-to-1 MUX}
+Using what we've learned so far
+\newline 
+\begin{adjustbox}{valign=t,minipage={.40\textwidth}}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{circuits/6.12.2_2.png}
+\end{center}
+\end{adjustbox}
+\hspace*{-40px}
+\hfill
+\vline
+\hfill
+\noindent
+\begin{adjustbox}{valign=t,minipage={.40\textwidth}}
+\begin{vhdl}
+module my_2to1mux ( input w1, w2, s, output reg f );
+	always @*
+		begin
+		if (s == 0) 
+		begin
+			f = w1; 
+		end
+		else 
+		begin
+			f = w2; 
+		end
+	end
+endmodule
+\end{vhdl}
+\end{adjustbox}
+\end{adjustbox}
+\vspace*{-20px}
+\begin{adjustbox}{valign=t,minipage={1\textwidth}}
+\subsection{Case Statement} 
+\textit{Personal Remark. Switch in java} \newline
+\vspace{-10px}
+\subsubsection{Syntax}
+\begin{vhdl}
+case (expression)
+    alternative1:
+	begin
+        statements;
+    end
+    alternative2: 
+	begin
+        statements;
+    end
+    default: 
+	begin
+        statements;
+    end
+endcase
+\end{vhdl}
+\end{adjustbox}
+\vfill
+\begin{adjustbox}{valign=t,minipage={0.9\textwidth}}
+\begin{adjustbox}{valign=t,minipage={.40\textwidth}}
+\vfill
+\subsubsection{Example - Full Adder}
+\vskip 5px
+Using the truth table of a Full-Adder, let's use a case statement to implement it:
+\begin{center}
+\begin{tabular}{|c|c|c||c|c|}
+		\hline
+		$x$ & $y$ & $C_{in}$ & $s$ & $C_{out}$ \\
+		\hline
+		0 & 0 & 0 & 0 & 0 \\
+		0 & 0 & 1 & 1 & 0 \\
+		0 & 1 & 0 & 1 & 0 \\
+		0 & 1 & 1 & 0 & 1 \\
+		1 & 0 & 0 & 1 & 0 \\
+		1 & 0 & 1 & 0 & 1 \\
+		1 & 1 & 0 & 0 & 1 \\
+		1 & 1 & 1 & 1 & 1 \\
+		\hline
+\end{tabular}
+\end{center}
+\vfill
+\end{adjustbox}
+\hfill
+\noindent
+\begin{adjustbox}{valign=t,minipage={.50\textwidth}}
+\small
+\begin{vhdl}
+module fulladd (input x, y, Cin, output reg s, Cout);
+	always @*
+	begin
+		case ({x, y, Cin})
+		3'b000: {s, Cout} = 'b00;
+		3'b001: {s, Cout} = 'b10;
+		3'b010: {s, Cout} = 'b10;
+		3'b011: {s, Cout} = 'b01;
+		3'b100: {s, Cout} = 'b10;
+		3'b101: {s, Cout} = 'b01;
+		3'b110: {s, Cout} = 'b01;
+		3'b111: {s, Cout} = 'b11;
+		endcase
+	end
+endmodule
+\end{vhdl}
+\end{adjustbox}
+\end{adjustbox}
 
 
 
 \chapter{All of Verilog}
+\newpage
 \section{Verilog HDL}
 					\textit{Personal Remark. this course will absolutely NOT suffize to make you a Verilog expert, please take some time to practice in an empty project, just representing in both structural and behavioral ways the circuits we've seen so far. }
 			      	\subsection{Structural Modeling with Logic Gates}
@@ -4407,7 +4620,6 @@ gate_name [instance_name] (out_port, in_port{, in_port});
 			      	\vspace*{10px}
 			      	With \textit{gate\_name} as the type of gate :\newline
 			      	\textit{(not limited to these...)}
-			      	
 			      	\begin{center}
 			      		\begin{tabular}{|c|c|}
 			      			\hline
@@ -4688,13 +4900,57 @@ Behavioral modeling in Verilog is one of the three modeling paradigms used in Ve
 \textit{Simplified: used when too hard to do in structural modeling.}  
 
 
+\subsection{Bit-wise Operators}
+Bit-wise operators in Verilog are used to perform operations on individual bits of a vector. The following are the bit-wise operators available in Verilog:
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Operator & Description \\
+		\hline
+		\& & Bit-wise AND \\
+		| & Bit-wise OR \\
+		\^{} & Bit-wise XOR \\
+		\~{} & Bit-wise NOT \\
+		\hline
+	\end{tabular}
+\end{center}
 
 \subsection{Example - Structural to Behavioral Modeling}
-Here's a quite complex circuit we've modeled in structural modeling :
+Here's a circuit we've modeled in structural modeling :
+\subsubsection*{Structural}
 \vskip 10px
 \noindent
 \begin{adjustbox}{valign=t,minipage={.45\textwidth}}
-
+\begin{center}
+\includegraphics[width=0.9\textwidth]{circuits/11.5.7.png}
+\end{center}
+\end{adjustbox}
+\hfill
+\hskip-40px
+\vline
+\hfill
+\noindent
+\begin{adjustbox}{valign=t,minipage={.50\textwidth}}
+\begin{vhdl}
+	module my_circuit_structural (
+		input x1, x2, x3, x4,
+		output f
+		);
+		wire w1, w2, w3, w4, w5, w6, w7, w8;
+		and (w1, x1, x3);
+		not (w2, x2);
+		not (w3, x3);
+		and (w4, x2, x4);
+		or (w5, x1, w3);
+		or (w6, w2, x4);
+		or (w7, w1, w4);
+		and (w8, w5, w6);
+		or (f, w7, w8);
+		endmodule
+\end{vhdl}
+\end{adjustbox}
+\vspace*{10px}
+\subsubsection*{Behavioral}
 \begin{vhdl}
 module my_circuit_behavioral (
 	input x1, x2, x3, x4,
@@ -4704,40 +4960,175 @@ module my_circuit_behavioral (
 	assign w7 = (x1 & x3) | (x2 & x4);
 	assign w8 = (x1 | ~x3) & (~x2 | x4);
 	assign f = w7 | w8;
-	endmodule
-\end{vhdl} 
-\end{adjustbox}
-\hfill
-\hskip-10px
-\vline
-\hfill
-\noindent
-\begin{adjustbox}{valign=t,minipage={.45\textwidth}}
-	\textit{tri-states}
-\begin{vhdl}
-tri z1 
+endmodule
 \end{vhdl}
-\end{adjustbox}
 
+\subsection{Continuous Assignments in Verilog}
+\textbf{Keyword:} \texttt{assign}
+\subsubsection*{Definition}
+Continuous assignments are used in Verilog for assigning values to wires. The \texttt{assign} statement makes the left-hand side (LHS) of the assignment dynamically reflect any changes in the right-hand side (RHS) immediately.
 
+\subsubsection*{Properties}
+\begin{itemize}
+    \item[-] Executes continuously: The assignment reacts to any change in the RHS variables and updates the LHS accordingly.
+    \item[-] Operates in parallel: The execution order in the code does not affect the simulation behavior.
+\end{itemize}
 
-\subsubsection{Switches}
-Switches in Verilog are typically modeled using the \texttt{case} statement, which allows for multi-way branching based on the value of a variable. Here is an example of how to model a simple switch:
+\subsubsection*{Example}
+Consider the case where we want to perform a logical OR operation between two signals, \texttt{w7} and \texttt{w8}, and assign the result to signal \texttt{f}:
 
 \begin{vhdl}
-always @(input_signal)
+assign f = w7 | w8;
+\end{vhdl}
+
+In this example, whenever the value of \texttt{w7} or \texttt{w8} changes, \texttt{f} is automatically recalculated to reflect the new value.
+
+
+
+
+\subsection{Verilog Always Block}
+\textbf{Keyword:} \texttt{always} \newline
+\vskip 5px
+The \texttt{always} block in Verilog is used for modeling combinational and sequential logic. It reacts to changes in input signals, ensuring that the block's internal logic is evaluated whenever necessary.
+
+\subsubsection*{Structure}
+\begin{vhdl}
+always @*
+	[begin]
+	[procedural assignment statements]
+	[if-else statements]
+	[case statements]
+	[while, repeat, and for loops]
+	[task and function calls]
+[end]
+\end{vhdl}
+
+In this block, the \texttt{always} keyword is followed by \texttt{@*}.
+
+\subsection{If-Else Statements}
+\textit{Personal Remark. uhm if you've been here until now I think you won't have much trouble understanding this...} \newline
+If an expression is true, the code within the begin-end block runs; multiple statements can be grouped in such a block. Optional else if and else clauses, when used, connect to the closest preceding if or else if statement.
+\noindent
+\subsubsection{Structure}
+\begin{vhdl}
+if (expression1)
 begin
-case (input_signal)
-2'b00: output_signal = 4'b0001;
-2'b01: output_signal = 4'b0010;
-2'b10: output_signal = 4'b0100;
-2'b11: output_signal = 4'b1000;
-default: output_signal = 4'b0000;  % Handling unexpected values
-endcase
+	statement;
+end
+else if (expression2)
+begin
+	statement;
+end
+else
+begin
+	statement;
 end
 \end{vhdl}
 
-In this example, the \texttt{input\_signal} determines which value is assigned to \texttt{output\_signal} based on its binary value. The \texttt{default} case is used to handle any unexpected values safely.
+
+\begin{adjustbox}{valign=t,minipage={1\textwidth}}
+\subsection{Example - 2-to-1 MUX}
+Using what we've learned so far
+\newline 
+\begin{adjustbox}{valign=t,minipage={.40\textwidth}}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{circuits/6.12.2_2.png}
+\end{center}
+\end{adjustbox}
+\hspace*{-40px}
+\hfill
+\vline
+\hfill
+\noindent
+\begin{adjustbox}{valign=t,minipage={.40\textwidth}}
+\begin{vhdl}
+module my_2to1mux ( input w1, w2, s, output reg f );
+	always @*
+		begin
+		if (s == 0) 
+		begin
+			f = w1; 
+		end
+		else 
+		begin
+			f = w2; 
+		end
+	end
+endmodule
+\end{vhdl}
+\end{adjustbox}
+\end{adjustbox}
+\vspace*{-20px}
+\begin{adjustbox}{valign=t,minipage={1\textwidth}}
+\subsection{Case Statement} 
+\textit{Personal Remark. Switch in java} \newline
+\vspace{-10px}
+\subsubsection{Syntax}
+\begin{vhdl}
+case (expression)
+    alternative1:
+	begin
+        statements;
+    end
+    alternative2: 
+	begin
+        statements;
+    end
+    default: 
+	begin
+        statements;
+    end
+endcase
+\end{vhdl}
+\end{adjustbox}
+\vfill
+\begin{adjustbox}{valign=t,minipage={0.9\textwidth}}
+\begin{adjustbox}{valign=t,minipage={.40\textwidth}}
+\vfill
+\subsubsection{Example - Full Adder}
+\vskip 5px
+Using the truth table of a Full-Adder, let's use a case statement to implement it:
+\begin{center}
+\begin{tabular}{|c|c|c||c|c|}
+		\hline
+		$x$ & $y$ & $C_{in}$ & $s$ & $C_{out}$ \\
+		\hline
+		0 & 0 & 0 & 0 & 0 \\
+		0 & 0 & 1 & 1 & 0 \\
+		0 & 1 & 0 & 1 & 0 \\
+		0 & 1 & 1 & 0 & 1 \\
+		1 & 0 & 0 & 1 & 0 \\
+		1 & 0 & 1 & 0 & 1 \\
+		1 & 1 & 0 & 0 & 1 \\
+		1 & 1 & 1 & 1 & 1 \\
+		\hline
+\end{tabular}
+\end{center}
+\vfill
+\end{adjustbox}
+\hfill
+\noindent
+\begin{adjustbox}{valign=t,minipage={.50\textwidth}}
+\small
+\begin{vhdl}
+module fulladd (input x, y, Cin, output reg s, Cout);
+	always @*
+	begin
+		case ({x, y, Cin})
+		3'b000: {s, Cout} = 'b00;
+		3'b001: {s, Cout} = 'b10;
+		3'b010: {s, Cout} = 'b10;
+		3'b011: {s, Cout} = 'b01;
+		3'b100: {s, Cout} = 'b10;
+		3'b101: {s, Cout} = 'b01;
+		3'b110: {s, Cout} = 'b01;
+		3'b111: {s, Cout} = 'b11;
+		endcase
+	end
+endmodule
+\end{vhdl}
+\end{adjustbox}
+\end{adjustbox}
 
 
 \end{document}

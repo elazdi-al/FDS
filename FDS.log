@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.19)  2 MAY 2024 16:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.19)  2 MAY 2024 18:31
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -870,37 +870,37 @@ LaTeX Warning: Unused global option(s):
 (./FDS.aux)
 \openout1 = `FDS.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Info: Redefining \microtypecontext on input line 96.
-Package microtype Info: Applying patch `item' on input line 96.
-Package microtype Info: Applying patch `toc' on input line 96.
-Package microtype Info: Applying patch `eqnum' on input line 96.
-Package microtype Info: Applying patch `footnote' on input line 96.
-Package microtype Info: Applying patch `verbatim' on input line 96.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Info: Redefining \microtypecontext on input line 118.
+Package microtype Info: Applying patch `item' on input line 118.
+Package microtype Info: Applying patch `toc' on input line 118.
+Package microtype Info: Applying patch `eqnum' on input line 118.
+Package microtype Info: Applying patch `footnote' on input line 118.
+Package microtype Info: Applying patch `verbatim' on input line 118.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 96.
+LaTeX Info: Redefining \showhyphens on input line 118.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -941,7 +941,7 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 96.
+Package hyperref Info: Link coloring OFF on input line 118.
 (./FDS.out) (./FDS.out)
 \@outlinefile=\write4
 \openout4 = `FDS.out'.
@@ -965,7 +965,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package ragged2e Info: ABD: executing \RaggedRight on input line 96.
+Package ragged2e Info: ABD: executing \RaggedRight on input line 118.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -974,7 +974,7 @@ Package caption Info: End \AtBeginDocument code.
 
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 125.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 147.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -982,13 +982,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 125.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 147.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 125.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 147.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -1052,7 +1052,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 ]
 Chapter 1.
 
-Overfull \hbox (3.76382pt too wide) in paragraph at lines 157--158
+Overfull \hbox (3.76382pt too wide) in paragraph at lines 179--180
 []\OT1/cmr/m/n/12 (-20) The \OT1/cmr/bx/n/12 (-20) set size\OT1/cmr/m/n/12 (-20) , the max-i-mum num-ber of rep-re-sentable digit vec-tors is: $\OML/cmm/m/it/12 K \OT1/cmr/m/n/12 (-20) = [][] \OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 D[]\OMS/cmsy/m/n/12 j$  
  []
 
@@ -1060,7 +1060,7 @@ Overfull \hbox (3.76382pt too wide) in paragraph at lines 157--158
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.193 		\item[]
+l.215 		\item[]
                 The weight vector in a fixed-radix system is given by: [1
 
 ]
@@ -1075,14 +1075,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.246 		      	\item D
+l.268 		      	\item D
                       ecimal: \{0, 1, \ldots, 9\} [2{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 246.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 268.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 246.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 268.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1095,14 +1095,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.256 	\newpage
+l.278 	\newpage
                 [3]
-Overfull \hbox (0.10352pt too wide) in paragraph at lines 262--263
+Overfull \hbox (0.10352pt too wide) in paragraph at lines 284--285
 []\OT1/cmr/m/it/12 (+18) Remark. \OT1/cmr/m/n/12 (+18) Programming languages often use the prefix 0x to denote a hexadecimal 
  []
 
 
-Overfull \hbox (0.10922pt too wide) in paragraph at lines 303--304
+Overfull \hbox (0.10922pt too wide) in paragraph at lines 325--326
 \OT1/cmr/m/n/12 (+11) To convert a binary number to decimal, multiply each bit by two raised to the power of 
  []
 
@@ -1117,7 +1117,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.312 	\newpage
+l.334 	\newpage
                 [4]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1130,9 +1130,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.377 	\begin{tabular}
+l.399 	\begin{tabular}
                       {rclr} [5]
-Overfull \hbox (0.18053pt too wide) in paragraph at lines 400--401
+Overfull \hbox (0.18053pt too wide) in paragraph at lines 422--423
 \OT1/cmr/m/n/12 (+16) To convert a binary number to octal, group every three binary digits into a single octal 
  []
 
@@ -1147,7 +1147,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.426 	\end{flalign*}
+l.448 	\end{flalign*}
                       [6]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1160,9 +1160,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.455 	\newpage
+l.477 	\newpage
                 [7]
-Overfull \hbox (0.13065pt too wide) in paragraph at lines 462--463
+Overfull \hbox (0.13065pt too wide) in paragraph at lines 484--485
 []\OT1/cmr/m/n/12 (+9) Main dis-ad-van-tage of SM: com-plex dig-i-tal cir-cuits for arith-metic op-er-a-tions (ad-di- 
  []
 
@@ -1177,7 +1177,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.8}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.516 	\end{itemize}
+l.538 	\end{itemize}
                      [8]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1187,7 +1187,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [9]
-Overfull \hbox (20.0562pt too wide) in paragraph at lines 599--599
+Overfull \hbox (20.0562pt too wide) in paragraph at lines 621--621
 []\OT1/cmr/bx/n/17.28 (-20) Range Ex-ten-sion Al-go-rithm in Sign-and-Magnitude  
  []
 
@@ -1233,7 +1233,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [14]
 Chapter 2.
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 788.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 810.
 [15
 
 ]
@@ -1245,10 +1245,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [16]
-<circle-twoscomplement.png, id=1082, 696.201pt x 544.434pt>
+<circle-twoscomplement.png, id=1092, 696.201pt x 544.434pt>
 File: circle-twoscomplement.png Graphic file (type png)
 <use circle-twoscomplement.png>
-Package pdftex.def Info: circle-twoscomplement.png  used on input line 889.
+Package pdftex.def Info: circle-twoscomplement.png  used on input line 911.
 (pdftex.def)             Requested size: 186.65175pt x 145.96071pt.
 
 
@@ -1267,7 +1267,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [18]
-Overfull \hbox (0.20735pt too wide) in paragraph at lines 939--940
+Overfull \hbox (0.20735pt too wide) in paragraph at lines 961--962
 []\OT1/cmr/m/n/10.95 (+17) Binary multiplication operates similarly to decimal multiplication but is performed bit by bit. 
  []
 
@@ -1291,7 +1291,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [21]
-Overfull \hbox (0.11354pt too wide) in paragraph at lines 1062--1063
+Overfull \hbox (0.11354pt too wide) in paragraph at lines 1084--1085
 \OT1/cmr/m/n/10.95 (+19) The range of a fixed-point number is the difference between the largest and smallest numbers 
  []
 
@@ -1319,7 +1319,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [24]
-Overfull \hbox (0.10963pt too wide) in paragraph at lines 1189--1190
+Overfull \hbox (0.10963pt too wide) in paragraph at lines 1211--1212
 \OT1/cmr/m/n/10.95 (+8) Normalization re-moves re-dun-dancy from floating-point rep-re-sen-ta-tion, mak-ing it unique. Con- 
  []
 
@@ -1381,7 +1381,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [31]
 Chapter 4.
 
-Overfull \hbox (55.01936pt too wide) detected at line 1511
+Overfull \hbox (55.01936pt too wide) detected at line 1533
 []
  []
 
@@ -1396,12 +1396,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [33]
-Overfull \hbox (0.13126pt too wide) in paragraph at lines 1603--1604
+Overfull \hbox (0.13126pt too wide) in paragraph at lines 1625--1626
 []\OT1/cmr/m/n/10.95 (+11) Identify and mark results that are special values (e.g., infinity, NaN) based on 
  []
 
 
-Overfull \hbox (0.12521pt too wide) in paragraph at lines 1608--1608
+Overfull \hbox (0.12521pt too wide) in paragraph at lines 1630--1630
 [][]\OT1/cmr/bx/n/17.28 (-9) Step 1: Floating-Point Ad-di-tion/-Sub-trac-tion De-tailed 
  []
 
@@ -1416,12 +1416,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [34]
-Overfull \hbox (0.18427pt too wide) in paragraph at lines 1651--1652
+Overfull \hbox (0.18427pt too wide) in paragraph at lines 1673--1674
 \OT1/cmr/m/n/10.95 (+15) After normalization, the next step is to round the result to fit within the target floating-point 
  []
 
 
-Overfull \hbox (0.1418pt too wide) in paragraph at lines 1661--1662
+Overfull \hbox (0.1418pt too wide) in paragraph at lines 1683--1684
 []\OT1/cmr/bx/n/10.95 (+5) Round Down (Towards Zero): \OT1/cmr/m/n/10.95 (+5) Always round towards zero, truncating any 
  []
 
@@ -1445,12 +1445,12 @@ Chapter 5.
 [37
 
 ]
-Overfull \hbox (0.22006pt too wide) in paragraph at lines 1765--1766
+Overfull \hbox (0.22006pt too wide) in paragraph at lines 1787--1788
 \OT1/cmr/m/n/10.95 (+17) Imagine a block (vector) of binary numbers in FP (Floating Point) format, where each vector 
  []
 
 
-Overfull \hbox (0.10983pt too wide) in paragraph at lines 1803--1804
+Overfull \hbox (0.10983pt too wide) in paragraph at lines 1825--1826
 []\OT1/cmr/m/n/10.95 (+4) Find the largest exponent in the block of FP numbers. This will be the shared exponent 
  []
 
@@ -1463,33 +1463,33 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [38]
 Chapter 6.
-<circuits/6.1.2.png, id=1231, 401.5pt x 210.7875pt>
+<circuits/6.1.2.png, id=1241, 401.5pt x 210.7875pt>
 File: circuits/6.1.2.png Graphic file (type png)
 <use circuits/6.1.2.png>
-Package pdftex.def Info: circuits/6.1.2.png  used on input line 1855.
+Package pdftex.def Info: circuits/6.1.2.png  used on input line 1877.
 (pdftex.def)             Requested size: 186.65175pt x 97.99266pt.
 [39
 
  <./circuits/6.1.2.png>]
-<circuits/6.1.3.png, id=1238, 497.86pt x 219.82124pt>
+<circuits/6.1.3.png, id=1248, 497.86pt x 219.82124pt>
 File: circuits/6.1.3.png Graphic file (type png)
 <use circuits/6.1.3.png>
-Package pdftex.def Info: circuits/6.1.3.png  used on input line 1869.
+Package pdftex.def Info: circuits/6.1.3.png  used on input line 1891.
 (pdftex.def)             Requested size: 186.65175pt x 82.41263pt.
-<circuits/6.1.3_2.png, id=1239, 542.025pt x 250.9375pt>
+<circuits/6.1.3_2.png, id=1249, 542.025pt x 250.9375pt>
 File: circuits/6.1.3_2.png Graphic file (type png)
 <use circuits/6.1.3_2.png>
-Package pdftex.def Info: circuits/6.1.3_2.png  used on input line 1879.
+Package pdftex.def Info: circuits/6.1.3_2.png  used on input line 1901.
 (pdftex.def)             Requested size: 227.62206pt x 105.38153pt.
-<circuits/6.1.3_3.png, id=1240, 590.205pt x 288.07625pt>
+<circuits/6.1.3_3.png, id=1250, 590.205pt x 288.07625pt>
 File: circuits/6.1.3_3.png Graphic file (type png)
 <use circuits/6.1.3_3.png>
-Package pdftex.def Info: circuits/6.1.3_3.png  used on input line 1887.
+Package pdftex.def Info: circuits/6.1.3_3.png  used on input line 1909.
 (pdftex.def)             Requested size: 227.62206pt x 111.1009pt.
-<circuits/6.1.3_4.png, id=1241, 590.205pt x 288.07625pt>
+<circuits/6.1.3_4.png, id=1251, 590.205pt x 288.07625pt>
 File: circuits/6.1.3_4.png Graphic file (type png)
 <use circuits/6.1.3_4.png>
-Package pdftex.def Info: circuits/6.1.3_4.png  used on input line 1896.
+Package pdftex.def Info: circuits/6.1.3_4.png  used on input line 1918.
 (pdftex.def)             Requested size: 227.62206pt x 111.1009pt.
 
 
@@ -1524,20 +1524,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [43]
-<circuits/6.3.9.png, id=1270, 825.0825pt x 568.1225pt>
+<circuits/6.3.9.png, id=1280, 825.0825pt x 568.1225pt>
 File: circuits/6.3.9.png Graphic file (type png)
 <use circuits/6.3.9.png>
-Package pdftex.def Info: circuits/6.3.9.png  used on input line 2144.
+Package pdftex.def Info: circuits/6.3.9.png  used on input line 2166.
 (pdftex.def)             Requested size: 186.65175pt x 128.51555pt.
-<circuits/6.4.png, id=1271, 1491.5725pt x 533.995pt>
+<circuits/6.4.png, id=1281, 1491.5725pt x 533.995pt>
 File: circuits/6.4.png Graphic file (type png)
 <use circuits/6.4.png>
-Package pdftex.def Info: circuits/6.4.png  used on input line 2175.
+Package pdftex.def Info: circuits/6.4.png  used on input line 2197.
 (pdftex.def)             Requested size: 273.14923pt x 97.78531pt.
-<circuits/6.4_2.png, id=1272, 1082.0425pt x 979.66pt>
+<circuits/6.4_2.png, id=1282, 1082.0425pt x 979.66pt>
 File: circuits/6.4_2.png Graphic file (type png)
 <use circuits/6.4_2.png>
-Package pdftex.def Info: circuits/6.4_2.png  used on input line 2181.
+Package pdftex.def Info: circuits/6.4_2.png  used on input line 2203.
 (pdftex.def)             Requested size: 168.4381pt x 152.48851pt.
 
 
@@ -1548,10 +1548,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [44 <./circuits/6.3.9.png> <./circuits/6.4.png (PNG copy)> <./circuits/6.4_2.png (PNG copy)>]
-<circuits/6.5.png, id=1281, 523.9575pt x 124.465pt>
+<circuits/6.5.png, id=1291, 523.9575pt x 124.465pt>
 File: circuits/6.5.png Graphic file (type png)
 <use circuits/6.5.png>
-Package pdftex.def Info: circuits/6.5.png  used on input line 2211.
+Package pdftex.def Info: circuits/6.5.png  used on input line 2233.
 (pdftex.def)             Requested size: 273.14923pt x 64.88739pt.
 
 
@@ -1562,7 +1562,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [45 <./circuits/6.5.png>]
-Overfull \hbox (7.51143pt too wide) in paragraph at lines 2283--2285
+Overfull \hbox (7.51143pt too wide) in paragraph at lines 2305--2307
  [][] 
  []
 
@@ -1602,19 +1602,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [50]
-Overfull \hbox (0.19035pt too wide) in paragraph at lines 2540--2541
+Overfull \hbox (0.19035pt too wide) in paragraph at lines 2562--2563
 []\OT1/cmr/m/it/10.95 (+18) Personal Remark. Don't forget the objective here, these are just two ways, equivalent ways, to 
  []
 
-<circuits/6.9.1.png, id=1332, 617.30624pt x 202.7575pt>
+<circuits/6.9.1.png, id=1342, 617.30624pt x 202.7575pt>
 File: circuits/6.9.1.png Graphic file (type png)
 <use circuits/6.9.1.png>
-Package pdftex.def Info: circuits/6.9.1.png  used on input line 2564.
+Package pdftex.def Info: circuits/6.9.1.png  used on input line 2586.
 (pdftex.def)             Requested size: 159.33821pt x 52.33516pt.
-<circuits/6.9.2.png, id=1333, 617.30624pt x 173.64874pt>
+<circuits/6.9.2.png, id=1343, 617.30624pt x 173.64874pt>
 File: circuits/6.9.2.png Graphic file (type png)
 <use circuits/6.9.2.png>
-Package pdftex.def Info: circuits/6.9.2.png  used on input line 2603.
+Package pdftex.def Info: circuits/6.9.2.png  used on input line 2625.
 (pdftex.def)             Requested size: 163.8912pt x 46.10149pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1632,24 +1632,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [52]
-Overfull \hbox (12.67868pt too wide) in paragraph at lines 2660--2660
+Overfull \hbox (12.67868pt too wide) in paragraph at lines 2682--2682
 []\OT1/cmr/bx/n/17.28 (-20) Even and Odd De-tec-tors (XNOR and XOR Gates)  
  []
 
-<circuits/6.11.1.png, id=1354, 204.765pt x 148.555pt>
+<circuits/6.11.1.png, id=1364, 204.765pt x 148.555pt>
 File: circuits/6.11.1.png Graphic file (type png)
 <use circuits/6.11.1.png>
-Package pdftex.def Info: circuits/6.11.1.png  used on input line 2683.
+Package pdftex.def Info: circuits/6.11.1.png  used on input line 2705.
 (pdftex.def)             Requested size: 92.18567pt x 66.88086pt.
-<circuits/6.11.2.png, id=1355, 228.855pt x 174.6525pt>
+<circuits/6.11.2.png, id=1365, 228.855pt x 174.6525pt>
 File: circuits/6.11.2.png Graphic file (type png)
 <use circuits/6.11.2.png>
-Package pdftex.def Info: circuits/6.11.2.png  used on input line 2710.
+Package pdftex.def Info: circuits/6.11.2.png  used on input line 2732.
 (pdftex.def)             Requested size: 92.18567pt x 70.35277pt.
-<circuits/6.12.1.png, id=1356, 410.53375pt x 186.6975pt>
+<circuits/6.12.1.png, id=1366, 410.53375pt x 186.6975pt>
 File: circuits/6.12.1.png Graphic file (type png)
 <use circuits/6.12.1.png>
-Package pdftex.def Info: circuits/6.12.1.png  used on input line 2720.
+Package pdftex.def Info: circuits/6.12.1.png  used on input line 2742.
 (pdftex.def)             Requested size: 291.35844pt x 132.49916pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1667,15 +1667,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [54 <./circuits/6.12.1.png>]
-<circuits/6.12.2.png, id=1372, 561.09625pt x 325.215pt>
+<circuits/6.12.2.png, id=1382, 561.09625pt x 325.215pt>
 File: circuits/6.12.2.png Graphic file (type png)
 <use circuits/6.12.2.png>
-Package pdftex.def Info: circuits/6.12.2.png  used on input line 2759.
+Package pdftex.def Info: circuits/6.12.2.png  used on input line 2781.
 (pdftex.def)             Requested size: 184.37135pt x 106.85977pt.
-<circuits/6.12.2_2.png, id=1373, 375.4025pt x 349.305pt>
+<circuits/6.12.2_2.png, id=1383, 375.4025pt x 349.305pt>
 File: circuits/6.12.2_2.png Graphic file (type png)
 <use circuits/6.12.2_2.png>
-Package pdftex.def Info: circuits/6.12.2_2.png  used on input line 2766.
+Package pdftex.def Info: circuits/6.12.2_2.png  used on input line 2788.
 (pdftex.def)             Requested size: 136.57462pt x 127.08218pt.
 
 
@@ -1690,15 +1690,15 @@ Chapter 8.
 [56
 
 ]
-<circuits/7.1.3.png, id=1385, 532.99126pt x 358.33875pt>
+<circuits/7.1.3.png, id=1395, 532.99126pt x 358.33875pt>
 File: circuits/7.1.3.png Graphic file (type png)
 <use circuits/7.1.3.png>
-Package pdftex.def Info: circuits/7.1.3.png  used on input line 2902.
+Package pdftex.def Info: circuits/7.1.3.png  used on input line 2924.
 (pdftex.def)             Requested size: 163.8912pt x 110.18713pt.
-<circuits/7.1.3_2.png, id=1386, 656.4525pt x 214.8025pt>
+<circuits/7.1.3_2.png, id=1396, 656.4525pt x 214.8025pt>
 File: circuits/7.1.3_2.png Graphic file (type png)
 <use circuits/7.1.3_2.png>
-Package pdftex.def Info: circuits/7.1.3_2.png  used on input line 2910.
+Package pdftex.def Info: circuits/7.1.3_2.png  used on input line 2932.
 (pdftex.def)             Requested size: 163.8912pt x 53.62837pt.
 
 
@@ -1717,15 +1717,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [58]
-<circuits/8.1.6.png, id=1402, 477.785pt x 366.36874pt>
+<circuits/8.1.6.png, id=1412, 477.785pt x 366.36874pt>
 File: circuits/8.1.6.png Graphic file (type png)
 <use circuits/8.1.6.png>
-Package pdftex.def Info: circuits/8.1.6.png  used on input line 3000.
+Package pdftex.def Info: circuits/8.1.6.png  used on input line 3022.
 (pdftex.def)             Requested size: 163.8912pt x 125.67061pt.
-<circuits/8.1.6_2.png, id=1403, 321.2pt x 274.02374pt>
+<circuits/8.1.6_2.png, id=1413, 321.2pt x 274.02374pt>
 File: circuits/8.1.6_2.png Graphic file (type png)
 <use circuits/8.1.6_2.png>
-Package pdftex.def Info: circuits/8.1.6_2.png  used on input line 3010.
+Package pdftex.def Info: circuits/8.1.6_2.png  used on input line 3032.
 (pdftex.def)             Requested size: 163.8912pt x 139.82133pt.
 
 
@@ -1736,10 +1736,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [59 <./circuits/8.1.6.png>]
-<circuits/8.1.7.png, id=1410, 876.27374pt x 284.06125pt>
+<circuits/8.1.7.png, id=1420, 876.27374pt x 284.06125pt>
 File: circuits/8.1.7.png Graphic file (type png)
 <use circuits/8.1.7.png>
-Package pdftex.def Info: circuits/8.1.7.png  used on input line 3026.
+Package pdftex.def Info: circuits/8.1.7.png  used on input line 3048.
 (pdftex.def)             Requested size: 291.35844pt x 94.45134pt.
 
 
@@ -1758,15 +1758,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [61]
-<circuits/8.2.4.png, id=1421, 249.93375pt x 222.8325pt>
+<circuits/8.2.4.png, id=1431, 249.93375pt x 222.8325pt>
 File: circuits/8.2.4.png Graphic file (type png)
 <use circuits/8.2.4.png>
-Package pdftex.def Info: circuits/8.2.4.png  used on input line 3145.
+Package pdftex.def Info: circuits/8.2.4.png  used on input line 3167.
 (pdftex.def)             Requested size: 163.8912pt x 146.12466pt.
-<circuits/8.2.5.png, id=1422, 711.65875pt x 222.8325pt>
+<circuits/8.2.5.png, id=1432, 711.65875pt x 222.8325pt>
 File: circuits/8.2.5.png Graphic file (type png)
 <use circuits/8.2.5.png>
-Package pdftex.def Info: circuits/8.2.5.png  used on input line 3159.
+Package pdftex.def Info: circuits/8.2.5.png  used on input line 3181.
 (pdftex.def)             Requested size: 254.93655pt x 79.82181pt.
 
 
@@ -1777,25 +1777,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [62 <./circuits/8.2.4.png> <./circuits/8.2.5.png>]
-<circuits/8.3.png, id=1429, 742.775pt x 354.32375pt>
+<circuits/8.3.png, id=1439, 742.775pt x 354.32375pt>
 File: circuits/8.3.png Graphic file (type png)
 <use circuits/8.3.png>
-Package pdftex.def Info: circuits/8.3.png  used on input line 3194.
+Package pdftex.def Info: circuits/8.3.png  used on input line 3216.
 (pdftex.def)             Requested size: 368.74272pt x 175.9017pt.
 
-Overfull \hbox (54.85713pt too wide) detected at line 3236
+Overfull \hbox (54.85713pt too wide) detected at line 3258
 []
  []
 
 
-Overfull \hbox (42.8516pt too wide) detected at line 3236
+Overfull \hbox (42.8516pt too wide) detected at line 3258
 []
  []
 
-<circuits/8.4.2.png, id=1430, 488.82625pt x 359.3425pt>
+<circuits/8.4.2.png, id=1440, 488.82625pt x 359.3425pt>
 File: circuits/8.4.2.png Graphic file (type png)
 <use circuits/8.4.2.png>
-Package pdftex.def Info: circuits/8.4.2.png  used on input line 3240.
+Package pdftex.def Info: circuits/8.4.2.png  used on input line 3262.
 (pdftex.def)             Requested size: 218.51521pt x 160.6334pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1805,24 +1805,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [63 <./circuits/8.3.png>]
-Overfull \hbox (77.62073pt too wide) detected at line 3273
+Overfull \hbox (77.62073pt too wide) detected at line 3295
 []
  []
 
 
-Overfull \hbox (65.61519pt too wide) detected at line 3273
+Overfull \hbox (65.61519pt too wide) detected at line 3295
 []
  []
 
 
-Overfull \hbox (24.04575pt too wide) in paragraph at lines 3273--3274
+Overfull \hbox (24.04575pt too wide) in paragraph at lines 3295--3296
 [][]  
  []
 
-<circuits/8.4.2_2.png, id=1436, 561.09625pt x 367.3725pt>
+<circuits/8.4.2_2.png, id=1446, 561.09625pt x 367.3725pt>
 File: circuits/8.4.2_2.png Graphic file (type png)
 <use circuits/8.4.2_2.png>
-Package pdftex.def Info: circuits/8.4.2_2.png  used on input line 3278.
+Package pdftex.def Info: circuits/8.4.2_2.png  used on input line 3300.
 (pdftex.def)             Requested size: 227.62206pt x 149.03168pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1832,14 +1832,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [64 <./circuits/8.4.2.png> <./circuits/8.4.2_2.png>]
-Overfull \hbox (0.1364pt too wide) in paragraph at lines 3288--3289
+Overfull \hbox (0.1364pt too wide) in paragraph at lines 3310--3311
 \OT1/cmr/m/n/10.95 (+19) form-ing bi-nary ad-di-tion and sub-trac-tion. The key con-cept to un-der-stand in-cludes the \OT1/cmr/bx/n/10.95 (+19) worst- 
  []
 
-<circuits/8.4.3.png, id=1445, 791.95876pt x 361.35pt>
+<circuits/8.4.3.png, id=1455, 791.95876pt x 361.35pt>
 File: circuits/8.4.3.png Graphic file (type png)
 <use circuits/8.4.3.png>
-Package pdftex.def Info: circuits/8.4.3.png  used on input line 3301.
+Package pdftex.def Info: circuits/8.4.3.png  used on input line 3323.
 (pdftex.def)             Requested size: 368.74272pt x 168.24657pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1849,10 +1849,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [65 <./circuits/8.4.3.png>]
-<circuits/8.4.4.png, id=1452, 1063.975pt x 405.515pt>
+<circuits/8.4.4.png, id=1462, 1063.975pt x 405.515pt>
 File: circuits/8.4.4.png Graphic file (type png)
 <use circuits/8.4.4.png>
-Package pdftex.def Info: circuits/8.4.4.png  used on input line 3318.
+Package pdftex.def Info: circuits/8.4.4.png  used on input line 3340.
 (pdftex.def)             Requested size: 368.74272pt x 140.54015pt.
 
 
@@ -1863,15 +1863,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [66 <./circuits/8.4.4.png>]
-<circuits/8.5.1.png, id=1458, 1119.18124pt x 178.6675pt>
+<circuits/8.5.1.png, id=1468, 1119.18124pt x 178.6675pt>
 File: circuits/8.5.1.png Graphic file (type png)
 <use circuits/8.5.1.png>
-Package pdftex.def Info: circuits/8.5.1.png  used on input line 3346.
+Package pdftex.def Info: circuits/8.5.1.png  used on input line 3368.
 (pdftex.def)             Requested size: 368.74272pt x 58.86504pt.
-<circuits/8.5.1_2.png, id=1459, 1255.69125pt x 320.19624pt>
+<circuits/8.5.1_2.png, id=1469, 1255.69125pt x 320.19624pt>
 File: circuits/8.5.1_2.png Graphic file (type png)
 <use circuits/8.5.1_2.png>
-Package pdftex.def Info: circuits/8.5.1_2.png  used on input line 3366.
+Package pdftex.def Info: circuits/8.5.1_2.png  used on input line 3388.
 (pdftex.def)             Requested size: 368.74272pt x 94.02711pt.
 
 
@@ -1882,10 +1882,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [67 <./circuits/8.5.1.png> <./circuits/8.5.1_2.png>]
-<circuits/8.5.2.png, id=1470, 866.23625pt x 330.23375pt>
+<circuits/8.5.2.png, id=1480, 866.23625pt x 330.23375pt>
 File: circuits/8.5.2.png Graphic file (type png)
 <use circuits/8.5.2.png>
-Package pdftex.def Info: circuits/8.5.2.png  used on input line 3404.
+Package pdftex.def Info: circuits/8.5.2.png  used on input line 3426.
 (pdftex.def)             Requested size: 368.74272pt x 140.57675pt.
 
 
@@ -1897,38 +1897,38 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [68 <./circuits/8.5.2.png>]
 Chapter 9.
-<circuits/9.1.1.png, id=1477, 186.6975pt x 355.3275pt>
+<circuits/9.1.1.png, id=1487, 186.6975pt x 355.3275pt>
 File: circuits/9.1.1.png Graphic file (type png)
 <use circuits/9.1.1.png>
-Package pdftex.def Info: circuits/9.1.1.png  used on input line 3464.
+Package pdftex.def Info: circuits/9.1.1.png  used on input line 3486.
 (pdftex.def)             Requested size: 55.76933pt x 106.1382pt.
-<circuits/9.1.1_3.png, id=1478, 88.33pt x 266.9975pt>
+<circuits/9.1.1_3.png, id=1488, 88.33pt x 266.9975pt>
 File: circuits/9.1.1_3.png Graphic file (type png)
 <use circuits/9.1.1_3.png>
-Package pdftex.def Info: circuits/9.1.1_3.png  used on input line 3483.
+Package pdftex.def Info: circuits/9.1.1_3.png  used on input line 3505.
 (pdftex.def)             Requested size: 40.9728pt x 123.85106pt.
 [69
 
  <./circuits/9.1.1.png>]
-<circuits/9.1.1_2.png, id=1484, 145.54375pt x 353.32pt>
+<circuits/9.1.1_2.png, id=1494, 145.54375pt x 353.32pt>
 File: circuits/9.1.1_2.png Graphic file (type png)
 <use circuits/9.1.1_2.png>
-Package pdftex.def Info: circuits/9.1.1_2.png  used on input line 3499.
+Package pdftex.def Info: circuits/9.1.1_2.png  used on input line 3521.
 (pdftex.def)             Requested size: 40.9728pt x 99.46265pt.
-<circuits/9.1.2.png, id=1485, 261.97874pt x 350.30875pt>
+<circuits/9.1.2.png, id=1495, 261.97874pt x 350.30875pt>
 File: circuits/9.1.2.png Graphic file (type png)
 <use circuits/9.1.2.png>
-Package pdftex.def Info: circuits/9.1.2.png  used on input line 3514.
+Package pdftex.def Info: circuits/9.1.2.png  used on input line 3536.
 (pdftex.def)             Requested size: 72.83682pt x 97.39088pt.
-<circuits/9.1.2_2.png, id=1486, 113.42375pt x 345.29pt>
+<circuits/9.1.2_2.png, id=1496, 113.42375pt x 345.29pt>
 File: circuits/9.1.2_2.png Graphic file (type png)
 <use circuits/9.1.2_2.png>
-Package pdftex.def Info: circuits/9.1.2_2.png  used on input line 3531.
+Package pdftex.def Info: circuits/9.1.2_2.png  used on input line 3553.
 (pdftex.def)             Requested size: 40.9728pt x 124.73106pt.
-<circuits/9.1.2_3.png, id=1487, 239.89626pt x 345.29pt>
+<circuits/9.1.2_3.png, id=1497, 239.89626pt x 345.29pt>
 File: circuits/9.1.2_3.png Graphic file (type png)
 <use circuits/9.1.2_3.png>
-Package pdftex.def Info: circuits/9.1.2_3.png  used on input line 3547.
+Package pdftex.def Info: circuits/9.1.2_3.png  used on input line 3569.
 (pdftex.def)             Requested size: 72.83682pt x 104.83647pt.
 
 
@@ -1947,13 +1947,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [71 <./circuits/9.1.2_3.png>]
-<circuits/9.1.3.png, id=1502, 329.23pt x 399.4925pt>
+<circuits/9.1.3.png, id=1512, 329.23pt x 399.4925pt>
 File: circuits/9.1.3.png Graphic file (type png)
 <use circuits/9.1.3.png>
-Package pdftex.def Info: circuits/9.1.3.png  used on input line 3563.
+Package pdftex.def Info: circuits/9.1.3.png  used on input line 3585.
 (pdftex.def)             Requested size: 136.57462pt x 165.72533pt.
 
-Overfull \hbox (3.65pt too wide) in paragraph at lines 3554--3565
+Overfull \hbox (3.65pt too wide) in paragraph at lines 3576--3587
 $[]$ $[]$  
  []
 
@@ -1965,15 +1965,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [72 <./circuits/9.1.3.png>]
-<circuits/9.1.4.png, id=1509, 439.6425pt x 466.74374pt>
+<circuits/9.1.4.png, id=1519, 439.6425pt x 466.74374pt>
 File: circuits/9.1.4.png Graphic file (type png)
 <use circuits/9.1.4.png>
-Package pdftex.def Info: circuits/9.1.4.png  used on input line 3605.
+Package pdftex.def Info: circuits/9.1.4.png  used on input line 3627.
 (pdftex.def)             Requested size: 182.09486pt x 193.31758pt.
-<circuits/9.1.5.png, id=1510, 355.3275pt x 399.4925pt>
+<circuits/9.1.5.png, id=1520, 355.3275pt x 399.4925pt>
 File: circuits/9.1.5.png Graphic file (type png)
 <use circuits/9.1.5.png>
-Package pdftex.def Info: circuits/9.1.5.png  used on input line 3622.
+Package pdftex.def Info: circuits/9.1.5.png  used on input line 3644.
 (pdftex.def)             Requested size: 136.57462pt x 153.55211pt.
 
 
@@ -1984,15 +1984,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [73 <./circuits/9.1.4.png> <./circuits/9.1.5.png>]
-<circuits/9.1.5_2.png, id=1520, 329.23pt x 387.4475pt>
+<circuits/9.1.5_2.png, id=1530, 329.23pt x 387.4475pt>
 File: circuits/9.1.5_2.png Graphic file (type png)
 <use circuits/9.1.5_2.png>
-Package pdftex.def Info: circuits/9.1.5_2.png  used on input line 3647.
+Package pdftex.def Info: circuits/9.1.5_2.png  used on input line 3669.
 (pdftex.def)             Requested size: 136.57462pt x 160.72859pt.
-<circuits/9.1.5_3.png, id=1521, 461.725pt x 417.56pt>
+<circuits/9.1.5_3.png, id=1531, 461.725pt x 417.56pt>
 File: circuits/9.1.5_3.png Graphic file (type png)
 <use circuits/9.1.5_3.png>
-Package pdftex.def Info: circuits/9.1.5_3.png  used on input line 3671.
+Package pdftex.def Info: circuits/9.1.5_3.png  used on input line 3693.
 (pdftex.def)             Requested size: 136.57462pt x 123.51044pt.
 
 
@@ -2003,7 +2003,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [74 <./circuits/9.1.5_2.png> <./circuits/9.1.5_3.png>]
-Overfull \hbox (581.01561pt too wide) in paragraph at lines 3696--3743
+Overfull \hbox (581.01561pt too wide) in paragraph at lines 3718--3765
 $[]$ |  $[]$  
  []
 
@@ -2015,10 +2015,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [75]
-<circuits/9.3.1.png, id=1536, 563.10374pt x 570.13pt>
+<circuits/9.3.1.png, id=1546, 563.10374pt x 570.13pt>
 File: circuits/9.3.1.png Graphic file (type png)
 <use circuits/9.3.1.png>
-Package pdftex.def Info: circuits/9.3.1.png  used on input line 3758.
+Package pdftex.def Info: circuits/9.3.1.png  used on input line 3780.
 (pdftex.def)             Requested size: 227.62206pt x 230.45772pt.
 
 
@@ -2029,10 +2029,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [76 <./circuits/9.3.1.png>]
-<circuits/9.3.2.png, id=1544, 605.26125pt x 290.08376pt>
+<circuits/9.3.2.png, id=1554, 605.26125pt x 290.08376pt>
 File: circuits/9.3.2.png Graphic file (type png)
 <use circuits/9.3.2.png>
-Package pdftex.def Info: circuits/9.3.2.png  used on input line 3796.
+Package pdftex.def Info: circuits/9.3.2.png  used on input line 3818.
 (pdftex.def)             Requested size: 364.19667pt x 174.54733pt.
 
 
@@ -2043,12 +2043,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [77 <./circuits/9.3.2.png>]
-Overfull \hbox (0.20587pt too wide) in paragraph at lines 3817--3818
+Overfull \hbox (0.20587pt too wide) in paragraph at lines 3839--3840
 \OT1/cmr/m/n/10.95 (+20) gates, termed as \OT1/cmr/bx/n/10.95 (+20) gate parasitic capacitance \OT1/cmr/m/n/10.95 (+20) (this is like unwanted electrical 'baggage' that 
  []
 
 
-Overfull \hbox (0.17561pt too wide) in paragraph at lines 3819--3820
+Overfull \hbox (0.17561pt too wide) in paragraph at lines 3841--3842
 []\OT1/cmr/m/n/10.95 (+5) When mul-ti-ple tran-sis-tors con-nect to a sin-gle logic gate in-put, their in-di-vid-ual par-a-sitic ca-pac- 
  []
 
@@ -2060,15 +2060,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [78]
-<circuits/9.5.png, id=1557, 392.46625pt x 101.37875pt>
+<circuits/9.5.png, id=1567, 392.46625pt x 101.37875pt>
 File: circuits/9.5.png Graphic file (type png)
 <use circuits/9.5.png>
-Package pdftex.def Info: circuits/9.5.png  used on input line 3862.
+Package pdftex.def Info: circuits/9.5.png  used on input line 3884.
 (pdftex.def)             Requested size: 136.57462pt x 35.27888pt.
-<circuits/9.5_1.png, id=1558, 409.53pt x 95.35625pt>
+<circuits/9.5_1.png, id=1568, 409.53pt x 95.35625pt>
 File: circuits/9.5_1.png Graphic file (type png)
 <use circuits/9.5_1.png>
-Package pdftex.def Info: circuits/9.5_1.png  used on input line 3875.
+Package pdftex.def Info: circuits/9.5_1.png  used on input line 3897.
 (pdftex.def)             Requested size: 136.57462pt x 31.80084pt.
 
 
@@ -2080,10 +2080,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [79 <./circuits/9.5.png> <./circuits/9.5_1.png>]
 Chapter 10.
-<circuits/10.1.png, id=1567, 953.5625pt x 135.50626pt>
+<circuits/10.1.png, id=1577, 953.5625pt x 135.50626pt>
 File: circuits/10.1.png Graphic file (type png)
 <use circuits/10.1.png>
-Package pdftex.def Info: circuits/10.1.png  used on input line 3884.
+Package pdftex.def Info: circuits/10.1.png  used on input line 3906.
 (pdftex.def)             Requested size: 305.01271pt x 43.34427pt.
 [80
 
@@ -2091,7 +2091,7 @@ Package pdftex.def Info: circuits/10.1.png  used on input line 3884.
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 3916.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 3937.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2109,10 +2109,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [82]
-<circuits/10.2.4.png, id=1602, 385.44pt x 364.36125pt>
+<circuits/10.2.4.png, id=1612, 385.44pt x 364.36125pt>
 File: circuits/10.2.4.png Graphic file (type png)
 <use circuits/10.2.4.png>
-Package pdftex.def Info: circuits/10.2.4.png  used on input line 4042.
+Package pdftex.def Info: circuits/10.2.4.png  used on input line 4062.
 (pdftex.def)             Requested size: 204.85846pt x 193.65538pt.
 
 
@@ -2123,10 +2123,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [83 <./circuits/10.2.4.png>]
-<circuits/10.2.4_2.png, id=1636, 458.71375pt x 150.5625pt>
+<circuits/10.2.4_2.png, id=1646, 458.71375pt x 150.5625pt>
 File: circuits/10.2.4_2.png Graphic file (type png)
 <use circuits/10.2.4_2.png>
-Package pdftex.def Info: circuits/10.2.4_2.png  used on input line 4084.
+Package pdftex.def Info: circuits/10.2.4_2.png  used on input line 4104.
 (pdftex.def)             Requested size: 318.66948pt x 104.60042pt.
 
 
@@ -2138,43 +2138,43 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [84 <./circuits/10.2.4_2.png>]
 Chapter 11.
-<circuits/11.1.png, id=1660, 546.04pt x 484.81125pt>
+<circuits/11.1.png, id=1670, 546.04pt x 484.81125pt>
 File: circuits/11.1.png Graphic file (type png)
 <use circuits/11.1.png>
-Package pdftex.def Info: circuits/11.1.png  used on input line 4123.
+Package pdftex.def Info: circuits/11.1.png  used on input line 4143.
 (pdftex.def)             Requested size: 218.51521pt x 194.00983pt.
-<circuits/11.1.1.png, id=1661, 364.36125pt x 258.9675pt>
+<circuits/11.1.1.png, id=1671, 364.36125pt x 258.9675pt>
 File: circuits/11.1.1.png Graphic file (type png)
 <use circuits/11.1.1.png>
-Package pdftex.def Info: circuits/11.1.1.png  used on input line 4136.
+Package pdftex.def Info: circuits/11.1.1.png  used on input line 4156.
 (pdftex.def)             Requested size: 218.51521pt x 155.3066pt.
 [85
 
  <./circuits/11.1.png> <./circuits/11.1.1.png>]
-<circuits/11.2.png, id=1668, 112.42pt x 94.3525pt>
+<circuits/11.2.png, id=1678, 112.42pt x 94.3525pt>
 File: circuits/11.2.png Graphic file (type png)
 <use circuits/11.2.png>
-Package pdftex.def Info: circuits/11.2.png  used on input line 4153.
+Package pdftex.def Info: circuits/11.2.png  used on input line 4173.
 (pdftex.def)             Requested size: 113.81102pt x 95.52415pt.
 
-Overfull \hbox (43.80014pt too wide) in paragraph at lines 4151--4154
+Overfull \hbox (43.80014pt too wide) in paragraph at lines 4171--4174
  []|  [] 
  []
 
-<circuits/11.2.1.png, id=1669, 127.47626pt x 90.3375pt>
+<circuits/11.2.1.png, id=1679, 127.47626pt x 90.3375pt>
 File: circuits/11.2.1.png Graphic file (type png)
 <use circuits/11.2.1.png>
-Package pdftex.def Info: circuits/11.2.1.png  used on input line 4187.
+Package pdftex.def Info: circuits/11.2.1.png  used on input line 4207.
 (pdftex.def)             Requested size: 81.9456pt x 58.07494pt.
-<circuits/11.2.1_2.png, id=1670, 127.47626pt x 90.3375pt>
+<circuits/11.2.1_2.png, id=1680, 127.47626pt x 90.3375pt>
 File: circuits/11.2.1_2.png Graphic file (type png)
 <use circuits/11.2.1_2.png>
-Package pdftex.def Info: circuits/11.2.1_2.png  used on input line 4208.
+Package pdftex.def Info: circuits/11.2.1_2.png  used on input line 4228.
 (pdftex.def)             Requested size: 81.9456pt x 58.07494pt.
-<circuits/11.2.1_3.png, id=1671, 127.47626pt x 90.3375pt>
+<circuits/11.2.1_3.png, id=1681, 127.47626pt x 90.3375pt>
 File: circuits/11.2.1_3.png Graphic file (type png)
 <use circuits/11.2.1_3.png>
-Package pdftex.def Info: circuits/11.2.1_3.png  used on input line 4234.
+Package pdftex.def Info: circuits/11.2.1_3.png  used on input line 4254.
 (pdftex.def)             Requested size: 81.9456pt x 58.07494pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2184,10 +2184,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [86 <./circuits/11.2.png> <./circuits/11.2.1.png> <./circuits/11.2.1_2.png> <./circuits/11.2.1_3.png>]
-<circuits/11.4.png, id=1680, 519.9425pt x 373.395pt>
+<circuits/11.4.png, id=1690, 519.9425pt x 373.395pt>
 File: circuits/11.4.png Graphic file (type png)
 <use circuits/11.4.png>
-Package pdftex.def Info: circuits/11.4.png  used on input line 4274.
+Package pdftex.def Info: circuits/11.4.png  used on input line 4294.
 (pdftex.def)             Requested size: 218.52022pt x 156.92738pt.
 
 
@@ -2198,10 +2198,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [87 <./circuits/11.4.png>]
-<circuits/11.5.7.png, id=1692, 285.065pt x 219.82124pt>
+<circuits/11.5.7.png, id=1702, 285.065pt x 219.82124pt>
 File: circuits/11.5.7.png Graphic file (type png)
 <use circuits/11.5.7.png>
-Package pdftex.def Info: circuits/11.5.7.png  used on input line 4376.
+Package pdftex.def Info: circuits/11.5.7.png  used on input line 4396.
 (pdftex.def)             Requested size: 184.37135pt x 142.17436pt.
 
 
@@ -2212,14 +2212,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [88 <./circuits/11.5.7.png>]
-File: circuits/11.5.7.png Graphic file (type png)
-<use circuits/11.5.7.png>
-Package pdftex.def Info: circuits/11.5.7.png  used on input line 4443.
-(pdftex.def)             Requested size: 184.37135pt x 142.17436pt.
-
-Underfull \vbox (badness 6477) has occurred while \output is active []
-
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2228,6 +2220,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [89]
+Overfull \hbox (0.2195pt too wide) in paragraph at lines 4463--4464
+\OT1/cmr/m/n/10.95 (+14) acts to changes in in-put sig-nals, en-sur-ing that the block's in-ter-nal logic is eval-u-ated when-ever 
+ []
+
+
+Overfull \hbox (0.16309pt too wide) in paragraph at lines 4481--4483
+\OT1/cmr/m/n/10.95 (+16) If an expression is true, the code within the begin-end block runs; multiple statements can be 
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2235,23 +2236,36 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[90] (./FDS.aux)
+[90]
+File: circuits/6.12.2_2.png Graphic file (type png)
+<use circuits/6.12.2_2.png>
+Package pdftex.def Info: circuits/6.12.2_2.png  used on input line 4506.
+(pdftex.def)             Requested size: 145.67644pt x 135.55148pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[91] (./FDS.aux)
 Package rerunfilecheck Info: File `FDS.out' has not changed.
-(rerunfilecheck)             Checksum: 2AABB942891553901F5B25968DB228F8;33970.
+(rerunfilecheck)             Checksum: C8101000C39D3261146A95E3A372F15C;34334.
  ) 
 Here is how much of TeX's memory you used:
- 49280 strings out of 476025
- 1111064 string characters out of 5790017
- 2147009 words of memory out of 5000000
- 68313 multiletter control sequences out of 15000+600000
- 533737 words of font info for 180 fonts, out of 8000000 for 9000
+ 49341 strings out of 476025
+ 1111938 string characters out of 5790017
+ 2163016 words of memory out of 5000000
+ 68329 multiletter control sequences out of 15000+600000
+ 533686 words of font info for 179 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,95p,1019b,2089s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on FDS.pdf (98 pages, 2678195 bytes).
+Output written on FDS.pdf (99 pages, 2684036 bytes).
 PDF statistics:
- 1987 PDF objects out of 2073 (max. 8388607)
- 1711 compressed objects within 18 object streams
- 555 named destinations out of 1000 (max. 500000)
- 46855 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 2054 PDF objects out of 2073 (max. 8388607)
+ 1777 compressed objects within 18 object streams
+ 602 named destinations out of 1000 (max. 500000)
+ 46871 words of extra memory for PDF output out of 51595 (max. 10000000)
 
