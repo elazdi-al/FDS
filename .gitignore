@@ -18,7 +18,7 @@
 !*.🔥
 
 # Include image files in 'circuits' directory
-circuits/*.png
+!circuits/*.png
 
 # Specific files to be tracked
 !README.md
