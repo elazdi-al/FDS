@@ -4350,58 +4350,351 @@ tri z1
 Behavioral modeling in Verilog is one of the three modeling paradigms used in Verilog to describe digital circuits at a high level. This approach allows designers to specify how circuits should behave through procedural statements, similar to software programming. 
 \textit{Simplified: used when too hard to do in structural modeling.}  
 
-
-\subsection{Bit-wise Operators}
-Bit-wise operators in Verilog are used to perform operations on individual bits of a vector. The following are the bit-wise operators available in Verilog:
-\begin{center}
-	\begin{tabular}{|c|c|}
-		\hline
-		Operator & Description \\
-		\hline
-		\& & Bit-wise AND \\
-		| & Bit-wise OR \\
-		\^{} & Bit-wise XOR \\
-		\~{} & Bit-wise NOT \\
-		\hline
-	\end{tabular}
-\end{center}
-
 \subsection{Example - Structural to Behavioral Modeling}
-Here's a circuit we've modeled in structural modeling :
-\subsubsection*{Structural}
+Here's a quite complex circuit we've modeled in structural modeling :
 \vskip 10px
 \noindent
 \begin{adjustbox}{valign=t,minipage={.45\textwidth}}
-\begin{center}
-\includegraphics[width=0.9\textwidth]{circuits/11.5.7.png}
-\end{center}
+
+\begin{vhdl}
+wire [3:0] a;
+\end{vhdl} 
 \end{adjustbox}
 \hfill
-\hskip-40px
+\hskip-10px
 \vline
 \hfill
 \noindent
-\begin{adjustbox}{valign=t,minipage={.50\textwidth}}
+\begin{adjustbox}{valign=t,minipage={.45\textwidth}}
+	\textit{tri-states}
 \begin{vhdl}
-	module my_circuit_structural (
-		input x1, x2, x3, x4,
-		output f
-		);
-		wire w1, w2, w3, w4, w5, w6, w7, w8;
-		and (w1, x1, x3);
-		not (w2, x2);
-		not (w3, x3);
-		and (w4, x2, x4);
-		or (w5, x1, w3);
-		or (w6, w2, x4);
-		or (w7, w1, w4);
-		and (w8, w5, w6);
-		or (f, w7, w8);
-		endmodule
+tri z1 
 \end{vhdl}
 \end{adjustbox}
-\vspace*{10px}
-\subsubsection*{Behavioral}
+\subsubsection{Switches}
+Switches in Verilog are typically modeled using the \texttt{case} statement, which allows for multi-way branching based on the value of a variable. Here is an example of how to model a simple switch:
+
+\begin{vhdl}
+always @(input_signal)
+begin
+case (input_signal)
+2'b00: output_signal = 4'b0001;
+2'b01: output_signal = 4'b0010;
+2'b10: output_signal = 4'b0100;
+2'b11: output_signal = 4'b1000;
+default: output_signal = 4'b0000;  % Handling unexpected values
+endcase
+end
+\end{vhdl}
+
+In this example, the \texttt{input\_signal} determines which value is assigned to \texttt{output\_signal} based on its binary value. The \texttt{default} case is used to handle any unexpected values safely.
+
+
+
+\chapter{All of Verilog}
+\section{Verilog HDL}
+					\textit{Personal Remark. this course will absolutely NOT suffize to make you a Verilog expert, please take some time to practice in an empty project, just representing in both structural and behavioral ways the circuits we've seen so far. }
+			      	\subsection{Structural Modeling with Logic Gates}
+			      	In structural modeling, we use predefined modules (\textit{built-in representations of basic logic gates}) to construct complex circuits.\newline
+			      	\vspace{5px}
+			      	We use this logic gate instantiation statement to create a basic logic gate:
+\begin{vhdl}
+gate_name [instance_name] (out_port, in_port{, in_port});
+\end{vhdl}
+			      	[] indicates an optional parameter.\newline
+			      	()  indicates a required parameter. \newline
+			      	\{\} indicates that additional parameters can be added. \newline
+			      	\vspace*{10px}
+			      	With \textit{gate\_name} as the type of gate :\newline
+			      	\textit{(not limited to these...)}
+			      	
+			      	\begin{center}
+			      		\begin{tabular}{|c|c|}
+			      			\hline
+			      			and  & nor  \\
+			      			nand & buf  \\
+			      			xor  & not  \\
+			      			or   & xnor \\
+			      			\hline
+			      		\end{tabular}
+			      	\end{center}
+			      	
+			      	\subsubsection{Examples}
+			      	
+			      	\begin{itemize}
+\item[-] \textbf{AND Gate}:
+    \begin{vhdl}
+    and and1 (out, in1, in2);
+    \end{vhdl}
+\item[-] \textbf{OR Gate}:
+    \begin{vhdl}
+    or or1 (out, in1, in2);
+    \end{vhdl}
+\item[-] \textbf{NOT Gate}:
+    \begin{vhdl}
+    not not1 (out, in);
+    \end{vhdl}
+\item[-] \textbf{NAND Gate}:
+    \begin{vhdl}
+    nand nand1 (out, in1, in2);
+    \end{vhdl}
+			      	\end{itemize}
+			      	
+			      	\subsection{Verilog Syntax}
+			      	\textbf{In a Nutshell}
+			      	\begin{itemize}
+			      		\item[] \textbf{Naming Rules:}
+			      		      \begin{itemize}
+			      		      	\item[] Begin with a letter.
+			      		      	\item[] Include letters, digits, underscore (\_), and dollar sign (\$).
+			      		      \end{itemize}
+			      		        
+			      		\item[] \textbf{Case Sensitivity:}
+			      		      \begin{itemize}
+			      		      	\item[] Lowercase and uppercase are distinct (e.g., \texttt{a} $\neq$ \texttt{A}).
+			      		      \end{itemize}
+			      		        
+			      		\item[] \textbf{Style Guidelines:}
+			      		      \begin{itemize}
+			      		      	\item[] Syntax is flexible with white spaces and line breaks.
+			      		      	\item[] Prioritize readability with proper indentation.
+			      		      \end{itemize}
+			      		        
+			      		\item[] \textbf{Comments:}
+			      		      \begin{itemize}
+			      		      	\item[] Initiated by double slashes (//).
+			      		      \end{itemize}
+			      	\end{itemize}
+
+			      	\subsection{Modules in Verilog}
+			      	A circuit or subcircuit described in Verilog is encapsulated within a module. The module declaration includes the module name and its ports, which are the input and output connections to the module.
+			      	\begin{vhdl}
+module module_name [(port_name{, port_name})];
+[input declarations]
+[output declarations]
+[wire declarations]
+[logic gate instantiations]
+[module instantiations]
+endmodule
+			      	\end{vhdl}
+			      	\textit{(words in purple are reserved keywords, words after two slashes are comments)} 
+			  
+			      	\subsection{Ports in Verilog}
+			      	Ports are the input and output connections of a module. They are declared within the module declaration
+			      	They can be in the following directions :
+			      	\textbf{Port Types:}
+			      	\begin{itemize}
+			      		\item[-] \texttt{input} -- for receiving signals.
+			      		\item[-] \texttt{output} -- for sending signals.
+			      		\item[-] \texttt{inout} -- for bi-directional signal flow.
+			      	\end{itemize}
+			      	
+			      	\textbf{Port Declaration:}
+			      	\begin{itemize}
+			      		\item[-] Syntax: 
+			      		      \begin{vhdl}
+port\_direction data\_type [port\_size] port\_name;
+			      		      \end{vhdl}
+			      		\item[-] Implicit type: Unspecified types default to wire.
+			      		\item[-] Vectors: Specify bit-width for multi-bit signals (e.g., [3:0] for 4 bits).
+			      	\end{itemize}
+			      	
+			      	\textbf{Examples:}
+			      	\begin{verbatim}
+input diff;            // Single-bit input named diff
+inout [15:0] data;     // 16-bit bidirectional port named data
+output [3:0] f;        // 4-bit output named f
+			      	\end{verbatim}
+			      	
+			      	\subsection{Example - Full adder in Verilog}
+			      	\noindent
+			      	\begin{adjustbox}{valign=t,minipage={.5\textwidth}}
+			      		\begin{vhdl}
+// Structural modeling of a full-adder
+module fulladd (a, b, c_in, s, c_out);
+// ----- port definitions -----
+input a, b, c_in;
+output s, c_out;
+// ----- intermediate signals -----
+wire w1, w2, w3;
+// ----- design implementation -----
+and And1 (w1, a, b);
+and And2 (w2, a, c_in);
+and And3 (w3, b, c_in);
+or Or1 (c_out, w1, w2, w3);
+xor Xor1 (s, a, b, c_in);
+endmodule
+
+			      		\end{vhdl}
+			      	\end{adjustbox}
+			      	\hfill
+			      	\begin{adjustbox}{valign=t}
+			      		\includegraphics[width=.45\textwidth]{circuits/10.2.4.png}
+			      	\end{adjustbox}
+			      	Which can be simplified to :\newline \vspace*{5px}
+			      	\begin{minipage}{0.4\textwidth}
+			      		
+			      		\noindent
+			      		\begin{vhdl}
+module fulladd (a, b, c_in, s, c_out);
+input a, b, c_in;
+output s, c_out;
+and (w1, a, b);
+and (w2, a, c_in);
+and (w3, b, c_in);
+or (c_out, w1, w2, w3);
+xor (s, a, b, c_in);
+endmodule
+			      		\end{vhdl}
+			      	\end{minipage}
+			      	\subsection{Subcircuits in Verilog}
+			      	
+			      	\begin{itemize}
+			      		\item[] A Verilog module can be included as a subcircuit in another module.
+			      		\item[] Modules should be defined in the same source file, or the Verilog compiler must know the locations of the modules.
+			      		\item[] Module instantiation syntax:
+			      		      \begin{itemize}
+			      		      	\item[] \begin{vhdl}
+{module\_name instance\_name ( .port\_name (expression));}
+			      		      	\end{vhdl}
+			      		      	\item[\textbf{Notes:}]
+			      		      	      \begin{itemize}
+			      		      	      	\item \texttt{module\_name} and \texttt{instance\_name} are any valid identifiers.
+			      		      	      	\item \texttt{.port\_name} specifies the subcircuit's port to be connected.
+			      		      	      	\item Omitting \texttt{.port\_name} is possible if port order is identical to the subcircuit's definition, but not recommended due to error-proneness.
+			      		      	      \end{itemize}
+			      		      \end{itemize}
+			      	\end{itemize}
+			      	
+			      	\subsection{Example - Ripple-Carry Adder in Verilog}
+			      	A four-bit ripple-carry adder is composed of four full-adder stages with interconnections for the carry bits.
+			      	
+			      	
+			      	\begin{center}
+			      		\includegraphics[width=0.70\textwidth]{circuits/10.2.4_2.png}
+			      	\end{center}`
+			      	
+			      	Written in VHDL : 
+			      	\begin{vhdl}
+module adder4 (Cin, A, B, S, Cout);
+// Port definitions
+input Cin;
+input [3:0] A, B; // 4-bit vectors
+output [3:0] S;   // 4-bit vector
+output Cout;
+
+// Intermediate signals
+wire [3:1] C; // 3-bit vector for carry bits
+
+// Design implementation using full-adder stages
+fulladd stage0 (.c_in(Cin), .a(A[0]), .b(B[0]), .s(S[0]), .c_out(C[1]));
+fulladd stage1 (.c_in(C[1]), .a(A[1]), .b(B[1]), .s(S[1]), .c_out(C[2]));
+fulladd stage2 (.c_in(C[2]), .a(A[2]), .b(B[2]), .s(S[2]), .c_out(C[3]));
+fulladd stage3 (.c_in(C[3]), .a(A[3]), .b(B[3]), .s(S[3]), .c_out(Cout));
+endmodule
+			      	\end{vhdl}
+			      	
+			      	
+					
+			      	
+					  
+\section{Complete Verilog Built-In Gate List}
+Now we can complete the Verilog built-in gate list presented in the last chapter as follows :
+\begin{center}
+	\begin{tabular}{c|c|c}
+		and  & nor & bufif0(f, w, e)  \\
+		nand & buf & bufif1(f, w, e)  \\
+		xor  & not & notif0(f, w, e) \\
+		or   & xnor & notif1(f, w, e) \\
+	\end{tabular}
+
+\end{center}
+
+
+
+\section{Verilog Part 2.}
+\subsection{Scalar Signal Values}
+Verilog supports one-bit signals (scalars), each signal can have one of the following values:
+\begin{center}
+	\begin{tabular}{cc}
+	\hline
+	Value & Meaning \\
+	\hline
+	0 & Logic 0 \\
+	1 & Logic 1 \\
+	x & Unknown logic value or don't care \\
+	z & tri-state, high-impedance \\
+	\hline
+\end{tabular}
+\end{center}
+\subsection{Vector Signal Values}
+The value of a vector variable looks like this 
+\begin{vhdl}
+[size]['radix]constant
+\end{vhdl}
+$size$ is the number of bits, $radix$ is the base of the number, and $constant$ is the value of the number.
+Supported radices include: 
+\newline
+\begin{center}
+	\begin{tabular}{cc}
+	\hline
+	Radix & Meaning \\
+	\hline
+	d & decimal \textit{default if no radix is specified} \\
+	b & binary \\
+	h & hexadecimal \\
+	o & octal \\
+	\hline
+\end{tabular}
+\end{center}
+
+\subsection{Parameters}
+Parameters are constants that can be used in the module. They are defined as follows:
+\begin{vhdl}
+parameter name = value;
+\end{vhdl}
+eg. 
+\begin{vhdl}
+parameter c = 8;
+\end{vhdl}
+
+\subsection{Nets}
+Nets are used to connect modules. 
+There are two net types:\newline
+
+\vskip 10px
+\noindent
+\begin{adjustbox}{valign=t,minipage={.45\textwidth}}
+	\textit{wires} 
+\begin{vhdl}
+wire [3:0] a;
+\end{vhdl} 
+\end{adjustbox}
+\hfill
+\hskip-10px
+\vline
+\hfill
+\noindent
+\begin{adjustbox}{valign=t,minipage={.45\textwidth}}
+	\textit{tri-states}
+\begin{vhdl}
+tri z1 
+\end{vhdl}
+\end{adjustbox}
+
+\subsection{Behavioral Modeling in Verilog}
+
+Behavioral modeling in Verilog is one of the three modeling paradigms used in Verilog to describe digital circuits at a high level. This approach allows designers to specify how circuits should behave through procedural statements, similar to software programming. 
+\textit{Simplified: used when too hard to do in structural modeling.}  
+
+
+
+\subsection{Example - Structural to Behavioral Modeling}
+Here's a quite complex circuit we've modeled in structural modeling :
+\vskip 10px
+\noindent
+\begin{adjustbox}{valign=t,minipage={.45\textwidth}}
+
 \begin{vhdl}
 module my_circuit_behavioral (
 	input x1, x2, x3, x4,
@@ -4411,10 +4704,22 @@ module my_circuit_behavioral (
 	assign w7 = (x1 & x3) | (x2 & x4);
 	assign w8 = (x1 | ~x3) & (~x2 | x4);
 	assign f = w7 | w8;
-endmodule
+	endmodule
+\end{vhdl} 
+\end{adjustbox}
+\hfill
+\hskip-10px
+\vline
+\hfill
+\noindent
+\begin{adjustbox}{valign=t,minipage={.45\textwidth}}
+	\textit{tri-states}
+\begin{vhdl}
+tri z1 
 \end{vhdl}
+\end{adjustbox}
 
-\subsection{Continuous Assignments}
+
 
 \subsubsection{Switches}
 Switches in Verilog are typically modeled using the \texttt{case} statement, which allows for multi-way branching based on the value of a variable. Here is an example of how to model a simple switch:
@@ -4435,4 +4740,5 @@ end
 In this example, the \texttt{input\_signal} determines which value is assigned to \texttt{output\_signal} based on its binary value. The \texttt{default} case is used to handle any unexpected values safely.
 
 
+\end{document}
 \end{document}
