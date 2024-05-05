@@ -18,8 +18,8 @@ fn parse_latex_sections() raises:
 
     # Preparing a Verilog chapter by extracting and cleaning up Verilog content
 
-    var firstpage:String = "\\\\begin{center}\\\\vspace*{1cm}\\\\textbf{Concatenation of all Verilog Content of all Verilog content}\\\\newline\\\\paragraph[short]{}{You'll find links to this chapter at the beginning of sections about Verilog.} \\\\end{center}"
-    var verilog_chapter:String = "\n\\chapter{All of Verilog}\n\\label{Verilog}\\newpage\n" + firstpage + "\n"
+    var firstpage:String = "\\label{Verilog}\\begin{center}\\vspace*{1cm}\\textbf{Concatenation of all Verilog Content of all Verilog content}\\newline\\paragraph[short]{}{You'll find links to this chapter at the beginning of sections about Verilog.} \\end{center}\\newpage\n"
+    var verilog_chapter:String = "\n\\chapter{All of Verilog}\n" + firstpage + "\n"
     var verilog_sections = re.findall(r'(\\section\{[^}]*Verilog[^}]*\})(.*?)(?=\\section|$)', content, flags=re.DOTALL)
 
     for verilog_section in verilog_sections:
@@ -42,3 +42,4 @@ fn main() raises:
     var compile = Python.import_module("compile")
     
     compile.compile_latex_to_pdf(modified_file)
+
