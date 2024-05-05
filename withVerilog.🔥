@@ -1,67 +1,44 @@
 from python import Python
-from collections import Set
-from algorithm import parallelize
-from algorithm import vectorize
-import benchmark
 
-alias note: String = "\n\\\\textit{Note: See the chapter at the end of the notes for all content on Verilog (\\\\hyperref[Verilog]{Verilog chapter}).}\n"
-alias filename:String = "FDS.tex"
-alias modified_file:String = "modified_FDS.tex"
+alias note: String = "\\n \\\\textit{Note: See the chapter at the end of the notes for all content on Verilog (\\\\hyperref[Verilog]{Verilog chapter}).}\n"
+alias filename: String = "FDS.tex"
+alias modified_file: String = "modified_FDS.tex"
 
 
 fn parse_latex_sections() raises:
-    var re: PythonObject = Python.import_module("re")
-    var subprocess: PythonObject = Python.import_module("subprocess")
-    var content: String
-    var modified_content: String
+    var content:String
+    var modified_content:String
+    var re = Python.import_module("re")
 
     with open(filename, 'r') as file:
         content = file.read()
 
-    # Find sections specifically with 'Verilog' in the title
-    var sections = re.findall(r'\\section\{[^}]*Verilog[^}]*\}.*?(?=\\section|$)', content, flags=re.DOTALL)
-    if not sections:
-        print("No sections with 'Verilog' in their title were found.")
-        raise "No Verilog sections found in the LaTeX file."
+    # Regex to match all sections with 'Verilog' in the title and append the note immediately after the section title
+    var updated_content:String = re.sub(r'(\\section\{[^}]*Verilog[^}]*\})', r'\1' + note, content)
 
-    # Adding a label to the Verilog chapter for referencing
-    var verilog_chapter: String = "\n\\chapter{All of Verilog}\n\\label{Verilog}\\newpage\n"
+    # Preparing a Verilog chapter by extracting and cleaning up Verilog content
 
-    # Prepare to track sections that have been processed to avoid duplicate additions
-    var updated_sections = Set[String]()
-    var updated_content: String = content
-    @parameter
-    fn update(i: Int):
-        try:    
-            var section: String = sections.__getitem__(i)
-            updated_sections.add(section)  
-            var updated_section: String = section.replace('\\section', '\\section' + note)
-            updated_content = updated_content.replace(section, updated_section)
-            var clean_section: String = re.sub(r'\\chapter\{[^}]*\}', '', section)
-            clean_section = re.sub(r'\\newpage', '', clean_section)
-            verilog_chapter += clean_section + "\n"
-        except:
-            print("Error updating section.")
-    parallelize[update](sections.__len__())
+    var firstpage:String = "\\\\begin{center}\\\\vspace*{1cm}\\\\textbf{Concatenation of all Verilog Content of all Verilog content}\\\\newline\\\\paragraph[short]{}{You'll find links to this chapter at the beginning of sections about Verilog.} \\\\end{center}"
+    var verilog_chapter:String = "\n\\chapter{All of Verilog}\n\\label{Verilog}\\newpage\n" + firstpage + "\n"
+    var verilog_sections = re.findall(r'(\\section\{[^}]*Verilog[^}]*\})(.*?)(?=\\section|$)', content, flags=re.DOTALL)
 
-    var end_document_pos = updated_content.rfind('\\end{document}')
+    for verilog_section in verilog_sections:
+        var clean_section:String = re.sub(r'\\chapter\{[^}]*\}|\\newpage', '', verilog_section[0] + verilog_section[1])
+        verilog_chapter += clean_section + "\n"
+
+    var end_document_pos:Int = updated_content.rfind('\\end{document}')
     if end_document_pos != -1:
         modified_content = updated_content[:end_document_pos] + verilog_chapter + updated_content[end_document_pos:]
     else:
         modified_content = updated_content + verilog_chapter
 
-  
     with open(modified_file, 'w') as file:
         file.write(modified_content)
-    
-
 
 
 fn main() raises:
     parse_latex_sections()
     Python.add_to_path(".") # Add the current directory to the Python path
     var compile = Python.import_module("compile")
+    
     compile.compile_latex_to_pdf(modified_file)
-
-
-

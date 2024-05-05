@@ -4614,7 +4614,6 @@ endmodule
 
 
 \chapter{Digital Logic and Verilog(PART VII)}
-\label{chap:Verilog}
 
 \section{Memory Elements}
 \subsection{Introduction - Example Application: \newline Alarm System Control}
@@ -4662,6 +4661,7 @@ In \textbf{sequential circuits}, outputs are determined by both the current inpu
 
 
 \subsection{Basic Memory Element}
+\subsubsection{Bistable Element}
 \textit{We're finally storing data !} \newline
 We've seen that two Not gates in a series doesn't change the input signal, so, what if we connect the output of the second Not gate to the input of the first Not gate? \newline
 
@@ -4693,5 +4693,6 @@ We've seen that two Not gates in a series doesn't change the input signal, so, w
 \newline
 \vspace*{15px}
 While this already allows the most basic form of memory, it's not very practical, the given value cannot be changed, and it's not very reliable.
+\subsubsection{Set-Reset Latch with Reset Priority}
 
 \end{document}

@@ -1,4 +1,4 @@
-\documentclass[12pt,openany, tikz,border=10pt]{book}
+\documentclass[12pt,openany]{book}
 
 
 % Load packages
@@ -3933,6 +3933,8 @@ When weights are in this format :
 			      	\end{itemize}
 			    
 			      	\section{Verilog HDL}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
 					\textit{Personal Remark. this course will absolutely NOT suffize to make you a Verilog expert, please take some time to practice in an empty project, just representing in both structural and behavioral ways the circuits we've seen so far. }
 			      	\subsection{Structural Modeling with Logic Gates}
 			      	In structural modeling, we use predefined modules (\textit{built-in representations of basic logic gates}) to construct complex circuits.\newline
@@ -4279,6 +4281,8 @@ A tri-state driver has a data \textbf{input} $w$, \textbf{output} $f$, and an \t
 \end{vline}
 
 \section{Complete Verilog Built-In Gate List}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
 Now we can complete the Verilog built-in gate list presented in the last chapter as follows :
 \begin{center}
 	\begin{tabular}{c|c|c}
@@ -4306,6 +4310,8 @@ Now we can complete the Verilog built-in gate list presented in the last chapter
 
 
 \section{Verilog Part 2.}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
 
 \subsection{Scalar Signal Values}
 Verilog supports one-bit signals (scalars), each signal can have one of the following values:
@@ -4614,7 +4620,6 @@ endmodule
 
 
 \chapter{Digital Logic and Verilog(PART VII)}
-\label{chap:Verilog}
 
 \section{Memory Elements}
 \subsection{Introduction - Example Application: \newline Alarm System Control}
@@ -4662,20 +4667,22 @@ In \textbf{sequential circuits}, outputs are determined by both the current inpu
 
 
 \subsection{Basic Memory Element}
+\subsubsection{Bistable Element}
 \textit{We're finally storing data !} \newline
 We've seen that two Not gates in a series doesn't change the input signal, so, what if we connect the output of the second Not gate to the input of the first Not gate? \newline
 
 
-\vspace*{10px} 
-\begin{minipage}{0.45\textwidth}
+\vspace*{20px} 
+\noindent
+\begin{minipage}{0.40\textwidth}
 	\begin{center}
-		\includegraphics[width=0.50\textwidth]{circuits/12.1.3.png}
+		\includegraphics[width=0.80\textwidth]{circuits/12.1.3.png}
 	\end{center}
 \end{minipage}
 \hfill
 \vline
 \hfill
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}{0.50\textwidth}
 	\begin{center}
 		\large
 		\begin{tabular}{|c|c|}
@@ -4689,12 +4696,15 @@ We've seen that two Not gates in a series doesn't change the input signal, so, w
 		\end{tabular}
 	\end{center}
 \end{minipage}
-\vspace*{10px}
+\newline
+\vspace*{15px}
 While this already allows the most basic form of memory, it's not very practical, the given value cannot be changed, and it's not very reliable.
-\
+\subsubsection{Set-Reset Latch with Reset Priority}
+
 
 \chapter{All of Verilog}
 \label{Verilog}\newpage
+\\begin{center}\\vspace*{1cm}\\textbf{Concatenation of all Verilog Content of all Verilog content}\\newline\\paragraph[short]{}{You'll find links to this chapter at the beginning of sections about Verilog.} \\end{center}
 \section{Verilog HDL}
 					\textit{Personal Remark. this course will absolutely NOT suffize to make you a Verilog expert, please take some time to practice in an empty project, just representing in both structural and behavioral ways the circuits we've seen so far. }
 			      	\subsection{Structural Modeling with Logic Gates}
@@ -5224,7 +5234,6 @@ endmodule
 
 
 
-\label{chap:Verilog}
 
 
 \end{document}
