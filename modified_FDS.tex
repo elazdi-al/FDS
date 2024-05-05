@@ -36,6 +36,15 @@
 
 \usepackage{listings}
 \usepackage{adjustbox}
+
+
+\usepackage{hyperref}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \usetikzlibrary{circuits.logic.US}
 \usetikzlibrary{arrows.meta, positioning, calc}
 \usetikzlibrary{fit} % Add the missing TikZ library
@@ -4102,7 +4111,7 @@ endmodule
 			      	
 			      	\begin{center}
 			      		\includegraphics[width=0.70\textwidth]{circuits/10.2.4_2.png}
-			      	\end{center}`
+			      	\end{center}
 			      	
 			      	Written in VHDL : 
 			      	\begin{vhdl}
@@ -4127,7 +4136,8 @@ endmodule
 			      	
 					
 			      	\chapter{Digital Logic and Verilog(PART VI)}
-					  \section{Bus Architecture}
+
+					\section{Bus Architecture}
 
 					  \begin{minipage}{0.48\textwidth}
 						  A bus is a communication system that transfers data between components of a digital device. It is designed to connect parts of the motherboard or to link other hardware. In essence:
@@ -4296,6 +4306,7 @@ Now we can complete the Verilog built-in gate list presented in the last chapter
 
 
 \section{Verilog Part 2.}
+
 \subsection{Scalar Signal Values}
 Verilog supports one-bit signals (scalars), each signal can have one of the following values:
 \begin{center}
@@ -4602,9 +4613,88 @@ endmodule
 \end{adjustbox}
 
 
+\chapter{Digital Logic and Verilog(PART VII)}
+\label{chap:Verilog}
+
+\section{Memory Elements}
+\subsection{Introduction - Example Application: \newline Alarm System Control}
+
+Suppose we wish to control an alarm system. The system design involves a \textbf{sensor}, an \textbf{alarm control circuit}, and an \textbf{alarm} indicator. Below is the functional description of the system:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{circuits/12.1.1.png}
+	\caption{Diagram of the Alarm System Control}
+	\end{figure}
+\begin{itemize}
+  \item[-] The \textbf{sensor} detects an undesirable event and sends a \texttt{SET} signal (logic high or 1) to the \textbf{alarm control circuit}.
+  \item[-] The \textbf{alarm control circuit} activates the alarm when it receives the \texttt{SET} signal. The \texttt{ALARM\_ON} signal becomes 1 (logic high), indicating that the alarm is active.
+  \item[-] The alarm remains active until a \texttt{RESET} signal (logic high or 1) is sent to the \textbf{alarm control circuit}, turning off the alarm (\texttt{ALARM\_ON} becomes 0).
+  \item[-] A memory element in the circuit ensures that the alarm remains active until it is explicitly reset, even if the \texttt{SET} signal goes back to low (0).
+\end{itemize}
+
+\vspace*{30px}
+\subsection{Combinational vs. Sequential Circuits}
+Previously, in \textbf{combinational circuits}, outputs only depended on the current inputs. \newline
+\vskip 5px
+In \textbf{sequential circuits}, outputs are determined by both the current inputs and the circuit's past behavior, due to the inclusion of memory elements.
+
+\vspace*{10px}
+\begin{minipage}{0.45\textwidth}
+    Combinational Circuits are memory-less; outputs only depend on the current inputs.
+    \begin{center}
+        \includegraphics[width=\linewidth]{circuits/12.1.2.png}
+    \end{center}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.45\textwidth}
+	Sequential circuits have memory elements, outputs depend on both current inputs and past behavior.  
+	\begin{center}
+		\includegraphics[width=\linewidth]{circuits/12.1.2_2.png}
+	\end{center}
+\end{minipage}
+
+\vspace*{10px}
+\textit{
+	Storage elements in a circuit hold logic signal values, defining the circuit's state. When inputs change, the circuit may maintain its current state or transition to a new state. Consequently, the circuit evolves through various states over time based on input changes.}
+
+
+\subsection{Basic Memory Element}
+\textit{We're finally storing data !} \newline
+We've seen that two Not gates in a series doesn't change the input signal, so, what if we connect the output of the second Not gate to the input of the first Not gate? \newline
+
+
+\vspace*{10px} 
+\begin{minipage}{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=0.50\textwidth]{circuits/12.1.3.png}
+	\end{center}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.45\textwidth}
+	\begin{center}
+		\large
+		\begin{tabular}{|c|c|}
+			\hline
+			
+			$Q$ & $\overline{Q}$ \\
+			\hline
+			0 & 1 \\
+			1 & 0 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{minipage}
+\vspace*{10px}
+While this already allows the most basic form of memory, it's not very practical, the given value cannot be changed, and it's not very reliable.
+\
 
 \chapter{All of Verilog}
-\newpage
+\label{Verilog}\newpage
 \section{Verilog HDL}
 					\textit{Personal Remark. this course will absolutely NOT suffize to make you a Verilog expert, please take some time to practice in an empty project, just representing in both structural and behavioral ways the circuits we've seen so far. }
 			      	\subsection{Structural Modeling with Logic Gates}
@@ -4784,7 +4874,7 @@ endmodule
 			      	
 			      	\begin{center}
 			      		\includegraphics[width=0.70\textwidth]{circuits/10.2.4_2.png}
-			      	\end{center}`
+			      	\end{center}
 			      	
 			      	Written in VHDL : 
 			      	\begin{vhdl}
@@ -4809,7 +4899,8 @@ endmodule
 			      	
 					
 			      	
-					  
+
+					
 \section{Complete Verilog Built-In Gate List}
 Now we can complete the Verilog built-in gate list presented in the last chapter as follows :
 \begin{center}
@@ -4825,6 +4916,7 @@ Now we can complete the Verilog built-in gate list presented in the last chapter
 
 
 \section{Verilog Part 2.}
+
 \subsection{Scalar Signal Values}
 Verilog supports one-bit signals (scalars), each signal can have one of the following values:
 \begin{center}
@@ -5131,5 +5223,8 @@ endmodule
 \end{adjustbox}
 
 
-\end{document}
+
+\label{chap:Verilog}
+
+
 \end{document}
