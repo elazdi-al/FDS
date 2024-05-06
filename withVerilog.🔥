@@ -18,7 +18,7 @@ fn parse_latex_sections() raises:
 
     # Preparing a Verilog chapter by extracting and cleaning up Verilog content
 
-    var firstpage:String = "\\label{Verilog}\\begin{center}\\vspace*{1cm}\\textbf{Concatenation of all Verilog Content}\\newline\\paragraph[short]{}{You'll find links to this chapter at the beginning of sections about Verilog.} \\end{center}\\newpage\n"
+    var firstpage:String = "\\label{Verilog}\\begin{center}\\vspace*{1cm}\\begin{center}\\textbf{Concatenation of all Verilog Content}\\end{center}\\text{You'll find links to this chapter at the beginning of sections about Verilog.} \\end{center}\\newpage\n"
     var verilog_chapter:String = "\n\\chapter{All of Verilog}\n" + firstpage + "\n"
     var verilog_sections = re.findall(r'(\\section\{[^}]*Verilog[^}]*\})(.*?)(?=\\section|$)', content, flags=re.DOTALL)
 

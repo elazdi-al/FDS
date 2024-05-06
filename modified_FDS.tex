@@ -4857,6 +4857,7 @@ The waveform of a clock signal can be described as follows:
 
 \subsection{Update to Always Block}
 Updates can take place one after the other, or concurrently, depending on the assignment used : blocking (=) or nonblocking ($\leq$). \newline
+\vspace*{-20px}
 \subsubsection{Blocking Assignment}
 For example:
 Here, B is assigned the value of A, then C is assigned the value of B, and finally, D is assigned the value of C. At the end, A = B = C = D.
@@ -4898,10 +4899,10 @@ end
 Used to describe sequential logic containing flip-flops \newline
 \textit{Note: $\leq$ like the arrow in the clock symbol, it's a reminder that the assignment is non-blocking.}
 \begin{itemize}
-	\item always@(posedge Clock) – always at the rising clock edge
-	\item always@(negedge Clock) – always at the falling clock edge
+	\item[-] always@(posedge Clock) – always at the rising clock edge
+	\item[-] always@(negedge Clock) – always at the falling clock edge
 \end{itemize}
-
+\vspace*{5px}
 \subsection{Behavioral Latch and
 Flip-Flop Models}
 \subsubsection{Basic D Latch}
@@ -4920,13 +4921,59 @@ module Dlatch (
 	end
 endmodule
 \end{vhdl}
-
+\vspace*{5px}
 \subsubsection{D Latch w/ Enable and Asynchronous Clear}
+A D Latch with Enable and Asynchronous Clear is a type of digital storage device used in electronic circuits to store a single bit of data. It has a data input (D), a clock input (C), an enable input (CE), and a clear input (CLR). The output (Q) reflects the input data (D) when both the clock (C) and enable (CE) inputs are active (high). The asynchronous clear (CLR) has the highest priority; when activated (high), it immediately resets the output (Q) to 0, regardless of other input conditions.
+Thus the Verulog code for this is:
+\begin{vhdl}
+module Dlatch (
+	input D,
+	input C,
+	input CE,
+	input CLR,
+	output reg Q
+	);
+	always @ (*)
+	begin
+		if (CLR == 1)
+			Q <= 0;
+		else if ((C == 1) && (CE == 1))
+			Q <= D;
+	end
+endmodule
+\end{vhdl}
+
+\subsubsection{Positive-Edge-Triggered D FF}
+The alwaysblock is executed on the positive (rising) CLK edge Q gets set to D
+\begin{vhdl}
+module Dff (
+input D,
+input CLK,
+output reg Q
+);
+	always @ (posedge CLK)
+	begin
+		Q <= D;
+	end
+endmodule
+\end{vhdl}
+\subsubsection{D FF (Positive-Edge-Triggered) with Asynchronous Clear}
+\begin{vhdl}
+module Dff (input D, input CLK, input CLR, output reg Q);
+	always @ (posedge CLK or posedge CLR)
+		begin
+			if (CLR == 1)
+				Q <= 0;
+			else
+				Q <= D;
+		end
+endmodule
+\end{vhdl}
 
 
 
 \chapter{All of Verilog}
-\label{Verilog}\begin{center}\vspace*{1cm}\textbf{Concatenation of all Verilog Content}\newline\paragraph[short]{}{You'll find links to this chapter at the beginning of sections about Verilog.} \end{center}\newpage
+\label{Verilog}\begin{center}\vspace*{1cm}\begin{center}\textbf{Concatenation of all Verilog Content}\end{center}\text{You'll find links to this chapter at the beginning of sections about Verilog.} \end{center}\newpage
 
 \section{Verilog HDL}
 					\textit{Personal Remark. this course will absolutely NOT suffize to make you a Verilog expert, please take some time to practice in an empty project, just representing in both structural and behavioral ways the circuits we've seen so far. }
@@ -5462,6 +5509,7 @@ endmodule
 \section{Verilog Part 3.}
 \subsection{Update to Always Block}
 Updates can take place one after the other, or concurrently, depending on the assignment used : blocking (=) or nonblocking ($\leq$). \newline
+\vspace*{-20px}
 \subsubsection{Blocking Assignment}
 For example:
 Here, B is assigned the value of A, then C is assigned the value of B, and finally, D is assigned the value of C. At the end, A = B = C = D.
@@ -5503,10 +5551,10 @@ end
 Used to describe sequential logic containing flip-flops \newline
 \textit{Note: $\leq$ like the arrow in the clock symbol, it's a reminder that the assignment is non-blocking.}
 \begin{itemize}
-	\item always@(posedge Clock) – always at the rising clock edge
-	\item always@(negedge Clock) – always at the falling clock edge
+	\item[-] always@(posedge Clock) – always at the rising clock edge
+	\item[-] always@(negedge Clock) – always at the falling clock edge
 \end{itemize}
-
+\vspace*{5px}
 \subsection{Behavioral Latch and
 Flip-Flop Models}
 \subsubsection{Basic D Latch}
@@ -5525,8 +5573,54 @@ module Dlatch (
 	end
 endmodule
 \end{vhdl}
-
+\vspace*{5px}
 \subsubsection{D Latch w/ Enable and Asynchronous Clear}
+A D Latch with Enable and Asynchronous Clear is a type of digital storage device used in electronic circuits to store a single bit of data. It has a data input (D), a clock input (C), an enable input (CE), and a clear input (CLR). The output (Q) reflects the input data (D) when both the clock (C) and enable (CE) inputs are active (high). The asynchronous clear (CLR) has the highest priority; when activated (high), it immediately resets the output (Q) to 0, regardless of other input conditions.
+Thus the Verulog code for this is:
+\begin{vhdl}
+module Dlatch (
+	input D,
+	input C,
+	input CE,
+	input CLR,
+	output reg Q
+	);
+	always @ (*)
+	begin
+		if (CLR == 1)
+			Q <= 0;
+		else if ((C == 1) && (CE == 1))
+			Q <= D;
+	end
+endmodule
+\end{vhdl}
+
+\subsubsection{Positive-Edge-Triggered D FF}
+The alwaysblock is executed on the positive (rising) CLK edge Q gets set to D
+\begin{vhdl}
+module Dff (
+input D,
+input CLK,
+output reg Q
+);
+	always @ (posedge CLK)
+	begin
+		Q <= D;
+	end
+endmodule
+\end{vhdl}
+\subsubsection{D FF (Positive-Edge-Triggered) with Asynchronous Clear}
+\begin{vhdl}
+module Dff (input D, input CLK, input CLR, output reg Q);
+	always @ (posedge CLK or posedge CLR)
+		begin
+			if (CLR == 1)
+				Q <= 0;
+			else
+				Q <= D;
+		end
+endmodule
+\end{vhdl}
 
 
 \end{document}
