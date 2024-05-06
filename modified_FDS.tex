@@ -4622,7 +4622,7 @@ endmodule
 \chapter{Digital Logic and Verilog(PART VII)}
 
 \section{Memory Elements}
-\subsection{Introduction - Example Application: \newline Alarm System Control}
+\subsection{Introduction - Example Application: Alarm System Control}
 
 Suppose we wish to control an alarm system. The system design involves a \textbf{sensor}, an \textbf{alarm control circuit}, and an \textbf{alarm} indicator. Below is the functional description of the system:
 
@@ -4662,9 +4662,10 @@ In \textbf{sequential circuits}, outputs are determined by both the current inpu
 \end{minipage}
 
 \vspace*{10px}
-\textit{
-	Storage elements in a circuit hold logic signal values, defining the circuit's state. When inputs change, the circuit may maintain its current state or transition to a new state. Consequently, the circuit evolves through various states over time based on input changes.}
 
+\begin{justify}
+	\textit{Storage elements in a circuit hold logic signal values, defining the circuit's state. When inputs change, the circuit may maintain its current state or transition to a new state. Consequently, the circuit evolves through various states over time based on input changes.}	
+\end{justify}
 
 \subsection{Basic Memory Element}
 \subsubsection{Bistable Element}
@@ -4699,11 +4700,233 @@ We've seen that two Not gates in a series doesn't change the input signal, so, w
 \newline
 \vspace*{15px}
 While this already allows the most basic form of memory, it's not very practical, the given value cannot be changed, and it's not very reliable.
+
+\newpage
 \subsubsection{Set-Reset Latch with Reset Priority}
+The set-reset latch is a memory element that can store one bit of information. It has two inputs: \texttt{S} (set) and \texttt{R} (reset). The latch retains its state until a new input is received. \newline
+\vspace*{10px}
+\textbf{Components of the Set-Reset Latch:}
+\begin{itemize}
+	\item[-] \textit{Set Input (\texttt{S}):} When \texttt{S} is high (1), the latch sets to 1.
+	\item[-] \textit{Reset Input (\texttt{R}):} When \texttt{R} is high (1), the latch resets to 0.
+	\item[-] \textit{Q Output:} The current state of the latch.
+	\item[-] \textit{Q-bar Output:} The inverse of the current state of the latch.
+\end{itemize}
+\textit{What happens when both \texttt{S} and \texttt{R} are high? \newline
+R = 1, S = 1: This is generally considered an unwanted or invalid situation for SR latches because it tries to set and reset the latch at the same time, leading to unpredictable behavior. Some designs define this state specifically to avoid ambiguity.}
+\vspace*{10px}
+\newline
+\noindent
+\begin{minipage}{0.40\textwidth}
+	\begin{center}
+		\includegraphics[width=1.2\textwidth]{circuits/12.1.3_2.png}
+	\end{center}
+\end{minipage}
+\hfill
+\hspace*{20px}
+\vline
+\hfill
+\begin{minipage}{0.50\textwidth}
+	\begin{center}
+		\begin{tabular}{|c|c||c|c||c|c|}
+			\hline
+			$S$ & $R$ & $\bar{R} \cdot S$ & $Q_a$ & $Q_{\text{next}}$ & $Q_{b,\text{next}}$ \\
+			\hline
+			0 & 0 & 0 & $Q_a$ & $Q_a$ & $\bar{Q_a}$ \\
+			0 & 1 & 0 & 0 & 0 & 1 \\
+			1 & 0 & 1 & $Q_a$ & 1 & 0 \\
+			1 & 1 & 0 & 0 & 0 & 0 \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{minipage}
+\newline
+\vspace*{10px}
+
+This is how the next state of the latch is calculated, the current state of the latch is $Q_a$ and $Q_b$ and the next state is $Q_{\text{next}}$ and $Q_{b,\text{next}}$ respectively.
+\begin{flalign*}
+\vline
+& Q_{a,next} = \overline{R + Q_b} = \overline{R + \overline{S + Q_a}} &&\\
+& = \overline{R} \cdot (S + Q_a) &&\\
+& = \overline{R} \cdot S + \overline{R} \cdot Q_a = Q_{next} &&\\
+& Q_b = \overline{S + Q_a} &&
+\end{flalign*}
+\subsubsection{Set-Reset Latch with Set Priority}
+
+\begin{justify}
+	The set-reset latch with set priority is similar to the reset-priority latch, but with the priority reversed. The latch sets to 0 when both \texttt{S} and \texttt{R} are high (1).
+\end{justify}
+\vspace*{10px}
+\begin{minipage}{0.40\textwidth}
+	\begin{center}
+		\includegraphics[width=1.2\textwidth]{circuits/12.1.3_3.png}
+	\end{center}
+\end{minipage}
+\hfill
+\hspace*{20px}
+\vline
+\hfill
+\begin{minipage}{0.50\textwidth}
+	\begin{center}
+		\begin{tabular}{|c|c|c||c|c|}
+			\hline
+			$S$ & $R$ & $\bar{R} \cdot Q_a$ & $Q_{a,\text{next}}$ & $Q_{b,\text{next}}$ \\
+			\hline
+			0 & 0 & $Q_a$ & $Q_a$ & $Q_a$ \\
+			\hline
+			0 & 1 & 0 & 0 & 1 \\
+			\hline
+			1 & 0 & 0 & 1 & 0 \\
+			\hline
+			1 & 1 & 0 & 1 & 1 \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{minipage}
+\newline
+$Q_{next} = S + \bar{R} \cdot Q_a$
+\newpage
+\section{Latches with a Control Signal}
+
+\begin{justify}
+	Gated latches use a control signal to determine when to change their state. When active, the control signal allows the latch to update its state; when inactive, it prevents changes. This helps avoid unwanted oscillations.
+\end{justify}
+\subsection{Gated D Latch}
+
+\begin{minipage}{0.45\textwidth}
+\begin{justify}
+When the control signal C is high, the output Q mirrors changes in input D. Otherwise, Q remains constant, retaining its previous value.
+\end{justify}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{circuits/12.2.1.png}
+	\end{center}
+\end{minipage}
+\subsection{Flip-Flops}
+\textit{Personal Remark. Put simply, the first type requires actual C input to determine when to update, while the other type updates Q in response to an event-driven signal, such as a clock signal (refer to the following section about Clock signals for a clearer explanation).}\newline
+\subsubsection{D Flip-Flop}
+Flip-flops update outputs at specific times, unlike latches. A D flip-flop captures the input from the D signal only during certain clock signal transitions, ensuring stable and predictable outputs. Once the clock triggers (on a rising or falling edge), the output Q immediately matches the input D and maintains this value, unaffected by any further input changes, until the next clock edge.
+\vspace*{10px}
+
+\begin{minipage}{0.4\textwidth}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{circuits/12.2.2.png}
+		\text{D Flip-Flop sensitive to the rising edge}
+	\end{center}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.4\textwidth}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{circuits/12.2.2_2.png}
+		\text{D Flip-Flop sensitive to the falling edge}
+	\end{center}
+\end{minipage}
+
+\section{Clock}
+Clocks are essential in digital systems for synchronization purposes. The timing of state changes within the system is orchestrated by these clocks.
+
+\subsection{Clock Signal}
+A clock signal is a periodic waveform that oscillates between a high state and a low state. It is characterized primarily by its frequency, which dictates how many cycles occur per second, and its duty cycle, which describes the proportion of time the signal is in the high state within a single cycle.
+
+\subsection{Waveform}
+The waveform of a clock signal can be described as follows:
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{circuits/12.3.2.png}
+\end{center}
+\justify
+\begin{itemize}
+    \item \textbf{Period:} The period of a clock signal is the duration of one complete cycle of the waveform and is typically measured in seconds or fractions thereof (like nanoseconds, ns). \newline It is denoted by $T_{CLK}$.
+    \item \textbf{Frequency:} The frequency of a clock signal is defined as the number of complete cycles it performs per second. Typical units of measurement are Hertz (Hz). \newline Calculated as $f = \frac{1}{T_{CLK}}$, where $T_{CLK}$ is the period.
+    \item \textbf{Duty Cycle:} The duty cycle is the percentage of the period during which the clock signal remains in the high state (often 50\%). Calculated as $D = \frac{T_{high}}{T_{CLK}} \times 100\%$.
+\end{itemize}
+
+
+
+\begin{justify}
+	The transition points of the clock signal, especially the rising edge, often trigger state changes within the digital system, coordinating operations and ensuring the system functions correctly and predictably.
+\end{justify}
+
+\section{Verilog Part 3.}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
+\subsection{Update to Always Block}
+Updates can take place one after the other, or concurrently, depending on the assignment used : blocking (=) or nonblocking ($\leq$). \newline
+\subsubsection{Blocking Assignment}
+For example:
+Here, B is assigned the value of A, then C is assigned the value of B, and finally, D is assigned the value of C. At the end, A = B = C = D.
+This is used to model combinational logic (without memory).
+\begin{vhdl}
+always @ (...sensitivity list...)
+begin
+	B = A;
+	C = B;
+	D = C;
+end
+\end{vhdl}	
+\subsubsection{Nonblocking Assignment}
+
+For example:
+Changes occur at the same time, so B is assigned the value of A, C is assigned the \textit{old} value of B, and D is assigned the \textit{old} value of C.
+This is used to model sequential logic (with memory).
+\begin{vhdl}
+always @ (...sensitivity list...)
+begin
+	B <= A;
+	C <= B;
+	D <= C;
+end
+\end{vhdl}
+
+\subsubsection{always(*) Blocks} 
+(=) Block Statements should be used. \newline
+The \texttt{always @*} block is used to model combinational logic, where the output depends only on the current input values. It is sensitive to any change in the input signals.
+\begin{vhdl}
+// Example: AND gate
+always @ (*)
+begin
+	C = A & B;
+end
+\end{vhdl}
+\subsection{always@(posedge Clock) Blocks}
+($\leq$) Nonblocking Statements should be used. \newline
+Used to describe sequential logic containing flip-flops \newline
+\textit{Note: $\leq$ like the arrow in the clock symbol, it's a reminder that the assignment is non-blocking.}
+\begin{itemize}
+	\item always@(posedge Clock) – always at the rising clock edge
+	\item always@(negedge Clock) – always at the falling clock edge
+\end{itemize}
+
+\subsection{Behavioral Latch and
+Flip-Flop Models}
+\subsubsection{Basic D Latch}
+The output may be affected whenever inputs D or C change (hence the *)
+If input C is 0, we do nothing, there is no else clause.
+\begin{vhdl}
+module Dlatch (
+	input D,
+	input C,
+	output reg Q
+	);
+	always @ (*)
+	begin
+		if (C == 1)
+		Q <= D;
+	end
+endmodule
+\end{vhdl}
+
+\subsubsection{D Latch w/ Enable and Asynchronous Clear}
+
 
 
 \chapter{All of Verilog}
-\label{Verilog}\begin{center}\vspace*{1cm}\textbf{Concatenation of all Verilog Content of all Verilog content}\newline\paragraph[short]{}{You'll find links to this chapter at the beginning of sections about Verilog.} \end{center}\newpage
+\label{Verilog}\begin{center}\vspace*{1cm}\textbf{Concatenation of all Verilog Content}\newline\paragraph[short]{}{You'll find links to this chapter at the beginning of sections about Verilog.} \end{center}\newpage
 
 \section{Verilog HDL}
 					\textit{Personal Remark. this course will absolutely NOT suffize to make you a Verilog expert, please take some time to practice in an empty project, just representing in both structural and behavioral ways the circuits we've seen so far. }
@@ -5236,4 +5459,75 @@ endmodule
 
 
 
+\section{Verilog Part 3.}
+\subsection{Update to Always Block}
+Updates can take place one after the other, or concurrently, depending on the assignment used : blocking (=) or nonblocking ($\leq$). \newline
+\subsubsection{Blocking Assignment}
+For example:
+Here, B is assigned the value of A, then C is assigned the value of B, and finally, D is assigned the value of C. At the end, A = B = C = D.
+This is used to model combinational logic (without memory).
+\begin{vhdl}
+always @ (...sensitivity list...)
+begin
+	B = A;
+	C = B;
+	D = C;
+end
+\end{vhdl}	
+\subsubsection{Nonblocking Assignment}
+
+For example:
+Changes occur at the same time, so B is assigned the value of A, C is assigned the \textit{old} value of B, and D is assigned the \textit{old} value of C.
+This is used to model sequential logic (with memory).
+\begin{vhdl}
+always @ (...sensitivity list...)
+begin
+	B <= A;
+	C <= B;
+	D <= C;
+end
+\end{vhdl}
+
+\subsubsection{always(*) Blocks} 
+(=) Block Statements should be used. \newline
+The \texttt{always @*} block is used to model combinational logic, where the output depends only on the current input values. It is sensitive to any change in the input signals.
+\begin{vhdl}
+// Example: AND gate
+always @ (*)
+begin
+	C = A & B;
+end
+\end{vhdl}
+\subsection{always@(posedge Clock) Blocks}
+($\leq$) Nonblocking Statements should be used. \newline
+Used to describe sequential logic containing flip-flops \newline
+\textit{Note: $\leq$ like the arrow in the clock symbol, it's a reminder that the assignment is non-blocking.}
+\begin{itemize}
+	\item always@(posedge Clock) – always at the rising clock edge
+	\item always@(negedge Clock) – always at the falling clock edge
+\end{itemize}
+
+\subsection{Behavioral Latch and
+Flip-Flop Models}
+\subsubsection{Basic D Latch}
+The output may be affected whenever inputs D or C change (hence the *)
+If input C is 0, we do nothing, there is no else clause.
+\begin{vhdl}
+module Dlatch (
+	input D,
+	input C,
+	output reg Q
+	);
+	always @ (*)
+	begin
+		if (C == 1)
+		Q <= D;
+	end
+endmodule
+\end{vhdl}
+
+\subsubsection{D Latch w/ Enable and Asynchronous Clear}
+
+
+\end{document}
 \end{document}
