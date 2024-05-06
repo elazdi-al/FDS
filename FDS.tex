@@ -5013,4 +5013,16 @@ Now what we've seen is just a composition of the following keywords,here's a sum
     \item[Complementary Output:] Provides an additional output that is the logical inverse of the main output. This feature simplifies the design of circuits that require the inverse logic state, reducing the need for external inverting components.
 \end{description}
 \end{footnotesize}
+\section{Practical notes}
+
+For effective sequential systems design, it is crucial to avoid latches due to their susceptibility to glitches, potential for output oscillation, and level sensitivity, which can result in multiple output changes within a single clock period. \newline
+
+Instead, use only D flip-flops and combinational logic. Implement separate \texttt{always} blocks, one set for simple D flip-flops and another for potentially complex combinational logic. \newline
+
+Latches (hold of the last value due to bad timing, and if the last value is the initial one, it must be defined) can inadvertently arise in combinational circuits. To prevent this, ensure all variables in \texttt{always@(*)} blocks are assigned initial default values, ensuring consistent logic states before proceeding to specific assignments. \newline 
+
+In sequential logic, always employ nonblocking assignments using the \texttt{<=} operator in \texttt{always} blocks to ensure simulation consistency across multiple blocks, as this method evaluates all right-hand sides before assigning values to the left-hand sides.\newline
+
+
+
 \end{document}
