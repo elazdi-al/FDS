@@ -4886,16 +4886,16 @@ begin
 	C = A & B;
 end
 \end{vhdl}
-\subsection{always@(posedge Clock) Blocks}
+\subsubsection{always@(posedge Clock) Blocks}
 ($\leq$) Nonblocking Statements should be used. \newline
 Used to describe sequential logic containing flip-flops \newline
-\textit{Note: $\leq$ like the arrow in the clock symbol, it's a reminder that the assignment is non-blocking.}
+\textit{Note: Remember, $\leq$ like the arrow in the Control Input symbol of a D Flip-Flop representation, it's a reminder that the assignment is non-blocking.}
 \begin{itemize}
 	\item[-] always@(posedge Clock) – always at the rising clock edge
 	\item[-] always@(negedge Clock) – always at the falling clock edge
 \end{itemize}
 \vspace*{5px}
-\subsection{Behavioral Latch and
+\section{Behavioral Latch and
 Flip-Flop Models}
 \subsubsection{Basic D Latch}
 The output may be affected whenever inputs D or C change (hence the *)
@@ -4930,29 +4930,18 @@ endmodule
 \end{vhdl}
 
 \subsubsection{Positive-Edge-Triggered D FF}
-D Flip-Flop with positive-edge-triggered clock input.
-The alwaysblock is executed on the positive (rising) CLK edge Q gets set to D
+D Flip-Flop with positive-edge-triggered clock input. The always block is executed on the positive (rising) CLK edge Q gets set to D
 \newline
-\vspace*{10px}
-\begin{minipage}{0.45\textwidth}
-	\begin{vhdl}
-	module Dff (input D, input CLK, output reg Q);
-		always @ (posedge CLK)
-			begin
-				Q <= D;
-			end
-	endmodule
-	\end{vhdl}
-\end{minipage}
-\hfill
-\vline
-\hfill
-\hspace*{-75px}
-\begin{minipage}{0.45\textwidth}
-	\begin{center}
-		\includegraphics[width=0.5\textwidth]{circuits/12.4.3.png}
-	\end{center}
-\end{minipage}
+\begin{vhdl}
+module Dff (input D, input CLK, output reg Q);
+	always @ (posedge CLK)
+		begin
+			Q <= D;
+		end
+endmodule
+\end{vhdl}
+
+
 \subsubsection{D FF (Positive-Edge-Triggered) with Asynchronous Clear}
 Works the same as before but the use of posedge here means that the always block is also executed if the CLR signal is high immediately without waiting for the next clock edge.
 \begin{vhdl}
@@ -4968,6 +4957,60 @@ endmodule
 \end{vhdl}
 \textit{Note: It would be a mistake to omit posedge and execute the always block on any change in CLR. On a 1-to-0 transition on CLR, the else clause would execute and set Q to D even though no CLK edge had occurred}
 
+\subsubsection{D FF with Asynchronous Clear and $\sim$ Q Output}
+The exact same but with an additional output $\sim$ Q which is the complementary of Q.
+\vspace*{5px}
+\newline
+\begin{minipage}{0.5\textwidth}
 
+\begin{vhdl}
+module Dff (input D, CLK, CLR, output reg Q, QN);
+	always @ (posedge CLK or posedge CLR)
+	begin
+		if (CLR == 1) begin
+			Q <= 0;
+			QN <= 1; // complementary output
+		end
+		else begin
+			Q <= D;
+			QN <= ~D; // complementary output
+		end
+	end
+endmodule	
+\end{vhdl}
+\end{minipage}
+\hfill
+\hspace*{-15px}
+\vline
+\hfill
+\hspace*{-60px}
+\begin{minipage}{0.40\textwidth}
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{circuits/12.4.3.png}
+	\end{center}
+\end{minipage}
 
+\subsubsection{D FF with Asynchronous Clear and Synchronous Preset}
+A D Flip-Flop with Clock Enable and Synchronous Preset updates its output to the data input (D) at each active clock edge (CE) if enabled, or sets the output to a preset value (S) synchronously if the preset condition is active. \vspace*{5px}
+\newline If neither S nor CE is active, the output retains its previous value.
+\begin{vhdl}
+module Dff (input D, input CLK, input S, input CE, output reg Q);
+	always @ (posedge CLK)
+		if (S == 1)
+			Q <= 1;
+		else if (CE == 1)
+			Q <= D;
+endmodule
+\end{vhdl}
+\subsubsection{Keywords Summary}
+Now what we've seen is just a composition of the following keywords,here's a summary of them:
+\begin{footnotesize}
+\begin{description}
+    \item[Asynchronous Clear:] Allows the immediate resetting of the latch or flip-flop output to a low state (0), regardless of the clock or other control signals' states.
+    \item[Enable:] An additional control input that allows the latch to either accept new data when high (enabled) or maintain its current state when low (disabled).
+    \item[Positive-Edge Triggered:] Indicates that the flip-flop updates its output only at the rising edge of the clock signal. This specificity in timing helps to synchronize the data flow in digital systems, reducing ambiguity and ensuring stability.
+    \item[Synchronous Preset:] Similar to asynchronous clear, but the preset operation occurs in sync with the clock. This feature sets the output to a high state (1) during the clock's active edge.
+    \item[Complementary Output:] Provides an additional output that is the logical inverse of the main output. This feature simplifies the design of circuits that require the inverse logic state, reducing the need for external inverting components.
+\end{description}
+\end{footnotesize}
 \end{document}
