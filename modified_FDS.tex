@@ -4894,6 +4894,7 @@ begin
 	C = A & B;
 end
 \end{vhdl}
+\vspace*{-10px}
 \subsubsection{always@(posedge Clock) Blocks}
 ($\leq$) Nonblocking Statements should be used. \newline
 Used to describe sequential logic containing flip-flops \newline
@@ -4938,10 +4939,8 @@ endmodule
 \end{vhdl}
 
 \subsubsection{Positive-Edge-Triggered D FF}
-D Flip-Flop with positive-edge-triggered clock input.
-The alwaysblock is executed on the positive (rising) CLK edge Q gets set to D
+D Flip-Flop with positive-edge-triggered clock input. The always block is executed on the positive (rising) CLK edge Q gets set to D
 \newline
-\vspace*{10px}
 \begin{vhdl}
 module Dff (input D, input CLK, output reg Q);
 	always @ (posedge CLK)
@@ -5023,6 +5022,18 @@ Now what we've seen is just a composition of the following keywords,here's a sum
     \item[Complementary Output:] Provides an additional output that is the logical inverse of the main output. This feature simplifies the design of circuits that require the inverse logic state, reducing the need for external inverting components.
 \end{description}
 \end{footnotesize}
+\section{Practical notes}
+
+For effective sequential systems design, it is crucial to avoid latches due to their susceptibility to glitches, potential for output oscillation, and level sensitivity, which can result in multiple output changes within a single clock period. \newline
+
+Instead, use only D flip-flops and combinational logic. Implement separate \texttt{always} blocks, one set for simple D flip-flops and another for potentially complex combinational logic. \newline
+
+Latches (hold of the last value due to bad timing, and if the last value is the initial one, it must be defined) can inadvertently arise in combinational circuits. To prevent this, ensure all variables in \texttt{always@(*)} blocks are assigned initial default values, ensuring consistent logic states before proceeding to specific assignments. \newline 
+
+In sequential logic, always employ nonblocking assignments using the \texttt{<=} operator in \texttt{always} blocks to ensure simulation consistency across multiple blocks, as this method evaluates all right-hand sides before assigning values to the left-hand sides.\newline
+
+
+
 
 \chapter{All of Verilog}
 \label{Verilog}\begin{center}\vspace*{1cm}\begin{center}\textbf{Concatenation of all Verilog Content}\end{center}\text{You'll find links to this chapter at the beginning of sections about Verilog.} \end{center}\newpage
@@ -5598,6 +5609,7 @@ begin
 	C = A & B;
 end
 \end{vhdl}
+\vspace*{-10px}
 \subsubsection{always@(posedge Clock) Blocks}
 ($\leq$) Nonblocking Statements should be used. \newline
 Used to describe sequential logic containing flip-flops \newline
