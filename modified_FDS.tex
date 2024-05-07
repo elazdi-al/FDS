@@ -4640,6 +4640,7 @@ Suppose we wish to control an alarm system. The system design involves a \textbf
 
 \vspace*{30px}
 \subsection{Combinational vs. Sequential Circuits}
+\textit{Personal Remark. Please take some time to actually identify the differences between the two as they will be crucial in understanding the rest of the course} \newline
 Previously, in \textbf{combinational circuits}, outputs only depended on the current inputs. \newline
 \vskip 5px
 In \textbf{sequential circuits}, outputs are determined by both the current inputs and the circuit's past behavior, due to the inclusion of memory elements.
@@ -5012,7 +5013,7 @@ module Dff (input D, input CLK, input S, input CE, output reg Q);
 endmodule
 \end{vhdl}
 \subsubsection{Keywords Summary}
-Now what we've seen is just a composition of the following keywords,here's a summary of them:
+Now what we've seen is just a composition of the following keywords, here's a summary of them:
 \begin{footnotesize}
 \begin{description}
     \item[Asynchronous Clear:] Allows the immediate resetting of the latch or flip-flop output to a low state (0), regardless of the clock or other control signals' states.
@@ -5031,6 +5032,77 @@ Instead, use only D flip-flops and combinational logic. Implement separate \text
 Latches (hold of the last value due to bad timing, and if the last value is the initial one, it must be defined) can inadvertently arise in combinational circuits. To prevent this, ensure all variables in \texttt{always@(*)} blocks are assigned initial default values, ensuring consistent logic states before proceeding to specific assignments. \newline 
 
 In sequential logic, always employ nonblocking assignments using the \texttt{<=} operator in \texttt{always} blocks to ensure simulation consistency across multiple blocks, as this method evaluates all right-hand sides before assigning values to the left-hand sides.\newline
+
+\chapter{Digital Logic and Verilog(PART VIII)}
+
+\section{Finite State Machines}
+Circuits containing both sequential and combinational logic are known as \textbf{state machines}. $2^n$ states can be represented by n-bit binary numbers (nothing new). The number of states being finite we thus call such circuits \textbf{finite state machines (FSMs)}
+\newline 
+\begin{center}
+\includegraphics[width=0.6\textwidth]{circuits/13.1.png}
+\end{center}
+There are two types of FSMs:
+\begin{itemize}
+	\item[-] \textbf{Mealy Machine:} The output depends on the current state and the current input.
+	\item[-] \textbf{Moore Machine:} The output depends only on the current state.
+\end{itemize}
+All state transitions are made in sync with clock edges (rising or falling).
+
+\newpage
+\subsection{Mealy State Machine}
+In a Mealy state machine, the output is a function of both the current state and the current input. 
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/13.1.1.png}
+\end{center}
+
+\begin{itemize} 
+	\item[-] The \textbf{state memory} is a set of $n$ flip-flops that store the current state all connected to the same clock (thus updating simultaneously once per clock period).
+	\item[-] The \textbf{next state} is a function of inputs and the current state \newline eg. Next state = f(current state, input)
+	\item[-] The \textbf{output} is a function of the current state and inputs \newline eg. Output = g(current state, input)
+\end{itemize}
+
+In a more detailed view: 
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/13.1.1_2.png}
+\end{center}
+\textit{Note: The sensitivity list of the state machine may be ajusted as we've seen} \newline
+
+\newpage
+\subsection{Moore State Machine}
+\textit{Same, but without the input dependency in the output.}
+In a Moore state machine, the output is a function of the current state only.
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/13.1.2.png}
+\end{center}
+
+\begin{itemize} 
+	\item[-] The \textbf{state memory} is a set of $n$ flip-flops that store the current state all connected to the same clock (thus updating simultaneously once per clock period).
+	\item[-] \textit{(Difference is here)} The \textbf{next state} is a function of inputs and the current state \newline eg. Next state = f(current state, input) 
+	\item[-] \textit{(Difference is here)} The \textbf{output} is a function of the current state \textbf{only} \newline eg. Output = g(current state, input)
+\end{itemize}
+
+In a more detailed view:
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/13.1.2_2.png}
+\end{center}
+
+\textit{Note: The sensitivity list of the state machine may be ajusted as we've seen}
+
+\newpage
+\section{State Machine Analysis}
+Here we'll be looking at how he can analyze a state machine (a circuit containing both sequential and combinational logic) to determine its behavior.
+\subsubsection{Algorithm:}
+\hspace*{20px}
+\begin{minipage}{0.88\textwidth}
+	\underline{\textit{Three steps :}}
+	\begin{itemize}
+		\item[] \textbf{\textit{Step 1:}} We determine the next-state and output functions eg. f() and g()
+		\item[] \textbf{\textit{Step 2:}} Use f() and g() to contruct a state/output table that shows the entirety of the next state and the output of the circuit for all possible inputs and states.
+		\item[] \textbf{\textit{Step 3}}\textit{(Optional)}\textbf{\textit{:}} Draw the state diagram of the state machine using the state/output table.
+	\end{itemize}
+\end{minipage}
+
+
 
 
 
