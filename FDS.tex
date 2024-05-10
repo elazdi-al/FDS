@@ -4488,7 +4488,6 @@ always @*
 In this block, the \texttt{always} keyword is followed by \texttt{@*}.
 
 \subsection{If-Else Statements}
-\textit{Personal Remark. uhm if you've been here until now I think you won't have much trouble understanding this...} \newline
 If an expression is true, the code within the begin-end block runs; multiple statements can be grouped in such a block. Optional else if and else clauses, when used, connect to the closest preceding if or else if statement.
 \noindent
 \subsubsection{Structure}
@@ -5039,7 +5038,7 @@ There are two types of FSMs:
 	\item[-] \textbf{Moore Machine:} The output depends only on the current state.
 \end{itemize}
 All state transitions are made in sync with clock edges (rising or falling).
-
+\textit{Personal Remark: Mnemothecnics: the double o in Moore: Only Output State. (uhm couldn't find anything better)}
 \newpage
 \subsection{Mealy State Machine}
 In a Mealy state machine, the output is a function of both the current state and the current input. 
@@ -5069,7 +5068,7 @@ In a Moore state machine, the output is a function of the current state only.
 
 \begin{itemize} 
 	\item[-] The \textbf{state memory} is a set of $n$ flip-flops that store the current state all connected to the same clock (thus updating simultaneously once per clock period).
-	\item[-] \textit{(Difference is here)} The \textbf{next state} is a function of inputs and the current state \newline eg. Next state = f(current state, input) 
+	\item[-] The \textbf{next state} is a function of inputs and the current state \newline eg. Next state = f(current state, input) 
 	\item[-] \textit{(Difference is here)} The \textbf{output} is a function of the current state \textbf{only} \newline eg. Output = g(current state, input)
 \end{itemize}
 
@@ -5111,11 +5110,285 @@ The state diagram is the simplest conceptual method to describe the behavior of 
         \item In Mealy FSMs, edges are also annotated with output values.
     \end{itemize}
 \end{itemize}
-\subsubsection{Example 1:}
-Let's analyze the state machine below:
+\subsubsection{Example 1}
+Let's analyze the state machine below: \newline
 \begin{center}
-	\includegraphics[width=0.4\textwidth]{circuits/13.2.1.png}
+	\includegraphics[width=0.8\textwidth]{circuits/13.2.png}
 \end{center}
+As this machine Only Outputs State, it is a Moore state machine.\newline 
+\newpage
+
+
+\textbf{\textit{Step 1:}} Determine the next-state and output functions.\newline 
+\hspace*{18px}Let $Q_1$ and $Q_2$ be the current state, and $Q_1^*$ and $Q_2^*$ be the next state. The output is $z$.
+\vspace*{-30px}
+\begin{center}
+\begin{align*}
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_1 = D_1 = f_1(x, Q_1, Q_2) = \overline{Q}_1 \cdot \overline{Q}_2 &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_2 = D_2 = f_2(x, Q_1, Q_2) = x + \overline{Q}_2 &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& z = g(x, Q_1, Q_2) = Q_1 + \overline{Q}_2 &&
+\end{align*}
+\begin{tabular}{|c|c|c|}
+\hline
+State variables & {\begin{tabular}{c}Excitation \\D2D1\end{tabular}} & Outputs \\
+\hline
+Q2 Q1 & {\begin{tabular}{c}x \\ \hline 0 \; \; \; \; \; 1\end{tabular}} & z \\
+\hline
+
+0 0&\begin{tabular}{c|c} 1\,0 & 1\,0 \end{tabular} & 1 \\
+0 1&\begin{tabular}{c|c}  1\,0 & 1\,0 \end{tabular}& 1 \\
+1 0& \begin{tabular}{c|c} 0\,1 & 1\,1 \end{tabular}& 0 \\
+1 1& \begin{tabular}{c|c} 1\,0 & 1\,0 \end{tabular}& 1 \\
+\hline
+\end{tabular}
+\end{center}
+\vspace*{20px}
+\textbf{\textit{Step 2:}} Construct a state/output table. \newline
+\hspace*{15px} Let A, B, C, and D represent the states 00, 01, 10, and 11, respectively. \newline
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Current State, S & Next state, S* & Outputs \\
+		\hline
+		S & {\begin{tabular}{c}x \\ \hline 0 \; \; \; \; \; 1\end{tabular}} & z \\
+		\hline
+		
+		A &\begin{tabular}{c|c} C & C \end{tabular} & 1 \\
+		B &\begin{tabular}{c|c} C & C \end{tabular} & 1 \\
+		C &\begin{tabular}{c|c} B & D \end{tabular} & 0 \\
+		D &\begin{tabular}{c|c} A & C \end{tabular} & 1 \\
+		\hline
+		\end{tabular}
+\end{center}
+\vspace*{20px}
+\textbf{\textit{Step 3:}} Draw the state diagram. \newline
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/13.2_2.png}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\textwidth}
+
+\textbf{Written in Verilog:}\newline
+\footnotesize
+\begin{vhdl}{basicstyle=\footnotesize}
+module fsm_example1 (input x, input CLK, output reg z);
+	reg [2:1] D, Q;
+
+	// Next-state logic
+	always @ (*) begin
+		D[1] = ~Q[1] & Q[2];
+		D[2] = x | ~Q[2];
+	end
+
+	// State memory
+	always @ (posedge CLK) begin
+		Q <= D;
+	end
+
+	// Output logic
+	always @ (*) begin
+		z = Q[1] | ~Q[2];
+	end
+endmodule	
+\end{vhdl}
+\end{minipage}
+
+\subsubsection{Example 2}
+Let's analyze the state machine below: \newline
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{circuits/13.2_3.png}
+\end{center}
+As this machine Only Outputs State, it is a Moore state machine.\newline 
+
+\textbf{\textit{Step 1:}} Determine the next-state and output functions.\newline 
+\hspace*{18px}Let $Q_0$, $Q_1$, $Q_2$ the current state, and $Q_0^*$, $Q_1^*$, $Q_2^*$ be the next state. The output is $z$.
+\vspace*{-30px}
+\begin{center}
+\begin{align*}
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_0 = D_0 = f_0(EN, Q_0, Q_1, Q_2) = Q_0 \xor EN &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_1 = D_1 = f_1(EN, Q_0, Q_1, Q_2) = Q_1 \xor (Q_0, EN)  &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_2 = D_2 = f_2(EN, Q_0, Q_1, Q_2) = Q_2 \xor (Q_0Q_1EN) &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& z = g_i(Q_i) = Q_i , 0 \leq i \leq 2 &&
+\end{align*}
+\begin{tabular}{|c|c|c|}
+\hline
+State variables & {\begin{tabular}{c}Excitation \\D2D1\end{tabular}} & Outputs \\
+\hline
+Q2 Q1 Q0 & {\begin{tabular}{c}x \\ \hline 0 \; \; \; \; \; 1\end{tabular}} & z \\
+\hline
+
+0\;\;\;\;\,0\;\;\;\;0&\begin{tabular}{c|c} 0\,0\,0\;\; &  \;\;0\,0\,1 \end{tabular} & 1 \\
+0\;\;\;\;\,0\;\;\;\;1&\begin{tabular}{c|c} 0\,0\,1\;\; &  \;\;0\,1\,0 \end{tabular}& 0 \\
+0\;\;\;\;\,1\;\;\;\;0&\begin{tabular}{c|c} 0\,1\,0\;\; &  \;\;0\,1\,1 \end{tabular}& 1 \\
+0\;\;\;\;\,1\;\;\;\;1&\begin{tabular}{c|c} 0\,1\,1\;\; &  \;\;1\,0\,0 \end{tabular}& 0 \\
+1\;\;\;\;\,0\;\;\;\;0& \begin{tabular}{c|c}1\,0\,0\;\; &  \;\;1\,0\,1 \end{tabular}& 1 \\
+1\;\;\;\;\,0\;\;\;\;1& \begin{tabular}{c|c}1\,0\,1\;\; &  \;\;1\,1\,0 \end{tabular}& 0 \\
+1\;\;\;\;\,1\;\;\;\;0& \begin{tabular}{c|c}1\,1\,0\;\; &  \;\;1\,1\,1 \end{tabular}& 1 \\
+1\;\;\;\;\,1\;\;\;\;1& \begin{tabular}{c|c}1\,1\,1\;\; &  \;\;0\,0\,0 \end{tabular}& 0 \\
+\hline
+\end{tabular}
+\end{center}
+\vspace*{20px}
+\textbf{\textit{Step 2:}} Construct a state/output table. \newline
+\hspace*{15px} Let A, B, C, D, E, F, G, and H represent the states 000, 001, 010, 011, 100, 101, 110, and 111, respectively. \newline
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Current State, S & Next state, S* & Outputs \\
+		\hline
+		S & {\begin{tabular}{c}EN \\ \hline 0 \;\;\;\;\;\;\;\;\; 1\end{tabular}} & { \begin{tabular}{c} $z_2 \; z_1 \;z_0$ \end{tabular} } \\
+		\hline
+		A &\begin{tabular}{c|c} A \;\; &  \;\; B \end{tabular}  & \;\;0\;\;0\;\;1\;\; \\
+		B &\begin{tabular}{c|c} B \;\; &  \;\; C \end{tabular} & \;\;0\;\;1\;\;0\;\; \\
+		C &\begin{tabular}{c|c} C \;\; &  \;\; D \end{tabular} & \;\;0\;\;1\;\;1\;\; \\
+		D &\begin{tabular}{c|c} D \;\; &  \;\; E \end{tabular} & \;\;1\;\;0\;\;0\;\; \\
+		E &\begin{tabular}{c|c} E \;\; &  \;\; F \end{tabular} & \;\;1\;\;0\;\;1\;\; \\
+		F &\begin{tabular}{c|c} F \;\; &  \;\; G \end{tabular} & \;\;1\;\;1\;\;0\;\; \\
+		G &\begin{tabular}{c|c} G \;\; &  \;\; H \end{tabular} & \;\;1\;\;1\;\;1\;\; \\
+		H &\begin{tabular}{c|c} H \;\; &  \;\; A \end{tabular} & \;\;0\;\;0\;\;0\;\; \\
+		\hline
+		\end{tabular}
+\end{center}
+
+\textbf{\textit{Step 3:}} Draw the state diagram. \newline
+\hspace*{-40px}
+\begin{minipage}{0.50\textwidth}
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/13.2_4.png}
+\end{center}
+\end{minipage}
+\hskip 50px
+\hfill
+\begin{minipage}{0.5\textwidth}
+\textbf{Written in Verilog:}\newline
+\footnotesize
+\begin{vhdl}{basicstyle=\footnotesize}
+module fsm_example2 ( input EN, input CLK, output reg [2:0] z);
+reg [2:0] D, Q;
+	// Next-state logic
+	always @ (*) begin
+		D[0] = Q[0] ^ EN;
+		D[1] = Q[1] ^ (Q[0] & EN);
+		D[2] = Q[2] ^ (Q[1] & Q[0] & EN);
+	end
+	// State memory
+	always @ (posedge CLK) begin
+		Q <= D;
+	end
+	// Output logic
+	always @ (*) begin
+		z = Q;
+	end
+endmodule
+\end{vhdl}
+\end{minipage}
+
+\newpage
+
+\section{State Machine Synthesis}
+\subsubsection{FSM Design Algorithm}
+\begin{itemize}
+	\item[x] Identify FSM inputs and outputs.
+	\item[x] Draw the state diagram.
+	\item[x] Contruct the state/output table.
+	\begin{itemize}
+		\item Select state encodings (binary vectors)
+		\item Rewrite state table with state encodings
+		\item Write logic expressions for next state
+	\end{itemize}
+	\item[x] Construct output table
+	\begin{itemize}
+		\item Select output encodings (binary vectors)
+		\item Write logic expressions for output 
+	\end{itemize}
+	\item[x] Construct the equivalent logic circuit (drawing, Verilog)
+\end{itemize}
+
+\subsubsection{Example}
+Consider that we need to design a trafic light controller
+Let $T_A$, $T_B$ : Signals from the trafic sensors; active when there is traffic
+$L_A$, $L_B$ : Signals for controlling traffic lights 
+\begin{center}
+	\includegraphics[width=0.4\textwidth]{circuits/13.3.png}
+\end{center}
+
+\textbf{Identify FSM inputs and outputs:}
+\begin{itemize}
+	\item[] Two one-bit inputs from the traffic sensors: $T_A$, $T_B$
+	\item[] Multiple bits outputs(three states: red, yellow, green): $L_A$, $L_B$
+	\item[] CLK, system clock
+	\item[] CLR, asynchronous reset for clearing the state memory
+\end{itemize}
+
+\begin{center}
+	\includegraphics[width=0.4\textwidth]{circuits/13.3_2.png}
+\end{center}
+\newpage
+\textbf{Draw the state diagram:}
+\vspace*{20px}
+\newline
+\begin{minipage}{0.45\textwidth}
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/13.3_3.png}
+\end{center}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.42\textwidth}
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/13.3_2.png}
+\end{center}
+\end{minipage}
+\vspace*{5px}
+\newline
+\textbf{Construct the state/output table:}
+\newline
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Current State, S} & \textbf{Inputs} & \textbf{Next State, S*} \\
+		\hline
+		S & $T_A$ \; $T_B$ & S* \\
+		\hline
+		S0 & 1 \; X & S0 \\
+		S0 & 0 \; X & S1 \\
+		S1 & X \; X & S2 \\
+		S2 & X \; 1 & S2 \\
+		S2 & X \; 0 & S3 \\
+		S3 & X \; X & S0 \\
+		\hline
+	\end{tabular}
+\end{center}
+\textit{X stands for 0/1 (i.e., both options), this simplifies the table and avoids redundancy.}
+\vspace*{10px}
+\newline
+\textbf{Select state encodings} \newline
+There are four states, thus 2 bits to encode all states
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{State} & \textbf{Encoding} \\
+		\hline
+		S0 & 00 \\
+		S1 & 01 \\
+		S2 & 10 \\
+		S3 & 11 \\
+		\hline
+	\end{tabular}
+\end{center}
+\textit{Note: Choice of encoding impacts implementation; in practice we let tools infer best encoding (AICC II)}
+
+\begin{justify}
+\textbf{Rewrite state table, write logic expressions for next state:}
+
+Using SOP expressions for the next state : \newline
+$Q_1^* = D_1 = \overline{Q_1}Q_0 + Q_1\overline{Q_0} + Q_1\overline{Q_0} = Q_0 \xor Q_1$ \newline
+$Q_0^* = D_0 = \overline{Q_1}\overline{Q_0}\overline{T_A} + Q_1\overline{Q_0}\overline{T_B}$ \newline
+\end{justify}
+
 
 
 \end{document}
