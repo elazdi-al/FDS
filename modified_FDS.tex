@@ -2651,7 +2651,7 @@ When weights are in this format :
 			      		  & = \overline{\overline{(x_1 + x_2)(x_2 + \overline{x_3})}}               \\
 			      		  & = \overline{\overline{(x_1 + x_2)} + \overline{(x_2 + \overline{x_3})}} 
 			      	\end{align}
-			      	\section{incompletely Defined Functions}
+			      	\section{Incompletely Defined Functions}
 			      	\subsection{Don't Care Condition}
 			      	Don't care conditions occur in logic design when certain input combinations never occur, or their corresponding outputs do not affect the system behavior. 
 			      	
@@ -4494,7 +4494,6 @@ always @*
 In this block, the \texttt{always} keyword is followed by \texttt{@*}.
 
 \subsection{If-Else Statements}
-\textit{Personal Remark. uhm if you've been here until now I think you won't have much trouble understanding this...} \newline
 If an expression is true, the code within the begin-end block runs; multiple statements can be grouped in such a block. Optional else if and else clauses, when used, connect to the closest preceding if or else if statement.
 \noindent
 \subsubsection{Structure}
@@ -4670,10 +4669,7 @@ In \textbf{sequential circuits}, outputs are determined by both the current inpu
 
 \subsection{Basic Memory Element}
 \subsubsection{Bistable Element}
-\textit{We're finally storing data !} \newline
 We've seen that two Not gates in a series doesn't change the input signal, so, what if we connect the output of the second Not gate to the input of the first Not gate? \newline
-
-
 \vspace*{20px} 
 \noindent
 \begin{minipage}{0.40\textwidth}
@@ -5047,7 +5043,7 @@ There are two types of FSMs:
 	\item[-] \textbf{Moore Machine:} The output depends only on the current state.
 \end{itemize}
 All state transitions are made in sync with clock edges (rising or falling).
-
+\textit{Personal Remark: Mnemothecnics: the double o in Moore: Only Output State. (uhm couldn't find anything better)}
 \newpage
 \subsection{Mealy State Machine}
 In a Mealy state machine, the output is a function of both the current state and the current input. 
@@ -5077,8 +5073,8 @@ In a Moore state machine, the output is a function of the current state only.
 
 \begin{itemize} 
 	\item[-] The \textbf{state memory} is a set of $n$ flip-flops that store the current state all connected to the same clock (thus updating simultaneously once per clock period).
-	\item[-] \textit{(Difference is here)} The \textbf{next state} is a function of inputs and the current state \newline eg. Next state = f(current state, input) 
-	\item[-] \textit{(Difference is here)} The \textbf{output} is a function of the current state \textbf{only} \newline eg. Output = g(current state, input)
+	\item[-] The \textbf{next state} is a function of inputs and the current state \newline eg. Next state = f(current state, input) 
+	\item[-] \textit{(Difference is here)} The \textbf{output} is a function of the current state \textbf{only} \newline eg. Output = g(current state)
 \end{itemize}
 
 In a more detailed view:
@@ -5101,14 +5097,924 @@ Here we'll be looking at how he can analyze a state machine (a circuit containin
 		\item[] \textbf{\textit{Step 3}}\textit{(Optional)}\textbf{\textit{:}} Draw the state diagram of the state machine using the state/output table.
 	\end{itemize}
 \end{minipage}
+\newline
+\vspace*{10px}
+
+\textbf{\textit{Step 3}}\textit{(Optional)}\textbf{\textit{:}}
+The state diagram is the simplest conceptual method to describe the behavior of a sequential circuit. It is a graph representing circuit states as nodes and the transitions between states as directed edges.
+
+\begin{itemize}
+    \item \textbf{Nodes:} Represent the circuit states.
+    \begin{itemize}
+        \item Annotated with state names.
+        \item In Moore FSMs, nodes are also annotated with output values.
+    \end{itemize}
+    \item \textbf{Edges:} Represent the transitions between states.
+    \begin{itemize}
+        \item Annotated with signals causing state transitions.
+        \item In Mealy FSMs, edges are also annotated with output values.
+    \end{itemize}
+\end{itemize}
+\subsubsection{Example 1}
+Let's analyze the state machine below: \newline
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/13.2.png}
+\end{center}
+As this machine Only Outputs State, it is a Moore state machine.\newline 
+\newpage
 
 
+\textbf{\textit{Step 1:}} Determine the next-state and output functions.\newline 
+\hspace*{18px}Let $Q_1$ and $Q_2$ be the current state, and $Q_1^*$ and $Q_2^*$ be the next state. The output is $z$.
+\vspace*{-30px}
+\begin{center}
+\begin{align*}
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_1 = D_1 = f_1(x, Q_1, Q_2) = \overline{Q}_1 \cdot \overline{Q}_2 &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_2 = D_2 = f_2(x, Q_1, Q_2) = x + \overline{Q}_2 &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& z = g(x, Q_1, Q_2) = Q_1 + \overline{Q}_2 &&
+\end{align*}
+\begin{tabular}{|c|c|c|}
+\hline
+State variables & {\begin{tabular}{c}Excitation \\D2D1\end{tabular}} & Outputs \\
+\hline
+Q2 Q1 & {\begin{tabular}{c}x \\ \hline 0 \; \; \; \; \; 1\end{tabular}} & z \\
+\hline
+
+0 0&\begin{tabular}{c|c} 1\,0 & 1\,0 \end{tabular} & 1 \\
+0 1&\begin{tabular}{c|c}  1\,0 & 1\,0 \end{tabular}& 1 \\
+1 0& \begin{tabular}{c|c} 0\,1 & 1\,1 \end{tabular}& 0 \\
+1 1& \begin{tabular}{c|c} 1\,0 & 1\,0 \end{tabular}& 1 \\
+\hline
+\end{tabular}
+\end{center}
+\vspace*{20px}
+\textbf{\textit{Step 2:}} Construct a state/output table. \newline
+\hspace*{15px} Let A, B, C, and D represent the states 00, 01, 10, and 11, respectively. \newline
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Current State, S & Next state, S* & Outputs \\
+		\hline
+		S & {\begin{tabular}{c}x \\ \hline 0 \; \; \; \; \; 1\end{tabular}} & z \\
+		\hline
+		
+		A &\begin{tabular}{c|c} C & C \end{tabular} & 1 \\
+		B &\begin{tabular}{c|c} C & C \end{tabular} & 1 \\
+		C &\begin{tabular}{c|c} B & D \end{tabular} & 0 \\
+		D &\begin{tabular}{c|c} A & C \end{tabular} & 1 \\
+		\hline
+		\end{tabular}
+\end{center}
+\vspace*{20px}
+\textbf{\textit{Step 3:}} Draw the state diagram. \newline
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/13.2_2.png}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\textwidth}
+
+\textbf{Written in Verilog:}\newline
+\footnotesize
+\begin{vhdl}{basicstyle=\footnotesize}
+module fsm_example1 (input x, input CLK, output reg z);
+	reg [2:1] D, Q;
+
+	// Next-state logic
+	always @ (*) begin
+		D[1] = ~Q[1] & Q[2];
+		D[2] = x | ~Q[2];
+	end
+
+	// State memory
+	always @ (posedge CLK) begin
+		Q <= D;
+	end
+
+	// Output logic
+	always @ (*) begin
+		z = Q[1] | ~Q[2];
+	end
+endmodule	
+\end{vhdl}
+\end{minipage}
+
+\subsubsection{Example 2}
+Let's analyze the state machine below: \newline
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{circuits/13.2_3.png}
+\end{center}
+As this machine Only Outputs State, it is a Moore state machine.\newline 
+
+\textbf{\textit{Step 1:}} Determine the next-state and output functions.\newline 
+\hspace*{18px}Let $Q_0$, $Q_1$, $Q_2$ the current state, and $Q_0^*$, $Q_1^*$, $Q_2^*$ be the next state. The output is $z$.
+\vspace*{-30px}
+\begin{center}
+\begin{align*}
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_0 = D_0 = f_0(EN, Q_0, Q_1, Q_2) = Q_0 \xor EN &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_1 = D_1 = f_1(EN, Q_0, Q_1, Q_2) = Q_1 \xor (Q_0, EN)  &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_2 = D_2 = f_2(EN, Q_0, Q_1, Q_2) = Q_2 \xor (Q_0Q_1EN) &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& z = g_i(Q_i) = Q_i , 0 \leq i \leq 2 &&
+\end{align*}
+\begin{tabular}{|c|c|c|}
+\hline
+State variables & {\begin{tabular}{c}Excitation \\D2D1\end{tabular}} & Outputs \\
+\hline
+Q2 Q1 Q0 & {\begin{tabular}{c}x \\ \hline 0 \; \; \; \; \; 1\end{tabular}} & z \\
+\hline
+
+0\;\;\;\;\,0\;\;\;\;0&\begin{tabular}{c|c} 0\,0\,0\;\; &  \;\;0\,0\,1 \end{tabular} & 1 \\
+0\;\;\;\;\,0\;\;\;\;1&\begin{tabular}{c|c} 0\,0\,1\;\; &  \;\;0\,1\,0 \end{tabular}& 0 \\
+0\;\;\;\;\,1\;\;\;\;0&\begin{tabular}{c|c} 0\,1\,0\;\; &  \;\;0\,1\,1 \end{tabular}& 1 \\
+0\;\;\;\;\,1\;\;\;\;1&\begin{tabular}{c|c} 0\,1\,1\;\; &  \;\;1\,0\,0 \end{tabular}& 0 \\
+1\;\;\;\;\,0\;\;\;\;0& \begin{tabular}{c|c}1\,0\,0\;\; &  \;\;1\,0\,1 \end{tabular}& 1 \\
+1\;\;\;\;\,0\;\;\;\;1& \begin{tabular}{c|c}1\,0\,1\;\; &  \;\;1\,1\,0 \end{tabular}& 0 \\
+1\;\;\;\;\,1\;\;\;\;0& \begin{tabular}{c|c}1\,1\,0\;\; &  \;\;1\,1\,1 \end{tabular}& 1 \\
+1\;\;\;\;\,1\;\;\;\;1& \begin{tabular}{c|c}1\,1\,1\;\; &  \;\;0\,0\,0 \end{tabular}& 0 \\
+\hline
+\end{tabular}
+\end{center}
+\vspace*{20px}
+\textbf{\textit{Step 2:}} Construct a state/output table. \newline
+\hspace*{15px} Let A, B, C, D, E, F, G, and H represent the states 000, 001, 010, 011, 100, 101, 110, and 111, respectively. \newline
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Current State, S & Next state, S* & Outputs \\
+		\hline
+		S & {\begin{tabular}{c}EN \\ \hline 0 \;\;\;\;\;\;\;\;\; 1\end{tabular}} & { \begin{tabular}{c} $z_2 \; z_1 \;z_0$ \end{tabular} } \\
+		\hline
+		A &\begin{tabular}{c|c} A \;\; &  \;\; B \end{tabular}  & \;\;0\;\;0\;\;1\;\; \\
+		B &\begin{tabular}{c|c} B \;\; &  \;\; C \end{tabular} & \;\;0\;\;1\;\;0\;\; \\
+		C &\begin{tabular}{c|c} C \;\; &  \;\; D \end{tabular} & \;\;0\;\;1\;\;1\;\; \\
+		D &\begin{tabular}{c|c} D \;\; &  \;\; E \end{tabular} & \;\;1\;\;0\;\;0\;\; \\
+		E &\begin{tabular}{c|c} E \;\; &  \;\; F \end{tabular} & \;\;1\;\;0\;\;1\;\; \\
+		F &\begin{tabular}{c|c} F \;\; &  \;\; G \end{tabular} & \;\;1\;\;1\;\;0\;\; \\
+		G &\begin{tabular}{c|c} G \;\; &  \;\; H \end{tabular} & \;\;1\;\;1\;\;1\;\; \\
+		H &\begin{tabular}{c|c} H \;\; &  \;\; A \end{tabular} & \;\;0\;\;0\;\;0\;\; \\
+		\hline
+		\end{tabular}
+\end{center}
+
+\textbf{\textit{Step 3:}} Draw the state diagram. \newline
+\hspace*{-40px}
+\begin{minipage}{0.50\textwidth}
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/13.2_4.png}
+\end{center}
+\end{minipage}
+\hskip 50px
+\hfill
+\begin{minipage}{0.5\textwidth}
+\textbf{Written in Verilog:}\newline
+\footnotesize
+\begin{vhdl}{basicstyle=\footnotesize}
+module fsm_example2 ( input EN, input CLK, output reg [2:0] z);
+reg [2:0] D, Q;
+	// Next-state logic
+	always @ (*) begin
+		D[0] = Q[0] ^ EN;
+		D[1] = Q[1] ^ (Q[0] & EN);
+		D[2] = Q[2] ^ (Q[1] & Q[0] & EN);
+	end
+	// State memory
+	always @ (posedge CLK) begin
+		Q <= D;
+	end
+	// Output logic
+	always @ (*) begin
+		z = Q;
+	end
+endmodule
+\end{vhdl}
+\end{minipage}
+
+\newpage
+
+\section{State Machine Synthesis}
+\subsubsection{FSM Design Algorithm}
+\begin{itemize}
+	\item[x] Identify FSM inputs and outputs.
+	\item[x] Draw the state diagram.
+	\item[x] Contruct the state/output table.
+	\begin{itemize}
+		\item Select state encodings (binary vectors)
+		\item Rewrite state table with state encodings
+		\item Write logic expressions for next state
+	\end{itemize}
+	\item[x] Construct output table
+	\begin{itemize}
+		\item Select output encodings (binary vectors)
+		\item Write logic expressions for output 
+	\end{itemize}
+	\item[x] Construct the equivalent logic circuit (drawing, Verilog)
+\end{itemize}
+
+\subsubsection{Example}
+Consider that we need to design a trafic light controller
+Let $T_A$, $T_B$ : Signals from the trafic sensors; active when there is traffic
+$L_A$, $L_B$ : Signals for controlling traffic lights 
+\begin{center}
+	\includegraphics[width=0.4\textwidth]{circuits/13.3.png}
+\end{center}
+
+\textbf{Identify FSM inputs and outputs:}
+\begin{itemize}
+	\item[] Two one-bit inputs from the traffic sensors: $T_A$, $T_B$
+	\item[] Multiple bits outputs(three states: red, yellow, green): $L_A$, $L_B$
+	\item[] CLK, system clock
+	\item[] CLR, asynchronous reset for clearing the state memory
+\end{itemize}
+
+\begin{center}
+	\includegraphics[width=0.4\textwidth]{circuits/13.3_2.png}
+\end{center}
+\newpage
+
+\begin{justify}
+	\textbf{Draw the state diagram:}
+\end{justify}
+\vspace*{5px}
+
+\begin{minipage}{0.45\textwidth}
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/13.3_3.png}
+\end{center}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.42\textwidth}
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/13.3_2.png}
+\end{center}
+\end{minipage}
+\vspace*{5px}
+\newline
+\textbf{Construct the state/output table:}
+\newline
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Current State, S} & \textbf{Inputs} & \textbf{Next State, S*} \\
+		\hline
+		S & $T_A$ \; $T_B$ & S* \\
+		\hline
+		S0 & 1 \; X & S0 \\
+		S0 & 0 \; X & S1 \\
+		S1 & X \; X & S2 \\
+		S2 & X \; 1 & S2 \\
+		S2 & X \; 0 & S3 \\
+		S3 & X \; X & S0 \\
+		\hline
+	\end{tabular}
+\end{center}
+\textit{X stands for 0/1 (i.e., both options), this simplifies the table and avoids redundancy.}
+\vspace*{10px}
+\newline
+\textbf{Select state encodings} \newline
+There are four states, thus 2 bits to encode all states
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{State} & \textbf{Encoding} \\
+		\hline
+		S0 & 00 \\
+		S1 & 01 \\
+		S2 & 10 \\
+		S3 & 11 \\
+		\hline
+	\end{tabular}
+\end{center}
+\textit{Note: Choice of encoding impacts implementation; in practice we let tools infer best encoding (AICC II)}
+
+\begin{justify}
+\textbf{Rewrite state table, write logic expressions for next state:}
+\vskip 10px
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Current State, S} & \multicolumn{2}{|c|}{\textbf{Inputs}} & \multicolumn{2}{|c|}{\textbf{Next State, S*}} \\
+\hline
+Q1 \; Q0 & $T_A$ & $T_B$ & D1 & D0 \\
+\hline
+0 \; 0 & 1 & X & 0 & 0 \\
+0 \; 0 & 0 & X & 0 & 1 \\
+0 \; 1 & X & X & 1 & 0 \\
+1 \; 0 & X & 1 & 1 & 0 \\
+1 \; 0 & X & 0 & 1 & 1 \\
+1 \; 1 & X & X & 0 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+\begin{justify}
+	\textit{Using SOP expressions for the next state} : \newline
+\end{justify}
+$Q_1^* = D_1 = \overline{Q_1}Q_0 + Q_1\overline{Q_0} + Q_1\overline{Q_0} = Q_0 \xor Q_1$ \newline
+$Q_0^* = D_0 = \overline{Q_1}\overline{Q_0}\overline{T_A} + Q_1\overline{Q_0}\overline{T_B}$ \newline
+\end{justify}
+\newpage
+
+
+\begin{justify}
+	\textbf{Construct output table; select output encodings:}
+\end{justify}
+\begin{itemize}
+        \item[] It's a Moore FSM as it Only Outputs State
+        \item[] Three different outputs, hence two bits required to represent them
+        \begin{itemize}
+            \item[-] \textit{L\textsubscript{A}}: Two bits (\textit{L\textsubscript{A1}}, \textit{L\textsubscript{A0}})
+            \item[-] \textit{L\textsubscript{B}}: Two bits (\textit{L\textsubscript{B1}}, \textit{L\textsubscript{B0}})
+        \end{itemize}
+    \end{itemize}
+    \item[] \textbf{For the encoding given in the table:}
+    \begin{itemize}
+        \item[] If \textit{L\textsubscript{A}} is green: \textit{L\textsubscript{A1}} = 0, \textit{L\textsubscript{A0}} = 0;
+        \item[] If \textit{L\textsubscript{B}} is yellow: \textit{L\textsubscript{B1}} = 0, \textit{L\textsubscript{B0}} = 1;
+        \item[] ...
+\end{itemize}
+
+
+\begin{minipage}{0.3\textwidth}
+	\begin{tabular}{|c|c|}
+	\hline
+	\textbf{Output} & \textbf{Encoding} \\
+	\hline
+	\cellcolor{green!25} GREEN & 00 \\
+	\cellcolor{yellow!25} YELLOW & 01 \\
+	\cellcolor{red!25} RED & 10 \\
+	\hline
+	\end{tabular}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.45\textwidth}
+
+\begin{justify}
+\textbf{Construct output table; write logic expressions}
+\end{justify}
+\begin{tabular}{|c|c|c|c|c|c|}
+	\hline
+	\textbf{Current State, S} & \multicolumn{4}{|c|}{\textbf{Outputs}} \\
+	\hline
+	Q1  Q0 & \textit{L\textsubscript{A1}} & \textit{L\textsubscript{A0}} & \textit{L\textsubscript{B1}} & \textit{L\textsubscript{B2}} \\
+	\hline
+	0 \; 0 & \cellcolor{green!25}0 & \cellcolor{green!25}0 & \cellcolor{red!25}1 & \cellcolor{red!25}0 \\
+	0 \; 1 & \cellcolor{yellow!25}0 & \cellcolor{yellow!25}1 & \cellcolor{red!25}1 &\cellcolor{red!25}0 \\
+	1 \; 0 & \cellcolor{red!25}1 & \cellcolor{red!25}0 &\cellcolor{green!25}0 & \cellcolor{green!25}0 \\
+	1 \; 1 & \cellcolor{red!25}1 & \cellcolor{red!25}0 & \cellcolor{yellow!25}0 & \cellcolor{yellow!25}1 \\
+	\hline
+\end{tabular}
+\end{minipage}
+
+
+
+
+\begin{justify}
+	
+	Thus the Output logic expressions are: $\textit{L\textsubscript{A1}} = Q_1$,
+	$\textit{L\textsubscript{A0}} = \overline{Q_1}Q_0$, $\textit{L\textsubscript{B1}} = \overline{Q_1}$
+	
+
+
+	
+	\textbf{Written in Verilog:}\newline
+	\begin{vhdl}
+module traffic_light_ctrl (input TA, TB, CLR, CLK, output reg [1:0] LA, LB);
+	reg [1:0] D, Q;
+	// Next-state logic
+	always @ (*) begin
+		D[1] = (~Q[1] & Q[0]) | (Q[1] & ~Q[0]);
+		D[0] = (~Q[1] & ~Q[0] & ~TA)
+		| (Q[1] & ~Q[0] & ~TB);
+	end
+	// State memory
+	always @ (posedge CLK or posedge CLR)
+	begin
+	if (CLR == 1)
+		Q <= 0;
+	else 
+		Q <= D;
+	end
+	// Output logic
+	always @ (*) begin
+		LA[1] = Q[1]; LA[0] = ~Q[1] & Q[0];
+		LB[1] = ~Q[1]; LB[0] = Q[1] & Q[0];
+	end
+endmodule	
+	\end{vhdl}
+\end{justify}
+
+
+\chapter{Digital logic and Verilog, Part IX}
+\section{Sequential Circuits}
+\subsection{Registers}
+
+\begin{minipage}{0.4\textwidth}
+	\small
+\begin{itemize}
+    \item[] One flip-flop stores one bit of information; thus, for \(n\) bits we need \(n\) flip-flops.
+    \item[] \(n\)-bit structures consisting of flip-flops are commonly referred to as \textbf{registers} (with \(2^{n}\) distinct states).
+    \item[] \textit{Note:}
+    \begin{itemize}
+        \item[-] Clock (CLK) is common to all flip-flops.
+        \item[-] Reset (CLR) is common to all flip-flops.
+    \end{itemize}
+\end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.5\textwidth}
+\begin{center}	    
+	\includegraphics[width=0.55\textwidth]{circuits/14.1.1.png}
+	\footnotesize
+\end{center}
+\end{minipage}
+
+\newpage 
+\subsection{Registers (Verilog)}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
+\begin{vhdl}
+module regn (D, CLK, CLR, Q);
+parameter n = 16; // 16 as an example
+input [n-1:0] D;
+input CLR, CLK;
+output reg [n-1:0] Q;
+always @ (posedge CLK or posedge CLR)
+	begin
+		if (CLR == 1)
+			Q <= 0;
+	else
+		Q <= D;
+end
+endmodule
+\end{vhdl}
+
+\section{Shift Registers}
+\subsection{Serial Input, Serial Output Shift Register}
+\textit{Personal Remark: You probably thought, What's the difference between this and the classic shifting using MUX we saw in 8.5.1? \newline A shift register shifts data one bit per clock cycle using flip-flops, while a MUX shift can shift data by multiple positions in a single clock cycle using multiplexers. Simply put, Shift registers are more efficient for simple, sequential bit shifting operations, while MUX shifts are better for high-speed, multi-bit shifting in complex digital circuits. }
+\begin{itemize}
+    \item[] Shift registers \textit{shift} their \(n\)-bit value one bit to the left or right.
+    \begin{itemize}
+        \item Take 1-bit input (serial) and, sometimes, \(n\)-bit input (parallel).
+        \item Produce 1-bit output (serial) or \(n\)-bit output (parallel).
+    \end{itemize}
+\end{itemize}
+
+\textit{These are used in various applications, such as: \newline Serial-to-parallel conversion, data storage, arithmetic, frequency division.}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{circuits/14.1.2.png}
+\end{figure}
+
+\newpage
+\textit{This visually shows the shiffting at each clock cycle. (The number to be shifted is the one on the first column of the table), the one to be outputted is the one on the last column.}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        $T_{CLK}$ & IN & Q3 & Q2 & Q1 & Q0 (OUT) \\ \hline
+        t0 & 1 & 0 & 0 & 0 & 0 \\ \hline
+        t1 & 0 & 1 & 0 & 0 & 0 \\ \hline
+        t2 & 1 & 0 & 1 & 0 & 0 \\ \hline
+        t3 & 1 & 1 & 0 & 1 & 0 \\ \hline
+        t4 & 1 & 1 & 1 & 0 & 1 \\ \hline
+        t5 & 0 & 1 & 1 & 1 & 0 \\ \hline
+        t6 & 0 & 0 & 1 & 1 & 1 \\ \hline
+        t7 & 0 & 0 & 0 & 1 & 1 \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Parallel Input, Parallel Output Shift Register}
+\textit{Faster than last one, allows shiffting multiple bits at once }\newline
+\vspace*{10px}
+\begin{minipage}{0.4\textwidth}
+	\begin{itemize}
+		\item[] Parallel input, parallel output shift registers shift their \(n\)-bit value one bit to the left or right.
+		\begin{itemize}
+			\item \(n\)-bit input D (parallel).
+			\item 1 bit input IN (serial).
+			\item \(n\)-bit output (parallel).
+		\end{itemize}
+	\end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.5\textwidth}
+	\includegraphics[width=0.9\textwidth]{circuits/14.3.2.png}
+\end{minipage}
+\newline
+\textit{The timing diagram for this shift register, numbers in base 16 represent the parallel input and output (each number is actually a 4-bit number input/output to D1,D2,D3,D4)}
+
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{circuits/14.3.2_2.png}
+\end{center}
+\newpage
+\section{Shift Registers (Verilog)}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
+\vspace*{-10px}
+\textit{Section 14.3} covers this part in details.
+\subsection{Serial input/output Shift Registers}
+\begin{minipage}{0.4\textwidth}
+	\begin{vhdl}
+module shiftn (IN, CLR, CLK, OUT);
+	parameter n = 4; // 4-bit shifter
+	input IN, CLR, CLK;
+	output OUT;
+	reg [n-1:0] Q; // internal
+	always @ (posedge CLK or posedge CLR)
+		begin
+			if (CLR == 1) Q <= 0;
+			else Q <= {IN, Q[n-1:1]};
+		end
+	assign OUT = Q[0];
+endmodule
+	\end{vhdl}
+\end{minipage}
+\hfill
+\hspace*{-4em}
+\vline
+\hfill
+\hspace*{-8em}
+\begin{minipage}{0.3\textwidth}
+\includegraphics[width=1.3\textwidth]{circuits/14.1.2.png}
+\end{minipage}
+\subsection{Parallel input/output Shift Registers}
+\begin{minipage}{0.4\textwidth}
+\begin{vhdl}
+module shiftn (D, IN, SEL, CLR, CLK, Q);
+	parameter n = 4; // 4-bit reg
+	input [n-1:0] D;
+	input IN, SEL, CLR, CLK;
+	output reg [n-1:0] Q;
+	integer k; // loop iterator
+	always @ (posedge CLK or posedge CLR) begin
+		if (CLR == 1) Q <= 0;
+		else if (SEL == 1) Q <= D;
+		else begin
+			for (k = 0; k < n-1; k = k+1) // for loop
+			begin
+				Q[k] <= Q[k+1];
+			end
+			Q[n-1] <= IN;
+		end
+	end
+endmodule
+\end{vhdl}
+\end{minipage}
+\hfill
+\hspace*{-2em}
+\vline
+\hfill
+\hspace*{-4em}
+\begin{minipage}{0.4\textwidth}
+\includegraphics[width=1.3\textwidth]{circuits/14.3.2.png}
+\end{minipage}
+
+\newpage 
+\section{Counters}
+\vspace*{-5px}
+Simple circuits that increment or decrement their value by 1, often used in various applications such as counting occurrences of events or as timers, can be realized as add/sub circuits, though that approach is generally considered overkill.
+\newline
+\subsubsection{Example - Counter Up with an Enable Signal}
+\vskip 10px
+\begin{minipage}{0.40\textwidth}
+    \begin{itemize}
+        \item[] The inputs of FF are defined as:
+        \[
+        \begin{aligned}
+            D_0 &= Q_0 \oplus EN \\
+            D_1 &= Q_1 \oplus (Q_0 EN) \\
+            D_2 &= Q_2 \oplus (Q_0 Q_1 EN) \\
+            D_3 &= Q_3 \oplus (Q_0 Q_1 Q_2 EN)
+        \end{aligned}
+        \]
+        \item[] In an n-bit counter case:
+        \[
+        D_i = Q_i \oplus (Q_0 Q_1 \cdots Q_{i-2} Q_{i-1} EN)
+        \]
+        \item[] Modulo \(2^n\) counter:
+        \begin{itemize}
+            \item Every \(2^n\) clock cycles, the output is zero
+        \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{circuits/14.5.png}
+\end{minipage}
+\vspace*{10px}
+\newline
+\textit{With the corresponding timing diagram:}
+\begin{center}
+	\includegraphics*[width=0.5\textwidth]{circuits/14.5_2.png}
+\end{center}
+\newpage
+
+
+\subsubsection{Example - Counter with Parallel-Load Capability}
+\begin{minipage}{0.45\textwidth}
+	\begin{itemize}
+		\item[] It is often necessary to start counting with initial value 0, but sometimes it is desirable to start with a different value.
+		\begin{itemize}
+			\item Parallel-load capability allows that.
+		\end{itemize}
+		\item[] In the circuit to the right:
+		\begin{itemize}
+			\item \texttt{LOAD} = 0: circuit can count
+			\item \texttt{LOAD} = 1: new value D is loaded
+		\end{itemize}
+	\end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.45\textwidth}
+	\centering
+	\includegraphics[width=1.0\textwidth]{circuits/14.5_3.png} % Update the path as needed
+\end{minipage}
+
+
+\subsubsection{Example - Modulo \(m \) (\(m < 2^n\)) Counter}
+
+\noindent
+\begin{minipage}[htp]{0.45\textwidth}
+    \begin{itemize}
+        \item[] To create a modulo \(m\) (\(m < 2^n\)) counter (for example, \(m = 10\)):
+        \begin{itemize}
+            \item Start from the counter with parallel-load capability.
+            \item Set load active when the count reaches \(m - 1\) to restart counting from zero the next clock cycle.
+        \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{circuits/14.5_4.png} % Update the path as needed
+\end{minipage}
+\newpage
+\section{Counters (Verilog)}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
+\vspace*{-10px}
+\textit{Section 14.5 covers this part in details.}
+\subsection{Counter Up with an Enable Signal}
+\begin{minipage}[htp]{0.4\textwidth}
+	\begin{vhdl}
+module upcount (EN, CLR, CLK, Q);
+parameter n = 4; // 4-bit counter
+input EN, CLR, CLK;
+output reg [n-1:0] Q;
+	always @ (posedge CLK or posedge CLR)
+	begin
+		if (CLR == 1) Q <= 0;
+		else if (EN == 1) Q <= Q + 1;
+	end
+endmodule
+	\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.4\textwidth}
+\includegraphics[width=1.3\textwidth]{circuits/14.5.png}
+\end{minipage}
+
+\subsection{Counter with Parallel-Load Capability}
+\begin{minipage}[htp]{0.4\textwidth}
+\begin{vhdl}
+module upcount (D, EN, LOAD, CLR, CLK, Q);
+parameter n = 4; // 4-bit counter
+input [n-1:0] D;
+input EN, LOAD, CLR, CLK;
+output reg [n-1:0] Q;
+	always @ (posedge CLK or posedge CLR)
+	begin
+		if (CLR == 1) Q <= 0;
+		else if (LOAD == 1) Q <= D;
+		else if (EN == 1) Q <= Q + 1;
+	end
+endmodule
+\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.4\textwidth}
+\includegraphics[width=1.3\textwidth]{circuits/14.5_3.png}
+\end{minipage}	
+\section{Verilog Part 4.}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
+\subsection{For Loop}
+
+\noindent
+\hspace*{-30px}
+\begin{minipage}[htp]{0.6\textwidth}
+\begin{itemize}
+    \item[] The \textbf{initial index} is evaluated once, before the first loop iteration (e.g., \texttt{k = 0})
+    \item[] In each loop iteration, the \textbf{begin-end} block is performed, and then the \textbf{increment} statement is evaluated (eg. \texttt{k = k + 1})
+    \item[] Finally, the \textbf{terminal index} condition is checked
+    \begin{itemize}
+        \item If true, another loop iteration is performed, otherwise the loop terminates
+        \item Contrary to testing, for synthesis, the \textbf{terminal index} condition has to compare the loop index to a \textbf{constant value} (e.g., \texttt{k < 8})
+    \end{itemize}
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[htp]{0.40\textwidth}
+\begin{vhdl}
+for (initial index; terminal index; increment)
+begin
+	statements;
+end
+\end{vhdl}
+\end{minipage}
+
+\subsection{Logical Operators}
+Logical operators in Verilog are used in conditional expressions, treating operands as true or false to produce an output of 1 (true) or 0 (false).
+\textit{Ordered in terms of Precedence:}
+\begin{center}
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{c|c}
+            \hline
+            \textbf{Operator} & \textbf{Description} \\
+            \hline
+            \texttt{!} & logical not \\
+            \texttt{==} & logical equality \\
+            \texttt{!=} & logical inequality \\
+            \texttt{\&\&} & logical and \\
+            \texttt{||} & logical or \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{center}
+
+\vspace*{-30px}
+\subsection{Relational Operators}
+
+\begin{center}
+	    \begin{tabular}{c|c}
+	        \hline
+	        \textbf{Operator} & \textbf{Description} \\
+	        \hline
+	        \texttt{a < b} & a less than b \\
+	        \texttt{a > b} & a greater than b \\
+	        \texttt{a <= b} & a less than or equal to b \\
+	        \texttt{a >= b} & a greater than or equal to b \\
+	        \hline
+	    \end{tabular}
+\end{center}
+These operators have the same precedence level.
+
+If operands are of unequal bit lengths, the smaller operand shall be zero-extended (if unsigned) or sign-extended (if signed) to the size of the larger one. Equal precedence.
+\vspace*{20px}
+\subsection{Equality Operators in Verilog}
+Equality operators compare operands bit for bit. The result is 0 if the comparison fails and 1 otherwise.
+
+    
+
+
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Operator} & \textbf{Description} & \textbf{Details} \\
+		\hline
+		\texttt{a == b} & equality & a is equal to b, the result can be 0, 1, or unknown (x or z) \\
+		\texttt{a != b} & inequality & a is not equal to b, the result can be 0, 1, or unknown (x or z) \\
+		\texttt{a === b} & case equality & a is equal to b, including unknown(x) or high-impedance(z) states \\
+		\texttt{a !=== b} & case inequality & a is not equal to b, including unknown(x) and high-impedance(z) states \\
+		\hline
+	\end{tabular}
+\end{center}
+These equality operators have the same precedence level, which is lower than that of relational operators.
+
+\chapter{Digital logic and Verilog, Part X}
+\section{Flip-flop Timing
+Constraints and Parameters}
+\subsection{Synchronous System Design}
+\textbf{In practical circuits, the outputs of sequential logic elements (registers) connect to the inputs of other sequential logic elements, typically with some combinational logic between FFs, introducing delays, and for correct circuit operation, timing constraints must be met.}
+\subsubsection{D Flip-Flop \textbf{Input} Timing Constraints}
+\vspace*{10px}
+\begin{minipage}{0.5\textwidth}
+	\begin{itemize}
+	    \item[] The signal on the input \( D \) of a D Flip-Flop (DFF) must be stable around the \textbf{active clock edge} (the edge that captures the signal).
+	    \item[] The input \( D \) must remain stable during:
+	    \begin{itemize}
+	        \item \textbf{Setup time}: the period \textit{before} the active clock edge.
+	        \item \textbf{Hold time}: the period \textit{after} the active clock edge.
+	    \end{itemize}
+	    \item[] If the input timing constraints are not satisfied, the DFF will not operate correctly.
+	    \item[] Violating these timing constraints leads to a condition called \textbf{metastability}.
+	\end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.45\textwidth}
+	\includegraphics*[width=0.9\textwidth]{circuits/15.1.1.png}
+\end{minipage}
+\newpage
+\subsubsection{D Flip-Flop Output Timing Parameters}
+\textit{Remember, Q, the output, CLK, the clock sync} \newline 
+\begin{minipage}{0.6\textwidth}
+	\begin{itemize}
+		\item[] \textbf{Timing Intervals:}
+		\begin{itemize}
+			\item \( t_{ccQ} \) (earliest change): Shown as the blue dashed line on the diagram, indicating the earliest time \( Q \) starts to change after the clock edge.
+			\item \( t_{pcQ} \) (latest change): Shown as the green dashed line, indicating the latest time \( Q \) finishes changing after the clock edge.
+			\item The region between these two dashed lines represents the uncertainty interval where the output \( Q \) is in transition, and this time is collectively referred to as \( t_{cQ} \).
+		\end{itemize}
+	\end{itemize}
+\end{minipage}
+\hfill
+\hfill
+\begin{minipage}{0.45\textwidth}
+	\centering
+	\includegraphics[width=1.1\textwidth]{circuits/15.1.1_2.png}
+\end{minipage}
+
+
+\subsection{Meeting FF Timing Constraints}
+
+ Sequential logic elements' outputs connect to inputs of other sequential logic elements. \newline \textit{For correct operation, all FFoutput-to-FFinput paths must meet timing constraints.}
+ \begin{center}
+	\hspace{-0.07\textwidth}
+	\begin{minipage}{0.6\textwidth}
+		\begin{itemize}
+		    \item[] The value at input \( \text{D2} \) must be stable:
+		    \begin{itemize}
+		        \item At least \( t_{\text{setup}} \) before the active clock edge.
+		        \item At least \( t_{\text{hold}} \) after the active clock edge.
+		    \end{itemize}
+		    \item[] Longest and shortest delay paths are most important.
+		\end{itemize}
+	\end{minipage}
+\hfill	
+\hspace{-0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+		\includegraphics[width=1.3\textwidth]{circuits/15.1.2.png}
+	\end{minipage}
+\end{center}
+
+
+\subsubsection{Setup-Time Constraints}
+
+\begin{center}
+    \begin{minipage}{0.5\textwidth}
+        To ensure correct operation, setup-time constraints must be met. This involves the longest possible delay paths:
+        \begin{itemize}
+            \item[] The total delay should be less than the clock period.
+            \item[] Thus, \( t_{\text{setup}} + t_{cQ,\text{max}} + t_{\text{comb,max}} \leq T_{\text{CLK}} \)
+            \item[] \( t_{cQ,\text{max}} \)\textit{: Longest clock-to-Q delay}
+            \item[] \( t_{\text{comb,max}} \)\textit{: Longest path delay through combinational logic}
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.4\textwidth}
+        \includegraphics[width=1\textwidth]{circuits/15.1.2_2.png}
+    \end{minipage}
+\end{center}
+
+\subsubsection{Hold-Time Constraints}
+
+\begin{center}
+    \begin{minipage}{0.5\textwidth}
+        Hold-time constraints ensure stability immediately after the clock edge:
+        \begin{itemize}
+            \item[] The total delay should be more than the hold time.
+            \item[] Formula: \( t_{cQ,\text{min}} + t_{\text{comb,min}} \geq t_{\text{hold}} \)
+            \item[] \( t_{cQ,\text{min}} \)\textit{: Shortest clock-to-Q delay}            
+			\item[] \( t_{\text{comb,min}} \)\textit{: Shortest path delay through combinational logic}
+            \item[] Typically, \( t_{\text{hold}} \approx 0 \) in real circuits.
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.4\textwidth}
+        \includegraphics[width=1\textwidth]{circuits/15.1.2_3.png}
+    \end{minipage}
+\end{center}
 
 
 
 
 \chapter{All of Verilog}
-\label{Verilog}\begin{center}\vspace*{1cm}\begin{center}\textbf{Concatenation of all Verilog Content}\end{center}\text{You'll find links to this chapter at the beginning of sections about Verilog.} \end{center}\newpage
+\label{Verilog}\begin{center}\vspace*{1cm}\begin{center}\textbf{Concatenation of all Verilog Content}\end{center}\text{You'll find links to this chapter at the beginning of sections about Verilog.} \newline \textit{Note: This chapter is generated using a Mojo script, you may find some spacing or formatting issues at times, I'm actively working on a fix for this.} \end{center}\newpage
 
 \section{Verilog HDL}
 					\textit{Personal Remark. this course will absolutely NOT suffize to make you a Verilog expert, please take some time to practice in an empty project, just representing in both structural and behavioral ways the circuits we've seen so far. }
@@ -5513,7 +6419,6 @@ always @*
 In this block, the \texttt{always} keyword is followed by \texttt{@*}.
 
 \subsection{If-Else Statements}
-\textit{Personal Remark. uhm if you've been here until now I think you won't have much trouble understanding this...} \newline
 If an expression is true, the code within the begin-end block runs; multiple statements can be grouped in such a block. Optional else if and else clauses, when used, connect to the closest preceding if or else if statement.
 \noindent
 \subsubsection{Structure}
@@ -5691,5 +6596,221 @@ Used to describe sequential logic containing flip-flops \newline
 	\item[-] always@(negedge Clock) – always at the falling clock edge
 \end{itemize}
 \vspace*{5px}
+
+\section{Registers (Verilog)}
+\begin{vhdl}
+module regn (D, CLK, CLR, Q);
+parameter n = 16; // 16 as an example
+input [n-1:0] D;
+input CLR, CLK;
+output reg [n-1:0] Q;
+always @ (posedge CLK or posedge CLR)
+	begin
+		if (CLR == 1)
+			Q <= 0;
+	else
+		Q <= D;
+end
+endmodule
+\end{vhdl}
+
+
+\section{Shift Registers (Verilog)}
+\vspace*{-10px}
+\textit{Section 14.3} covers this part in details.
+\subsection{Serial input/output Shift Registers}
+\begin{minipage}{0.4\textwidth}
+	\begin{vhdl}
+module shiftn (IN, CLR, CLK, OUT);
+	parameter n = 4; // 4-bit shifter
+	input IN, CLR, CLK;
+	output OUT;
+	reg [n-1:0] Q; // internal
+	always @ (posedge CLK or posedge CLR)
+		begin
+			if (CLR == 1) Q <= 0;
+			else Q <= {IN, Q[n-1:1]};
+		end
+	assign OUT = Q[0];
+endmodule
+	\end{vhdl}
+\end{minipage}
+\hfill
+\hspace*{-4em}
+\vline
+\hfill
+\hspace*{-8em}
+\begin{minipage}{0.3\textwidth}
+\includegraphics[width=1.3\textwidth]{circuits/14.1.2.png}
+\end{minipage}
+\subsection{Parallel input/output Shift Registers}
+\begin{minipage}{0.4\textwidth}
+\begin{vhdl}
+module shiftn (D, IN, SEL, CLR, CLK, Q);
+	parameter n = 4; // 4-bit reg
+	input [n-1:0] D;
+	input IN, SEL, CLR, CLK;
+	output reg [n-1:0] Q;
+	integer k; // loop iterator
+	always @ (posedge CLK or posedge CLR) begin
+		if (CLR == 1) Q <= 0;
+		else if (SEL == 1) Q <= D;
+		else begin
+			for (k = 0; k < n-1; k = k+1) // for loop
+			begin
+				Q[k] <= Q[k+1];
+			end
+			Q[n-1] <= IN;
+		end
+	end
+endmodule
+\end{vhdl}
+\end{minipage}
+\hfill
+\hspace*{-2em}
+\vline
+\hfill
+\hspace*{-4em}
+\begin{minipage}{0.4\textwidth}
+\includegraphics[width=1.3\textwidth]{circuits/14.3.2.png}
+\end{minipage}
+
+ 
+
+\section{Counters (Verilog)}
+\vspace*{-10px}
+\textit{Section 14.5 covers this part in details.}
+\subsection{Counter Up with an Enable Signal}
+\begin{minipage}[htp]{0.4\textwidth}
+	\begin{vhdl}
+module upcount (EN, CLR, CLK, Q);
+parameter n = 4; // 4-bit counter
+input EN, CLR, CLK;
+output reg [n-1:0] Q;
+	always @ (posedge CLK or posedge CLR)
+	begin
+		if (CLR == 1) Q <= 0;
+		else if (EN == 1) Q <= Q + 1;
+	end
+endmodule
+	\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.4\textwidth}
+\includegraphics[width=1.3\textwidth]{circuits/14.5.png}
+\end{minipage}
+
+\subsection{Counter with Parallel-Load Capability}
+\begin{minipage}[htp]{0.4\textwidth}
+\begin{vhdl}
+module upcount (D, EN, LOAD, CLR, CLK, Q);
+parameter n = 4; // 4-bit counter
+input [n-1:0] D;
+input EN, LOAD, CLR, CLK;
+output reg [n-1:0] Q;
+	always @ (posedge CLK or posedge CLR)
+	begin
+		if (CLR == 1) Q <= 0;
+		else if (LOAD == 1) Q <= D;
+		else if (EN == 1) Q <= Q + 1;
+	end
+endmodule
+\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.4\textwidth}
+\includegraphics[width=1.3\textwidth]{circuits/14.5_3.png}
+\end{minipage}	
+
+\section{Verilog Part 4.}
+\subsection{For Loop}
+
+\noindent
+\hspace*{-30px}
+\begin{minipage}[htp]{0.6\textwidth}
+\begin{itemize}
+    \item[] The \textbf{initial index} is evaluated once, before the first loop iteration (e.g., \texttt{k = 0})
+    \item[] In each loop iteration, the \textbf{begin-end} block is performed, and then the \textbf{increment} statement is evaluated (eg. \texttt{k = k + 1})
+    \item[] Finally, the \textbf{terminal index} condition is checked
+    \begin{itemize}
+        \item If true, another loop iteration is performed, otherwise the loop terminates
+        \item Contrary to testing, for synthesis, the \textbf{terminal index} condition has to compare the loop index to a \textbf{constant value} (e.g., \texttt{k < 8})
+    \end{itemize}
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[htp]{0.40\textwidth}
+\begin{vhdl}
+for (initial index; terminal index; increment)
+begin
+	statements;
+end
+\end{vhdl}
+\end{minipage}
+
+\subsection{Logical Operators}
+Logical operators in Verilog are used in conditional expressions, treating operands as true or false to produce an output of 1 (true) or 0 (false).
+\textit{Ordered in terms of Precedence:}
+\begin{center}
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{c|c}
+            \hline
+            \textbf{Operator} & \textbf{Description} \\
+            \hline
+            \texttt{!} & logical not \\
+            \texttt{==} & logical equality \\
+            \texttt{!=} & logical inequality \\
+            \texttt{\&\&} & logical and \\
+            \texttt{||} & logical or \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{center}
+
+\vspace*{-30px}
+\subsection{Relational Operators}
+
+\begin{center}
+	    \begin{tabular}{c|c}
+	        \hline
+	        \textbf{Operator} & \textbf{Description} \\
+	        \hline
+	        \texttt{a < b} & a less than b \\
+	        \texttt{a > b} & a greater than b \\
+	        \texttt{a <= b} & a less than or equal to b \\
+	        \texttt{a >= b} & a greater than or equal to b \\
+	        \hline
+	    \end{tabular}
+\end{center}
+These operators have the same precedence level.
+
+If operands are of unequal bit lengths, the smaller operand shall be zero-extended (if unsigned) or sign-extended (if signed) to the size of the larger one. Equal precedence.
+\vspace*{20px}
+\subsection{Equality Operators in Verilog}
+Equality operators compare operands bit for bit. The result is 0 if the comparison fails and 1 otherwise.
+
+    
+
+
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Operator} & \textbf{Description} & \textbf{Details} \\
+		\hline
+		\texttt{a == b} & equality & a is equal to b, the result can be 0, 1, or unknown (x or z) \\
+		\texttt{a != b} & inequality & a is not equal to b, the result can be 0, 1, or unknown (x or z) \\
+		\texttt{a === b} & case equality & a is equal to b, including unknown(x) or high-impedance(z) states \\
+		\texttt{a !=== b} & case inequality & a is not equal to b, including unknown(x) and high-impedance(z) states \\
+		\hline
+	\end{tabular}
+\end{center}
+These equality operators have the same precedence level, which is lower than that of relational operators.
+
+
 
 \end{document}

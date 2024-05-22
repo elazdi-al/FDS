@@ -4,7 +4,6 @@ alias note: String = "\\n \\\\textit{Note: See the chapter at the end of the not
 alias filename: String = "FDS.tex"
 alias modified_file: String = "modified_FDS.tex"
 
-
 fn parse_latex_sections() raises:
     var content:String
     var modified_content:String
@@ -13,18 +12,34 @@ fn parse_latex_sections() raises:
     with open(filename, 'r') as file:
         content = file.read()
 
-    # Regex to match all sections with 'Verilog' in the title and append the note immediately after the section title
+    # Regex to match sections with 'Verilog' in the title and subsections with '(Verilog)' in the title
     var updated_content:String = re.sub(r'(\\section\{[^}]*Verilog[^}]*\})', r'\1' + note, content)
+    updated_content = re.sub(r'(\\subsection\{[^}]*\(Verilog\)[^}]*\})', r'\1' + note, updated_content)
 
     # Preparing a Verilog chapter by extracting and cleaning up Verilog content
-
-    var firstpage:String = "\\label{Verilog}\\begin{center}\\vspace*{1cm}\\begin{center}\\textbf{Concatenation of all Verilog Content}\\end{center}\\text{You'll find links to this chapter at the beginning of sections about Verilog.} \\end{center}\\newpage\n"
+    var firstpage:String = "\\label{Verilog}\\begin{center}\\vspace*{1cm}\\begin{center}\\textbf{Concatenation of all Verilog Content}\\end{center}\\text{You'll find links to this chapter at the beginning of sections about Verilog.} \\newline \\textit{Note: This chapter is generated using a Mojo script, you may find some spacing or formatting issues at times, I\'m actively working on a fix for this.} \\end{center}\\newpage\n"
     var verilog_chapter:String = "\n\\chapter{All of Verilog}\n" + firstpage + "\n"
-    var verilog_sections = re.findall(r'(\\section\{[^}]*Verilog[^}]*\})(.*?)(?=\\section|$)', content, flags=re.DOTALL)
+    
+    # Extract sections and subsections, preserving the order
+    var matches = re.findall(r'(\\section\{[^}]*Verilog[^}]*\}.*?)(?=\\section|$)|(\\subsection\{[^}]*\(Verilog\)[^}]*\}.*?)(?=\\section|\\subsection|$)', content, flags=re.DOTALL)
 
-    for verilog_section in verilog_sections:
-        var clean_section:String = re.sub(r'\\chapter\{[^}]*\}|\\newpage', '', verilog_section[0] + verilog_section[1])
-        verilog_chapter += clean_section + "\n"
+    for found in matches:
+        if found[0]:
+            # It's a section
+            print(found[0])
+            var clean_section:String = re.sub(r'\\chapter\{[^}]*\}|\\newpage', '', found[0])
+            clean_section = re.sub(r'\\section{In Verilog}', '', clean_section)
+            verilog_chapter += clean_section + "\n"
+        elif found[1]:
+            # It's a subsection (convert to section)
+            print(found[1])
+            var clean_subsection:String = re.sub(r'\\chapter\{[^}]*\}|\\newpage', '', found[1])
+            clean_subsection = re.sub(r'\\subsection', r"\\section", clean_subsection)
+            clean_subsection = re.sub(r'\\subsection{In Verilog}', '', clean_subsection)
+            # Fixing spacing issues in Verilog chapter
+            clean_subsection = re.sub(r'\\textit{Section 14.3} covers this part in details.',r'\\vspace*{-20px} \\textit{Section 14.3} covers this part in details. \\vspace*{-50px}', clean_subsection)
+            verilog_chapter += clean_subsection + "\n"
+        
 
     var end_document_pos:Int = updated_content.rfind('\\end{document}')
     if end_document_pos != -1:
@@ -32,9 +47,9 @@ fn parse_latex_sections() raises:
     else:
         modified_content = updated_content + verilog_chapter
 
+    
     with open(modified_file, 'w') as file:
         file.write(modified_content)
-
 
 fn main() raises:
     parse_latex_sections()
@@ -42,4 +57,3 @@ fn main() raises:
     var compile = Python.import_module("compile")
     
     compile.compile_latex_to_pdf(modified_file)
-
