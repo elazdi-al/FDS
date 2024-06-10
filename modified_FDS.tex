@@ -131,14 +131,12 @@ stringstyle=\color{stringcolor},
 \begin{titlepage}
 	\centering
 	\vspace*{1cm}
-	    
-	    
-	\vspace{0.5cm}
+
 	\Huge
-	Fundamentals of digital systems
+	Fundamentals of Digital Systems
 	\vspace{10px}
 	\newline
-	\text{ \large Ali EL AZDI}
+	\text{ \large  }
 	
 	
 	\text{ \Large IC BA2 - Mirjana Stojilović}
@@ -2137,6 +2135,9 @@ When weights are in this format :
 			      			(not1.out) node[anchor=west] {$\overline{x_1 \cdot x_2}$};
 			      		\end{circuitikz}
 			      	\end{minipage}
+			
+					
+			
 			      	\hspace*{100px}
 			      	
 			      	\subsection{NOR GATE}
@@ -5980,7 +5981,6 @@ Constraints and Parameters}
 
 
 \subsubsection{Setup-Time Constraints}
-
 \begin{center}
     \begin{minipage}{0.5\textwidth}
         To ensure correct operation, setup-time constraints must be met. This involves the longest possible delay paths:
@@ -6016,6 +6016,223 @@ Constraints and Parameters}
     \end{minipage}
 \end{center}
 
+
+\subsection{Timing Analysis of a Simple Circuit}
+\textit{Personal Remark: Read the parameters then read the Hold-Time Violations part to better understand what we're trying to achive} \newline \vspace*{5px}
+\begin{minipage}{0.4\textwidth}
+	Given the following flip-flop (FF) timing parameters:
+	\begin{itemize}
+	    \item[-] Setup time, $t_{setup} = 0.6 \, \text{ns}$
+	    \item[-] Hold time, $t_{hold} = 0.4 \, \text{ns}$
+	    \item[-] Clock-to-Q delay,\newline $t_{CQ}$: $0.8 \, \text{ns} \le t_{CQ} \le 1.0 \, \text{ns}$
+	\end{itemize}
+	and the delay of the NOT gate, $t_{NOT} = 1.1 \, \text{ns}$.
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.7\textwidth]{circuits/15.1.2_4.png}
+\end{minipage}
+\subsubsection{Maximum Clock Frequency}
+
+To find the maximum clock frequency $f_{max}$ for which the circuit will operate properly, we consider the worst-case delay path:
+\begin{itemize}
+    \item[1.] Starts when data is loaded into the FF on the rising clock edge.
+    \item[2.] Propagates to the Q output after $t_{CQ}$.
+    \item[3.] Propagates through the NOT gate with delay $t_{NOT}$.
+    \item[4.] Ends at the input D, where it must meet the setup requirement.
+\end{itemize}
+\textit{Blue path in the upper image} \newline
+Thus, the shortest allowed clock period $T_{min}$ is given by:
+\[
+T_{min} = t_{setup} + t_{CQ,\text{max}} + t_{NOT} = 0.6 \, \text{ns} + 1.0 \, \text{ns} + 1.1 \, \text{ns} = 2.7 \, \text{ns}
+\]
+
+And the maximum operating frequency $f_{max}$ is:
+\[
+f_{max} = \frac{1}{T_{min}} = \frac{1}{2.7 \, \text{ns}} \approx 370.37 \, \text{MHz}
+\]
+
+\subsubsection{Hold-Time Violations}
+
+To check for hold-time violations, we examine the shortest path between the rising clock edge and the change of input D:
+\[
+t_{min} = t_{CQ,\text{min}} + t_{NOT} = 0.8 \, \text{ns} + 1.1 \, \text{ns} = 1.9 \, \text{ns}
+\]
+
+Hold-time constraints are satisfied if:
+\[
+t_{min} \ge t_{hold}
+\]
+
+In this circuit, the hold-time constraints are satisfied as:
+\[
+1.9 \, \text{ns} \ge 0.4 \, \text{ns}
+\]
+
+Therefore, the circuit does not suffer from hold-time violations.
+
+\subsection{Timing Analysis of a Counter}
+\begin{minipage}{0.4\textwidth}
+	Given the same FF timing parameters as in the previous example:
+	\begin{itemize}
+	    \item[] Setup time, $t_{setup} = 0.6 \, \text{ns}$
+	    \item[] Hold time, $t_{hold} = 0.4 \, \text{ns}$
+	    \item[] Clock-to-Q delay, \newline $t_{CQ}$: $0.8 \, \text{ns} \le t_{CQ} \le 1.0 \, \text{ns}$
+	\end{itemize}
+	With gate delays:
+	\begin{itemize}
+	    \item[] AND gate delay, $t_{AND} = 1.2 \, \text{ns}$
+	    \item[] XOR gate delay, $t_{XOR} = 1.3 \, \text{ns}$
+	\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.7\textwidth]{circuits/15.1.2_5.png}
+\end{minipage}
+
+\subsubsection{Maximum Operating Frequency}
+
+To find the maximum operating frequency $f_{max}$, we consider the longest path in the circuit:
+\begin{itemize}
+    \item[] Paths from output $Q_0$ to the inputs of FFs:
+    \[
+    t(Q_0, D_i) = t_{CQ} + i \cdot t_{AND} + t_{XOR}, \quad 0 \le i \le 3
+    \]
+    \item[] The longest path is $t(Q_0, D_3) = t_{CQ,\text{max}} + 3 \cdot t_{AND} + t_{XOR} = 1.0 \, \text{ns} + 3 \cdot 1.2 \, \text{ns} + 1.3 \, \text{ns} = 5.9 \, \text{ns}$
+\end{itemize}
+
+The shortest clock period that satisfies the setup-time requirements is:
+\[
+T_{min} = t_{setup} + t_{max} = 0.6 \, \text{ns} + 5.9 \, \text{ns} = 6.5 \, \text{ns}
+\]
+
+Thus, the maximum operating frequency $f_{max}$ is:
+\[
+f_{max} = \frac{1}{T_{min}} = \frac{1}{6.5 \, \text{ns}} \approx 153.84 \, \text{MHz}
+\]
+
+\subsubsection{Hold-Time Violations}
+
+To check for hold-time violations, we examine the shortest paths between the rising clock edge and the change of one of the FF inputs:
+\begin{itemize}
+    \item[] Shortest path is $t(Q_i, D_i) = t_{CQ} + t_{XOR}, \quad 0 \le i \le 3$
+    \item[] Minimum delay $t_{min} = t_{CQ,\text{min}} + t_{XOR} = 0.8 \, \text{ns} + 1.3 \, \text{ns} = 2.1 \, \text{ns}$
+\end{itemize}
+
+Hold-time requirements are satisfied if:
+\[
+t_{min} \ge t_{hold}
+\]
+
+In this circuit, the hold-time requirements are satisfied as:
+\[
+2.1 \, \text{ns} \ge 0.4 \, \text{ns}
+\]
+
+Therefore, the circuit does not suffer from hold-time violations.
+
+\section{Metastability}
+
+\begin{minipage}{0.4\textwidth}
+	Metastability occurs in a D flip-flop when the data input D is not stable around the active clock edge. \newline  \vspace*{5px }This causes the output to initially be stuck at an intermediate voltage level before eventually settling to a logic 0 or 1 in an unpredictable manner.
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.8\textwidth]{circuits/15.2.png}
+\end{minipage}
+
+
+\section{Synchronizer (Shift Register)}
+\hspace*{-20px}
+\begin{minipage}{0.4\textwidth}
+    Metastability arises from asynchronous input signals and can be mitigated by using a shift register in the signal path.
+    \begin{itemize}
+        \item[] FF1's output may enter metastability.
+        \item[] A sufficiently long clock period allows FF1's output to stabilize to 0 or 1 before the next clock edge.
+        \item[] FF2 then operates correctly, preventing metastability from propagating.
+    \end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.4\textwidth}
+    \centering
+	\includegraphics[width=0.8\textwidth]{circuits/15.2.png}
+\end{minipage}
+\newpage
+\textbf{For this part, I took some liberties in the way I organized the ideas presented by the professor as I found that presenting the same idea twice, with then without clock skew, was quite lengthy and redundant. Of course, feel free to take a look at the Digital Logic and Verilog X (extended), if you feel like the professor's approach was better. }
+\section{Life of D: Lasting One Clock Cycle}
+The signal `D` undergoes a lifecycle within a digital system that repeats every clock cycle. This lifecycle can be described as follows:
+\newline
+\vspace*{10px}
+\hspace*{-25px}
+\begin{minipage}{0.5\textwidth}
+	\begin{enumerate}
+	
+	    \item \small \textbf{Born as Q of the Source Flip-Flop (FF):} The signal $D$ starts its journey as the output ($Q$) of a source flip-flop.\\
+		\item \textbf{Journey through Combinational Logic:} After being emitted from the source flip-flop, `D` travels through various combinational logic components. $ t_{CQ} + t_{comb}$ \\
+	    \item \textbf{Arrives at the Destination FF:} The signal `D` reaches the input of the destination flip-flop. $ t_{arrival} = t_{CQ} + t_{comb}$ \\
+	    \item \textbf{Waits to be Captured on Clock Edge:} At the destination flip-flop, `D` waits for the next clock edge.\\
+		\item \textbf{Gets Captured on the Clock Edge:} When the clock edge arrives, the destination flip-flop captures the signal $D$.  $ t_{capture} = t_{arrival} + t_{setup}$ \\
+	    \item \textbf{Waits to be Replaced:} After being captured, `D` stays as the output of the destination flip-flop until it is replaced by a new signal.  $ t_{cycle} = t_{CQ} + t_{comb} + t_{setup} + t_{hold}$ \\
+	\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+	\includegraphics[width=1.2\textwidth]{circuits/15.4.png}
+\end{minipage}
+\newline
+This cycle repeats every clock cycle, ensuring the continuous flow of data through the digital system.
+
+
+\newpage
+\section{Clock Skew}
+
+\begin{justify}
+	In real circuits, the clock signal may not arrive at all FFs at the same time
+	because of the variations in the delay of the wires that carry it. 
+\end{justify}
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{circuits/15.5.png}
+\end{center}
+
+\begin{justify}
+	Variation in the arrival time of the clock signal between different flip-flops is
+	called clock skew $$t_{skew} = \Delta_D - \Delta_S$$
+\end{justify}
+\textit{with $Delta_i$ the arrival time of the clock signal at $FF_i$.}\newline
+
+\subsection{Clock Delays}
+Clock arriving to the flip-flops is delayed with respect to the clock source
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{circuits/15.5.1.png}
+\end{center}
+\subsubsection{Positive Clock Skew}
+\begin{minipage}{0.5\textwidth}
+
+Positive clock skew between $CLK_D$ and $CLK_S$ means that the rising edge of $CLK_D$ is \textbf{delayed (late)} with respect to the rising edge of $CLK_S$. 
+$t_{\text{skew}} = \Delta_D - \Delta_S > 0$ \newline
+\vspace*{5px}
+\textit{Additional impact of positive clock skew on timing and circuit performance.}
+\end{minipage} \hfill
+\begin{minipage}{0.4\textwidth}
+    \includegraphics[width=\textwidth]{circuits/15.5.1_2.png}
+\end{minipage}
+\subsubsection{Negative Clock Skew}
+\begin{minipage}{0.5\textwidth}
+Negative clock skew between $CLK_D$ and $CLK_S$ means that the rising edge of $CLK_D$ is \textbf{advanced (early)} with respect to the rising edge of $CLK_S$.
+    $t_{\text{skew}} = \Delta_D - \Delta_S < 0$ \newline
+	\vspace*{5px}                
+\textit{Additional impact of negative clock skew on timing and circuit performance.}
+\end{minipage} \hfill
+\begin{minipage}{0.4\textwidth}
+    \includegraphics[width=\textwidth]{circuits/15.5.1_3.png}
+\end{minipage}
 
 
 
