@@ -4,6 +4,7 @@
 % Load packages
 \usepackage[utf8]{inputenc} % for unicode input
  \usepackage{microtype}
+ \usepackage{bm}
 \usepackage{geometry} % for page layout
 \usepackage{hyperref} % for hyperlinks
 \usepackage{tocbibind} % includes the bibliography in the table of contents
@@ -208,11 +209,7 @@ When weights are in this format :
 		$$W_{0} = 1                                                \\
 		W_{i+1} = W_{i}R_{i} \;\; \text{with } 1 \leq i \leq n-1$$ 
 	\end{cases} \]
-	
-	
-	
-	
-	
+
 	Also written :
 	$W_{0} = 1, \; \prod_{j=0}^{i-1} R_{j}$
 	
@@ -229,7 +226,7 @@ When weights are in this format :
 		      \end{equation*}
 		\item[] In a \textbf{mixed-radix system}, the elements of the radix-vector differ
 	\end{itemize}
-	\subsection*{Example: Decimal Number System}
+	\subsection*{Example - Decimal Number System}
 	The decimal number system has the following characteristics:
 	\begin{itemize}
 		\item[-] Radix \(r = 10\), it's a fixed-radix system.
@@ -251,15 +248,15 @@ When weights are in this format :
 	\begin{description}
 		\item[Fixed:] The base of number systems.
 		\begin{itemize}
-			\item Decimal – radix 10
-			\item Binary – radix 2
-			\item Octal – radix 8
-			\item Hexadecimal – radix 16
+			\item[-] Decimal – radix 10
+			\item[-] Binary – radix 2
+			\item[-] Octal – radix 8
+			\item[-] Hexadecimal – radix 16
 		\end{itemize}
 		\item[Mixed:] An example of a mixed radix representation, such as time:
 		\begin{itemize}
-			\item Radix-vector \(R = (24, 60, 60)\)
-			\item Weight-vector \(W = (3600, 60, 1)\)
+			\item[-] Radix-vector \(R = (24, 60, 60)\)
+			\item[-] Weight-vector \(W = (3600, 60, 1)\)
 		\end{itemize}
 	\end{description}
 	
@@ -681,7 +678,6 @@ When weights are in this format :
 			  \end{itemize}
 	\end{itemize}
 	
-	\newpage
 	\subsection{Left Arithmetic Shift in Two's Complement System}
 	
 	\begin{itemize}
@@ -776,7 +772,6 @@ When weights are in this format :
    c. Increment i.
 	\end{verbatim}
 	
-	\newpage
 	\section{Gray Code Conversion Algorithm}
 	\begin{itemize}
 		\item[] \textbf{Rule for Conversion}:
@@ -787,7 +782,7 @@ When weights are in this format :
 		      \end{itemize}
 	\end{itemize}
 	
-	\subsection{Example}
+	\subsubsection{Example}
 	\text{To convert the binary number 1011 to Gray code.}
 	
 	\begin{enumerate}
@@ -826,7 +821,7 @@ When weights are in this format :
 		\item[] \(1 + 1 + 1 = 11\) (1 and carry 1 to the next higher bit)
 	\end{itemize}
 	
-	\subsection*{Example:}
+	\subsubsection{Example}
 	
 	Adding \(1101_2\) and \(1011_2\):
 	
@@ -842,7 +837,6 @@ When weights are in this format :
 	\]
 	
 	
-	\newpage
 	\subsection{Subtracting Two Binary Numbers}
 	Works exactly like subtracting decimal numbers, but with a borrow of 2 instead of 10.
 	
@@ -854,7 +848,7 @@ When weights are in this format :
 		\item[] \(0 - 1 = 1\) (with a borrow from the next higher bit)
 	\end{itemize}
 	
-	\subsection*{Example:}
+	\subsubsection{Example}
 	
 	Subtracting \(1000_2\) from \(1101_2\):
 	
@@ -888,7 +882,6 @@ When weights are in this format :
 	\]
 	
 	The result \(10000_2\) is a 5-bit number, but only the 4 least significant bits \(0000_2\) are kept in a 4-bit system, leading to overflow.
-	\newpage
 	\subsection{Underflow}
 	
 	Underflow in unsigned binary arithmetic occurs when the result of a subtraction is less than 0, which is not representable in unsigned arithmetic. Since unsigned numbers cannot represent negative values, any operation that would result in a negative value causes underflow.
@@ -908,7 +901,7 @@ When weights are in this format :
 		
 		Since the result would be negative, which cannot be represented in unsigned arithmetic, this situation is considered underflow.
 		
-		
+		\newpage
 		\section{Two’s Complement
 		Addition and Subtraction}
 		\subsection*{Graphical Representation}
@@ -924,10 +917,10 @@ When weights are in this format :
 			\item[-] Moving \textbf{clockwise} from 0 represents the \textit{addition} of positive numbers.
 			\item[-] Moving \textbf{counterclockwise} represents the \textit{subtraction} of positive numbers.
 			\item[-] Crossing the line where the sign changes indicates a \textit{change of sign} from positive to negative or vice versa.
-			\item[] \textbf{Examples:}
+			\item[] \textbf{Examples}
 			      \begin{itemize}
-			      	\item[] The addition of two positive numbers, such as \(2 + 3\), is shown by moving clockwise from 0 to 2 and then moving 3 more steps clockwise, resulting in 5.
-			      	\item[] The subtraction of a smaller number from a larger number, such as \(5 - 3\), is shown by moving clockwise from 0 to 5 and then moving 3 steps counterclockwise, resulting in 2.  
+			      	\item[] For \(2 + 3\), we move clockwise from 0 to 2 and then we move 3 more steps clockwise, resulting in 5.
+			      	\item[] \(5 - 3\), we move clockwise from 0 to 5 and then we move 3 steps counterclockwise, resulting in 2.  
 			      \end{itemize}
 		\end{itemize}
 		
@@ -962,9 +955,6 @@ When weights are in this format :
 			\end{align*}
 		\end{proof}
 		    
-		  
-		
-		\newpage
 		Binary multiplication operates similarly to decimal multiplication but is performed bit by bit. Here is a clearer example illustrating the multiplication of two binary numbers:
 		
 		\begin{align*}
@@ -1809,22 +1799,25 @@ When weights are in this format :
 			      	
 			      	If the exponents in the block are not too different, we could use a single shared exponent per block.
 			      	
-			      	\begin{tikzpicture}
-			      		\node (E) at (0,0) {$E_{\text{block}}$ (shared)};
-			      		\node (S1) at (3,0.5) {$S_1$};
-			      		\node (M1) at (4,0.5) {$M_1$};
-			      		\node[draw,fit=(S1) (M1),inner sep=1.65mm] (table1) {}; % Drawing a rectangle around S1 and M1
-			      		\node (S2) at (3,-0.5) {$S_2$};
-			      		\node (M2) at (4,-0.5) {$M_2$};
-			      		\node[draw,fit=(S2) (M2),inner sep=1.75mm] (table1) {}; % Drawing a rectangle around S1 and M1
-			      		\node (Sn) at (3,-1.5) {$S_n$};
-			      		\node (Mn) at (4,-1.5) {$M_n$};
-			      		\node[draw,fit=(Sn) (Mn),inner sep=1.65mm] (table1) {}; % Drawing a rectangle around S1 and M1
-			      		
-			      		\draw[->] (E) -- (S2);
-			      		\draw[->] (E) -- (S1);
-			      		\draw[->] (E) -- (Sn);
-			      	\end{tikzpicture}
+			      	
+					\begin{center}
+						\begin{tikzpicture}
+						      		\node (E) at (0,0) {$E_{\text{block}}$ (shared)};
+						      		\node (S1) at (3,0.5) {$S_1$};
+						      		\node (M1) at (4,0.5) {$M_1$};
+						      		\node[draw,fit=(S1) (M1),inner sep=1.65mm] (table1) {}; % Drawing a rectangle around S1 and M1
+						      		\node (S2) at (3,-0.5) {$S_2$};
+						      		\node (M2) at (4,-0.5) {$M_2$};
+						      		\node[draw,fit=(S2) (M2),inner sep=1.75mm] (table1) {}; % Drawing a rectangle around S1 and M1
+						      		\node (Sn) at (3,-1.5) {$S_n$};
+						      		\node (Mn) at (4,-1.5) {$M_n$};
+						      		\node[draw,fit=(Sn) (Mn),inner sep=1.65mm] (table1) {}; % Drawing a rectangle around S1 and M1
+						      		
+						      		\draw[->] (E) -- (S2);
+						      		\draw[->] (E) -- (S1);
+						      		\draw[->] (E) -- (Sn);
+						      	\end{tikzpicture}
+					\end{center}
 			      	    
 			      	
 			      	\textit{In BFP with shared Exponent:}
@@ -2281,21 +2274,21 @@ When weights are in this format :
 			      	
 			      	
 			      	\noindent % Ensures no indentation for the entire group
-			      	\begin{minipage}{.33\textwidth}
+			      	\begin{minipage}[htp]{.33\textwidth}
 			      		\centering % Center the content inside the minipage
 			      		\begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
 			      			\fillACapB
 			      		\end{venndiagram3sets}
 			      		xy % Replace with your desired caption or label
 			      	\end{minipage}%
-			      	\begin{minipage}{.33\textwidth}
+			      	\begin{minipage}[htp]{.33\textwidth}
 			      		\centering
 			      		\begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
 			      			\fillCNotA
 			      		\end{venndiagram3sets}
 			      		$\bar{x}z$
 			      	\end{minipage}%
-			      	\begin{minipage}{.33\textwidth}
+			      	\begin{minipage}[htp]{.33\textwidth}
 			      		\centering
 			      		\begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
 			      			\fillBCapC
@@ -2305,29 +2298,38 @@ When weights are in this format :
 			      	
 			      	\vspace{10px}
 			      	Thus, the two expressions are equivalent. \newline \vspace*{20px}
-			      	\noindent % Prevents indentation to align everything to the left.
-			      	\begin{minipage}[c]{0.30\textwidth} % Adjust the width as needed for the first circuit
-			      		\centering % Center the content
-			      		\begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
-			      			\fillACapB
-			      			\fillOnlyC
-			      			\fillBCapC
-			      		\end{venndiagram3sets}
-			      		$ xy + \overline{x}z + yz $
-			      	\end{minipage}%
-			      	\hfill % Adds horizontal space between the minipages
-			      	{\large $\equiv$} % Larger equivalence sign for better visibility
-			      	\hfill % Adds horizontal space between the equivalence sign and the second circuit
-			      	\begin{minipage}[c]{0.45\textwidth} % Adjust the width as needed for the second circuit
-			      		\centering % Center the content
-			      		\begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
-			      			\fillACapB
-			      			\fillOnlyC
-			      			\fillBCapC
-			      		\end{venndiagram3sets}
-			      		$ xy + \bar{x}z$
-			      	\end{minipage}
-			      	\hspace*{100px}
+			      	
+			
+
+\begin{center}
+									\begin{minipage}{1.4\textwidth}
+										\noindent % Prevents indentation to align everything to the left.
+										\hspace*{-10px}
+										      	\begin{minipage}{0.30\textwidth} % Adjust the width as needed for the first circuit
+										      		\centering % Center the content
+										      		\begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
+										      			\fillACapB
+										      			\fillOnlyC
+										      			\fillBCapC
+										      		\end{venndiagram3sets}
+										      		$ xy + \overline{x}z + yz $
+										      	\end{minipage}%
+												\hspace*{40px}
+										      	{\large $\equiv$} % Larger equivalence sign for better visibility
+												\hspace*{10px}
+												\vspace*{-50px}
+												\begin{minipage}{0.45\textwidth} % Adjust the width as needed for the second circuit
+										      		\centering % Center the content
+										      		\begin{venndiagram3sets}[labelA=\(x\), labelB=\(y\), labelC=\(z\)]
+										      			\fillACapB
+										      			\fillOnlyC
+										      			\fillBCapC
+										      		\end{venndiagram3sets}\newline
+										      		$ xy + \bar{x}z$
+										      	\end{minipage}
+									\end{minipage}
+\end{center}
+			
 			      	
 			      	\newpage
 			      	
@@ -2488,42 +2490,53 @@ When weights are in this format :
 			      		f(x_1, x_2, x_3) = \sum (m_1, m_4, m_5, m_6) = \sum m(1, 4, 5, 6)
 			      	\]
 			      	
-			      	\begin{center}
-			      		\begin{tabular}{|c|c|c|c|}
-			      			\hline
-			      			\( x_1 \) & \( x_2 \) & \( x_3 \) & \( f \) \\
-			      			\hline
-			      			0         & 0         & 0         & 0       \\
-			      			\hline
-			      			\rowcolor{blue!25}
-			      			0         & 0         & 1         & 1       \\
-			      			\hline
-			      			0         & 1         & 0         & 0       \\
-			      			\hline
-			      			0         & 1         & 1         & 0       \\
-			      			\hline
-			      			\rowcolor{blue!25}
-			      			1         & 0         & 0         & 1       \\
-			      			\hline
-			      			\rowcolor{blue!25}
-			      			1         & 0         & 1         & 1       \\
-			      			\hline
-			      			\rowcolor{blue!25}
-			      			1         & 1         & 0         & 1       \\
-			      			\hline
-			      			1         & 1         & 1         & 0       \\
-			      			\hline
-			      		\end{tabular}
-			      	\end{center}
-			      	
-			      	Thus the canonical SOP form :
-			      	\begin{align*}
-			      		  & f(x_1, x_2, x_3) = \overline{x_1} \overline{x_2} x_3 + x_1 \overline{x_2} \overline{x_3} + x_1 \overline{x_2} x_3 + x_1 x_2 \overline{x_3} \\
-			      		  & = (\overline{x_1} + x_1) x_2 x_3 + \overline{x_1} (\overline{x_2} + x_2) x_3                                                               \\
-			      		  & = 1 \cdot x_2 x_3 + \overline{x_1} \cdot 1 \cdot x_3                                                                                       \\
-			      		  & = x_2 x_3 + \overline{x_1} x_3                                                                                                             
-			      	\end{align*}
-			      	
+			      
+				  \begin{minipage}{0.4\textwidth}
+						\begin{center}
+					      		\begin{tabular}{|c|c|c|c|}
+					      			\hline
+					      			\( x_1 \) & \( x_2 \) & \( x_3 \) & \( f \) \\
+					      			\hline
+					      			0         & 0         & 0         & 0       \\
+					      			\hline
+					      			\rowcolor{blue!25}
+					      			0         & 0         & 1         & 1       \\
+					      			\hline
+					      			0         & 1         & 0         & 0       \\
+					      			\hline
+					      			0         & 1         & 1         & 0       \\
+					      			\hline
+					      			\rowcolor{blue!25}
+					      			1         & 0         & 0         & 1       \\
+					      			\hline
+					      			\rowcolor{blue!25}
+					      			1         & 0         & 1         & 1       \\
+					      			\hline
+					      			\rowcolor{blue!25}
+					      			1         & 1         & 0         & 1       \\
+					      			\hline
+					      			1         & 1         & 1         & 0       \\
+					      			\hline
+					      		\end{tabular}
+					      	\end{center}
+		    
+				  \end{minipage}
+				  \hfill
+				  \hspace*{-20px}
+				  \vline
+				  \hfill
+				  \hspace*{20px}
+				  \begin{minipage}{0.4\textwidth}
+
+
+					  \begin{align*}
+					  & f(x_1, x_2, x_3) = \overline{x_1} \overline{x_2} x_3 + x_1 \overline{x_2} \overline{x_3} + x_1 \overline{x_2} x_3 + x_1 x_2 \overline{x_3} \\
+					& = (\overline{x_1} + x_1) x_2 x_3 + \overline{x_1} (\overline{x_2} + x_2) x_3                                                               \\
+				& = 1 \cdot x_2 x_3 + \overline{x_1} \cdot 1 \cdot x_3                                                                                       \\
+			& = x_2 x_3 + \overline{x_1} x_3                                                                                                             
+		\end{align*}
+
+	\end{minipage}
 			      	
 			      	\subsubsection{Product-of-Sum (POS) Form}
 			      	Consider a function \( f \) of \( n = 3 \) variables and the truth table below
@@ -6123,6 +6136,7 @@ Therefore, the circuit does not suffer from hold-time violations.
 	Metastability occurs in a D flip-flop when the data input D is not stable around the active clock edge. \newline  \vspace*{5px }This causes the output to initially be stuck at an intermediate voltage level before eventually settling to a logic 0 or 1 in an unpredictable manner.
 \end{minipage}
 \hfill
+\hspace*{20px}
 \vline
 \hfill
 \begin{minipage}{0.5\textwidth}
@@ -6132,7 +6146,7 @@ Therefore, the circuit does not suffer from hold-time violations.
 
 
 \section{Synchronizer (Shift Register)}
-\hspace*{-20px}
+
 \begin{minipage}{0.4\textwidth}
     Metastability arises from asynchronous input signals and can be mitigated by using a shift register in the signal path.
     \begin{itemize}
@@ -6145,19 +6159,20 @@ Therefore, the circuit does not suffer from hold-time violations.
 \vline
 \hfill
 \begin{minipage}{0.4\textwidth}
-    \centering
-	\includegraphics[width=0.8\textwidth]{circuits/15.2.png}
+	\hspace*{-40px}
+	\includegraphics[width=1.6\textwidth]{circuits/15.3.png}
+	\hspace*{20px}
 \end{minipage}
 \newpage
 \textbf{For this part, I took some liberties in the way I organized the ideas presented by the professor as I found that presenting the same idea twice, with then without clock skew, was quite lengthy and redundant. Of course, feel free to take a look at the Digital Logic and Verilog X (extended), if you feel like the professor's approach was better. }
 \section{Life of D: Lasting One Clock Cycle}
+
 The signal `D` undergoes a lifecycle within a digital system that repeats every clock cycle. This lifecycle can be described as follows:
 \newline
 \vspace*{10px}
 \hspace*{-25px}
 \begin{minipage}{0.5\textwidth}
 	\begin{enumerate}
-	
 	    \item \small \textbf{Born as Q of the Source Flip-Flop (FF):} The signal $D$ starts its journey as the output ($Q$) of a source flip-flop.\\
 		\item \textbf{Journey through Combinational Logic:} After being emitted from the source flip-flop, `D` travels through various combinational logic components. $ t_{CQ} + t_{comb}$ \\
 	    \item \textbf{Arrives at the Destination FF:} The signal `D` reaches the input of the destination flip-flop. $ t_{arrival} = t_{CQ} + t_{comb}$ \\
@@ -6168,10 +6183,124 @@ The signal `D` undergoes a lifecycle within a digital system that repeats every 
 \end{minipage}
 \hfill
 \begin{minipage}{0.5\textwidth}
+	\includegraphics[width=1.2\textwidth]{circuits/15.5.png}
 	\includegraphics[width=1.2\textwidth]{circuits/15.4.png}
 \end{minipage}
 \newline
 This cycle repeats every clock cycle, ensuring the continuous flow of data through the digital system.
+\newpage
+\textbf{For convinience, the circuit diagram:}
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/15.5.png}
+\end{center}
+\subsection{Born as Q of the Source Flip-Flop (FF)}
+\begin{minipage}{0.45\textwidth}
+    The signal $D$ starts its journey as the output ($Q$) of a source flip-flop. The transition from the input $D$ to the output $Q$ involves a clock-to-Q delay, $t_{CQ}$, which can vary between $t_{CQ,min}$ and $t_{CQ,max}$.
+
+    \begin{itemize}
+        \item[] The output $Q$ changes after the clock-to-Q delay.
+        \item[] The clock-to-Q delay can range from $t_{CQ,min}$ to $t_{CQ,max}$.
+    \end{itemize}
+
+    Updating the output of the source FF ($Q_S$) takes some variable clock-to-Q delay.
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.3\textwidth]{circuits/15.4.1.png}
+\end{minipage}
+
+\subsection{Journey through Combinational Logic}
+\begin{minipage}{0.45\textwidth}
+    After being emitted from the source flip-flop, `D` travels through various combinational logic components. \newline
+	This part of the journey involves processing and transformation of the signal. \newline
+	\textit{Time taken: $t_{CQ} + t_{comb}$.}\newline
+	\vspace*{10px}
+	\textbf{Starts as $Q_S$}- D starts the journey as $Q_S$. \newline
+	\textbf{Ends as $D_D$}- D ends the journey as $D_D$, the input of the destination flip-flop. \newline
+	\textbf{Duration}- The journey duration is $t_{comb}$. \newline
+
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.3\textwidth]{circuits/15.4.2.png}
+\end{minipage}
+
+
+\subsection{Arrives at the Destination FF}
+\begin{minipage}{0.45\textwidth}
+    The signal `D` reaches the input of the destination flip-flop. The arrival time of the signal can be represented as $t_{arrival} = t_{CQ} + t_{comb}$.
+    \begin{itemize}
+        \item[] \textbf{Arrival Time}: $t_{arrival} = t_{CQ} + t_{comb}$
+    \end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.3\textwidth]{circuits/15.4.3.png}
+\end{minipage}
+
+\subsection{Waits to be Captured on Clock Edge}
+
+\begin{minipage}{0.55\textwidth}
+    At the destination flip-flop, `D` waits for the next clock edge. This waiting period is crucial as the signal is prepared to be synchronized with the system's clock.
+
+    \begin{itemize}
+        \item[] \textbf{Stable During Wait}: During the "wait", $D_D$ should be stable.
+        \item[] \textbf{Minimum Wait Time}: The wait must be at least as long as the setup time $t_{setup}$ for the destination FF to capture $D$ correctly.
+    \end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.4\textwidth}
+    \centering
+    \includegraphics[width=1.3\textwidth]{circuits/15.4.4.png}
+\end{minipage}
+\vspace*{20px}
+\subsection{Gets Captured on the Clock Edge}
+
+\begin{minipage}{0.55\textwidth}
+    When the clock edge arrives, the destination flip-flop captures the signal $D$. The capture time can be calculated as $t_{capture} = t_{arrival} + t_{setup}$.
+
+    \begin{itemize}
+        \item[] \textbf{Capture Time}: $t_{capture} = t_{arrival} + t_{setup}$
+        \item[] \textbf{Process}: The destination FF takes the value on $D_D$ and works on memorizing it and passing it to the output $Q_D$.
+    \end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.4\textwidth}
+    \centering
+    \includegraphics[width=1.3\textwidth]{circuits/15.4.5.png}
+\end{minipage}
+\vspace*{20px}
+
+\subsection{Waits to be Replaced}
+
+\begin{minipage}{0.55\textwidth}
+    After being captured, `D` stays as the output of the destination flip-flop until it is replaced by a new signal in the next clock cycle. The total cycle time is given by $t_{cycle} = t_{CQ} + t_{comb} + t_{setup} + t_{hold}$.
+    \begin{itemize}
+        \item[] \textbf{Hold Time}: The "wait" must be at least as long as the hold time $t_{hold}$ for the destination FF to capture $D_D$ correctly.
+        \item[] \textbf{Cycle Time}: $t_{cycle} = t_{CQ} + t_{comb} + t_{setup} + t_{hold}$
+    \end{itemize}
+    This cycle repeats every clock cycle, ensuring the continuous flow of data through the digital system.
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.4\textwidth}
+    \centering
+    \includegraphics[width=1.3\textwidth]{circuits/15.4.6.png}
+\end{minipage}
 
 
 \newpage
@@ -6180,16 +6309,19 @@ This cycle repeats every clock cycle, ensuring the continuous flow of data throu
 \begin{justify}
 	In real circuits, the clock signal may not arrive at all FFs at the same time
 	because of the variations in the delay of the wires that carry it. 
+	\newline 
+	This variation in the arrival time of the clock signal between different flip-flops is called clock skew, and \textbf{it can lead to timing errors and reduced performance in a circuit.}
 \end{justify}
 \begin{center}
+
 	\includegraphics[width=0.6\textwidth]{circuits/15.5.png}
 \end{center}
 
 \begin{justify}
-	Variation in the arrival time of the clock signal between different flip-flops is
-	called clock skew $$t_{skew} = \Delta_D - \Delta_S$$
+	Clock skew is defined as the difference in arrival times of the clock signal at different flip-flops:
+	$$t_{skew} = \Delta_D - \Delta_S$$
 \end{justify}
-\textit{with $Delta_i$ the arrival time of the clock signal at $FF_i$.}\newline
+\textit{with $\Delta_i$ being the arrival time of the clock signal at $FF_i$.}
 
 \subsection{Clock Delays}
 Clock arriving to the flip-flops is delayed with respect to the clock source
@@ -6217,6 +6349,168 @@ Negative clock skew between $CLK_D$ and $CLK_S$ means that the rising edge of $C
 \begin{minipage}{0.4\textwidth}
     \includegraphics[width=\textwidth]{circuits/15.5.1_3.png}
 \end{minipage}
+
+\section{Life of D: Lasting One Clock Cycle (with Clock Skew)}
+The signal `D` undergoes a lifecycle within a digital system that repeats every clock cycle. This lifecycle can be described as follows:
+\textit{Personal Remark: Basically what you should retain from this section}
+\newline
+\vspace*{10px}
+\hspace*{-25px}
+\begin{minipage}{0.5\textwidth}
+	\begin{enumerate}
+	    \item \textbf{Born as Q of the Source Flip-Flop (FF):} The signal $D$ starts as the output ($Q$) of a source flip-flop.
+		\item \textbf{Journey through Combinational Logic:} `D` travels through combinational logic. $ t_{CQ} + t_{comb}$
+	    \item \textbf{Arrives at the Destination FF:} `D` reaches the destination flip-flop input. $ t_{arrival} = t_{CQ} + t_{comb}$
+	    \item \textbf{Waits to be Captured on Clock Edge:} `D` waits for the next clock edge. \textbf{Clock skew affects this wait time.}
+		\item \textbf{Gets Captured on the Clock Edge:} The destination flip-flop captures `D`. $ t_{capture} = t_{arrival} + t_{setup} \pm \bm{t_{skew}}$
+	    \item \textbf{Waits to be Replaced:} `D` stays as the output until replaced by a new signal. \newline $ t_{cycle} = t_{CQ} + t_{comb} + t_{setup} + t_{hold} \pm \bm{t_{skew}}$
+	\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+	\includegraphics[width=1.2\textwidth]{circuits/15.4.png}
+\end{minipage}
+\newline
+
+
+This cycle, adjusted for clock skew, ensures the continuous flow of data through the digital system but may affect timing and performance.
+
+
+\section{Timing Constraints in the Presence of Clock Skew}
+
+To ensure proper timing in the presence of clock skew, both setup-time and hold-time constraints must be met.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{circuits/15.6.png}
+\end{figure}
+
+\subsection{Setup-Time Constraint}
+The setup-time constraint must satisfy:
+\[
+T_{CLK} + \Delta_D - (\Delta_S + t_{CQ} + t_{comb}) \geq t_{setup}
+\]
+Rewritten for the worst-case scenario:
+\[
+t_{CQ,max} + t_{comb,max} + t_{setup} - (\Delta_D - \Delta_S) \leq T_{CLK}
+\]
+
+\subsection{Hold-Time Constraint}
+The hold-time constraint must satisfy:
+\[
+t_{CQ} + t_{comb} + \Delta_S - \Delta_D \geq t_{hold}
+\]
+Rewritten for the worst-case scenario:
+\[
+t_{CQ,min} + t_{comb,min} - (\Delta_D - \Delta_S) \geq t_{hold}
+\]
+
+\newpage
+\subsection{Implications of Clock Skew on the Max Operating Frequency}
+
+\begin{itemize}
+    \item[-] \textbf{Recall:}
+    \[
+    t_{CQ,max} + t_{comb,max} + t_{setup} - (\Delta_D - \Delta_S) \leq T_{CLK} = \frac{1}{f_{CLK}}
+    \]
+    \item[-] \textbf{Substituting} $t_{skew} = \Delta_D - \Delta_S$:
+    \[
+    t_{CQ,max} + t_{comb,max} + t_{setup} - t_{skew} \leq T_{CLK} = \frac{1}{f_{CLK}}
+    \]
+    \[
+    t_{CQ,max} + t_{comb,max} + t_{setup} - t_{skew} = \frac{1}{f_{max,skew=0}} - t_{skew} = \frac{1}{f_{max}}
+    \]
+    \item[-] \textbf{Positive skew improves the max frequency}:
+    \[
+    \frac{1}{f_{max,skew=0}} > \frac{1}{f_{max}} \Rightarrow f_{max} > f_{max,skew=0}
+    \]
+    \item[-] \textbf{Negative skew worsens the max frequency}:
+    \[
+    \frac{1}{f_{max,skew=0}} < \frac{1}{f_{max}} \Rightarrow f_{max} < f_{max,skew=0}
+    \]
+\end{itemize}
+
+
+\subsubsection{What ifs...}
+
+\begin{itemize}
+    \item[-] \textbf{Q1: What if the circuit cannot work correctly at the desired frequency due to unsatisfied setup-time constraints?}
+    
+    \[
+    t_{CQ,max} + t_{comb,max} + t_{setup} - t_{skew} \leq T_{CLK} = \frac{1}{f_{CLK}}
+    \]
+
+    \textbf{A1:} Redesign the combinational logic to reduce the combinational path delay; try to increase the clock skew. In practice, we let computer-aided design tools do this for us.
+    
+    \item[-] \textbf{Implications of Clock Skew on the Max Operating Frequency}
+    
+    Recall:
+    \[
+    t_{CQ,max} + t_{comb,max} + t_{setup} - (\Delta_D - \Delta_S) \leq T_{CLK} = \frac{1}{f_{CLK}}
+    \]
+    Substituting $t_{skew} = \Delta_D - \Delta_S$:
+    \[
+    t_{CQ,max} + t_{comb,max} + t_{setup} - t_{skew} \leq T_{CLK} = \frac{1}{f_{CLK}}
+    \]
+    \[
+    t_{CQ,max} + t_{comb,max} + t_{setup} - t_{skew} = \frac{1}{f_{max,skew=0}} - t_{skew} = \frac{1}{f_{max}}
+    \]
+
+    \textbf{Positive skew improves the max frequency}:
+    \[
+    \frac{1}{f_{max,skew=0}} > \frac{1}{f_{max}} \Rightarrow f_{max} > f_{max,skew=0}
+    \]
+
+    \textbf{Negative skew worsens the max frequency}:
+    \[
+    \frac{1}{f_{max,skew=0}} < \frac{1}{f_{max}} \Rightarrow f_{max} < f_{max,skew=0}
+    \]
+
+    \item[-] \textbf{Q2: What if the circuit cannot work correctly due to unsatisfied hold-time constraints?}
+
+    \[
+    t_{CQ,min} + t_{comb,min} - t_{skew} \geq t_{hold}
+    \]
+
+    \textbf{A2:} Insert buffers on the short combinational paths to increase their delay; try to reduce the clock skew. In practice, we let computer-aided design tools do this for us.
+
+    \item[-] \textbf{Implications of Clock Skew on Meeting the Hold-Time Constraints}
+
+    Recall:
+    \[
+    t_{CQ,min} + t_{comb,min} - (\Delta_D - \Delta_S) \geq t_{hold}
+    \]
+    Substituting $t_{skew} = \Delta_D - \Delta_S$:
+    \[
+    t_{CQ,min} + t_{comb,min} - t_{skew} \geq t_{hold}
+    \]
+
+	\textit{Basically...}\newline
+
+    \textbf{Positive skew makes meeting hold-time constraints more difficult}
+
+    \textbf{Negative clock skew makes meeting hold-time constraints easier}
+\end{itemize}
+
+\subsection{Timing Analysis with a Clock Skew}
+\textit{Personal Remark: \textbf{Important!!}}
+\subsubsection{Algorithm for Finding \( f_{\text{max}} \)}
+
+\begin{enumerate}
+    \item Identify all Q-to-D paths
+    \item For every such path
+    \begin{enumerate}
+        \item Compute its longest combinational delay
+        \item Find the shortest clock period that satisfies the path's setup-time constraint
+        \begin{itemize}
+            \item \textit{Remember to include clock delays in the expressions}
+        \end{itemize}
+    \end{enumerate}
+    \item Find the shortest clock period \( T_{\text{CLK}} \) that satisfies the setup-time constraints of all those paths
+    \item Compute \( f_{\text{max}} = \frac{1}{T_{\text{CLK}}} \)
+\end{enumerate}
+
+
 
 
 \end{document}
