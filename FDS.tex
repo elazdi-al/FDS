@@ -6133,7 +6133,10 @@ Therefore, the circuit does not suffer from hold-time violations.
 \section{Metastability}
 
 \begin{minipage}{0.4\textwidth}
-	Metastability occurs in a D flip-flop when the data input D is not stable around the active clock edge. \newline  \vspace*{5px }This causes the output to initially be stuck at an intermediate voltage level before eventually settling to a logic 0 or 1 in an unpredictable manner.
+
+\begin{justify}
+		Metastability occurs in a D flip-flop when the data input D is not stable around the active clock edge. \newline  \vspace*{5px }This causes the output to initially be stuck at an intermediate voltage level before eventually settling to a logic 0 or 1 in an unpredictable manner.
+\end{justify}
 \end{minipage}
 \hfill
 \hspace*{20px}
@@ -6331,21 +6334,31 @@ Clock arriving to the flip-flops is delayed with respect to the clock source
 \subsubsection{Positive Clock Skew}
 \begin{minipage}{0.5\textwidth}
 
-Positive clock skew between $CLK_D$ and $CLK_S$ means that the rising edge of $CLK_D$ is \textbf{delayed (late)} with respect to the rising edge of $CLK_S$. 
-$t_{\text{skew}} = \Delta_D - \Delta_S > 0$ \newline
+
+\begin{justify}
+	Positive clock skew between $CLK_D$ and $CLK_S$ means that the rising edge of $CLK_D$ is \textbf{delayed (late)} with respect to the rising edge of $CLK_S$. 
+	$t_{\text{skew}} = \Delta_D - \Delta_S > 0$
+\end{justify}
 \vspace*{5px}
 \textit{Additional impact of positive clock skew on timing and circuit performance.}
 \end{minipage} \hfill
+\vline
+\hfill
 \begin{minipage}{0.4\textwidth}
     \includegraphics[width=\textwidth]{circuits/15.5.1_2.png}
 \end{minipage}
 \subsubsection{Negative Clock Skew}
 \begin{minipage}{0.5\textwidth}
-Negative clock skew between $CLK_D$ and $CLK_S$ means that the rising edge of $CLK_D$ is \textbf{advanced (early)} with respect to the rising edge of $CLK_S$.
-    $t_{\text{skew}} = \Delta_D - \Delta_S < 0$ \newline
+\begin{justify}
+	Negative clock skew between $CLK_D$ and $CLK_S$ means that the rising edge of $CLK_D$ is \textbf{advanced (early)} with respect to the rising edge of $CLK_S$.
+	$t_{\text{skew}} = \Delta_D - \Delta_S < 0$ \newline
+\end{justify}
 	\vspace*{5px}                
-\textit{Additional impact of negative clock skew on timing and circuit performance.}
-\end{minipage} \hfill
+	\textit{Additional impact of negative clock skew on timing and circuit performance.}
+
+\end{minipage}  \hfill
+\vline
+\hfill
 \begin{minipage}{0.4\textwidth}
     \includegraphics[width=\textwidth]{circuits/15.5.1_3.png}
 \end{minipage}
@@ -6357,15 +6370,20 @@ The signal `D` undergoes a lifecycle within a digital system that repeats every 
 \vspace*{10px}
 \hspace*{-25px}
 \begin{minipage}{0.5\textwidth}
-	\begin{enumerate}
-	    \item \textbf{Born as Q of the Source Flip-Flop (FF):} The signal $D$ starts as the output ($Q$) of a source flip-flop.
-		\item \textbf{Journey through Combinational Logic:} `D` travels through combinational logic. $ t_{CQ} + t_{comb}$
-	    \item \textbf{Arrives at the Destination FF:} `D` reaches the destination flip-flop input. $ t_{arrival} = t_{CQ} + t_{comb}$
-	    \item \textbf{Waits to be Captured on Clock Edge:} `D` waits for the next clock edge. \textbf{Clock skew affects this wait time.}
-		\item \textbf{Gets Captured on the Clock Edge:} The destination flip-flop captures `D`. $ t_{capture} = t_{arrival} + t_{setup} \pm \bm{t_{skew}}$
-	    \item \textbf{Waits to be Replaced:} `D` stays as the output until replaced by a new signal. \newline $ t_{cycle} = t_{CQ} + t_{comb} + t_{setup} + t_{hold} \pm \bm{t_{skew}}$
-	\end{enumerate}
+
+	\begin{justify}
+		\begin{enumerate}
+		    \item \textbf{Born as Q of the Source Flip-Flop (FF):} The signal $D$ starts as the output ($Q$) of a source flip-flop.
+			\item \textbf{Journey through Combinational Logic:} `D` travels through combinational logic. $ t_{CQ} + t_{comb}$
+		    \item \textbf{Arrives at the Destination FF:} `D` reaches the destination flip-flop input. $ t_{arrival} = t_{CQ} + t_{comb}$
+		    \item \textbf{Waits to be Captured on Clock Edge:} `D` waits for the next clock edge. \textbf{Clock skew affects this wait time.}
+			\item \textbf{Gets Captured on the Clock Edge:} The destination flip-flop captures `D`. $ t_{capture} = t_{arrival} + t_{setup} \pm \bm{t_{skew}}$
+		    \item \textbf{Waits to be Replaced:} `D` stays as the output until replaced by a new signal. \newline $ t_{cycle} = t_{CQ} + t_{comb} + t_{setup} + t_{hold} \pm \bm{t_{skew}}$
+		\end{enumerate}
+	\end{justify}
 \end{minipage}
+\hfill
+\vline
 \hfill
 \begin{minipage}{0.5\textwidth}
 	\includegraphics[width=1.2\textwidth]{circuits/15.4.png}
@@ -6431,7 +6449,7 @@ t_{CQ,min} + t_{comb,min} - (\Delta_D - \Delta_S) \geq t_{hold}
 \end{itemize}
 
 
-\subsubsection{What ifs...}
+\subsection*{What ifs...}
 
 \begin{itemize}
     \item[-] \textbf{Q1: What if the circuit cannot work correctly at the desired frequency due to unsatisfied setup-time constraints?}
@@ -6493,24 +6511,189 @@ t_{CQ,min} + t_{comb,min} - (\Delta_D - \Delta_S) \geq t_{hold}
 \end{itemize}
 
 \subsection{Timing Analysis with a Clock Skew}
-\textit{Personal Remark: \textbf{Important!!}}
-\subsubsection{Algorithm for Finding \( f_{\text{max}} \)}
+\subsubsection*{Algorithm for Finding \( f_{\text{max}} \)}
+\textit{Personal Remark: \textbf{Important!!}}\newline
+\begin{justify}
+	\begin{itemize}		
+		\setlength\itemsep{2px}
+	    \item[1 -] Identify all Q-to-D paths
+	    \item[2 -] For every such path
+	    \begin{itemize}
+			\setlength\itemsep{2px}
+	        \item[(a)] Compute its longest combinational delay
+	        \item[(b)] Find the shortest clock period that satisfies the path's setup-time constraint
+	        \begin{itemize}
+	            \item[*] \textit{Remember to include clock delays in the expressions}
+	        \end{itemize}
+	    \end{itemize}
+	    \item[3 -] Find the shortest clock period \( T_{\text{CLK}} \) that satisfies the setup-time constraints of all those paths
+	    \item[4 -] Compute \( f_{\text{max}} = \frac{1}{T_{\text{CLK}}} \)
+	\end{itemize}
+\end{justify}
 
-\begin{enumerate}
-    \item Identify all Q-to-D paths
-    \item For every such path
-    \begin{enumerate}
-        \item Compute its longest combinational delay
-        \item Find the shortest clock period that satisfies the path's setup-time constraint
+\subsection{Example Analysis with Clock Skew}
+\begin{minipage}[htp]{0.45\textwidth}
+FF timing parameters 
+\begin{itemize}
+    \item[] \( t_{\text{setup}} = 0.6 \, \text{ns} \); \( t_{\text{hold}} = 0.4 \, \text{ns} \)
+    \item[] \( 0.8 \, \text{ns} \leq t_{cQ} \leq 1 \, \text{ns} \)
+\end{itemize}
+and gate delays \( t_{\text{AND}} = 1.2 \, \text{ns} \) and \( t_{\text{XOR}} = 1.3 \, \text{ns} \)
+
+Assume clock delays:
+\[
+\Delta_0 = 0 \quad \Delta_1 = 0 \quad \Delta_2 = 0 \quad \Delta_3 = 2 \, \text{ns}
+\]
+\end{minipage}%
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+\includegraphics[width=0.9\textwidth]{circuits/15.7.5.png}
+\end{minipage}
+
+\begin{justify}
+	(a) Find the max operating frequency \( f_{\text{max}} \)\newline
+	(b) Are there hold-time violations in this circuit?
+\end{justify}
+
+\textit{Note: For simplicity, we will assume that EN is available at the rising clock edge.}
+
+
+\subsubsection*{Step 1 - Identify all Q-to-D paths}
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{itemize}
+    \item[] We already computed delays of all paths (see earlier example); let us focus on only the paths affected by clock delays
+    \item[] As clock at FF3 is delayed, the Q-to-D paths starting or ending at FF3 are the only ones affected
+    \begin{itemize}
+        \item[-] Q0 to D3
+        \item[-] Q1 to D3
+        \item[-] Q2 to D3
+        \item[-] Q3 to D3
+    \end{itemize}
+\end{itemize}
+\end{minipage}%
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+\includegraphics[width=0.9\textwidth]{circuits/15.7.5.png}
+\end{minipage}
+
+\subsubsection*{Step 2a - For all paths, find the longest combinational path delay}
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{itemize}
+    \item[-] Q0 to D3:\newline \( t_{\text{comb}} = 3 \times t_{\text{AND}} + t_{\text{XOR}} = 3 \times 1.2 + 1.3 = 4.9 \, \text{ns} \)
+    \item[-] Q1 to D3:\newline \( t_{\text{comb}} = 2 \times t_{\text{AND}} + t_{\text{XOR}} = 2 \times 1.2 + 1.3 = 3.7 \, \text{ns} \)
+    \item[-] Q2 to D3:\newline \( t_{\text{comb}} = t_{\text{AND}} + t_{\text{XOR}} = 1.2 + 1.3 = 2.5 \, \text{ns} \)
+    \item[-] Q3 to D3: \newline \( t_{\text{comb}} = t_{\text{XOR}} = 1.3 \, \text{ns} \)
+\end{itemize}
+\end{minipage}%
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+		\includegraphics[width=0.9\textwidth]{circuits/15.7.5.png}
+\end{minipage}
+
+\subsubsection*{Step 2b -  Find the shortest clock period that satisfies the path's setup-time constraint}
+\textit{Remember to include clock skew in the expressions}
+\[
+t_{cQ, \text{max}} + t_{\text{comb, max}} + t_{\text{setup}} - (\Delta_D - \Delta_S) \leq T_{\text{CLK}}
+\]
+
+\begin{center}
+	\begin{itemize}
+	    \item[-] Q0 to D3: \( 1 + 4.9 + 0.6 - (2 - 0) = 4.5 \, \text{ns} \)
+	    \item[-] Q1 to D3: \( 1 + 3.7 + 0.6 - (2 - 0) = 3.3 \, \text{ns} \)
+	    \item[-] Q2 to D3: \( 1 + 2.5 + 0.6 - (2 - 0) = 2.1 \, \text{ns} \)
+	    \item[-] Q3 to D3: \( 1 + 1.3 + 0.6 - (2 - 2) = 2.9 \, \text{ns} \)
+	\end{itemize}
+\end{center}
+
+\subsubsection*{Step 3 - Find the shortest period that satisfies all paths}
+\begin{itemize}
+    \item[] Clock period that satisfies all paths involving FF3:
+    \[
+    \max (4.5, 3.3, 2.1, 2.9) = 4.5 \, \text{ns}
+    \]
+    \item[] Clock period that satisfies other paths is determined by the path with the longest combinational delay:
+    \begin{itemize}
+        \item[-] Q0 to D2: \( t_{\text{comb}} = 2 \times t_{\text{AND}} + t_{\text{XOR}} = 2 \times 1.2 + 1.3 = 3.7 \, \text{ns} \)
+    \end{itemize}
+    \[
+    Q0 \, \text{to} \, D2: \quad 1 + 3.7 + 0.6 + (0 - 0) = 5.3 \, \text{ns}
+    \]
+    \item[] Finally, the shortest clock period that satisfies all paths
+    \[
+    T_{\text{CLK}} = \max (4.5, 5.3) = 5.3 \, \text{ns}
+    \]
+\end{itemize}
+\subsubsection*{Step 4 - Compute the max operating frequency}
+Thus the max operating frequency is:
+$$f_{\text{max}} = \frac{1}{T_{CLK}\, \text{ns}} \approx 188 \, \text{MHz}$$
+\subsubsection*{Algorithm for Cheking Hold-Time Violations}
+\textit{Personal Remark: Again, \textbf{Important!!}}\newline
+\vspace*{-10px}
+\begin{itemize}
+        \item[1] Identify all Q-to-D paths
+        \item[2] For every such path
         \begin{itemize}
-            \item \textit{Remember to include clock delays in the expressions}
+            \item Compute its shortest combinational delay
+            \item Verify if hold-time constraint is satisfied
+            \begin{itemize}
+                \item \textit{Remember to include clock delays in the expressions}
+            \end{itemize}
         \end{itemize}
-    \end{enumerate}
-    \item Find the shortest clock period \( T_{\text{CLK}} \) that satisfies the setup-time constraints of all those paths
-    \item Compute \( f_{\text{max}} = \frac{1}{T_{\text{CLK}}} \)
-\end{enumerate}
+\end{itemize}
+
+\subsubsection*{Step 1 - Identify all Q-to-D paths}
+\begin{minipage}[htp]{0.5\textwidth}
+
+\begin{justify}
+		We already verified hold-time constraints for all paths (see earlier example); \newline
+		Therefore, we now focus only on the paths involving FF3, because clock at FF3 is delayed.
+\end{justify}
+
+	\subsubsection*{Step 2a - Find min combinational path delay}
+	\begin{justify}
+			- Q0 to D3:\newline \( t_{\text{comb}} = 3 \times t_{\text{AND}} + t_{\text{XOR}} = 3 \times 1.2 + 1.3 = 4.9 \, \text{ns} \)\newline
+			- Q1 to D3:\newline \( t_{\text{comb}} = 2 \times t_{\text{AND}} + t_{\text{XOR}} = 2 \times 1.2 + 1.3 = 3.7 \, \text{ns} \)\newline
+			- Q2 to D3:\newline \( t_{\text{comb}} = t_{\text{AND}} + t_{\text{XOR}} = 1.2 + 1.3 = 2.5 \, \text{ns} \)\newline
+			- Q3 to D3:\newline \( t_{\text{comb}} = t_{\text{XOR}} = 1.3 \, \text{ns} \)
+	\end{justify}
+\end{minipage}%
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.40\textwidth}
+\includegraphics[width=0.9\textwidth]{circuits/15.7.5.png}
+\end{minipage}
+
+	\subsubsection*{Step 2b - Given the clock delay to the source FF, verify if hold-time constraint is satisfied}
+	\begin{equation*}
+	t_{cQ,\text{min}} + t_{\text{comb,min}} - (\Delta_D - \Delta_S) \geq t_{\text{hold}}
+	\end{equation*}
 
 
+\begin{minipage}[htp]{0.40\textwidth}
+		\begin{itemize}
+			\item[-] Q0 to D3: \( 0.8 + 4.7 - (2 - 0) = 3.5 \, \text{ns} > 0.4 \, \text{ns} \)
+			\item[-] Q1 to D3: \( 0.8 + 3.7 - (2 - 0) = 2.5 \, \text{ns} > 0.4 \, \text{ns} \)
+			\item[-] Q2 to D3: \( 0.8 + 2.5 - (2 - 0) = 1.3 \, \text{ns} > 0.4 \, \text{ns} \)
+			\item[-] Q3 to D3: \( 0.8 + 1.3 - (2 - 2) = 2.1 \, \text{ns} > 0.4 \, \text{ns} \)
+		\end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.40\textwidth}
+	\textbf{Conclusion}\newline
+	All relevant paths satisfy hold-time constraints.
+\end{minipage}
+\chapter{Digital logic and Verilog, Part XI}
+
+\section{$n-to-2^{n}$ Binary Decoders}
 
 
 \end{document}
