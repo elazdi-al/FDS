@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc} % for unicode input
  \usepackage{microtype}
  \usepackage{bm}
+ \usepackage{enumitem}
 \usepackage{geometry} % for page layout
 \usepackage{hyperref} % for hyperlinks
 \usepackage{tocbibind} % includes the bibliography in the table of contents
@@ -102,7 +103,7 @@
   backgroundcolor=\color{backgroundcolor},
   commentstyle=\color{commentcolor}\ttfamily, % Add \ttfamily to ensure comments are in typewriter font
   morecomment=[l][\color{commentcolor}\ttfamily]{//}, % Line comment in VHDL
-  morekeywords={module,input,output,wire,endmodule,endcase,default,tri,assign,always},
+  morekeywords={module,input,output,wire,endmodule,endcase,default,tri,assign,always,?,:},
   keywordstyle=\color{keywordcolor},
 stringstyle=\color{stringcolor},
   showstringspaces=false,
@@ -630,8 +631,9 @@ When weights are in this format :
 				  Z_i & = 0 \quad \text{for } i = m - 1, m - 2, \ldots, n \\
 				  Z_i & = X_i \quad \text{for } i = n - 1, \ldots, 0      
 			  \end{align*}
-		\item[] Example: Consider \( X = 11010101_2 = -85_{10} \).
-		\item[] The algorithm extends the range of \( X \) by adding zeros to the left of the most significant bit, preserving the sign bit.
+		\item[] Example: Consider \( X = 11010101_2 = -85_{10} \), is equivalent to \( Z = 10001010101 = -85_{10} \) in an 8-bit system.
+	
+		\item[] The algorithm extends the range of \( X \) by adding zeros to the right of the most significant bit, preserving the sign bit.
 	\end{itemize}
 	
 	
@@ -2692,21 +2694,26 @@ When weights are in this format :
 			      	For the lion's cage control, with 'don't cares' the function can be expressed as:
 			      	\[ f = \sum m(1,2) + D(3) \]
 			      	
-			      	\begin{itemize}
-			      		\item Assuming \( D(3) = 0 \), the function simplifies to:
-			      		      \[ f = \overline{x_1} x_2 + x_1 \overline{x_2} \]
-			      		      using 5 gates and 8 inputs.
-			      		\item Assuming \( D(3) = 1 \), the function simplifies further to:
-			      		      \[ f = x_1 \bar{x}_2 + x_1 = x_1 + x_2 \]
-			      		      using an OR gate and redundancy rules.
-			      	\end{itemize}
+
+				      	\begin{itemize}
+							\setlength\itemsep{-2px}
+				      		\item[] For \( D(3) = 0 \), the function simplifies to:
+				      		      \[ f = \overline{x_1} x_2 + x_1 \overline{x_2} \]
+				      		      using 5 gates and 8 inputs.
+				      		\item[] For \( D(3) = 1 \), the function simplifies further to:
+				      		      \[ f = x_1 \bar{x}_2 + x_1 = x_1 + x_2 \]
+				      		      using an OR gate and redundancy rules.
+				      	\end{itemize}
+
+
 			      	
 			      	\textit{Adding don't care values sometimes allows for a simpler implementation.}
 			      	\section{Even and Odd Detectors (XNOR and XOR Gates)}
+
 			      	\subsection{XOR Gate}
-			      	\textit{True when one and only one input is True}
-			      	The exclusif OR (XOR) gate is represented with the table below :
-			      	\begin{table}[h]
+			      	\textit{True when one and only one input is True}\newline
+			      	The exclusif OR (XOR) gate is represented with the table below :\newline
+			      	\begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the first circuit
 			      		\centering
 			      		\begin{tabular}{|c|c|c|}
 			      			\hline
@@ -2718,136 +2725,151 @@ When weights are in this format :
 			      			1         & 1         & 0       \\
 			      			\hline
 			      		\end{tabular}
-			      	\end{table}
-			      	
-			      	and looks like:
-			      	\vspace*{-10px}
-			      	\begin{center}
-			      		\begin{minipage}[c]{0.45\textwidth} % Adjust the width as needed for the second circuit
+			      	\end{minipage}
+			      	\hfill
+					\vline
+					\hfill
+			      		\begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the second circuit
 			      			\centering
 			      			\includegraphics[width=0.45\textwidth]{circuits/6.11.1.png} % Replace 'path_to_image.png' with the actual path to your image file
 			      		\end{minipage}
-			      	\end{center}
-			      	
+	
 			      	\subsection{XNOR Gate}
-			      	The exclusif NOR (XNOR) gate is represented with the table below :
-			      	\textit{True when both inputs are the same.}
-			      	\vspace*{-10px}
-			      	\begin{table}[h]
-			      		\centering
-			      		\begin{tabular}{|c|c|c|}
-			      			\hline
-			      			\( x_1 \) & \( x_2 \) & \( f \) \\
-			      			\hline
-			      			    
-			      			0         & 0         & 1       \\
-			      			0         & 1         & 0       \\
-			      			1         & 0         & 0       \\
-			      			1         & 1         & 1       \\
-			      			\hline
-			      		\end{tabular}
-			      	\end{table}
-			      	
-			      	and looks like:
-			      	\begin{center}
-			      		\begin{minipage}[c]{0.45\textwidth} % Adjust the width as needed for the second circuit
-			      			\centering
-			      			\includegraphics[width=0.45\textwidth]{circuits/6.11.2.png} % Replace 'path_to_image.png' with the actual path to your image file
-			      		\end{minipage}
-			      	\end{center}
+					The exclusive NOR (XNOR) gate is represented with the table below:
+					\textit{True when both inputs are the same.}
+					\newline
+
+					\begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the first circuit
+						\centering
+						\begin{tabular}{|c|c|c|}
+							\hline
+							\( x_1 \) & \( x_2 \) & \( f \) \\
+							\hline
+							0         & 0         & 1       \\
+							0         & 1         & 0       \\
+							1         & 0         & 0       \\
+							1         & 1         & 1       \\
+							\hline
+						\end{tabular}
+					\end{minipage}
+					\hfill
+					\vline
+					\hfill
+					\begin{minipage}[htp]{0.45\textwidth}
+						\centering
+						\includegraphics[width=0.45\textwidth]{circuits/6.11.2.png} % Replace 'circuits/6.11.2.png' with the actual path to your image file
+					\end{minipage}
+
+			
 			      	
 			      	\section{Design Example}
 			      	\subsection{Number Display}
 			      	Here we will be designing a logic circuit to drive a seven-segment display .
 			      	\begin{center}
-			      		\begin{minipage}[c]{0.80\textwidth} % Adjust the width as needed for the second circuit
+			      		\begin{minipage}[htp]{0.80\textwidth} % Adjust the width as needed for the second circuit
 			      			\centering
 			      			\includegraphics[width=0.80\textwidth]{circuits/6.12.1.png} 
 			      		\end{minipage}
 			      	\end{center}
 			      	We can derive one logic function per output of the table below:
-			      	\begin{table}[h!]
-			      		\centering
-			      		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-			      			\hline
-			      			\multicolumn{2}{|c|}{} & \multicolumn{7}{c|}{Output} \\
-			      			\hhline{|~|-|-------|}
-			      			\( S_1 \) & \( S_0 \) & a & b & c & d & e & f & g \\
-			      			\hline
-			      			0         & 0         & 1 & 1 & 1 & 1 & 1 & 1 & 0 \\
-			      			\hline
-			      			0         & 1         & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\
-			      			\hline
-			      			1         & 0         & 1 & 1 & 0 & 1 & 1 & 0 & 1 \\
-			      			\hline
-			      			1         & 1         & 1 & 1 & 1 & 1 & 0 & 0 & 1 \\
-			      			\hline
-			      		\end{tabular}
-			      	\end{table}
-			      	\vspace{-10px}
-			      	\begin{align*}
-			      		a(s_0, s_1) & = M_1 = s_1 + \overline{s_0}                                               \\
-			      		b(s_0, s_1) & = 1                                                                        \\
-			      		c(s_0, s_1) & = M_2 = s_1 + s_0                                                          \\
-			      		d(s_0, s_1) & = M_1 = s_1 + \overline{s_0} = a(s_0, s_1)                                 \\
-			      		e(s_0, s_1) & = M_1 \cdot M_3 = m_0 + m_2 = s_1 \overline{s_0} + s_1s_0 = \overline{s_0} \\
-			      		f(s_0, s_1) & = m_0 = \overline{s_1 s_0}                                                 \\
-			      		g(s_0, s_1) & = M_0 \cdot M_1 = m_2 + m_3 = s_1 \overline{s_0} + s_1s_0 = s_1            
-			      	\end{align*}
-			      	
+			      	\newline
+
+					\begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the first circuit
+					\centering
+					\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+					\hline
+					\multicolumn{2}{|c|}{} & \multicolumn{7}{c|}{Output} \\
+					\hhline{|~|-|-------|}
+					\( S_1 \) & \( S_0 \) & a & b & c & d & e & f & g \\
+					\hline
+					0         & 0         & 1 & 1 & 1 & 1 & 1 & 1 & 0 \\
+					\hline
+					0         & 1         & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\
+					\hline
+					1         & 0         & 1 & 1 & 0 & 1 & 1 & 0 & 1 \\
+					\hline
+					1         & 1         & 1 & 1 & 1 & 1 & 0 & 0 & 1 \\
+					\hline
+					\end{tabular}
+					\end{minipage}
+					\hfill
+					\vline
+					\hfill
+					\begin{minipage}[htp]{0.45\textwidth}
+
+\begin{center}
+						\begin{align*}
+						a(s_0, s_1) & = M_1 = s_1 + \overline{s_0}                                               \\
+						b(s_0, s_1) & = 1                                                                        \\
+						c(s_0, s_1) & = M_2 = s_1 + s_0                                                          \\
+						d(s_0, s_1) & = M_1 = s_1 + \overline{s_0} = a(s_0, s_1)                                 \\
+						e(s_0, s_1) & = M_1 \cdot M_3 = m_0 + m_2 = s_1 \overline{s_0} + s_1s_0 = \overline{s_0} \\
+						f(s_0, s_1) & = m_0 = \overline{s_1 s_0}                                                 \\
+						g(s_0, s_1) & = M_0 \cdot M_1 = m_2 + m_3 = s_1 \overline{s_0} + s_1s_0 = s_1            
+						\end{align*}
+\end{center}
+					\end{minipage}
+
 			      	\newpage
 			      	\subsection{Multiplexer}
 			      	A \textit{multiplexer}, or MUX, is a circuit that selects one of several inputs to pass to the output based on the value of one or more select inputs.\newline
 			      	\noindent % Prevents indentation to align everything to the left.
-			      	\begin{minipage}[c]{0.45\textwidth} % Adjust the width as needed for the first circuit
+			      	\begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the first circuit
 			      		\centering % Center the content
 			      		\includegraphics[width=0.9\linewidth]{circuits/6.12.2.png} % Adjust the image width as needed
 			      	\end{minipage}%
-			      	\hfill % Adds horizontal space between the minipages
+			      	\hfill
 			      	{\large $\equiv$} % Larger equivalence sign for better visibility
-			      	\hfill % Adds horizontal space between the equivalence sign and the second circuit
-			      	\begin{minipage}[c]{0.50\textwidth} % Adjust the width as needed for the second circuit
+					\hfill % Adds horizontal space between the equivalence sign and the second circuit
+			      	\begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the second circuit
 			      		\centering
-			      		\includegraphics[width=0.6\linewidth]{circuits/6.12.2_2.png} % Adjust the image width as needed
+			      		\includegraphics[width=0.45\linewidth]{circuits/6.12.2_2.png} % Adjust the image width as needed
 			      	\end{minipage}
-			      	Reading the truth table, we can derive the following logic functions:
-			      	\begin{table}[h!]
-			      		\centering
-			      		\begin{tabular}{cccc}
-			      			\hline
-			      			$s$ & $x_1$ & $x_2$ & $f$ \\
-			      			\hline
-			      			0   & 0     & 0     & 0   \\
-			      			0   & 0     & 1     & 0   \\
-			      			0   & 1     & 0     & 1   \\
-			      			0   & 1     & 1     & 1   \\
-			      			1   & 0     & 0     & 0   \\
-			      			1   & 0     & 1     & 1   \\
-			      			1   & 1     & 0     & 0   \\
-			      			1   & 1     & 1     & 1   \\
-			      			\hline
-			      		\end{tabular}
-			      	\end{table}
-			      	\[
-			      		f(s, x_1, x_2) = \overline{s} x_1 x_2 + \overline{s} x_1 \overline{x_2} + s \overline{x_1} x_2 + s x_1 x_2
-			      	\]
+					\newline
+					\vspace*{10px}
 			      	
-			      	\[
-			      		f(s, x_1, x_2) = \overline{s}x_1 (\overline{x_2} + x_2) + s(\overline{x_1} + x_1)x_2
-			      	\]
+					\begin{minipage}[htp]{0.45\textwidth}
+
+					\begin{center}
+					\begin{tabular}{|c|c|c|c|}
+					\hline
+					$s$ & $x_1$ & $x_2$ & $f$ \\
+					\hline
+					0   & 0     & 0     & 0   \\
+					0   & 0     & 1     & 0   \\
+					0   & 1     & 0     & 1   \\
+					0   & 1     & 1     & 1   \\
+					1   & 0     & 0     & 0   \\
+					1   & 0     & 1     & 1   \\
+					1   & 1     & 0     & 0   \\
+					1   & 1     & 1     & 1   \\
+					\hline
+					\end{tabular}
+					\end{center}
+						
+					\end{minipage}
+					\hfill
+					\vline
+					\hfill
+					\begin{minipage}[htp]{0.45\textwidth}
+					Reading the truth table, we can derive the following logic functions:\newline
+					\vspace*{3px}
+			      	$f(s, x_1, x_2) = \overline{s} x_1 x_2 + \overline{s} x_1 \overline{x_2} + s \overline{x_1} x_2 + s x_1 x_2$\newline
+			      	$f(s, x_1, x_2) = \overline{s}x_1 (\overline{x_2} + x_2) + s(\overline{x_1} + x_1)x_2$
+			      	\newline
+			      	$= \overline{s}x_1 + sx_2$
+			      	\end{minipage}
+					\newline
+					\vspace*{10px}
 			      	
-			      	\[
-			      		= \overline{s}x_1 + sx_2
-			      	\]
-			      	
-			      	
-			      	
+					
 			      	If there are \( n \) inputs to select from, the number of select signals required in a MUX can be determined by:
 			      	
 			      	\[
 			      		\text{Number of select signals} = \left\lceil \log_2 n \right\rceil
 			      	\]
 			      	
+					
 			      	\textit{Examples:}
 			      	\begin{itemize}
 			      		\item[] Two inputs: one select signal to choose between inputs indexed as `0' and `1'
@@ -2881,48 +2903,58 @@ When weights are in this format :
 			      	    
 			      	\subsection{Binary Addition Examples}
 			      	
-			      	\[
-			      		\begin{array}{cccccc}
-			      			  & 0 \\
-			      			+ & 0 \\
-			      			\hline
-			      			0 & 0 \\
-			      		\end{array}
-			      	\]
-			      	\[
-			      		\begin{array}{cccccc}
-			      			  & 0 \\
-			      			+ & 1 \\
-			      			\hline
-			      			0 & 1 \\
-			      		\end{array}
-			      	\]
-			      	\[
-			      		\begin{array}{cccccc}
-			      			  & 1 \\
-			      			+ & 0 \\
-			      			\hline
-			      			0 & 1 \\
-			      		\end{array}
-			      	\]
-			      	\[
-			      		\begin{array}{cccccc}
-			      			  & 1 \\
-			      			+ & 1 \\
-			      			\hline
-			      			1 & 0 \\
-			      		\end{array}
-			      	\]
+
+
+					\[
+					\begin{array}{cccccc}
+					& 0 \\
+					+ & 0 \\
+					\hline
+					0 & 0 \\
+					\end{array}
+					\]
+					
+					\[
+					\begin{array}{cccccc}
+					& 0 \\
+					+ & 1 \\
+					\hline
+					0 & 1 \\
+					\end{array}
+					\]
+					
+					\[
+					\begin{array}{cccccc}
+					& 1 \\
+					+ & 0 \\
+					\hline
+					0 & 1 \\
+					\end{array}
+					\]
+					
+					\[
+					\begin{array}{cccccc}
+					& 1 \\
+					+ & 1 \\
+					\hline
+					1 & 0 \\
+					\end{array}
+					\]
+					
+
+
 			      	
 			      	\newpage
 			      	\subsection{Half-Adder}
 			      	\textit{Personal Remark. The circuits shown in this part might seem a bit overwhelming, I suggest you first try to understand what the full and half adders are, then try to understand the corresponding circuits.} 
 			      	\newline
 			      	\vspace{10px}
-			      	A half adder is a digital circuit that adds two single-bit binary numbers and outputs a sum and a carry. 
+			      	A \textbf{half adder} is a digital circuit that adds two single-bit binary numbers and outputs a sum and a carry. 
 			      	
 			      	
-			      	\begin{table}[h!]
+			     \begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the first circuit
+					
+
 			      		\centering
 			      		\begin{tabular}{cccc}
 			      			\hline
@@ -2934,29 +2966,32 @@ When weights are in this format :
 			      			1   & 1   & 0   & 1   \\
 			      			\hline
 			      		\end{tabular}
-			      	\end{table}
-			      	
-			      	Using SOP form, we can derive the following logic functions:
+					\end{minipage}
+					\hfill
+			      	\vline
+					\hfill
+					\begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the first circuit
+					Using SOP form, we can derive the following logic functions:
 			      	$$ s = \overline{x}y + x\overline{y} = x \xor y$$
 			      	$$ c = xy$$
+				\end{minipage}
 			      	
-			      	Thus the Digital Logic Circuit : 
-			      	\begin{center}
-			      		\begin{minipage}[c]{0.60\textwidth} % Adjust the width as needed for the second circuit
+			   
+		\vspace*{10px}
+			      		\begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the second circuit
 			      			\centering
 			      			\includegraphics[width=0.60\textwidth]{circuits/7.1.3.png} % Replace 'path_to_image.png' with the actual path to your image file
-			      		\end{minipage}
-			      		
-			      	\end{center}
-			      	Also represented as :
-			      	\begin{center}
-			      		\begin{minipage}[c]{0.60\textwidth} % Adjust the width as needed for the second circuit
+			      		\end{minipage}				
+						\hfill
+						\vline
+						\hfill
+			      		\begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the second circuit
 			      			\centering
-			      			\includegraphics[width=0.60\textwidth]{circuits/7.1.3_2.png} % Replace 'path_to_image.png' with the actual path to your image file
+			      			\includegraphics[width=0.70\textwidth]{circuits/7.1.3_2.png} % Replace 'path_to_image.png' with the actual path to your image file
 			      		\end{minipage}
 			      		
-			      	\end{center}
-			      	\newpage
+			    
+	
 			      	
 			      	\subsection{Addition of Two N-Bit Binary Numbers}
 			      	A binary \textit{n}-bit adder computes the sum of two \textit{n}-bit numbers $x$ and $y$ within the range of $0 \leq x, y \leq 2^n - 1$, with a carry-in $c_{\text{in}} \in \{0, 1\}$. It produces:
@@ -2999,72 +3034,69 @@ When weights are in this format :
 			      	\subsection{Full-Adder}
 			      	A full adder, on the other hand, is a digital circuit that adds three single-bit binary numbers: the two bits to be added plus an additional carry-in bit. This carry-in bit is the carry from the addition of two lower significant bits. The full adder outputs a sum and a carry-out.
 			      	
-			      	\begin{itemize}
-			      		\item[] Truth table:
-			      		      \begin{center}
-			      		      	\begin{tabular}{cccc|cc}
-			      		      		\( x_i \) & \( y_i \) & \( c_i \) &   & \( s_i \) & \( c_{i+1} \) \\
-			      		      		\hline
-			      		      		0         & 0         & 0         &   & 0         & 0             \\
-			      		      		0         & 0         & 1         &   & 1         & 0             \\
-			      		      		0         & 1         & 0         &   & 1         & 0             \\
-			      		      		0         & 1         & 1         &   & 0         & 1             \\
-			      		      		1         & 0         & 0         &   & 1         & 0             \\
-			      		      		1         & 0         & 1         &   & 0         & 1             \\
-			      		      		1         & 1         & 0         &   & 0         & 1             \\
-			      		      		1         & 1         & 1         &   & 1         & 1             \\
-			      		      	\end{tabular}
-			      		      \end{center}
-			      		\item[] Logical expressions:
-			      		      \begin{align*}
-			      		      	s_i     & = \bar{x_i}\bar{y_i} c_i + \bar{x}_i y_i \bar{c}_i + x_i \bar{y}_i \bar{c}_i + x_i y_i c_i \\
-			      		      	        & = (x_i y_i + \bar{x}_i \bar{y}_i)c_i + (\bar{x}_i y_i + x_i \bar{y}_i)\bar{c}_i            \\
-			      		      	        & = \overline{(x_i \xor y_i)}c_i + (x_i \xor y_i)\bar{c}_i = x_i \xor y_i \xor c_i           \\
-			      		      	\\
-			      		      	c_{i+1} & = \bar{x}_i y_i c_i + x_i \bar{y}_i c_i + x_i y_i \bar{c}_i + x_i y_i c_i                  \\
-			      		      	        & = (\bar{x}_i y_i + x_i \bar{y}_i)c_i + x_i y_i(\bar{c}_i + c_i)                            \\
-			      		      	        & = (x_i \xor y_i)c_i + x_i y_i                                                              \\
-			      		      	        & = x_i y_i + x_i c_i + y_i c_i                                                              \\
-			      		      \end{align*}
-			      		      
-			      		       
-			      	\end{itemize}
 			      	
-			      	\begin{itemize}
-			      		\item[] Thus:
+			      		      
+							  \begin{minipage}{0.45\textwidth}
+								\begin{center}
+								      		      	\begin{tabular}{cccc|cc}
+								      		      		\( x_i \) & \( y_i \) & \( c_i \) &   & \( s_i \) & \( c_{i+1} \) \\
+								      		      		\hline
+								      		      		0         & 0         & 0         &   & 0         & 0             \\
+								      		      		0         & 0         & 1         &   & 1         & 0             \\
+								      		      		0         & 1         & 0         &   & 1         & 0             \\
+								      		      		0         & 1         & 1         &   & 0         & 1             \\
+								      		      		1         & 0         & 0         &   & 1         & 0             \\
+								      		      		1         & 0         & 1         &   & 0         & 1             \\
+								      		      		1         & 1         & 0         &   & 0         & 1             \\
+								      		      		1         & 1         & 1         &   & 1         & 1             \\
+								      		      	\end{tabular}
+								\end{center}
+	
+							  \end{minipage}
+							  \hfill
+							  \vline
+							  \hfill
+							  \begin{minipage}{0.45\textwidth}
+								\begin{align*}
+								s_i     & = \bar{x_i}\bar{y_i} c_i + \bar{x}_i y_i \bar{c}_i + x_i \bar{y}_i \bar{c}_i + x_i y_i c_i \\
+										& = (x_i y_i + \bar{x}_i \bar{y}_i)c_i + (\bar{x}_i y_i + x_i \bar{y}_i)\bar{c}_i            \\
+										& = \overline{(x_i \xor y_i)}c_i + (x_i \xor y_i)\bar{c}_i = x_i \xor y_i \xor c_i           \\
+								\\
+								c_{i+1} & = \bar{x}_i y_i c_i + x_i \bar{y}_i c_i + x_i y_i \bar{c}_i + x_i y_i c_i                  \\
+										& = (\bar{x}_i y_i + x_i \bar{y}_i)c_i + x_i y_i(\bar{c}_i + c_i)                            \\
+										& = (x_i \xor y_i)c_i + x_i y_i                                                              \\
+										& = x_i y_i + x_i c_i + y_i c_i                                                              \\
+								\end{align*}
+							  \end{minipage}
+							  Giving us:
 			      		      \begin{align*}
 			      		      	s_i     & = x_i \xor y_i \xor c_i                                     \\
 			      		      	c_{i+1} & = (x_i \xor y_i)c_i + x_i y_i = x_i y_i + x_i c_i + y_i c_i 
 			      		      \end{align*}
-			      		\item[] With Logic Circuit:
-			      		      
-			      		      
-			      		      \begin{center}
-			      		      	\begin{minipage}[c]{0.60\textwidth} % Adjust the width as needed for the second circuit
-			      		      		\centering
-			      		      		\includegraphics[width=0.60\textwidth]{circuits/8.1.6.png} % Replace 'path_to_image.png' with the actual path to your image file
-			      		      	\end{minipage}
-			      		      	  
-			      		      \end{center}
-			      		      
-			      		      \vspace{10px}
-			      		\item[] Also represented as :
-			      		      \begin{center}
-			      		      	\begin{minipage}[c]{0.60\textwidth} % Adjust the width as needed for the second circuit
-			      		      		\centering
-			      		      		\includegraphics[width=0.60\textwidth]{circuits/8.1.6_2.png} % Replace 'path_to_image.png' with the actual path to your image file
-			      		      	\end{minipage}
+			   
+
+								\begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the second circuit
+									\centering
+									\includegraphics[width=0.60\textwidth]{circuits/8.1.6.png} % Replace 'path_to_image.png' with the actual path to your image file
+								\end{minipage}
+									\hfill
+									\vline
+									\hfill
+								\begin{minipage}[htp]{0.45\textwidth} % Adjust the width as needed for the second circuit
+									\centering
+									\includegraphics[width=0.60\textwidth]{circuits/8.1.6_2.png} % Replace 'path_to_image.png' with the actual path to your image file
+								\end{minipage}
 			      		      	
-			      		      \end{center}
-			      	\end{itemize}
+			   
+			
 			      	
 			      	
 			      	\subsection{Basic Ripple-Carry Adder}
-			      	Is a chain of full adders that add two \( n \)-bit binary numbers. It's called a \textbf{ripple-carry} adder because the carry-out of each full adder ripples (goes through the full adder chain) into the carry-in of the next full adder.
+			      	Is a chain of full adders that add two \( n \)-bit binary numbers. It's called a \textbf{ripple-carry} adder because the carry-out of each full adder ripples (goes through the full adder chain) into the carry-in of the next full adder. It looks like this :
 			      	
 			      	\vspace{10px}
 			      	
-			      	It looks like this:
+			 
 			      	\begin{center}
 			      		\begin{minipage}[c]{0.80\textwidth} % Adjust the width as needed for the second circuit
 			      			\centering
@@ -3495,14 +3527,14 @@ When weights are in this format :
 			      	
 			      	
 			      	The gate voltage (\( V_G \)) controls the current flow between the drain and source. When \( V_G \) exceeds a certain threshold, an electric field is created that allows current to flow, making the MOSFET act as an efficient electronic switch.
-			      \vspace*{20px}
+			     \newpage
 					\subsection{NMOS Transistor Switches}
 			      	\small NMOS works like a switch that turns on to let electricity flow when you apply a certain voltage.
 			      	
 			      	The digital representation of it looks like this :
 			      	
 			      	\begin{center}
-			      		
+			      	
 			      		\begin{minipage}[c]{0.35\textwidth} % Adjust the width as needed for the second circuit
 			      			
 			      			\centering
@@ -3522,6 +3554,7 @@ When weights are in this format :
 			      		      	\filldraw [black] (3,0) circle (2pt);
 			      		      \end{tikzpicture}
 			      		\end{minipage}%
+						\hfill
 			      		\begin{minipage}{0.30\textwidth}
 			      			
 			      			\centering
@@ -3546,7 +3579,7 @@ When weights are in this format :
 			      	\end{itemize}
 			      	
 			    
-	
+					\newpage
 			      	\subsection{PMOS Transistor Switches}
 			      	\textit{For french people, P like Porte, you push the door (need energy) to open it.}
 			      	\newline PMOS works like a switch that turns on to let electricity flow when you apply a certain voltage.
@@ -4060,6 +4093,7 @@ output [3:0] f;        // 4-bit output named f
 			      	\end{verbatim}
 			      	
 			      	\subsection{Example - Full adder in Verilog}
+					  \label{sec:fulladder}
 			      	\noindent
 			      	\begin{adjustbox}{valign=t,minipage={.5\textwidth}}
 			      		\begin{vhdl}
@@ -5262,7 +5296,7 @@ Q2 Q1 Q0 & {\begin{tabular}{c}x \\ \hline 0 \; \; \; \; \; 1\end{tabular}} & z \
 		\hline
 		\end{tabular}
 \end{center}
-
+\hspace*{-10px}
 \textbf{\textit{Step 3:}} Draw the state diagram. \newline
 \hspace*{-40px}
 \begin{minipage}{0.50\textwidth}
@@ -5273,8 +5307,6 @@ Q2 Q1 Q0 & {\begin{tabular}{c}x \\ \hline 0 \; \; \; \; \; 1\end{tabular}} & z \
 \hskip 50px
 \hfill
 \begin{minipage}{0.5\textwidth}
-\textbf{Written in Verilog:}\newline
-\footnotesize
 \begin{vhdl}{basicstyle=\footnotesize}
 module fsm_example2 ( input EN, input CLK, output reg [2:0] z);
 reg [2:0] D, Q;
@@ -5575,7 +5607,7 @@ endmodule
 \textit{These are used in various applications, such as: \newline Serial-to-parallel conversion, data storage, arithmetic, frequency division.}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1.2\textwidth]{circuits/14.1.2.png}
+    \includegraphics[width=1\textwidth]{circuits/14.1.2.png}
 \end{figure}
 
 \newpage
@@ -6695,5 +6727,995 @@ $$f_{\text{max}} = \frac{1}{T_{CLK}\, \text{ns}} \approx 188 \, \text{MHz}$$
 
 \section{$n-to-2^{n}$ Binary Decoders}
 
+\begin{minipage}{0.45\textwidth}
+	\begin{itemize}
+		\item[] A \textbf{decoder} is a logic circuit that takes an $n$-bit binary input and produces a $2^n$-bit output, where only one bit is logic 1 and the rest are logic 0.
+		\item[] \textbf{Decoding the input}: The output bit at the \textit{index} corresponding to the decimal equivalent $m$ of the $n$-bit input is set to logic 1; all other output bits are logic 0.
+		\item[] Decoder outputs are \textit{one-hot encoded}, meaning only one bit is set to 1 (``hot'').
+	\end{itemize}
+	
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}
+	{0.45\textwidth}
+	\includegraphics[width=0.7\textwidth]{circuits/16.1.png}
+\end{minipage}\newline
+\vspace*{-10px}
+\subsubsection*{\textbf{Quick Example for $n = 2$}:}
+\vspace*{-10px}
+\begin{justify}
+- Input: 00 (binary) $\rightarrow$ Output: 0001 (the 1 is in the 0th position)\newline
+- Input: 01 (binary) $\rightarrow$ Output: 0010 (the 1 is in the 1st position)\newline
+- Input: 10 (binary) $\rightarrow$ Output: 0100 (the 1 is in the 2nd position)\newline
+- Input: 11 (binary) $\rightarrow$ Output: 1000 (the 1 is in the 3rd position)
+\end{justify}
 
+\subsubsection{Example - 2-to-4 Binary Decoder}
+
+\begin{minipage}{0.55\textwidth}
+	\begin{itemize}
+		\setlength\itemsep{2px}
+	    \item[] A (binary) decoder with $n = 2$ inputs and $2^n = 4$ outputs
+	    \item[] The input $(w_1w_0)$ corresponds to binary numbers
+	    \begin{itemize}
+	        \item $(00)_2 = (0)_{10}$; $(01)_2 = (1)_{10}$; $(10)_2 = (2)_{10}$; $(11)_2 = (3)_{10}$
+	    \end{itemize}
+	    \item[] Only one bit in the output vector $(y_3, y_2, y_1, y_0)$ is set
+	    \begin{itemize}
+			\setlength\itemsep{2px}
+	        \item $(w_1w_0) = (00)_2 = (0)_{10} \rightarrow y_0 = 1$
+	        \item $(w_1w_0) = (01)_2 = (1)_{10} \rightarrow y_1 = 1$
+	        \item $(w_1w_0) = (10)_2 = (2)_{10} \rightarrow y_2 = 1$
+	        \item $(w_1w_0) = (11)_2 = (3)_{10} \rightarrow y_3 = 1$
+	    \end{itemize}
+	\end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.4\textwidth}
+	    \centering
+	    \includegraphics[width=0.5\textwidth]{circuits/16.1_2.png}
+\end{minipage}
+\vspace*{10px}
+
+\hspace*{18px}
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{center}
+		    \begin{tabular}{|c|c||c|c|c|c|}
+		        \hline
+		        $w_1$ & $w_0$ & $y_0$ & $y_1$ & $y_2$ & $y_3$ \\
+		        \hline
+		        0 & 0 & 1 & 0 & 0 & 0 \\
+		        0 & 1 & 0 & 1 & 0 & 0 \\
+		        1 & 0 & 0 & 0 & 1 & 0 \\
+		        1 & 1 & 0 & 0 & 0 & 1 \\
+		        \hline
+		    \end{tabular}\newline
+\end{center}
+\begin{center}
+			\begin{align*}
+				y_0 &= \overline{w_1} \overline{w_0} \\
+				y_1 &= \overline{w_1} w_0 \\
+				y_2 &= w_1 \overline{w_0} \\
+				y_3 &= w_1 w_0
+				\end{align*}
+\end{center}
+
+
+\end{minipage} \hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.40\textwidth}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{circuits/16.1_3.png}
+    \end{center}
+\end{minipage}
+
+\subsubsection{2-to-4 Binary Decoder with an Enable}
+
+\begin{minipage}[htp]{0.45\textwidth}
+If the decoder is disabled, $En = 0$, then no output will be set\newline
+\vspace*{5px}
+
+\begin{center}
+	    \begin{tabular}{|c|c|c||c|c|c|c|}
+	        \hline
+	        $En$ & $w_1$ & $w_0$ & $y_0$ & $y_1$ & $y_2$ & $y_3$ \\
+	        \hline
+	        1 & 0 & 0 & 1 & 0 & 0 & 0 \\
+	        1 & 0 & 1 & 0 & 1 & 0 & 0 \\
+	        1 & 1 & 0 & 0 & 0 & 1 & 0 \\
+	        1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+	        0 & X & X & 0 & 0 & 0 & 0 \\
+	        \hline
+	    \end{tabular}
+\end{center}
+
+\begin{center}
+		\begin{align*}
+		y_0 &= En \cdot \overline{w_1} \cdot \overline{w_0} \\
+		y_1 &= En \cdot \overline{w_1} \cdot w_0 \\
+		y_2 &= En \cdot w_1 \cdot \overline{w_0} \\
+		y_3 &= En \cdot w_1 \cdot w_0
+		\end{align*}
+\end{center}
+\end{minipage} \hfill\vline\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+    \begin{center}
+        \includegraphics[width=\textwidth]{circuits/16.1_4.png}
+    \end{center}
+\end{minipage}
+
+\subsubsection{2-to-4 Binary Decoder with an Enable (Verilog)}
+
+\textit{Personal Remark: Obviously, like in Java, the '?' operator is used for one line conditional statements.}
+\vspace*{10px}
+\newline
+\begin{minipage}[htp]{0.45\textwidth}	
+	\begin{vhdl}
+module two_to_four_dec(W, En, Y);
+	input [1:0] W;
+	input En;
+	output [3:0] Y;
+	assign Y[0] = En ? (W == 2'b00) : 0;
+	assign Y[1] = En ? (W == 2'b01) : 0;
+	assign Y[2] = En ? (W == 2'b10) : 0;
+	assign Y[3] = En ? (W == 2'b11) : 0;
+endmodule
+	\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{circuits/16.1_4.png}
+    \end{center}
+\end{minipage}
+
+\subsubsection{4-to-16 Decoder with an Enable}
+\begin{minipage}[htp]{0.5\textwidth}
+\begin{justify}
+	A 4-to-16 decoder is constructed using a 2-to-4 decoder (DEC1) at the root and four 2-to-4 decoders (DEC2, DEC3, DEC4, DEC5) in the branches:
+    \begin{itemize}[leftmargin=*]
+        \item[-] Inputs: 4 binary digits (\(w_3w_2w_1w_0\)) and an enable signal (\(En\)).
+        \item[-] \(w_3w_2\) are fed into DEC1.
+        \item[-] DEC1 produces four outputs; each output is fed into a 2-to-4 decoder.
+        \item[-] DEC1 outputs enable DEC2, DEC3, DEC4, DEC5.
+        \item[-] \(w_1w_0\) are fed into the enabled branch decoder.
+    \end{itemize}
+		\end{justify}
+	\begin{align*}
+        &\left(w_3w_2w_1w_0, En\right) = (1011, 1)\\
+        &OUT_{\text{DEC1}[2]} = 1, \\
+        &En_{\text{DEC4}} = 1,\\
+        &OUT_{\text{DEC4}[3]} = y_{11} = 1
+    \end{align*}
+\end{minipage} \hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.4\textwidth}
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{circuits/16.1_5.png}
+    \end{center}
+\end{minipage}
+
+
+
+\section{Memory}
+\textit{Personal Remark: Didn't think the history of memory was worth mentioning (Slides 16-17, Chapter XI)}
+Memory types may vary in terms of:
+\begin{justify}
+	\begin{itemize}
+		\setlength\itemsep{-2px}
+		\item[-] Capacity: how many bytes can be stored
+		\item[-] Density: how many bits per unit area (silicon)
+		\item[-] Speed: how much time it takes to read from it or write to it
+		\item[-] Writable or read-only
+		\item[-] Volatile or not: loses contents once the power supply is removed or not
+	\end{itemize}
+\end{justify}
+\textit{(Out of Scope and Personal) For example, you might be aware of the difference between RAM and ROM. Random Access Memory (RAM) is volatile, meaning it loses its data when the power is turned off, and is often used for fast runtime access. On the other hand, Read-Only Memory (ROM) is non-volatile, meaning it retains its data even when the power is turned off, and is typically used to store firmware or permanent software that does not need to be modified.}
+
+\subsection{Abstract View of Memory}
+\begin{minipage}{0.45\textwidth}
+    \begin{itemize}
+        \item[] A two-dimensional array of 1-bit memory elements (e.g., DFFs, latches, capacitors)
+		\item[] One memory element \texttt{mem[i]}, where \texttt{i} is the row index in a two-dimensional array of bits, includes all bits in that row and is referred to as one data word.
+
+        \item[] In memory terminology, instead of saying the \textbf{index}, we say \textbf{the address} of the data word
+    \end{itemize}
+\end{minipage} \hfill
+\begin{minipage}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{circuits/16.2.1.png}
+\end{minipage}
+
+\subsection{Word Sizes}
+    \begin{itemize}
+        \item[] Data word sizes and common terminology:
+        \begin{itemize}
+            \item 8 bits = one byte (\textbf{Byte, B})
+            \item 16 bits (also called half-word)
+            \item 32 bits, 64 bits
+        \end{itemize}
+        \item[] Memory \textbf{capacity} is the total number of data bytes it can store (\textit{important})
+        \begin{itemize}
+            \item (\textbf{Number of words}) $\times$ (\textbf{word width in bytes})
+        \end{itemize}
+        \item[] Number of words = $2^N$, where \textbf{N} is the number of bits of the address
+    \end{itemize}
+
+\subsection{Memory Capacity}	
+		\begin{itemize}
+			\item[] \textit{Recall}: memory \textbf{capacity} is the total number of data bytes it can store
+			\item[] Memory units (\href{https://en.wikipedia.org/wiki/Memory_unit}{Wiki link})
+			\begin{itemize}
+				\item Kilobyte (\textbf{KiB}) = $2^{10}$ B
+				\item Megabyte (\textbf{MiB}) = $2^{20}$ B
+				\item Gigabyte (\textbf{GiB}) = $2^{30}$ B
+				\item Terabyte (\textbf{TiB}) = $2^{40}$ B
+			\end{itemize}
+		\end{itemize}
+
+	\subsection{Access Protocol}
+
+	\noindent
+	\begin{minipage}[htp]{0.45\textwidth}
+ Many variants exist, differing in control signals, their polarity, number of inputs and outputs, width of inputs and outputs, etc.
+
+	
+	In this lecture, we consider the following simple memory access protocol:
+	\begin{itemize}
+		\item[] \textbf{Synchronous write}: on the rising clock edge, if write enable (we) is active, memory \textbf{write} takes place: \texttt{mem[addr] = data\_in}
+		\item[] \textbf{Asynchronous read}: at all times, memory \textbf{read} takes place: \texttt{data\_out = mem[addr]}
+	\end{itemize}
+	\end{minipage}%
+	\hfill
+	\vline
+	\hfill
+	\begin{minipage}[htp]{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{circuits/16.2.4.png}
+	\end{minipage}
+
+\subsection{Example - 16 x 8 Memory}
+\subsubsection{Write}
+\noindent
+\begin{minipage}[htp]{0.4\textwidth}
+
+\begin{itemize}
+    \item[-] $N_{awidth} = log_2(16) = 4$
+    \item[-] $N_{dwidth} = 8$
+    \item[-] addr = $(0100)_2 = (4)_{10}$ 
+    \item[-] data\_in = $(\textbf{\texttt{B7}})_{16}$
+    \item[-] we = 1
+\end{itemize}
+
+\begin{justify}
+	Memory \textbf{read} takes place and \textbf{old} mem[4] appears at data\_out port
+	\newline
+	\vspace*{10px}
+	Memory \textbf{write} takes place and data\_in overwrites mem[4]; \textbf{new} value of mem[4] = $(\textbf{\texttt{B7}})_{16}$
+\end{justify}
+\end{minipage}%
+\hfill
+\vline
+\hfill
+\hspace*{-20px}
+\begin{minipage}[htp]{0.5\textwidth}
+\centering
+\includegraphics[width=1.3\textwidth]{circuits/16.2.5.png}
+\end{minipage}
+\newpage
+
+\subsubsection{Read}
+\begin{minipage}[htp]{0.4\textwidth}
+
+\begin{justify}
+		\begin{itemize}
+    		\item[-] $N_{awidth} = log_2(16) = 4$
+			\item[-] $N_{dwidth} = 8$
+			\item[-] addr = $(0110)_2 = (6)_{10}$
+			\item[-] we = 0
+		\end{itemize}
+		Memory \textbf{read} takes place and mem[6] appears at data\_out port: $data\_out = mem[6] = (14)_{16}$
+	\newline 
+	\vspace*{5px}
+		Memory \textbf{write} is not taking place
+\end{justify}
+	\end{minipage}
+	\hfill
+	\vline
+	\hfill
+	\begin{minipage}[htp]{0.5\textwidth}
+	\centering
+	\includegraphics[width=1.3\textwidth]{circuits/16.2.5_2.png}
+\end{minipage}
+\subsection{Memory as an Array of DFFs }
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/16.2.6.png}
+\end{center}
+\begin{itemize}
+    \item[-] \textbf{Addressing:} 2-bit address (\texttt{addr[1:0]}) selects one of 4 rows via 2-to-4 decoder.
+    \item[-] \textbf{Write Enable:} \texttt{we} enables writing when active.
+    \item[-] \textbf{Clock:} \texttt{clk} synchronizes writing on rising edge.
+    \item[-] \textbf{Data Input:} \texttt{data\_in[3:0]} provides 4-bit data to write.
+    \item[-] \textbf{Memory Cells:} Flip-flops store data; enabled by decoder output.
+    \item[-] \textbf{Data Output:} 4-to-1 MUX selects data from addressed row to \texttt{data\_out[3:0]}.
+\end{itemize}
+\begin{itemize}
+	\item[-] The outputs of the address decoder, which enable one entire row of the memory array, are called word lines
+	\item[-]The wires that carry data (input, output, or sometimes a shared in/out bus) are called bit lines
+\end{itemize}
+\section{Verilog Part 5.}
+\subsection{Arrays}
+\subsubsection{Two dimensional arrays}
+In Verilog, we can declare two-dimensional arrays
+An array \textbf{mem} of \textbf{Ndw} data words, where each word has \textbf{Ndb} bits, is declared as :
+\begin{center}
+	\begin{vhdl}
+reg [Ndb-1:0] mem [Ndw-1:0];
+	\end{vhdl}
+\end{center}
+
+\subsection{Memory Module}
+A memory module can be defined as such :\newline
+\vspace*{5px}
+\begin{minipage}{0.45\textwidth}
+	\begin{vhdl}
+module mem (addr, data_in, we, clk, data_out);
+	parameter Nawidth = 2; // arbitrary default
+	parameter Ndwidth = 4; // arbitrary default
+	input we, clk; // write enable and clock
+	input [Nawidth-1:0] addr;
+	input [Ndwidth-1:0] data_in;
+	output [Ndwidth-1:0] data_out;
+
+	// memory array
+	reg [Ndwidth-1:0] mem [2**Nawidth-1:0];
+	always @(posedge clk) begin
+	if (we) begin
+		mem[addr] <= data_in;
+	end
+	end
+	assign data_out = mem[addr];
+endmodule
+\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	\centering
+	\includegraphics[width=1\textwidth]{circuits/16.2.4.png}
+\end{minipage}
+
+\subsection{Parameterized Verilog Modules}
+Verilog parameters can be put to good use, to allow instantiated modules to accept inputs and outputs of arbitrary width
+\newline
+\textit{Basically allows to create a module that can be used for different word sizes.}\newline
+
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{vhdl}
+module majority(I0, I1, I2, OUT);
+	parameter WIDTH = 1; // default parameter value
+	input [WIDTH-1:0] I0, I1, I2;
+	output [WIDTH-1:0] OUT;
+	assign OUT = (I0 & I1) | (I0 & I2) | (I1 & I2);
+endmodule
+	\end{vhdl}
+\end{minipage}
+\hfill
+\hspace*{20px}
+\vline
+\hspace*{20px}
+\hfill
+\begin{minipage}[htp]{0.55\textwidth}
+\includegraphics[width=0.6\textwidth]{circuits/16.3.3.png}
+\end{minipage}
+
+Allowing for example, to instantiate using parameter 4, 8 (1 if not specified) :
+\begin{vhdl}
+// Instantiating majority module;
+// Overriding the default value of WIDTH = 1;
+// New value: WIDTH = 4;
+majority #(.WIDTH(4)) U1 (.I0(A), .I1(B), .I2(C), .OUT(D));
+// Instantiating majority module;
+// Overriding the default value of WIDTH = 1;
+// New value: WIDTH = 8;
+majority #(.WIDTH(8)) U2 (.I0(X), .I1(Y), .I2(Z), .OUT(W));
+\end{vhdl}
+
+\subsection{Verilog Conditional Operator}
+\textit{Personal Remark: Like in java}
+\begin{vhdl}
+A ? B : C
+\end{vhdl}
+\begin{itemize}
+\item[-] Conditional operator ?: select one of the two alternate expressions (B, C) depending on the value of a logical expression (A)
+\item[-] If the logical expression (A) is true, it returns the first alternative (B)
+\item[-] Otherwise, it returns the second alternative (C)
+\end{itemize}
+
+\chapter{Digital Logic and Verilog - Examples - FSMs}
+\textit{This is a small collection of examples of Finite State Machines (FSMs) and their implementation in Verilog.
+}\newline
+\textit{Personal Remark: Knowing what a Moore and Mealy machine is, is important to understand this part of the course.}
+\section{Moore FSM, with Verilog Implementation}
+\subsubsection*{Description of the Machine}
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{circuits/17.1.png}
+\end{center}
+
+\begin{minipage}[htp]{0.45\textwidth}
+	\footnotesize
+		
+		\begin{center}
+			\begin{tabular}[w]{|c|c|c|}
+				\hline
+				Current State $S$ & Next state $S_{next}$ & Output \\
+				\hline
+				S & {\begin{tabular}{c}w \\ \hline 0 \; \; \; \; \; 1\end{tabular}} & z \\
+				\hline
+				
+				A &\begin{tabular}{c|c} A & B \end{tabular} & 0 \\
+				B &\begin{tabular}{c|c} A & C \end{tabular} & 0 \\
+				C &\begin{tabular}{c|c} A & C \end{tabular} & 1 \\
+				\hline
+				\end{tabular}
+		\end{center}
+
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.4\textwidth}
+
+\begin{center}
+	\begin{justify}
+			\begin{itemize}
+				\item[-] States are A, B, Z, each represented by at least 2 bits.
+				\item[-] Input is 1-bit input w
+				\item[-] Output is 1-bit z
+				\item[-] Reset input is Asynchronous, power-on reset, active high 
+			\end{itemize}
+	\end{justify}
+\end{center}
+\end{minipage}
+\vfill
+\begin{vhdl}
+module fsm_Moore (input w, CLK, Reset, output reg z);
+reg [1:0] S_next, S;
+parameter A = 2'b00, B = 2'b01, C = 2'b10; // states
+// Next-state logic
+always @ (*) begin
+	case (S)
+	A: if (w == 0) S_next = A;
+		else S_next = B;
+	B: if (w == 0) S_next = A;
+		else S_next = C;
+	C: if (w == 0) S_next = A;
+		else S_next = C;
+	default: S_next = 2'bxx;
+	endcase
+end
+// State memory
+always @ (posedge CLK or posedge Reset) begin
+	if (Reset == 1) S <= A;
+	else S <= S_next;
+end
+// Output logic
+always @ (*) begin
+z = (S == C);
+end
+endmodule
+\end{vhdl}
+
+\section{Mealy FSM, with Verilog Implementation}
+\subsubsection*{Description of the Machine}
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{circuits/17.2.png}
+\end{center}
+
+\begin{minipage}[htp]{0.6\textwidth}
+	\footnotesize
+		\begin{center}
+			\begin{tabular}[w]{|cc|c|c|}
+				\hline
+				Current State $S$ & Input & Next state $S_{next}$ & Output \\
+				\hline
+				S & w & $S_{next}$ & z \\
+				\hline
+				
+				A & 0 & A & 0 \\
+				A & 1 & B & 0 \\
+				B & 0 & A & 0 \\
+				B & 1 & B & 1 \\
+				\hline
+				\end{tabular}
+		\end{center}
+
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.35\textwidth}
+
+\begin{center}
+	\begin{justify}
+			\begin{itemize}
+				\item[-] States are A, B, represented by at least 1 bit.
+				\item[-] Input is 1-bit input w
+				\item[-] Output is 1-bit z
+				\item[-] Asynchronous, power-on reset, active high 
+			\end{itemize}
+	\end{justify}
+\end{center}
+\end{minipage}
+\vfill
+\begin{vhdl}
+module fsm_Mealy (input w, CLK, Reset, output reg z);
+	reg S_next, S;
+	parameter A = 1'b0, B = 1'b1; // states
+	// Next-state logic
+	always @ (*) begin
+		case (S)
+		A: if (w == 0) S_next = A;
+			else S_next = B;
+		B: if (w == 0) S_next = A;
+			else S_next = B;
+		default: S_next = 1'bx;
+		endcase
+	end
+	// State memory
+	always @ (posedge CLK or posedge Reset) begin
+		if (Reset == 1) S <= A;
+		else S <= S_next;
+	end
+	// Output logic
+	always @ (*) begin
+		z = 0;
+		if ((S == B) && (w == 1)) z = 1'b1;
+	end
+endmodule
+\end{vhdl}
+
+
+\chapter{Digital Logic and Verilog (Part XII)}
+\textit{This part of the course might seem a litttttle bit more advanced, as it applies the last few chapters at a higher level.} \newline 
+\textit{You do need to recall two things, what a Tri-State Driver is (only allows current to flow when the enable signal is active) and what a Bus with Tri-State drivers is, basically allows multiple modules(things) to be connected to a single "bus", again, current of the bus only flows when the enable signal is active.}
+\section{Swapping of two Registers}
+Here, we will be considering a system that will allow to swap two registers using one temporary register.
+
+Our first attempt will be using a bus with tri-state drivers, and the second attempt will be using a bus with mux.
+\subsection{Using a Bus with Tri-State Drivers (Verilog)}
+
+\begin{minipage}[htp]{0.6\textwidth}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{circuits/18.1.1.png}
+	\end{center}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.3\textwidth}
+We have the following FSM States:
+\begin{verbatim}
+IDLE: No swapping
+R2TOR3: First copy
+R1TOR2: Second copy
+R3TOR1: Third copy
+\end{verbatim}	
+\end{minipage}
+\newline
+With the following algorithm for swapping:
+\begin{verbatim}
+1 - Swap starts → Copy data from R2 to R3
+2 - Copy data from R1 to R2
+3 - Copy contents of R3 to R1 → Swap ends
+\end{verbatim}
+And an asynchronous power-on reset
+
+\begin{minipage}[htp]{1\textwidth}
+	Translating this in Verilog gives us,
+	\begin{vhdl}
+	module control (clk, reset, swap, R1in, R1out, R2in, R2out, R3in, R3out, done);
+		input clk, reset, swap;
+		output reg R1in, R1out, R2in, R2out, R3in, R3out, done;
+		parameter IDLE = 2'b00, R2TOR3 = 2'b01, R1TOR2 = 2'b10, R3TOR1 = 2'b11;
+		reg [1:0] S_next, S;
+		// Next-state logic
+		always @ (*) begin
+			S_next = IDLE; // default
+			case (S)
+			IDLE: if (swap) S_next = R2TOR3;
+				else S_next = IDLE;
+				R2TOR3: S_next = R1TOR2;
+				R1TOR2: S_next = R3TOR1;
+				R3TOR1: S_next = IDLE;
+				default: S_next = IDLE;
+		endcase
+		end
+		// State memory
+		always @ (posedge clk or posedge reset) begin
+				if (reset) S <= IDLE;
+				else S <= S_next;
+			end
+			// Output logic
+			always @ (*) begin
+				R1in = (S == R3TOR1);
+				R1out = (S == R1TOR2);
+				R2in = (S == R1TOR2);
+				R2out = (S == R2TOR3);
+				R3in = (S == R2TOR3);
+				R3out = (S == R3TOR1);
+				done = (S == R3TOR1);
+		end
+	endmodule
+	\end{vhdl}
+	
+\end{minipage}
+\newline
+
+\begin{minipage}[htp]{1\textwidth}
+	We may also define :\newline
+	\begin{minipage}[htp]{0.45\textwidth}
+		An n-bit register module:
+		\begin{vhdl}
+	module regn (D, clk, reset, en, Q);
+		parameter n = 8; // default
+		input [n-1:0] D;
+		input clk, reset, en;
+		output reg [n-1:0] Q;
+		always @ (posedge clk or posedge reset) begin
+		if (reset) Q <= 0;
+		else if (en) Q <= D;
+		end
+	endmodule
+		\end{vhdl}
+	\end{minipage}
+	\hfill
+	\vline
+	\hfill
+	\begin{minipage}[htp]{0.45\textwidth}
+		A Tri-State driver bus module:
+		\begin{vhdl}
+	module bus (D, clk, reset, en, Q);
+		parameter n = 8; // default
+		input [n-1:0] D;
+		input clk, reset, en;
+		output reg [n-1:0] Q;
+		always @ (posedge clk or posedge reset) begin
+			if (reset) Q <= 0;
+			else if (en) Q <= D;
+		end
+	endmodule
+		\end{vhdl}
+	\end{minipage}
+\end{minipage}
+\newline
+\vfill
+
+\begin{minipage}[htp]{1\textwidth}
+	Now using the FSM controller, the bus and the reg, we can defined the swapping module as such:
+	\begin{vhdl}
+	module regswap (clk, reset, swap);
+		parameter width = 8;
+		input clk, reset, swap;
+		wire wR1in, wR1out, wR2in, wR2out, wR3in, wR3out, wdone;
+		wire [width-1:0] wR1, wR2, wR3, wBus;
+	
+		// Instantiate controller module
+		control controller_module ( .clk (clk), .reset (reset), .swap (swap),
+		.R1in (wR1in), .R1out (wR1out), .R2in (wR2in), .R2out (wR2out),
+		.R3in (wR3in), .R3out (wR3out), .done (wdone));
+	
+		// Instantiate registers
+		regn #(.n (width)) R1 (.D (wBus), .clk (clk), .reset (reset), .en (wR1in), .Q (wR1));
+		regn #(.n (width)) R2 (.D (wBus), .clk (clk), .reset (reset), .en (wR2in), .Q (wR2));
+		regn #(.n (width)) R3 (.D (wBus), .clk (clk), .reset (reset), .en (wR3in), .Q (wR3));
+	
+		// Bus with tri-state drivers
+		bustri #(.n (width)) bustri1 (.w (wR1), .en (wR1out), .f (wBus));
+		bustri #(.n (width)) bustri2 (.w (wR2), .en (wR2out), .f (wBus));
+		bustri #(.n (width)) bustri3 (.w (wR3), .en (wR3out), .f (wBus));
+	endmodule
+	\end{vhdl}
+\end{minipage}
+
+\subsection{Using a Bus with MUXes (Verilog)}
+
+\begin{minipage}[htp]{0.6\textwidth}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{circuits/18.1.2.png}
+	\end{center}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.3\textwidth}
+We have the following FSM States:
+\begin{verbatim}
+IDLE: No swapping
+R2TOR3: First copy
+R1TOR2: Second copy
+R3TOR1: Third copy
+\end{verbatim}	
+\end{minipage}
+\newline
+With the following algorithm for swapping:
+\begin{verbatim}
+1 - Swap starts → Copy data from R2 to R3
+2 - Copy data from R1 to R2
+3 - Copy contents of R3 to R1 → Swap ends
+\end{verbatim}
+And an asynchronous power-on reset
+
+
+\begin{minipage}[htp]{1\textwidth}
+	Translating this in Verilog gives us,
+	\begin{vhdl}
+module controlbusmux (clk, reset, swap, R1in, R2in, R3in, done, sel);
+	input clk, reset, swap;
+	output reg R1in, R2in, R3in, done;
+	output reg [1:0] sel;
+	parameter IDLE = 2'b00, R2TOR3 = 2'b01, R1TOR2 = 2'b10, R3TOR1 = 2'b11;
+	reg [1:0] S_next, S;
+	// Next-state logic
+	always @ (*) begin
+		S_next = IDLE;
+		case (S)
+		IDLE: if (swap) S_next = R2TOR3;
+			  else S_next = IDLE;
+		R2TOR3: S_next = R1TOR2;
+		R1TOR2: S_next = R3TOR1;
+		R3TOR1: S_next = IDLE;
+		default: S_next = IDLE;
+		endcase
+	end
+	// State memory
+	always @ (posedge clk or posedge reset) begin
+		if (reset) S <= IDLE;
+		else S <= S_next;
+	end
+	// Output logic
+	always @ (*) begin
+		R1in = (S == R3TOR1);
+		R2in = (S == R1TOR2);
+		R3in = (S == R2TOR3);
+		done = (S == R3TOR1);
+		sel = S;
+	end
+endmodule
+\end{vhdl}
+\end{minipage}
+\newpage
+Giving us the following implementation for reg swpping with a bus of MUXes :
+\begin{vhdl}
+module regswapbusmux (clk, reset, swap);
+		parameter width = 8;
+		parameter IDLE = 2'b00, R2TOR3 = 2'b01;
+		parameter R1TOR2 = 2'b10, R3TOR1 = 2'b11;
+		input clk, reset, swap;
+		wire wR1in, wR2in, wR3in, wdone;
+		wire [width-1:0] wR1, wR2, wR3;
+		wire [1:0] wsel;
+		reg [width-1:0] wBus;
+		// Instantiate controller module
+		controlbusmux controller_module ( .clk (clk), .reset (reset), .swap (swap),
+		.R1in (wR1in), .R2in (wR2in), .R3in (wR3in),
+		.done (wdone), .sel (wsel));
+		// Instantiate registers
+		regn #(.n (width)) R1 (.D (wBus), .clk (clk), .reset (reset), .en (wR1in), .Q (wR1));
+		regn #(.n (width)) R2 (.D (wBus), .clk (clk), .reset (reset), .en (wR2in), .Q (wR2));
+		regn #(.n (width)) R3 (.D (wBus), .clk (clk), .reset (reset), .en (wR3in), .Q (wR3));
+		// Bus with a multiplexer
+		always @ (*) begin
+			wBus = wR1;
+			case (wsel)
+				IDLE: wBus = wR1;
+				R2TOR3: wBus = wR2;
+				R1TOR2: wBus = wR1;
+				R3TOR1: wBus = wR3;
+				default: wBus = wR1;
+			endcase
+		end
+endmodule
+\end{vhdl}
+
+\section{Alternative ways to impelment Adders}
+A Full Adder in behavioral Verilog, can be modelled as such:
+
+\begin{minipage}[htp]{0.45\textwidth}	
+	\begin{vhdl}
+module fulladd (a, b, c_in, s, c_out);
+	input a, b, c_in;
+	output s, c_out;
+	assign s = a ^ b ^ c_in;
+	assign c_out = (a & b) | (a & c_in) | (b & c_in);
+endmodule
+	\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{circuits/8.4.2.png}
+	\end{center}	
+\end{minipage}
+
+\subsection{Ripple Carry Adder Using a For Loop (Verilog)}
+To implement a Ripple-Carry Adder, we set the next carry to the $C_{out}$ of the current stage, and calculate the current sum as before.
+\newline
+\vspace*{10px}
+\begin{minipage}[htp]{0.45\textwidth}	
+	\begin{vhdl}
+module ripplecarry (Cin, A, B, S, Cout);
+	parameter n = 32;
+	input Cin;
+	input [n-1:0] A, B;
+	output reg [n-1:0] S;
+	output reg Cout;
+	reg [n:0] C; // internal wires
+	integer k; // loop iterator, an integer
+	always @(*) begin
+		C[0] = Cin;
+		for (k = 0; k < n; k = k+1) begin
+		S[k] = A[k] ^ B[k] ^ C[k];
+		C[k+1] = (A[k] & B[k]) | (A[k] & C[k]) | (B[k] & C[k]);
+	end
+	Cout = C[n];
+	end
+endmodule
+	\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=1.3\textwidth]{circuits/10.2.4_2.png}
+	\end{center}	
+\end{minipage}
+
+\subsection{Generate Construct (Verilog)}
+The Verilog \texttt{generate} construct allows module instantiation within \texttt{for} loops and \texttt{if-else} statements. Key points include:
+
+\begin{itemize}
+    \item[-] If a \texttt{for} loop is included in the \texttt{generate} block, the loop index variable must be of type \texttt{genvar}.
+    \item[-] A \texttt{genvar} is an integer variable that:
+    \begin{itemize}
+        \item[] Can only have values $\geq 0$.
+        \item[] Can only be used inside \texttt{generate} blocks.
+    \end{itemize}
+    \item[-] The \texttt{generate} construct enables combining \texttt{for} loops with module instantiations effectively.
+\end{itemize}
+\vfill
+\subsection{Ripple-Carry Adder with a generate Construct (Verilog)}
+
+\begin{minipage}[htp]{1\textwidth}
+	\begin{vhdl}
+	module ripplecarrygenerate (Cin, A, B, S, Cout);
+		parameter n = 32;
+		input Cin;
+		input [n-1:0] A, B;
+		output [n-1:0] S; // must match the type of fulladd port .s
+		output Cout; // must match the type of fulladd port c_out
+		genvar g; // generate loop iterator, must have genvar type
+		wire [n:0] C; // must match the type of fulladd ports .c_in, c_out
+		assign C[0] = Cin;
+		// generate block
+		generate // optional keyword, helps readability
+		for (g = 0; g < n; g = g + 1) begin
+		fulladd stage (.a (A[g]), .b (B[g]), .c_in (C[g]), .s (S[g]), .c_out (C[g + 1]));
+		end
+		endgenerate // optional keyword, helps readability
+		assign Cout = C[n];
+	endmodule
+	\end{vhdl}
+\end{minipage}
+\section{Serial Adders}
+\textit{Serial Adders are adders that add bits serially, one bit at a time, if speed is not prority it's a cost effective way to add numbers.}
+\subsection{Circuit}
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{itemize}
+		\item[-] Shift-right registers output one bit of \texttt{a} and \texttt{b} at a time.
+		\item[-] A down-counter (timer) counts the number of cycles needed for addition, corresponding to the number of bit pairs to add.
+		\item[-] The \texttt{INIT} signal loads new values into all shift registers and reinitializes the timer.
+	\end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{circuits/18.3.1.png}
+	\end{center}
+\end{minipage}
+\subsection{Serial Adder Mealy FSM}
+A Mealy FSM Serial Adder follows the following algorithm:
+
+\begin{minipage}[htp]{0.45\textwidth}
+	\hspace*{-20px}
+	
+	\begin{itemize}	
+		\itemsep
+		\item[-] Initialize the shift registers and the timer (INIT input)
+		\item[-] Load (in parallel) vectors A and B in their respective shift registers
+		\item[-] Initialize the timer
+		\item[-] Clear the contents of the sum register (all zeros)
+		\item[-] In each clock cycle
+		\item[-] \begin{itemize}
+			\item[*] Add a pair of bits (one bit of A and one bit of B) using the Adder FSM
+			\item[*] Shift the resulting sum bit into the Sum register
+			\item[*] Shift the vectors A and B to prepare the next pair of bits
+			\item[*] Decrement the counter
+		\end{itemize}
+		\item[-] Stop when the timer finished counting
+	\end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+The Adder FSM has the following states:
+\newline
+- \texttt{S0} = 0
+\newline
+- \texttt{S1} = 1
+\newline
+\textit{With $S_0$ and $S_1$ representing the carry generated by the sum of the previous bits}
+\newline
+We get the following State/output tables:
+\newline
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/18.3.2.png}
+	\includegraphics[width=0.9\textwidth]{circuits/18.3.2_2.png}
+\end{center}
+\end{minipage}
+
+\subsection{Serial Adder Mealy FSM (Verilog)}
+\begin{minipage}[htp]{1\textwidth}
+\begin{vhdl}
+module serialadderfsm (a, b, init, reset, clk, sum);
+	parameter n = 8;
+	input a, b, init, reset, clk;
+	output reg sum;
+	parameter S0 = 1'b0, S1 = 1'b1;
+	reg S_next, S;
+	always @(*) begin
+		S_next = S0;
+		case (S)
+		S0: begin
+			if (init) S_next = S0;
+			else if (a & b) S_next = S1;
+			else S_next = S0;
+		end
+		S1: begin
+			if (init) S_next = S0;
+			else if (~a & ~b) S_next = S0;
+			else S_next = S1;
+		end
+		default: S_next = S0;
+	endcase
+	end	
+	// State memory
+	// Power-on asynchronous reset
+	always @ (posedge clk or posedge reset) begin
+		if (reset) S <= S0;
+		else S <= S_next;
+	end
+	// Output logic
+	always @(*) begin
+		if (S == S0) sum = a ^ b;
+		else sum = ~(a ^ b);
+	end
+endmodule
+\end{vhdl}
+\end{minipage}
 \end{document}
