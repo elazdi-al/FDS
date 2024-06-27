@@ -121,6 +121,72 @@ stringstyle=\color{stringcolor},
   {}
 
 
+% Define your colors here
+% Define your colors here
+\definecolor{ckeywordcolor}{rgb}{0.8,0.1,0.1}
+\definecolor{cbackgroundcolor}{rgb}{0.95,0.95,0.95}
+\definecolor{ccommentcolor}{rgb}{0.0,0.5,0.0}
+\definecolor{cstringcolor}{rgb}{0.1,0.1,0.8}
+\definecolor{crulecolor}{rgb}{0.5,0.5,0.5}
+\definecolor{ccodegray}{rgb}{0.6,0.6,0.6}
+
+\lstdefinestyle{cstyle}{
+  language=C,
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{cbackgroundcolor},
+  commentstyle=\color{ccommentcolor}\ttfamily, % Add \ttfamily to ensure comments are in typewriter font
+  morecomment=[l][\color{ccommentcolor}\ttfamily]{//}, % Line comment in C
+  keywordstyle=\color{ckeywordcolor},
+  stringstyle=\color{cstringcolor},
+  showstringspaces=false,
+  frame=single,
+  rulecolor=\color{crulecolor}, % Frame color
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny\color{ccodegray},
+  tabsize=2
+}
+
+% Define your custom environment
+\lstnewenvironment{cc}
+  {\lstset{style=cstyle}}
+  {}
+
+
+
+
+% Define your colors here
+
+\definecolor{akeywordcolor}{rgb}{0.0, 0.2, 0.4}
+\definecolor{abackgroundcolor}{rgb}{0.98, 0.99, 1.0} % Closer to transparency
+\definecolor{acommentcolor}{rgb}{0.0, 0.4, 0.6}
+\definecolor{astringcolor}{rgb}{0.2, 0.4, 0.8}
+\definecolor{arulecolor}{rgb}{0.6, 0.7, 0.8}
+\definecolor{acodegray}{rgb}{0.3, 0.4, 0.5}
+
+
+\lstdefinestyle{assembly}{
+  language=[x86masm]Assembler,
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{abackgroundcolor},
+  commentstyle=\color{acommentcolor}\ttfamily, % Add \ttfamily to ensure comments are in typewriter font
+  morecomment=[l][\color{acommentcolor}\ttfamily]{;}, % Line comment in Assembly
+  keywordstyle=\color{akeywordcolor},
+  stringstyle=\color{astringcolor},
+  showstringspaces=false,
+  frame=single,
+  rulecolor=\color{arulecolor}, % Frame color
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny\color{acodegray},
+  tabsize=2,
+  morekeywords={li, and, add, addi, srli, bne} % Add custom keywords
+}
+
+% Define your custom environment
+\lstnewenvironment{assembly}
+  {\lstset{style=assembly}}
+  {}
 
 
 
@@ -153,7 +219,7 @@ stringstyle=\color{stringcolor},
 	\vspace*{1cm}
 	\textbf{Introduction}
 	\newline
-	\paragraph[short]{}{This document is designed to offer a LaTeX-styled overview of the Fundamentals of Digital Systems course, emphasizing brevity and clarity. Should there be any inaccuracies or areas for improvement, please do not hesitate to reach out to me at ali.elazdi@epfl.ch for corrections. Hoping to provide an experience similar to the one provided by past generations of students in other subjects. Also, for the latest version of this pdf file, as the update on drive may take some time, you can find it on my github repository at the following link: \url{https://github.com/elazdi-al/FDS/blob/main/FDS.pdf}}
+	\paragraph[short]{}{This document is designed to offer a LaTeX-styled overview of the Fundamentals of Digital Systems course, emphasizing brevity and clarity. Should there be any inaccuracies or areas for improvement, please do not hesitate to reach out to me at ali.elazdi@epfl.ch for corrections. Hoping to provide an experience similar to the one provided by past generations of students in other subjects. Also, for the latest version of this pdf file, as the update on drive may take some time, you can find it on my github repository at the following link: \url{https://github.com/elazdi-al/FDS/blob/main/FDS.pdf}, (W.***) corresponds to the Week number and either Monday (1) or Thursday (2) of the week.}
 \end{center}
 
 
@@ -167,7 +233,7 @@ stringstyle=\color{stringcolor},
 % \listoftables
 
 \mainmatter% Chapter 1
-\chapter{Number Systems}
+\chapter{Number Systems (W1.1)}
 
 
 % Section 1.1
@@ -807,7 +873,7 @@ When weights are in this format :
 	\end{enumerate}
 	
 	
-	\chapter{Number Systems (Part II)}
+	\chapter{Number Systems (Part II) (W1.2)}
 	
 	\section{Addition and Subtraction
 	of Unsigned Integers}
@@ -974,7 +1040,7 @@ When weights are in this format :
 		
 		
 		
-		\chapter{Number Systems (Part III)}
+		\chapter{Number Systems (Part III) (W2.1)}
 		\section{Fixed-Point
 		Number Representation}  
 		
@@ -1074,8 +1140,8 @@ When weights are in this format :
 			      	$$Precision(x) = m + f$$ with \(m\) the number of bits for the integer part and \(f\) the number of bits for the fractional part.
 			      	
 			      	\subsection{Resolution}
-			      	Resolution is the smallest non-zero number that can be represented.
-			      	
+					Resolution is the difference between the smallest non zero number and the representation of zero.			
+					\newline \textit{For fixed point representation:}      	
 			      	$$Resolution(x) = 2^{-f}$$
 			      	
 			      	
@@ -1502,7 +1568,7 @@ When weights are in this format :
 			      	\end{itemize}
 			      	
 			      	
-			      	\chapter{Number Systems (Part IV)}
+			      	\chapter{Number Systems (Part IV) (W2.2)}
 			      	\section{Fixed-Point Arithmetic}
 			      	\subsection{Addition and Subtraction}
 			      	
@@ -1725,10 +1791,10 @@ When weights are in this format :
 			      		\item \textbf{Check for Special Cases:} There are no special cases here, as our result is a regular binary floating-point number.
 			      	\end{enumerate}
 			      	
-			      	So, our final result is $10.00 \times 2^3$ in binary, which is $8$ in decimal.
+			      	So, our final result is $1.00 \times 2^4$ in binary, which is $16$ in decimal.
 			      	
 			      	
-			      	\chapter{Number Systems (Part V)}
+			      	\chapter{Number Systems (Part V) (W3.1)}
 			      	
 			      	
 			      	
@@ -1829,7 +1895,7 @@ When weights are in this format :
 			      		\item[] Adjust the mantissa by right-shifting the signed mantissa of each number by \( d_i \). As a result of these adjustments, the mantissa in BFP cannot be normalized, and there is no hidden bit.
 			      	\end{itemize}
 			      	
-			      	\chapter{Digital Logic}
+			      	\chapter{Digital Logic (W3.2)}
 			      	\section{Introduction to Digital Logic Circuits}
 			      	The smallest unit of Digital Information is a binary value 1 or 0.
 			      	\subsection{The simplest binary logic element}
@@ -2406,7 +2472,7 @@ When weights are in this format :
 			      	            
 			      	        
 			      	        
-			      	\chapter{Digital Logic (PART II)}
+			      	\chapter{Digital Logic (PART II) (W4.1)}
 			      	\section{Logic Synthesis}
 			      	\subsection{Minterms and Maxterms}
 			      	\textit{Personal Remark. I changed the expression of the function for the product as it was clearer to my sens} \newline
@@ -2430,7 +2496,7 @@ When weights are in this format :
 			      	thus $m_5 = x_1 \overline{x}_2 x_3$ \newline
 			      	Let $n=5, i=3$:\newline
 			      	$ 3 = \underline{00011}_2$
-			      	thus $m_3 = \overline{x}_1 \overline{x}_2 x_3 \overline{x}_4 \overline{x}_5$ \newline
+			      	thus $m_3 = \overline{x}_1 \overline{x}_2 \overline{x_3} x_4 {x}_5$ \newline
 			      	
 			      	\newpage
 			      	\subsubsection{Maxterms}
@@ -2581,7 +2647,7 @@ When weights are in this format :
 			      	By De Morgan's theorem
 			      	
 			      	\[
-			      		f(x_1, x_2, x_3) = m_0 + m_2 + m_3 + m_7 = \overline{f}
+			      		\overline{f(x_1, x_2, x_3)} = m_0 + m_2 + m_3 + m_7
 			      	\]
 			      	
 			      	\textit{Personal Remark. Don't forget the objective here, these are just two ways, equivalent ways, to represent a function only using ORs and ANDs.}
@@ -2879,7 +2945,7 @@ When weights are in this format :
 			      	
 			      	
 			      	
-			      	\chapter{Digital Logic (PART III)}
+			      	\chapter{Digital Logic (PART III) (W5.1)}
 			      	\section{Adders}
 			      	\subsection{Addition of two 1-bit binary numbers}
 			      	In this section, we will be adding two 1-bit binary numbers. The truth table is as follows:
@@ -3512,7 +3578,7 @@ When weights are in this format :
 			      		\label{tab:truth_table}
 			      	\end{table}
 			      	        
-			      	\chapter{Digital Logic (PART IV)}
+			      	\chapter{Digital Logic (PART IV) (W5.2)}
 			      	
 				
 			      	\section{Transistors}
@@ -3529,102 +3595,68 @@ When weights are in this format :
 			      	The gate voltage (\( V_G \)) controls the current flow between the drain and source. When \( V_G \) exceeds a certain threshold, an electric field is created that allows current to flow, making the MOSFET act as an efficient electronic switch.
 			     \newpage
 					\subsection{NMOS Transistor Switches}
-			      	\small NMOS works like a switch that turns on to let electricity flow when you apply a certain voltage.
-			      	
-			      	The digital representation of it looks like this :
-			      	
-			      	\begin{center}
-			      	
-			      		\begin{minipage}[c]{0.35\textwidth} % Adjust the width as needed for the second circuit
-			      			
-			      			\centering
-			      			\includegraphics[width=0.35\textwidth]{circuits/9.1.1.png} 
-			      		\end{minipage}
-			      	\end{center}
-			
-			      	\begin{itemize}
-			      		\item[-] Open ($x=0$); $V_{G} = 0$
-			      		      \newline
-			      		      \noindent\begin{minipage}{0.5\textwidth}
-			      		      \begin{tikzpicture}
-			      		      	\draw (0,0) -- (2,0);
-			      		      	\draw (2,0) -- (2.5,0.5);
-			      		      	\draw (3,0) -- (4,0);
-			      		      	\filldraw [black] (2,0) circle (2pt);
-			      		      	\filldraw [black] (3,0) circle (2pt);
-			      		      \end{tikzpicture}
+			      	\textit{An NMOS is a switch that is open by default, you need to apply a voltage to close it.}
+						\begin{center}
+			      			\includegraphics[width=0.13\textwidth]{circuits/9.1.1.png} 
+						\end{center}
+			      		\begin{minipage}{0.45\textwidth}
+						- Open ($x=0$); $V_{G} = 0$
+							\begin{center}
+							\includegraphics[width=0.55\textwidth]{circuits/9.1.1_4.png}
+						\end{center}
+						\vspace*{20px}
+						- Closed ($x=1$); $V_{G} = V_{DD}$
+						\begin{center}
+							\includegraphics[width=0.65\textwidth]{circuits/9.1.1_5.png}
+						\end{center}
 			      		\end{minipage}%
 						\hfill
-			      		\begin{minipage}{0.30\textwidth}
-			      			
-			      			\centering
-			      			\includegraphics[width=0.3\textwidth]{circuits/9.1.1_3.png} % Replace with actual file path
-			      		\end{minipage}
+						\vline
+						\hfill
+						\begin{minipage}{0.45\textwidth}	
+							\begin{center}
+								\includegraphics[width=0.2\textwidth]{circuits/9.1.1_3.png}
+							\end{center} % Replace with actual file path
+							      	
+							\begin{center}
+								\includegraphics[width=0.2\textwidth]{circuits/9.1.1_2.png} % Replace with actual file path
+							\end{center}	      			
+		
+\end{minipage}
 			      		    
-			      		     
-			      		\item[-] Closed ($x=1$); $V_{G} = V_{DD}$
-			      		      \newline
-			      		      \noindent\begin{minipage}{0.5\textwidth}
-			      		      \begin{tikzpicture}
-			      		      	\draw (0,0) -- (2,0);
-			      		      	\draw (2,0) -- (4,0);
-			      		      	\filldraw [black] (2,0) circle (2pt);
-			      		      	\filldraw [black] (3,0) circle (2pt);
-			      		      \end{tikzpicture}
-			      		\end{minipage}%
-			      		\begin{minipage}{0.30\textwidth}
-			      			\centering
-			      			\includegraphics[width=0.30\textwidth]{circuits/9.1.1_2.png} % Replace with actual file path
-			      		\end{minipage}
-			      	\end{itemize}
-			      	
 			    
-					\newpage
+\newpage
+
 			      	\subsection{PMOS Transistor Switches}
 			      	\textit{For french people, P like Porte, you push the door (need energy) to open it.}
-			      	\newline PMOS works like a switch that turns on to let electricity flow when you apply a certain voltage.
-			      	
-			      	The digital representation of it looks like this :
-			      	
+			      	\newline \textit{A PMOS is switch that is closed by default, you need to apply a voltage to open it.}			      	
 			      	\begin{center}
-			      		\begin{minipage}[c]{0.40\textwidth} % Adjust the width as needed for the second circuit
-			      			\centering
-			      			\includegraphics[width=0.40\textwidth]{circuits/9.1.2.png} 
-			      		\end{minipage}
+			      			\includegraphics[width=0.15\textwidth]{circuits/9.1.2.png} 
 			      	\end{center}
-			      	\begin{itemize}
-			      		\item[-] Open ($x=1$); $V_{G} = V_{DD}$
-			      		      \newline
-			      		      \noindent\begin{minipage}{0.5\textwidth}
-			      		      \begin{tikzpicture}
-			      		      	\draw (0,0) -- (2,0);
-			      		      	\draw (2,0) -- (2.5,0.5);
-			      		      	\draw (3,0) -- (4,0);
-			      		      	\filldraw [black] (2,0) circle (2pt);
-			      		      	\filldraw [black] (3,0) circle (2pt);
-			      		      \end{tikzpicture}
+
+			      		\begin{minipage}{0.45\textwidth}
+						- Open ($x=1$); $V_{G} = V_{DD}$
+						\begin{center}
+							\includegraphics[width=0.6\textwidth]{circuits/9.1.1_4.png}
+						\end{center}
+						\vspace*{20px}
+						- Closed ($x=0$); $V_{G} = 0$
+						\begin{center}
+							\includegraphics[width=0.6\textwidth]{circuits/9.1.1_5.png}
+						\end{center}
 			      		\end{minipage}%
-			      		\begin{minipage}{0.30\textwidth}
-			      			\centering
-			      			\includegraphics[width=0.3\textwidth]{circuits/9.1.2_2.png} % Replace with actual file path
-			      		\end{minipage}
+						\hfill
+						\vline
+						\hfill
+			      		\begin{minipage}{0.45\textwidth}		      			
+							\begin{center}
+								\includegraphics[width=0.2\textwidth]{circuits/9.1.2_2.png}
+							\end{center} % Replace with actual file path
+							\begin{center}
+							\includegraphics[width=0.4\textwidth]{circuits/9.1.2_3.png} % Replace with actual file path
+							\end{center}			      		
+\end{minipage}
 			      		    
-			      		     
-			      		\item[-] Closed ($x=0$); $V_{G} = 0$
-			      		      \newline
-			      		      \noindent\begin{minipage}{0.5\textwidth}
-			      		      \begin{tikzpicture}
-			      		      	\draw (0,0) -- (2,0);
-			      		      	\draw (2,0) -- (4,0);
-			      		      	\filldraw [black] (2,0) circle (2pt);
-			      		      	\filldraw [black] (3,0) circle (2pt);
-			      		      \end{tikzpicture}
-			      		\end{minipage}%
-			      		\begin{minipage}{0.40\textwidth}
-			      			\centering
-			      			\includegraphics[width=0.40\textwidth]{circuits/9.1.2_3.png} % Replace with actual file path
-			      		\end{minipage}
-			      	\end{itemize}
 			      	    
 			      	
 			      	\newpage
@@ -3953,7 +3985,7 @@ When weights are in this format :
 			      		      \includegraphics[width=0.3\textwidth]{circuits/9.5_1.png}
 			      	\end{itemize}
 			      	
-			      	\chapter{Digital Logic and Verilog (PART V)}
+			      	\chapter{Digital Logic and Verilog (PART V) (W6.1)}
 			      	
 			      	\section{CAD Design Flow}
 			      	The CAD design process encompasses several critical steps, ensuring the accurate realization of digital circuits. 
@@ -4161,7 +4193,7 @@ endmodule
 			      		\includegraphics[width=0.70\textwidth]{circuits/10.2.4_2.png}
 			      	\end{center}
 			      	
-			      	Written in VHDL : 
+			      	Written in Verilog : 
 			      	\begin{vhdl}
 module adder4 (Cin, A, B, S, Cout);
 // Port definitions
@@ -4183,7 +4215,7 @@ endmodule
 			      	
 			      	
 					
-			      	\chapter{Digital Logic and Verilog(PART VI)}
+			      	\chapter{Digital Logic and Verilog(PART VI)(W6.2)}
 
 					\section{Bus Architecture}
 
@@ -4660,7 +4692,7 @@ endmodule
 \end{adjustbox}
 
 
-\chapter{Digital Logic and Verilog(PART VII)}
+\chapter{Digital Logic and Verilog(PART VII) (W7.2)}
 
 \section{Memory Elements}
 \subsection{Introduction - Example Application: Alarm System Control}
@@ -4682,6 +4714,7 @@ Suppose we wish to control an alarm system. The system design involves a \textbf
 \vspace*{30px}
 \subsection{Combinational vs. Sequential Circuits}
 \textit{Personal Remark. Please take some time to actually identify the differences between the two as they will be crucial in understanding the rest of the course} \newline
+\textit{Tip: C comes before S in the alphabet, we've seen combinational circuits before sequential circuits. So you can think of combinational as what we've seen so far, and sequential as the new circuit type} \newline
 Previously, in \textbf{combinational circuits}, outputs only depended on the current inputs. \newline
 \vskip 5px
 In \textbf{sequential circuits}, outputs are determined by both the current inputs and the circuit's past behavior, due to the inclusion of memory elements.
@@ -5069,7 +5102,7 @@ Latches (hold of the last value due to bad timing, and if the last value is the 
 
 In sequential logic, always employ nonblocking assignments using the \texttt{<=} operator in \texttt{always} blocks to ensure simulation consistency across multiple blocks, as this method evaluates all right-hand sides before assigning values to the left-hand sides.\newline
 
-\chapter{Digital Logic and Verilog(PART VIII)}
+\chapter{Digital Logic and Verilog(PART VIII) (W8.1)}
 
 \section{Finite State Machines}
 Circuits containing both sequential and combinational logic are known as \textbf{state machines}. $2^n$ states can be represented by n-bit binary numbers (nothing new). The number of states being finite we thus call such circuits \textbf{finite state machines (FSMs)}
@@ -5169,7 +5202,7 @@ As this machine Only Outputs State, it is a Moore state machine.\newline
 \vspace*{-30px}
 \begin{center}
 \begin{align*}
-\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_1 = D_1 = f_1(x, Q_1, Q_2) = \overline{Q}_1 \cdot \overline{Q}_2 &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_1 = D_1 = f_1(x, Q_1, Q_2) = \overline{Q}_1 \cdot Q_2 &&\\
 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_2 = D_2 = f_2(x, Q_1, Q_2) = x + \overline{Q}_2 &&\\
 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& z = g(x, Q_1, Q_2) = Q_1 + \overline{Q}_2 &&
 \end{align*}
@@ -5549,7 +5582,7 @@ endmodule
 \end{justify}
 
 
-\chapter{Digital logic and Verilog, Part IX}
+\chapter{Digital logic and Verilog, Part IX (W8.2)}
 \section{Sequential Circuits}
 \subsection{Registers}
 
@@ -5934,7 +5967,7 @@ Equality operators compare operands bit for bit. The result is 0 if the comparis
 \end{center}
 These equality operators have the same precedence level, which is lower than that of relational operators.
 
-\chapter{Digital logic and Verilog, Part X}
+\chapter{Digital logic and Verilog (Part X) (W9.1-W10.1)}
 \section{Flip-flop Timing
 Constraints and Parameters}
 \subsection{Synchronous System Design}
@@ -6664,7 +6697,7 @@ t_{cQ, \text{max}} + t_{\text{comb, max}} + t_{\text{setup}} - (\Delta_D - \Delt
 \subsubsection*{Step 4 - Compute the max operating frequency}
 Thus the max operating frequency is:
 $$f_{\text{max}} = \frac{1}{T_{CLK}\, \text{ns}} \approx 188 \, \text{MHz}$$
-\subsubsection*{Algorithm for Cheking Hold-Time Violations}
+\subsubsection*{Algorithm for Checking Hold-Time Violations}
 \textit{Personal Remark: Again, \textbf{Important!!}}\newline
 \vspace*{-10px}
 \begin{itemize}
@@ -6723,7 +6756,7 @@ $$f_{\text{max}} = \frac{1}{T_{CLK}\, \text{ns}} \approx 188 \, \text{MHz}$$
 	\textbf{Conclusion}\newline
 	All relevant paths satisfy hold-time constraints.
 \end{minipage}
-\chapter{Digital logic and Verilog, Part XI}
+\chapter{Digital logic and Verilog, Part XI (W10.2)}
 
 \section{$n-to-2^{n}$ Binary Decoders}
 
@@ -7141,7 +7174,7 @@ A ? B : C
 \item[-] Otherwise, it returns the second alternative (C)
 \end{itemize}
 
-\chapter{Digital Logic and Verilog - Examples - FSMs}
+\chapter{Digital Logic and Verilog - Examples - FSM (W10.2)}
 \textit{This is a small collection of examples of Finite State Machines (FSMs) and their implementation in Verilog.
 }\newline
 \textit{Personal Remark: Knowing what a Moore and Mealy machine is, is important to understand this part of the course.}
@@ -7285,9 +7318,11 @@ endmodule
 \end{vhdl}
 
 
-\chapter{Digital Logic and Verilog (Part XII)}
+\chapter{Digital Logic and Verilog (Part XII) (W11.1)}
 \textit{This part of the course might seem a litttttle bit more advanced, as it applies the last few chapters at a higher level.} \newline 
 \textit{You do need to recall two things, what a Tri-State Driver is (only allows current to flow when the enable signal is active) and what a Bus with Tri-State drivers is, basically allows multiple modules(things) to be connected to a single "bus", again, current of the bus only flows when the enable signal is active.}
+\newline
+\textit{Also, don't expect understanding the thinking behind going from an Idea to an Actual Verilog program without having done the exercices}
 \section{Swapping of two Registers}
 Here, we will be considering a system that will allow to swap two registers using one temporary register.
 
@@ -7384,16 +7419,13 @@ And an asynchronous power-on reset
 	\begin{minipage}[htp]{0.45\textwidth}
 		A Tri-State driver bus module:
 		\begin{vhdl}
-	module bus (D, clk, reset, en, Q);
-		parameter n = 8; // default
-		input [n-1:0] D;
-		input clk, reset, en;
-		output reg [n-1:0] Q;
-		always @ (posedge clk or posedge reset) begin
-			if (reset) Q <= 0;
-			else if (en) Q <= D;
-		end
-	endmodule
+module bustri (w, en, f);
+	parameter n = 8; // default
+	input [n-1:0] w;
+	input en;
+	output [n-1:0] f;
+	assign f = en ? w : 'bz;
+endmodule
 		\end{vhdl}
 	\end{minipage}
 \end{minipage}
@@ -7600,23 +7632,23 @@ The Verilog \texttt{generate} construct allows module instantiation within \text
 
 \begin{minipage}[htp]{1\textwidth}
 	\begin{vhdl}
-	module ripplecarrygenerate (Cin, A, B, S, Cout);
-		parameter n = 32;
-		input Cin;
-		input [n-1:0] A, B;
-		output [n-1:0] S; // must match the type of fulladd port .s
-		output Cout; // must match the type of fulladd port c_out
-		genvar g; // generate loop iterator, must have genvar type
-		wire [n:0] C; // must match the type of fulladd ports .c_in, c_out
-		assign C[0] = Cin;
-		// generate block
-		generate // optional keyword, helps readability
-		for (g = 0; g < n; g = g + 1) begin
-		fulladd stage (.a (A[g]), .b (B[g]), .c_in (C[g]), .s (S[g]), .c_out (C[g + 1]));
-		end
-		endgenerate // optional keyword, helps readability
-		assign Cout = C[n];
-	endmodule
+module ripplecarrygenerate (Cin, A, B, S, Cout);
+	parameter n = 32;
+	input Cin;
+	input [n-1:0] A, B;
+	output [n-1:0] S; // must match the type of fulladd port .s
+	output Cout; // must match the type of fulladd port c_out
+	genvar g; // generate loop iterator, must have genvar type
+	wire [n:0] C; // must match the type of fulladd ports .c_in, c_out
+	assign C[0] = Cin;
+	// generate block
+	generate // optional keyword, helps readability
+	for (g = 0; g < n; g = g + 1) begin
+	fulladd stage (.a (A[g]), .b (B[g]), .c_in (C[g]), .s (S[g]), .c_out (C[g + 1]));
+	end
+	endgenerate // optional keyword, helps readability
+	assign Cout = C[n];
+endmodule
 	\end{vhdl}
 \end{minipage}
 \section{Serial Adders}
@@ -7641,23 +7673,28 @@ The Verilog \texttt{generate} construct allows module instantiation within \text
 A Mealy FSM Serial Adder follows the following algorithm:
 
 \begin{minipage}[htp]{0.45\textwidth}
-	\hspace*{-20px}
-	
-	\begin{itemize}	
-		\itemsep
-		\item[-] Initialize the shift registers and the timer (INIT input)
-		\item[-] Load (in parallel) vectors A and B in their respective shift registers
-		\item[-] Initialize the timer
-		\item[-] Clear the contents of the sum register (all zeros)
-		\item[-] In each clock cycle
-		\item[-] \begin{itemize}
-			\item[*] Add a pair of bits (one bit of A and one bit of B) using the Adder FSM
-			\item[*] Shift the resulting sum bit into the Sum register
-			\item[*] Shift the vectors A and B to prepare the next pair of bits
-			\item[*] Decrement the counter
-		\end{itemize}
-		\item[-] Stop when the timer finished counting
-	\end{itemize}
+
+	\begin{justify}
+
+			- Initialize the shift registers and the timer (INIT input)
+			\newline
+			- Load (in parallel) vectors A and B in their respective shift registers
+			\newline
+			- Initialize the timer
+			\newline
+			- Clear the contents of the sum register (all zeros)
+			\newline
+			- In each clock cycle
+			\newline
+			\begin{itemize}
+				\setlength\itemsep{-5px}
+				\item[*] Add a pair of bits (one bit of A and one bit of B) using the Adder FSM
+				\item[*] Shift the resulting sum bit into the Sum register
+				\item[*] Shift the vectors A and B to prepare the next pair of bits
+				\item[*] Decrement the counter
+			\end{itemize}
+			- Stop when the timer finished counting
+	\end{justify}
 \end{minipage}
 \hfill
 \vline
@@ -7682,10 +7719,8 @@ We get the following State/output tables:
 \subsection{Serial Adder Mealy FSM (Verilog)}
 \begin{minipage}[htp]{1\textwidth}
 \begin{vhdl}
-module serialadderfsm (a, b, init, reset, clk, sum);
+module serialadderfsm (input a, b, init, reset, clk,output reg sum);
 	parameter n = 8;
-	input a, b, init, reset, clk;
-	output reg sum;
 	parameter S0 = 1'b0, S1 = 1'b1;
 	reg S_next, S;
 	always @(*) begin
@@ -7704,8 +7739,7 @@ module serialadderfsm (a, b, init, reset, clk, sum);
 		default: S_next = S0;
 	endcase
 	end	
-	// State memory
-	// Power-on asynchronous reset
+	// State memory, Power-on asynchronous reset
 	always @ (posedge clk or posedge reset) begin
 		if (reset) S <= S0;
 		else S <= S_next;
@@ -7718,4 +7752,1018 @@ module serialadderfsm (a, b, init, reset, clk, sum);
 endmodule
 \end{vhdl}
 \end{minipage}
+
+\section{From Verilg to Circuits}
+
+\textit{We have been writing Verilog models from their circuit drawing or their description and functionality, we will now be doing the inverse, given a Verilog model we will turn the model back to its circuit and explain its functionality.}
+\newline
+\textit{Enough with the talking, here's the Verilog program we will be looking at:}
+\begin{vhdl}
+module guesswhat (clk, resetn, la, s, Data, B, done);
+parameter n = 8;
+input clk, resetn, la, s;
+input [n-1:0] Data;
+output reg [3:0] B;
+output reg done;
+
+parameter S1 = 2'b00, S2 = 2'b01, S3 = 2'b10;
+integer k;
+reg [n-1:0] A;
+wire z;
+reg [1:0] S_next, S;
+reg ea, eb, lb;
+
+// State transition logic
+always @(*) begin
+	S_next = S1;
+	case (S)
+	S1: if (!s) S_next = S1;
+		else S_next = S2;
+	S2: if (z == 0) S_next = S2;
+		else S_next = S3;
+	S3: if (s) S_next = S3;
+		else S_next = S1;
+	default: S_next = 2'bxx;
+	endcase
+end
+
+// Output control logic
+always @(*) begin
+	ea = 0;
+	lb = 0;
+	eb = 0;
+	done = 0;
+	case (S)
+	S1: lb = 1;
+	S2: begin
+		ea = 1;
+		if (A[0]) eb = 1;
+		else eb = 0;
+	end
+	S3: done = 1;
+	endcase
+end
+\end{vhdl}
+
+\begin{minipage}[htp]{1\textwidth}
+	\begin{vhdl}
+// State register
+always @(posedge clk or negedge resetn) begin
+if (!resetn) S <= S1;
+else S <= S_next;
+end
+
+// Output B register
+always @(posedge clk or negedge resetn) begin
+if (!resetn) B <= 0;
+else if (lb) B <= 0;
+else if (eb) B <= B + 1;
+end
+
+// Register A logic
+always @(posedge clk or negedge resetn) begin
+if (!resetn) A <= 0;
+else if (la) A <= Data;
+else if (ea) begin
+for (k = n - 1; k > 0; k = k - 1) begin
+A[k-1] <= A[k];
+end
+A[n-1] <= 1'b0;
+end
+end
+
+// Zero detect logic
+assign z = ~| A;
+endmodule
+// END
+	\end{vhdl}
+\end{minipage}
+\textit{Now, we can analyse this step by step, starting with the \texttt{guesswhat} declaration:}\newline 
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{vhdl}
+module guesswhat (clk, resetn, la, s, Data, B, done);
+parameter n = 8;
+input clk, resetn, la, s;
+input [n-1:0] Data;
+output reg [3:0] B;
+output reg done;
+parameter S1 = 2'b00, S2 = 2'b01, S3 = 2'b10;
+integer k;
+reg [n-1:0] A;
+wire z;
+reg [1:0] S_next, S;
+reg ea, eb, lb;
+//continues...
+\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{justify}
+\textbf{Step 1:} Start by analyzing the module interfaces, parameters, and internal signals (wires) and variables (reg, integer).
+\begin{itemize}
+	\item[-] The output, \texttt{B}, has a width different from the Data input.
+	\item[-] $S1$,$S2$,$S3$, are likely states of an FSM
+	\item[-] integer k is likely a loop iterator
+	\item[-] and A is a register of the same width as Data input
+\end{itemize}
+\end{justify}
+\end{minipage}
+\newline
+\subsubsection{Next State Logic}
+\begin{minipage}[htp]{0.45\textwidth}
+	
+\begin{vhdl}
+//...
+always @(*) begin
+	S_next = S1;
+	case (S)
+		S1: if (!s) S_next = S1;
+		else S_next = S2;
+		S2: if (z == 0) S_next = S2;
+		else S_next = S3;
+		S3: if (s) S_next = S3;
+		else S_next = S1;
+		default: S_next = 2'bxx;
+	endcase
+end
+// continues...
+\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{justify}
+\textbf{Step 2:} We analyze the Next State Logic, which is likely part of an FSM.
+\begin{itemize}
+	\item[-] The FSM has three states, S1, S2, and S3.
+	\item[-] The FSM transitions are based on the values of the input signals s and z.
+\end{itemize}
+Giving use the following state diagram
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/18.4.png}
+\end{center}
+\end{justify}
+\end{minipage}
+\subsubsection{FSM Output Logic}
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{vhdl}
+//...
+always @(*) begin
+	ea = 0;
+	lb = 0;
+	eb = 0;
+	done = 0;
+	case (S)
+	S1: lb = 1;
+	S2: begin
+			ea = 1;
+			if (A[0]) eb = 1;
+			else eb = 0;
+		end
+	S3: done = 1;
+	endcase
+end
+// continues...
+\end{vhdl}
+\end{minipage}
+\hfill\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+The FSM Output Logic will likelt look like this:
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/18.4_2.png}
+\end{center}
+
+- S1: \texttt{lb} = 1, others zero. \newline
+- S2 : \texttt{ea} = 1, \texttt{eb} = A[0], others zero. \newline
+- S3 : \texttt{done} = 1, others zero. \newline
+\end{minipage}
+
+\subsubsection{Sequential Circuits}
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{vhdl}
+// ...
+always @(posedge clk or negedge resetn) begin
+	if (!resetn) S <= S1;
+	else S <= S_next;
+	end
+// continues...
+\end{vhdl}
+\vspace*{40px}
+\begin{vhdl}
+// ...
+always @(posedge clk or negedge resetn) begin
+	if (!resetn) B <= 0;
+	else if (lb) B <= 0;
+	else if (eb) B <= B + 1;
+end
+// continues...
+\end{vhdl}
+\vspace*{50px}
+\begin{vhdl}
+	// ...
+	always @(posedge clk or negedge resetn) begin
+		if (!resetn) A <= 0;
+		else if (la) A <= Data;
+		else if (ea) begin
+			for (k = n - 1; k >0; k = k - 1) begin
+				A[k-1] <= A[k];
+			end
+			A[n-1] <= 1'b0;
+		end
+	end
+	// continues...
+	\end{vhdl}
+\end{minipage}
+\hfill\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{justify}
+	\texttt{\textbf{FSM State Register }}\\
+	- \textbf{negedge} in the sensitivity list: \\
+	\texttt{resetn} is an asynchronous reset active low, external signal.
+
+	- State after power-on reset: \textbf{S1}; \\
+	Hence, \textbf{S1} is the default state.
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{circuits/18.4_3.png}
+	\end{center}
+\end{justify}
+\begin{justify}
+	\texttt{\textbf{B is the output of a counter}}
+	\begin{itemize}
+		\item[-] \textbf{1b} clears it (loads all zeros)
+		\begin{itemize}
+			\item[*] In \textbf{S1} state
+		\end{itemize}
+		\item[-] \textbf{eb} enables it (allows counting)
+		\begin{itemize}
+			\item[*] In \textbf{S2} state, if \textbf{A[0]} is \textbf{1}
+		\end{itemize}
+		\item[-] \textbf{B + 1}: up counter
+	\end{itemize}
+\end{justify}
+\begin{justify}
+	\texttt{\textbf{Shift register \textbf{A}}}
+   \begin{itemize}
+	   \item[-] \textbf{resetn}: asynchronous reset
+	   \begin{itemize}
+		   \item Active low, external signal
+	   \end{itemize}
+	   \item[-] \textbf{la} initializes it (loads Data)
+	   \begin{itemize}
+		   \item \textbf{la} is an external signal
+		   \item \textbf{Data} is also external
+	   \end{itemize}
+	   \item[-] \textbf{for} loop performs shift right
+	   \begin{itemize}
+		   \item Most significant bits cleared (replaced by \textbf{1'b0})
+	   \end{itemize}
+	   \item[-] \textbf{ea} enables shift right
+	   \begin{itemize}
+		   \item In state \textbf{S2}, while up-counter \textbf{B} is enabled too
+	   \end{itemize}
+   \end{itemize}
+\end{justify}
+\end{minipage}
+\newline
+
+
+\subsubsection{Combinational Logic}
+\textit{Now that we have a broad idea of the circuit, we need to understand when it stops}\newline
+
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{vhdl}
+//...
+assign z = ~| A;
+endmodule
+// END
+\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	The last assignment in the module, \( z = \sim| A \), uses the Verilog reduction NOR operator, which sets \( z \) to 1 when all bits of vector \( A \) (the output of the shift register) are zero.
+\end{minipage}
+\newline
+All of this leads us to the following circuit:
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/18.4.1.png}
+\end{center}
+
+\section{Verilog Reduction Operators}
+
+Reduction operators in Verilog are unary operators that perform bitwise operations across all bits of a vector operand to produce a single-bit result.
+
+
+
+
+\begin{center}
+	\begin{tabular}{|l|l|}
+
+		\hline	
+		Operator & Description \\
+		\hline	
+		\texttt{\&} & reduction and \\		\hline	
+		\texttt{$\sim$\&} & reduction nand \\		\hline	
+		\texttt{|} & reduction or \\		\hline	
+		\texttt{$\sim$|} & reduction nor \\		\hline	
+		\texttt{\^} & reduction xor \\		\hline	
+		\texttt{$\sim$\^} & reduction xnor \\		\hline	
+		\end{tabular}
+	\end{center}
+		
+
+
+\subsection*{Examples}
+Consider the vector \( A = 8'b10101111 \):
+
+\begin{itemize}
+    \item[-] \textbf{Example 1:} \( z = \&A \)
+\newline
+\texttt{z = (((((((1 \& 1) \& 1) \& 1) \& 0) \& 1) \& 0) \& 1) = 0}
+    \item[-] \textbf{Example 2:} \texttt{z = \texttt{$\sim$}\texttt{\^}A} \\
+\texttt{z = \texttt{$\sim$}(((((((1 \texttt{\^} 1) \texttt{\^} 1) \texttt{\^} 1) \texttt{\^} 0) \texttt{\^} 1) \texttt{\^} 0) \texttt{\^} 1) = 1  \\}
+\end{itemize}
+\chapter{Computer Architecture (Part I) (W12.1)}
+\textit{The knowledge we have built on so far allows to design an en entire simple processor, a simple one, but a processor.}
+\section{A Processor}
+
+\begin{justify}
+	A processor, also known as a Central Processing Unit (CPU), is the central component in any general-purpose computing system, such as phones, laptops, tablets, and servers, responsible for executing software applications, facilitating data processing, and orchestrating data manipulations according to software instructions.
+\end{justify}
+
+\section{From Programs to Computers}
+\textit{To understand how a processor work, we need to understand how a program is executed by the computer, and that, on a lower level of abstraction.}
+\newline
+Here we will be looking at this program written in the C programming language (still a little high level): \newline
+\newline
+\begin{minipage}[htp]{0.5\textwidth}
+\begin{cc}
+// variable initialization
+int data = 0x00123456; // hexadecimal
+int result = 0;
+int mask = 1;
+int count = 0;
+int temp = 0;
+int limit = 32;
+do { // loop
+temp = data & mask; // bitwise and
+result = result + temp; // addition
+data = data >> 1; // shift right
+count = count + 1; // addition
+} while (count != limit); // condition
+\end{cc}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.4\textwidth}
+	\footnotesize
+\begin{justify}
+\textit{We may take a look at Reading, Writing, Update and Compute operations;}\newline 
+\end{justify}
+\begin{justify}
+	These correspond to the assignments variable initializations on lines 1-7 and to the assignments and computing on lines 9-13.
+\end{justify}
+\begin{justify}
+We also see a do-while loop with the condition of the count being different to the set limit.
+\end{justify} 
+\begin{justify}
+	\textit{Like in Java, there are controls to execute the program one line after the other, skip some lines, loop, or return to a previous line.}
+\end{justify}
+\end{minipage}
+This program counts the number of ones in the 32 bit integer \texttt{data} and stores the result in the variable \texttt{result}. Giving us \texttt{result = 9} for the value of \texttt{data = 0x00123456}.
+\newline
+We may represent the do-while loop as follows:
+\textit{the data variable gets shiffted right at each iteration and the temp varuable stores the least significant bit.}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{circuits/19.2.png}
+\end{center}
+\section{Hardware-Friendly Programs}
+
+\begin{justify}
+	Hardware does not understand high-level languages like C or Python; it only understands machine language, which consists of binary instructions that direct the CPU to perform specific tasks.
+\end{justify}
+\subsection{Translating High-Level Code into Binary}
+This is the process we need to go through to translate the high-level code into binary instructions:
+\begin{itemize}
+    \item[*] \textbf{Source Code:} Starts with high-level programming language.
+    \item[*] \textbf{Compilation/Interpretation:}
+    \begin{itemize}
+        \item[-] Compiler translates code to intermediate/binary formats.
+        \item[-] Interpreter executes source code line-by-line.
+    \end{itemize}
+    \item[*] \textbf{Optimization:} Enhances code performance/reduces size.
+    \item[*] \textbf{Linking:} Combines code with libraries/functions (for compiled languages).
+    \item[*] \textbf{Assembly Code Generation (Optional):} Converts to human-readable machine code.
+    \item[*] \textbf{Binary Code Generation:} Converts to binary instructions (0s and 1s).
+\end{itemize}
+\subsection{From High-Level Programs to Assembly}
+\textit{Assembly language is a low-level programming language that is a human-readable representation of machine code, it is considered as the closest level of abstraction to machine code.}
+\begin{itemize}
+	\item[] \textbf{\texttt{Step 1:}} Add line numbers and labels
+	\item[] \textbf{\texttt{Step 2:}} Assign variables to registers
+	\item[] \textbf{\texttt{Step 3:}} Replace each code line with a corresponding machine language instruction
+\end{itemize}
+
+\subsubsection{Add line numbers and labels}
+\textit{Number only lines of code that affect program execution, label important lines (e.g., loop body), and use appropriate symbols for comments.}
+\begin{center}
+	\includegraphics[width=0.4\textwidth]{circuits/19.3.2.png}
+\end{center}
+\subsubsection{Assign variables to registers}
+\textit{Assign variables to registers, use comments to indicate the register used for each variable. Assuming registers are named x0, x1, x2, etc., and each register stores 32 bits, we get :}
+
+\begin{center}
+	\includegraphics[width=0.4\textwidth]{circuits/19.3.2_2.png}
+\end{center}
+\subsubsection{Instructions}
+\textit{Let us replace the operations of our program with the corresponding assembly instructions:}
+\begin{center}
+\begin{tabular}{ll}
+	\hline
+	\textbf{Instruction} & \textbf{Description} \\
+	\hline
+	\textbf{li} & \textbf{l}oad a literal (an \textbf{i}mmediate) into a variable \\
+	\textbf{and} & bitwise and of two variables \\
+	\textbf{add} & addition of two variables \\
+	\textbf{addi} & addition of a variable and a literal (an \textbf{i}mmediate, a value) \\
+	\textbf{srli} & shift right logical by a literal (an \textbf{i}mmediate) \\
+	\textbf{bne} & if two variables are \textbf{n}ot \textbf{e}qual, go to the line with the label (\textbf{b}ranch) \\
+	\hline
+	\end{tabular}
+\end{center}
+\vspace*{10px}
+\textit{Giving us the following pseudo-code:}
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{circuits/19.3.2_3.png}
+\end{center}
+
+\subsubsection{Complete Assembly Code}
+\textit{We can now complete the assembly code:}
+\begin{assembly}
+		li x1, 0x00123456
+		li x2, 0
+		li x3, 1
+		li x4, 0
+		li x5, 0
+		li x6, 32
+loop:	and x5, x1, x3
+		add x2, x2, x5
+		srli x1, x1, 1
+		addi x4, x4, 1
+		bne x4, x6, loop
+\end{assembly}
+
+\textit{It is to be noted, though, that a fast 32-bit binary ones counter can be designed with logic gates or shift registers and counters, and that, while processors are very versatile, they are slower than specialized solutions.}
+\section{Under the Hood}
+\textit{Sous la capuche}\newline 
+\textit{Now the real deal begins, we will be looking at the hardware that executes the assembly code, the processor.}
+\newline
+There are two parts to a processor, the Data path, and the Control Path.
+\subsection{Data Path}
+The Data Path, or \texttt{datapath} is the part of the processor that performs arithmetic and logical operations on data. It consists of:
+\begin{itemize}
+	\item[*] \textbf{Registers:} is an array of registers (i.e., the memory) or the program variables and some other special uses
+	\item[*] \textbf{ALU (Arithmetic Logic Unit):} Performs the operations on program variables \textit{E.g., bitwise, logic, shift, comparisons, etc.}
+\end{itemize}
+
+\subsubsection{Arithmetic Logic Unit (ALU)}
+
+\textit{The ALU is the heart of the processor, it performs all the arithmetic and logical operations.}
+\newline
+\begin{minipage}[htp]{0.55\textwidth}
+	- \texttt{\textbf{A}} and \texttt{\textbf{B}} are two 32-bit data variables. \\
+	- \texttt{\textbf{Op}} is a select input that chooses the operation to perform. \\
+
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.43\textwidth}
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{circuits/19.4.1.png}
+	\end{center}
+\end{minipage}
+
+\subsubsection{Register File}
+\footnotesize
+\textit{A register file in a CPU is a small, fast storage area that contains a set of registers, which hold operands and results for quick access during instruction execution. It can read two registers in the same clock cycle and stores \textit{intermediate results}, \textit{operands}, \textit{memory addresses}, and \textit{control information} for CPU instructions.} \newline
+\begin{minipage}[htp]{0.55\textwidth}
+\footnotesize
+\vspace*{5px}
+\texttt{With the following inputs}:\\
+\textit{For reading: }\\
+- \texttt{\textit{AA:}} \textbf{A}ddress of \textbf{A} register to be read (output A) \\
+- \texttt{\textit{AB:}} \textbf{A}ddress of \textbf{B} register to be read (output B) \\
+\vspace*{5px}
+\textit{For writing: }\\
+- \texttt{\textit{W:}} Data input, 32-bit data to write into one of the registers (e.g., X register) \\
+- \texttt{\textit{Wr:}} Load input, 1-bit; if active, load value from W into X register \\
+- \texttt{\textit{AW:}} Address of X register to write to \\
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.4\textwidth}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{circuits/19.4.1_2.png}
+	\end{center}
+\end{minipage}
+
+\subsubsection{Example of Data Path Execution}
+\footnotesize
+\begin{minipage}[htp]{0.55\textwidth}
+Consider the following instruction:
+\begin{assembly}
+and x5, x1, x3
+\end{assembly}
+\textit{This instruction applies the AND operation on x1 and x3 and stores the result in x5.}\\
+- The \textbf{register file} receives the addresses of the registers to read from (x1, x3) and to write to (x5) from the \textbf{control logic} (in the next section of the course).\\ \vspace*{5px}
+- The \textbf{register} outputs the data values of registers x1 and x3 to the \textbf{ALU}, which also receives the operation to perform from the \textbf{control logic}.\\ \vspace*{5px}
+- The\textbf{ ALU} performs the operation and sends the result back to the \textbf{register file}, which writes it into register x5.\\
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.4\textwidth}
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{circuits/19.4.1_3.png}
+	\end{center}
+\end{minipage}	
+
+\subsection{Control Path}
+\textit{The control logic of the processor handles instruction reading, ensures correct sequencing, decodes instructions, sets control signals for the ALU and Register File based on the instruction, and implements the processor's finite-state machine.}
+\subsubsection*{Instruction Memory}
+\begin{minipage}
+	[htp]{0.55\textwidth}
+\textit{The instruction memory stores the program instructions.}\\
+\vspace*{10px}
+It takes the address of the memory instruction to be read from the \textbf{Address} port as an input and outputs the instruction to be executed to the \textbf{MemData} port.\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.4\textwidth}
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{circuits/19.4.2.png}
+	\end{center}
+\end{minipage}
+\subsubsection*{Program Counter (PC)}
+\begin{minipage}[htp]{0.5\textwidth}
+
+\begin{justify}
+	The \textbf{Program Counter} register holds the adress of the instruction to be executed and the Adder increments the content of the PC such that the instruction is read on the next clock cycle \\
+	
+\end{justify}\end{minipage}\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{circuits/19.4.2_2.png}
+	\end{center}
+\end{minipage}
+
+\subsubsection{Example}
+\begin{minipage}[htp]{0.4\textwidth}
+For this command
+\begin{assembly}
+and x5, x1, x3
+\end{assembly}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[p]{0.5\textwidth}
+	\begin{center}
+		\includegraphics[width=1\textwidth]{circuits/19.4.2_3.png}
+	\end{center}
+\end{minipage}
+
+\subsubsection{Example of Loop}
+In a loop execution, we need a \textbf{multiplexer} that holds the address of the line at the beginning of the loop and the usual program counter. \newline The \textbf{selector} of the multiplexer depends on the \textbf{Control Logic}\textit{ (coming in the next section)}.\newline
+\vspace*{5px}
+\begin{minipage}[htp]{0.45\textwidth}{
+\textit{Here for example, the instruction \texttt{bne} tells us that the this is a while loop with the condition that \texttt{x4 != x6}.
+}
+\begin{assembly}
+loop: and x5, x1, x3
+	...
+	bne x4, x6, loop # while (x4 != limit)
+\end{assembly}
+}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[p]{0.5\textwidth}
+	\begin{center}
+		\includegraphics[width=1\textwidth]{circuits/19.4.2_4.png}
+	\end{center}
+\end{minipage}
+
+\subsubsection{Decoding Instructions}
+
+\begin{minipage}[htp]{0.45\textwidth}
+
+\begin{justify}
+		\textit{Once the instruction is read from the instruction memory, it must be \textbf{decoded}}.\\
+		 This means parsing the binary representation of the instruction with the goal of identifying the operation, destination register, and the operands.
+	
+\end{justify}\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{circuits/19.4.2_5.png}
+	\end{center}
+\end{minipage}
+\section{Data Path + Control Path}
+\textit{From what we've learned so far...}\newline
+\text{Now we have a really really basic Processor, the only problem is that it can only process the limited set of data we can store in the Register File.}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{circuits/19.5.png}
+\end{center}
+
+In practice, we need an external memory to store the data only, or both the data and instructions.
+\subsection{Data Memory}
+\textit{Data memory is a storage area that holds the data to be processed during the execution of a program. It has higher latency than the register file, but it can store a larger amount of data.} \newline
+\textit{Personal Remark. Remember, Register File for intermediate results, currently used operands, etc... Data Memory, for the data to be processed.}
+\newline
+\begin{minipage}[htp]{0.4\textwidth}
+- \textbf{Address:} Address of the data to be read or written \\
+\vspace*{3px}
+- \textbf{MemDataIn} and \textbf{MemDataOut} input and output data ports \\
+\vspace*{3px}
+- \textbf{Wr} load, active when writing to the memory
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.5\textwidth}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{circuits/19.5.1.png}
+	\end{center}
+\end{minipage}
+\section{Complete Processor}
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{circuits/19.6.png}
+\end{center}
+\section{Types of Processors}
+\begin{itemize}
+    \item[*] Harvard architecture
+    \begin{itemize}
+        \item Instructions and data memory reside in separate memories
+        \item See the block diagram on the previous slide
+    \end{itemize}
+    \item[*] Von Neumann architecture
+    \begin{itemize}
+        \item Instructions and data reside in the same memory
+        \item We say the memory is unified
+        \item In general-purpose computers (desktops, laptops, servers, etc.), von Neumann architecture is predominant
+    \end{itemize}
+\end{itemize}
+
+\section{Instruction Set Architecture}
+
+The \textbf{Instruction Set Architecture} (ISA) defines the set of instructions a CPU can execute and the programming model for software developers, abstracting hardware details to create a consistent interface between hardware and software, allowing CPUs to evolve while maintaining compatibility, though it limits fundamental innovations that would require changes to the ISA.
+
+A common ISA example is IA-32/x86, introduced by Intel, and used in Intel's Core, Pentium, and Xeon series, as well as AMD's Ryzen, Athlon, and EPYC series. Typical details of an ISA include:
+
+
+\begin{minipage}[htp]{0.5\textwidth}
+
+\begin{justify}
+
+- Instruction set: operations the processor can directly execute. \\
+- Instruction encoding: binary representation of instructions. \\
+- Registers: storage for intermediate results and operands. \\
+- Data types and formats: e.g., integers, floating-point numbers, characters. \\
+- Memory addressing modes: how the processor accesses operands from memory.
+
+\end{justify}
+\end{minipage}
+\hfill
+\begin{minipage}[htp]{0.35\textwidth}
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/19.7.png}
+\end{center}
+\end{minipage}
+\section{RISC V}
+RISC ISAs are simpler and more regular than CISC, making them easier to implement, with examples including MIPS, Alpha, Sparc, and RISC-V, while most Intel processors are CISC; further advantages of RISC will be explored in the CS-208 Computer Architecture course(force). \\
+\vspace*{3px}\\
+\textit{RISC-V ISA is modular, centered around a stable base ISA called RV32I for 32-bit integer operations, with optional standard extensions like multiply, single-precision, and double-precision floating-point to customize hardware configurations.}
+\chapter{Computer Architecture (Part II) (W12.2)}
+\textit{Parts of the content we will be covering are actually available in the RV32I Reference Card (so no need to learn the encondings of instructions by heart for example, understanding them, however, is necessary).}
+\section{RV32I}
+\textit{RV32I is the base 32-bit integer instruction set architecture of RISC-V, featuring 32-bit wide registers, memory addresses, data words, instructions, and a little-endian memory system, with extendable optional instruction-set extensions.}
+\subsection{Registers}
+In \textbf{RV32I}, there are 31 general-purpose registers, \textbf{x1} to \textbf{x31}. There is a \textbf{x0} register that is hardwired to the constant \textbf{0}. And a \textbf{PC} register that holds the address of the next instruction to be executed. Each register is \textit{32 bits} wide and hold signed integers in \textbf{two's complement}.
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+	\hline
+	\textbf{Register} & \textbf{Name} & \textbf{Description} \\
+	\hline
+	x0 & zero & Hard-wired zero \\
+	\hline
+	x1 & ra & *\textit{Return address} \\
+	\hline
+	x2 & sp & *\textit{Stack pointer} \\
+	\hline
+	x3 & gp & *\textit{Global pointer} \\
+	\hline
+	x4 & tp & *\textit{Thread pointer} \\
+	\hline
+	x5-7 & t0-2 & Temporaries \\
+	\hline
+	x8-9 & s0-1 & Saved registers \\
+	\hline
+	x10-11 & a0-1 & *\textit{Function arguments/return values} \\
+	\hline
+	x12-17 & a2-7 & *\textit{Function arguments} \\
+	\hline
+	x18-27 & s2-11 & Saved registers \\
+	\hline
+	x28-31 & t3-6 & Temporaries \\
+	\hline
+	pc & Program counter & Program counter \\
+	\hline
+\end{tabular}\newline
+\textit{All with (*) is Out of Scope.}
+\end{center}
+\textbf{Out of Scope:} \\
+\textit{Program variables are commonly kept in t and s registers, the difference between s and t registers is that s registers are preserved across function calls, while t registers are not.}
+\subsection{Computational Instructions}
+\textit{There are three types of operations}:
+\begin{itemize}
+    \item \textbf{Integer register-register operations}:
+    \begin{itemize}
+        \item These operations involve instructions that use registers to store both operands.
+        \item They use the \textbf{R-type instruction format}.
+    \end{itemize}
+    \item \textbf{Integer register-immediate operations}:
+    \begin{itemize}
+        \item These operations involve instructions where one operand is a register and the other is an immediate value (a constant).
+        \item They use the \textbf{I-type instruction format} and the \textbf{U-type instruction format}.
+    \end{itemize}
+    \item \textbf{NOP pseudoinstruction}:
+    \begin{itemize}
+        \item NOP stands for "No Operation" and is a pseudoinstruction that does not perform any operation but can be used for timing purposes or as a placeholder in the instruction sequence.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Integer Register-Register Operations}
+A Register-Register is an operation that is of R-type. As it's name suggests, it involves executing an operation on data from two registers of the Register File (RF), and saving the result in a register of RF. \newline 
+\textit{Which can be wrote as:}
+$$RF[rd] = f(RF[rs1], RF[rs2])$$
+\textit{With $rs1$, $rs2$, $rd$, and $f()$ being encoded in the instruction.}\newline
+These operations are encoded as follows :\newline
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{circuits/20.1.2.png}
+\end{center}
+\begin{itemize}
+    \item[*] \textbf{rs1}: src1 (source), 5-bit index of the first operand register
+    \item[*] \textbf{rs2}: src2 (source), 5-bit index of the second operand register
+    \item[*] \textbf{rd}: dest (destination), 5-bit index of the result destination register
+    \item[*] \textbf{opcode}: (0110011)$_2$, 7-bit operation code (OP)
+    \item[*] \textbf{funct3}: 3-bit function code (\textbf{AND/OR/XOR/SLL/SRL/ADD/SLT/SLTU/SUB/SRA})
+    \item[*] \textbf{funct7}: 7-bit function code
+    \begin{itemize}
+        \item (0000000)$_2$ for \textbf{AND/OR/XOR/SLL/SRL/ADD/SLT/SLTU}
+        \item (0100000)$_2$ for \textbf{SUB/SRA}
+    \end{itemize}
+    \item[*] \textbf{ADD/SUB}: addition/subtraction (Overflows are ignored)
+    \item[*] \textbf{AND/OR/XOR}: bitwise logical operations
+    \item[*] \textbf{SLL/SRL/SRA}: logical left, logical right, and arithmetic shift right of RF[rs1] by the shift amount specified by bits [4:0] of RF[rs2]
+    \item[*] \textbf{SLT/SLTU}: signed/unsigned comparisons
+    \begin{itemize}
+        \item RF[rd] = 1, if RF[rs1] < RF[rs2]; otherwise, RF[rd] = 0
+        \item Origin of the acronym: \textbf{set on less than}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{The encoding thus looks like this}
+
+
+	\begin{tabular}{|l|l|c|c|c|c|c|c|c|}
+        \hline
+		\textbf{Instruction} & \textbf{Operation} & \textbf{funct7} & \textbf{rs2} & \textbf{rs1} & \textbf{funct3} & \textbf{rd} & \textbf{opcode}  \\
+        \hline
+        add   rd, rs1, rs2  & RF[rd] = RF[rs1] + RF[rs2]            & 0000000 & rs2 & rs1 & 000  & 0110011 & ADD       \\
+        sub   rd, rs1, rs2  & RF[rd] = RF[rs1] - RF[rs2]            & 0100000 & rs2 & rs1 & 000  & 0110011 & SUB       \\
+        sll   rd, rs1, rs2  & RF[rd] = RF[rs1] $<<$ RF[rs2]         & 0000000 & rs2 & rs1 & 001  & 0110011 & SLL          \\
+        slt   rd, rs1, rs2  & RF[rd] = RF[rs1] $<_{S}$ RF[rs2]      & 0000000 & rs2 & rs1 & 010  & 0110011 & SLT             \\
+        sltu rd, rs1, rs2   & RF[rd] = RF[rs1] $<_{U}$ RF[rs2]      & 0000000 & rs2 & rs1 & 011  & 0110011 & SLTU            \\
+        xor   rd, rs1, rs2  & RF[rd] = RF[rs1] $^{\wedge}$ RF[rs2]  & 0000000 & rs2 & rs1 & 100  & 0110011 & XOR                 \\
+        srl   rd, rs1, rs2  & RF[rd] = RF[rs1] $>>_{U}$ RF[rs2]     & 0000000 & rs2 & rs1 & 101  & 0110011 & SRL              \\
+        sra   rd, rs1, rs2  & RF[rd] = RF[rs1] $>>_{S}$ RF[rs2]     & 0100000 & rs2 & rs1 & 101  & 0110011 & SRA              \\
+        or     rd, rs1, rs2 & RF[rd] = RF[rs1] $|$ RF[rs2]          & 0000000 & rs2 & rs1 & 110  & 0110011 & OR         \\
+        and   rd, rs1, rs2  & RF[rd] = RF[rs1] $\&$ RF[rs2]         & 0000000 & rs2 & rs1 & 111  & 0110011 & AND          \\
+        \hline
+    \end{tabular}
+
+	\textit{
+		With $<_{S}$ stands the signed comparison,
+		$<_{U}$ the unsigned comparison,
+		$>>_{S}$ the signed shift right,
+		$>>_{U}$ the unsigned shift right
+		}
+\subsubsection{Example}
+
+\begin{justify}
+	\textit{Let's say we're trying to implement, a = b + c + d - e in RISC-V assembly.} 
+\end{justify}
+\begin{minipage}[htp]{0.52\textwidth}
+
+\begin{justify}
+\textit{The \texttt{li} (load immediate) instruction is a pseudo instruction which the assembler translates to addi.}
+	
+\end{justify}\begin{assembly}
+# Assuming a, b, c, d are in regs
+# x5, x6, x7, x8, respectively
+# i.e., t0, t1, t2, s0
+# variable initialization
+li t0, 0 # a = 0
+li t1, 1 # b = 1
+li t2, 3 # c = 3
+li s0, -1 # d = -1
+li s1, 2 # e = 2
+add t0, t1, t2 # t0 = temp = b + c = 4
+add t0, t0, s0 # t0 = temp + d = 3
+sub t0, t0, s1 # a = t0 = temp - e = 1
+\end{assembly}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.38\textwidth}
+	Translated to the following encoding (written in Hexadecimal)
+	\begin{center}
+		\includegraphics[width=1\textwidth]{circuits/20.1.2_2.png}
+	\end{center}
+\end{minipage}
+\subsection{Integer Register-Immediate Operations}
+Integer immediate operations are I-type operations or U-type operations. As the name suggests, they involve executing an operation on data from a register of the Register File (RF) and an immediate value (coming from the instruction), then saving the result in a register of the RF.\\
+
+These operations are encoded as follows: \\
+The supported formats are: \\
+\begin{itemize}
+	\item[-] I-type: ADDI/ANDI/ORI/XORI/SLTI/SLTIU/SLLI/SRLI/SRAI
+    \item[-] U-type: LUI/AUIPC
+\end{itemize}
+\newpage
+\subsubsection{I-type}
+\textit{Two variants here depending on the operation:}\\
+\texttt{\textbf{For (ADDI/ANDI/ORI/XORI/SLTI/SLTIU):}}\\
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{circuits/20.1.2_3.png}
+\end{center}
+\begin{itemize}
+    \item[*] \textbf{rs1:} src1 (source), 5-bit index of the operand register in the register file (RF)
+    \item[*] \textbf{rd:} dest (destination), 5-bit index of the destination register in the RF
+    \item[*] \textbf{opcode:} (0010011)\textsubscript{2}, 7-bit operation code referred to as OP-IMM
+    \item[*] \textbf{funct3:} 3-bit function code (ADDI/ANDI/ORI/XORI/SLTI/SLTIU)
+    \item[*] \textbf{imm:} 12-bit immediate
+\end{itemize}
+
+\begin{itemize}
+	\item[-] \textbf{ADDI}: Adds the sign-extended 12-bit immediate to RF[rs1]. Arithmetic Overflow ignored. The lowest 32bits of the result is saved in RF[rd].
+
+	\item[-] \textbf{ANDI/ORI/XORI}: Perform bitwise AND/OR/XOR on RF[rs1] and the sign-extended 12-bit immediate, result is saved in RF[rd].
+
+	\item[-] \textbf{SLTI} (set less than immediate): RF[rd] = 1 if RF[rs1] $\leq$ immediate (signed), else RF[rd] = 0.
+
+	\item[-] \textbf{SLTIU} (set less than immediate unsigned): RF[rd] = 1 if RF[rs1] $\leq$ immediate (unsigned, sign-extended to 32 bits), else RF[rd] = 0.
+\end{itemize}
+
+
+\texttt{\textbf{For (SLLI/SRLI/SRAI):}}\newline
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{circuits/20.1.2_4.png}
+\end{center}
+\begin{itemize}
+	\item[*] \textbf{rs1:} src1 (source), 5-bit index of the operand register in the register file (RF)
+	\item[*] \textbf{rd:} dest (destination), 5-bit index of the destination register in the RF
+	\item[*] \textbf{opcode:} (0010011)$_2$, 7-bit operation code also called OP-IMM
+	\item[*] \textbf{funct3:} 3-bit function code (SLLI/SRLI/SRLA)
+	\item[*] \textbf{imm[4:0]:} 5-bit immediate, the number of bits to shift by, also called shamt
+	\item[*] \textbf{imm[11:5]:} 7-bit immediate
+	\begin{itemize}
+	  \item (0000000)$_2$ for SLLI/SRLI
+	  \item (0100000)$_2$ for SRAI
+	\end{itemize}
+  \end{itemize}
+
+  \begin{itemize}
+    \item[-] \textbf{SLLI/SRLI/SRAI}, shift by the \textbf{immediate}
+    \begin{itemize}
+        \item The operand to be shifted is RF[rs1]
+        \item The shift amount is encoded in the lower five bits of the immediate field (sufficient for the max being a 32-bit word)
+        \item The particular shiffting operation is encoded in the higher seven bits of the immediate field
+    \end{itemize}
+    \item[-] \textbf{SLLI:} shift left logical by the \textbf{immediate}
+    \item[-] \textbf{SRLI/SRAI:} shift right logical/\textbf{arithmetic} by the \textbf{immediate}
+\end{itemize}
+
+\subsubsection{Example}
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{assembly}
+# Assuming a, b, c, d are in regs
+# x5, x6, x7, x8, respectively
+# i.e., t0, t1, t2, s0
+# variable initialization
+add t0, zero, zero # a = 0
+addi t1, zero, 1 # b = 1
+addi t2, zero, 3 # c = 3
+add s0, zero, zero # d = 0
+add s1, zero, zero # temp = 0
+add t0, t1, t2 # t0 = b + c = 4
+addi s1, s0, 64 # s1 = d + 64 = 64
+sub t0, t0, s1 # a = t0 - s1 = -60
+\end{assembly}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=1.2\textwidth]{circuits/20.1.2_5.png}
+	\end{center}
+\end{minipage}\\
+\textit{\href{https://www.cs.cornell.edu/courses/cs3410/2019sp/riscv/interpreter/}{Take a look at the online compiler for RISC-V assembly.} }
+\subsubsection{U-type}
+\textit{Don't forget there are two types of instructions for an Integer Immediate Operation, the U-type is the second one.}
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/20.1.2_6.png}
+\end{center}
+
+\begin{itemize}
+	\setlength\itemsep{-2px}
+    \item \textbf{U-type format uses only one register, the destination register}
+	\item \textbf{rd}: dest (destination), 5-bit index of the destination register in the RF
+	\item \textbf{opcode}: 7-bit operation code
+	\begin{itemize}
+		\setlength\itemsep{-2px}
+		\item (0110111)$_2$ for LUI
+		\item (0010111)$_2$ for AUIPC
+	\end{itemize}
+	\item \textbf{imm[31:12]}: 20-bit immediate
+\end{itemize}
+
+\begin{itemize}	
+	\setlength\itemsep{-2px}
+    \item \textbf{LUI}: \textbf{L}oad \textbf{u}pper \textbf{i}mmediate; used to build 32-bit constants
+    \begin{itemize}
+		\setlength\itemsep{-2px}
+        \item LUI places the 20-bit immediate value in the top 20 bits of the destination register RF[rd], filling the lowest 12 bits with zeros
+        \item \textit{Don't forget that, \texttt{li} is a pseudo command that is translated into one or more instructions (typically LUI and another instruction like ADDI) to load a full 32-bit immediate. \textbf{It is advised to use li instead of LUI.}}
+    \end{itemize}
+    \item \textbf{AUIPC}: Add upper immediate to the Program Counter (pc) register
+    \begin{itemize}
+		\setlength\itemsep{-2px}
+        \item AUIPC forms a 32-bit offset from the 20-bit immediate value, filling the lowest 12 bits with zeros. Then, it adds this offset to the pc, and places the result in register RF[rd]. \textit{Often used to calculate the address of a global variable, or to jump to a label.}
+        \item Typically used when one needs to access data or functions located at fixed addresses within the program or memory.
+    \end{itemize}
+\end{itemize}
+
+
+\begin{center}
+	\begin{tabular}{|l|l|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Instruction} & \textbf{Operation} & \textbf{funct7} & \textbf{rs2} & \textbf{rs1} & \textbf{funct3} & \textbf{rd} & \textbf{opcode}  \\
+		\hline
+		addi rd, rs1, imm    & RF[rd] = RF[rs1] + sext(imm)  		 & 0000000 & rs2 & rs1 & 000  & 0110011 & ADDI     \\
+		andi rd, rs1, imm    & RF[rd] = RF[rs1] \& sext(imm) 		 & 0000000 & rs2 & rs1 & 000  & 0110011 & ANDI       \\
+		ori rd, rs1, imm     & RF[rd] = RF[rs1] | sext(imm)     	 & 0100000 & imm & rs1 & 000  & 0110011 & ORI       \\
+		xori rd, rs1, imm    & RF[rd] = RF[rs1] \^{} sext(imm)  	 & 0000000 & imm & rs1 & 001  & 0110011 & XORI          \\
+		slti rd, rs1, imm    & RF[rd] = RF[rs1] <\_s sext(imm)  	 & 0000000 & imm & rs1 & 010  & 0110011 & SLTI             \\
+		sltiu rd, rs1, imm   & RF[rd] = RF[rs1] <\_u sext(imm)  	 & 0000000 & imm & rs1 & 011  & 0110011 & SLTIU            \\
+		slli rd, rs1, imm    & RF[rd] = RF[rs1] << imm[4:0]  		 & 0000000 & imm & rs1 & 100  & 0110011 & SLLI                 \\
+		srli rd, rs1, imm    & RF[rd] = RF[rs1] >>\_u imm[4:0]  	 & 0000000 & imm & rs1 & 101  & 0110011 & SRLI              \\
+		srai rd, rs1, imm    & RF[rd] = RF[rs1] >>\_s imm[4:0]  	 & 0100000 & imm & rs1 & 101  & 0110011 & SRAI              \\
+		lui rd, imm          & RF[rd] = sext(imm[31:12] << 12)  	 & 0000000 & imm & rs1 & 110  & 0110011 & LUI         \\
+		auipc rd, imm        & RF[rd] = pc + sext(imm[31:12] << 12)  & 0000000 & rs2 & rs1 & 111  & 0110011 & AUIPC          \\
+		\hline
+	\end{tabular}
+	
+\end{center}
+\textit{
+	With $<_{S}$ stands the signed comparison,
+	$<_{U}$ the unsigned comparison,
+	$>>_{S}$ the signed shift right,
+	$>>_{U}$ the unsigned shift right
+	}
+\subsection{NOP Pseudoinstruction}
+\textit{NOP stands for "No Operation" and is a pseudoinstruction that does not perform any operation but can be used for timing purposes or as a placeholder in the instruction sequence.} \\
+It does not change any user-visible state besides advancing the program counter.\\
+It is exactly encoded as \texttt{addi x0, x0, 0}.
+
+\chapter{Computer Architecture (Part III) (W13.1)}
+\section{Memory }
+Incoming...
 \end{document}

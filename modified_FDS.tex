@@ -153,7 +153,7 @@ stringstyle=\color{stringcolor},
 	\vspace*{1cm}
 	\textbf{Introduction}
 	\newline
-	\paragraph[short]{}{This document is designed to offer a LaTeX-styled overview of the Fundamentals of Digital Systems course, emphasizing brevity and clarity. Should there be any inaccuracies or areas for improvement, please do not hesitate to reach out to me at ali.elazdi@epfl.ch for corrections. Hoping to provide an experience similar to the one provided by past generations of students in other subjects. Also, for the latest version of this pdf file, as the update on drive may take some time, you can find it on my github repository at the following link: \url{https://github.com/elazdi-al/FDS/blob/main/FDS.pdf}}
+	\paragraph[short]{}{This document is designed to offer a LaTeX-styled overview of the Fundamentals of Digital Systems course, emphasizing brevity and clarity. Should there be any inaccuracies or areas for improvement, please do not hesitate to reach out to me at ali.elazdi@epfl.ch for corrections. Hoping to provide an experience similar to the one provided by past generations of students in other subjects. Also, for the latest version of this pdf file, as the update on drive may take some time, you can find it on my github repository at the following link: \url{https://github.com/elazdi-al/FDS/blob/main/FDS.pdf}, (W.***) corresponds to the Week number and either Monday (1) or Thursday (2) of the week.}
 \end{center}
 
 
@@ -167,7 +167,7 @@ stringstyle=\color{stringcolor},
 % \listoftables
 
 \mainmatter% Chapter 1
-\chapter{Number Systems}
+\chapter{Number Systems (W1.1)}
 
 
 % Section 1.1
@@ -807,7 +807,7 @@ When weights are in this format :
 	\end{enumerate}
 	
 	
-	\chapter{Number Systems (Part II)}
+	\chapter{Number Systems (Part II) (W1.2)}
 	
 	\section{Addition and Subtraction
 	of Unsigned Integers}
@@ -974,7 +974,7 @@ When weights are in this format :
 		
 		
 		
-		\chapter{Number Systems (Part III)}
+		\chapter{Number Systems (Part III) (W2.1)}
 		\section{Fixed-Point
 		Number Representation}  
 		
@@ -1502,7 +1502,7 @@ When weights are in this format :
 			      	\end{itemize}
 			      	
 			      	
-			      	\chapter{Number Systems (Part IV)}
+			      	\chapter{Number Systems (Part IV) (W2.2)}
 			      	\section{Fixed-Point Arithmetic}
 			      	\subsection{Addition and Subtraction}
 			      	
@@ -1728,7 +1728,7 @@ When weights are in this format :
 			      	So, our final result is $10.00 \times 2^3$ in binary, which is $8$ in decimal.
 			      	
 			      	
-			      	\chapter{Number Systems (Part V)}
+			      	\chapter{Number Systems (Part V) (W3.1)}
 			      	
 			      	
 			      	
@@ -1829,7 +1829,7 @@ When weights are in this format :
 			      		\item[] Adjust the mantissa by right-shifting the signed mantissa of each number by \( d_i \). As a result of these adjustments, the mantissa in BFP cannot be normalized, and there is no hidden bit.
 			      	\end{itemize}
 			      	
-			      	\chapter{Digital Logic}
+			      	\chapter{Digital Logic (W3.2)}
 			      	\section{Introduction to Digital Logic Circuits}
 			      	The smallest unit of Digital Information is a binary value 1 or 0.
 			      	\subsection{The simplest binary logic element}
@@ -2406,7 +2406,7 @@ When weights are in this format :
 			      	            
 			      	        
 			      	        
-			      	\chapter{Digital Logic (PART II)}
+			      	\chapter{Digital Logic (PART II) (W4.1)}
 			      	\section{Logic Synthesis}
 			      	\subsection{Minterms and Maxterms}
 			      	\textit{Personal Remark. I changed the expression of the function for the product as it was clearer to my sens} \newline
@@ -2879,7 +2879,7 @@ When weights are in this format :
 			      	
 			      	
 			      	
-			      	\chapter{Digital Logic (PART III)}
+			      	\chapter{Digital Logic (PART III) (W5.1)}
 			      	\section{Adders}
 			      	\subsection{Addition of two 1-bit binary numbers}
 			      	In this section, we will be adding two 1-bit binary numbers. The truth table is as follows:
@@ -3512,7 +3512,7 @@ When weights are in this format :
 			      		\label{tab:truth_table}
 			      	\end{table}
 			      	        
-			      	\chapter{Digital Logic (PART IV)}
+			      	\chapter{Digital Logic (PART IV) (W5.2)}
 			      	
 				
 			      	\section{Transistors}
@@ -3953,7 +3953,7 @@ When weights are in this format :
 			      		      \includegraphics[width=0.3\textwidth]{circuits/9.5_1.png}
 			      	\end{itemize}
 			      	
-			      	\chapter{Digital Logic and Verilog (PART V)}
+			      	\chapter{Digital Logic and Verilog (PART V) (W6.1)}
 			      	
 			      	\section{CAD Design Flow}
 			      	The CAD design process encompasses several critical steps, ensuring the accurate realization of digital circuits. 
@@ -4095,6 +4095,7 @@ output [3:0] f;        // 4-bit output named f
 			      	\end{verbatim}
 			      	
 			      	\subsection{Example - Full adder in Verilog}
+					  \label{sec:fulladder}
 			      	\noindent
 			      	\begin{adjustbox}{valign=t,minipage={.5\textwidth}}
 			      		\begin{vhdl}
@@ -4184,7 +4185,7 @@ endmodule
 			      	
 			      	
 					
-			      	\chapter{Digital Logic and Verilog(PART VI)}
+			      	\chapter{Digital Logic and Verilog(PART VI)(W6.2)}
 
 					\section{Bus Architecture}
 
@@ -4665,7 +4666,7 @@ endmodule
 \end{adjustbox}
 
 
-\chapter{Digital Logic and Verilog(PART VII)}
+\chapter{Digital Logic and Verilog(PART VII) (W7.2)}
 
 \section{Memory Elements}
 \subsection{Introduction - Example Application: Alarm System Control}
@@ -4687,6 +4688,7 @@ Suppose we wish to control an alarm system. The system design involves a \textbf
 \vspace*{30px}
 \subsection{Combinational vs. Sequential Circuits}
 \textit{Personal Remark. Please take some time to actually identify the differences between the two as they will be crucial in understanding the rest of the course} \newline
+\textit{Tip: C comes before S in the alphabet, we've seen combinational circuits before sequential circuits. So you ca, think of combinational as what we've seen so far, and sequential as the new circuit type} \newline
 Previously, in \textbf{combinational circuits}, outputs only depended on the current inputs. \newline
 \vskip 5px
 In \textbf{sequential circuits}, outputs are determined by both the current inputs and the circuit's past behavior, due to the inclusion of memory elements.
@@ -5076,7 +5078,7 @@ Latches (hold of the last value due to bad timing, and if the last value is the 
 
 In sequential logic, always employ nonblocking assignments using the \texttt{<=} operator in \texttt{always} blocks to ensure simulation consistency across multiple blocks, as this method evaluates all right-hand sides before assigning values to the left-hand sides.\newline
 
-\chapter{Digital Logic and Verilog(PART VIII)}
+\chapter{Digital Logic and Verilog(PART VIII) (W8.1)}
 
 \section{Finite State Machines}
 Circuits containing both sequential and combinational logic are known as \textbf{state machines}. $2^n$ states can be represented by n-bit binary numbers (nothing new). The number of states being finite we thus call such circuits \textbf{finite state machines (FSMs)}
@@ -5176,7 +5178,7 @@ As this machine Only Outputs State, it is a Moore state machine.\newline
 \vspace*{-30px}
 \begin{center}
 \begin{align*}
-\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_1 = D_1 = f_1(x, Q_1, Q_2) = \overline{Q}_1 \cdot \overline{Q}_2 &&\\
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_1 = D_1 = f_1(x, Q_1, Q_2) = \overline{Q}_1 \cdot Q_2 &&\\
 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& Q^*_2 = D_2 = f_2(x, Q_1, Q_2) = x + \overline{Q}_2 &&\\
 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;& z = g(x, Q_1, Q_2) = Q_1 + \overline{Q}_2 &&
 \end{align*}
@@ -5556,7 +5558,7 @@ endmodule
 \end{justify}
 
 
-\chapter{Digital logic and Verilog, Part IX}
+\chapter{Digital logic and Verilog, Part IX (W8.2)}
 \section{Sequential Circuits}
 \subsection{Registers}
 
@@ -5949,7 +5951,7 @@ Equality operators compare operands bit for bit. The result is 0 if the comparis
 \end{center}
 These equality operators have the same precedence level, which is lower than that of relational operators.
 
-\chapter{Digital logic and Verilog, Part X}
+\chapter{Digital logic and Verilog (Part X) (W9.1-W10.1)}
 \section{Flip-flop Timing
 Constraints and Parameters}
 \subsection{Synchronous System Design}
@@ -6738,7 +6740,7 @@ $$f_{\text{max}} = \frac{1}{T_{CLK}\, \text{ns}} \approx 188 \, \text{MHz}$$
 	\textbf{Conclusion}\newline
 	All relevant paths satisfy hold-time constraints.
 \end{minipage}
-\chapter{Digital logic and Verilog, Part XI}
+\chapter{Digital logic and Verilog, Part XI (W10.2)}
 
 \section{$n-to-2^{n}$ Binary Decoders}
 
@@ -7158,7 +7160,7 @@ A ? B : C
 \item[-] Otherwise, it returns the second alternative (C)
 \end{itemize}
 
-\chapter{Digital Logic and Verilog - Examples - FSMs}
+\chapter{Digital Logic and Verilog - Examples - FSM (W10.2)}
 \textit{This is a small collection of examples of Finite State Machines (FSMs) and their implementation in Verilog.
 }\newline
 \textit{Personal Remark: Knowing what a Moore and Mealy machine is, is important to understand this part of the course.}
@@ -7249,7 +7251,7 @@ endmodule
 				\hline
 				Current State $S$ & Input & Next state $S_{next}$ & Output \\
 				\hline
-				S & w & $S_next$ & z \\
+				S & w & $S_{next}$ & z \\
 				\hline
 				
 				A & 0 & A & 0 \\
@@ -7306,9 +7308,11 @@ endmodule
 \end{vhdl}
 
 
-\chapter{Digital Logic and Verilog (Part XII)}
+\chapter{Digital Logic and Verilog (Part XII) (W11)}
 \textit{This part of the course might seem a litttttle bit more advanced, as it applies the last few chapters at a higher level.} \newline 
 \textit{You do need to recall two things, what a Tri-State Driver is (only allows current to flow when the enable signal is active) and what a Bus with Tri-State drivers is, basically allows multiple modules(things) to be connected to a single "bus", again, current of the bus only flows when the enable signal is active.}
+\newline
+\textit{Also, don't expect understanding the thinking behind going from an Idea to an Actual Verilog program without having done the exercices}
 \section{Swapping of two Registers}
 Here, we will be considering a system that will allow to swap two registers using one temporary register.
 
@@ -7422,30 +7426,686 @@ And an asynchronous power-on reset
 \end{minipage}
 \newline
 \vfill
-Now using the FSM controller, the bus and the reg:
-\begin{vhdl}
-module regswap (clk, reset, swap);
-	parameter width = 8;
+
+\begin{minipage}[htp]{1\textwidth}
+	Now using the FSM controller, the bus and the reg, we can defined the swapping module as such:
+	\begin{vhdl}
+	module regswap (clk, reset, swap);
+		parameter width = 8;
+		input clk, reset, swap;
+		wire wR1in, wR1out, wR2in, wR2out, wR3in, wR3out, wdone;
+		wire [width-1:0] wR1, wR2, wR3, wBus;
+	
+		// Instantiate controller module
+		control controller_module ( .clk (clk), .reset (reset), .swap (swap),
+		.R1in (wR1in), .R1out (wR1out), .R2in (wR2in), .R2out (wR2out),
+		.R3in (wR3in), .R3out (wR3out), .done (wdone));
+	
+		// Instantiate registers
+		regn #(.n (width)) R1 (.D (wBus), .clk (clk), .reset (reset), .en (wR1in), .Q (wR1));
+		regn #(.n (width)) R2 (.D (wBus), .clk (clk), .reset (reset), .en (wR2in), .Q (wR2));
+		regn #(.n (width)) R3 (.D (wBus), .clk (clk), .reset (reset), .en (wR3in), .Q (wR3));
+	
+		// Bus with tri-state drivers
+		bustri #(.n (width)) bustri1 (.w (wR1), .en (wR1out), .f (wBus));
+		bustri #(.n (width)) bustri2 (.w (wR2), .en (wR2out), .f (wBus));
+		bustri #(.n (width)) bustri3 (.w (wR3), .en (wR3out), .f (wBus));
+	endmodule
+	\end{vhdl}
+\end{minipage}
+
+\subsection{Using a Bus with MUXes (Verilog)}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
+
+\begin{minipage}[htp]{0.6\textwidth}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{circuits/18.1.2.png}
+	\end{center}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.3\textwidth}
+We have the following FSM States:
+\begin{verbatim}
+IDLE: No swapping
+R2TOR3: First copy
+R1TOR2: Second copy
+R3TOR1: Third copy
+\end{verbatim}	
+\end{minipage}
+\newline
+With the following algorithm for swapping:
+\begin{verbatim}
+1 - Swap starts → Copy data from R2 to R3
+2 - Copy data from R1 to R2
+3 - Copy contents of R3 to R1 → Swap ends
+\end{verbatim}
+And an asynchronous power-on reset
+
+
+\begin{minipage}[htp]{1\textwidth}
+	Translating this in Verilog gives us,
+	\begin{vhdl}
+module controlbusmux (clk, reset, swap, R1in, R2in, R3in, done, sel);
 	input clk, reset, swap;
-	wire wR1in, wR1out, wR2in, wR2out, wR3in, wR3out, wdone;
-	wire [width-1:0] wR1, wR2, wR3, wBus;
-
-	// Instantiate controller module
-	control controller_module ( .clk (clk), .reset (reset), .swap (swap),
-	.R1in (wR1in), .R1out (wR1out), .R2in (wR2in), .R2out (wR2out),
-	.R3in (wR3in), .R3out (wR3out), .done (wdone));
-
-	// Instantiate registers
-	regn #(.n (width)) R1 (.D (wBus), .clk (clk), .reset (reset), .en (wR1in), .Q (wR1));
-	regn #(.n (width)) R2 (.D (wBus), .clk (clk), .reset (reset), .en (wR2in), .Q (wR2));
-	regn #(.n (width)) R3 (.D (wBus), .clk (clk), .reset (reset), .en (wR3in), .Q (wR3));
-
-	// Bus with tri-state drivers
-	bustri #(.n (width)) bustri1 (.w (wR1), .en (wR1out), .f (wBus));
-	bustri #(.n (width)) bustri2 (.w (wR2), .en (wR2out), .f (wBus));
-	bustri #(.n (width)) bustri3 (.w (wR3), .en (wR3out), .f (wBus));
+	output reg R1in, R2in, R3in, done;
+	output reg [1:0] sel;
+	parameter IDLE = 2'b00, R2TOR3 = 2'b01, R1TOR2 = 2'b10, R3TOR1 = 2'b11;
+	reg [1:0] S_next, S;
+	// Next-state logic
+	always @ (*) begin
+		S_next = IDLE;
+		case (S)
+		IDLE: if (swap) S_next = R2TOR3;
+			  else S_next = IDLE;
+		R2TOR3: S_next = R1TOR2;
+		R1TOR2: S_next = R3TOR1;
+		R3TOR1: S_next = IDLE;
+		default: S_next = IDLE;
+		endcase
+	end
+	// State memory
+	always @ (posedge clk or posedge reset) begin
+		if (reset) S <= IDLE;
+		else S <= S_next;
+	end
+	// Output logic
+	always @ (*) begin
+		R1in = (S == R3TOR1);
+		R2in = (S == R1TOR2);
+		R3in = (S == R2TOR3);
+		done = (S == R3TOR1);
+		sel = S;
+	end
 endmodule
 \end{vhdl}
+\end{minipage}
+\newpage
+Giving us the following implementation for reg swpping with a bus of MUXes :
+\begin{vhdl}
+module regswapbusmux (clk, reset, swap);
+		parameter width = 8;
+		parameter IDLE = 2'b00, R2TOR3 = 2'b01;
+		parameter R1TOR2 = 2'b10, R3TOR1 = 2'b11;
+		input clk, reset, swap;
+		wire wR1in, wR2in, wR3in, wdone;
+		wire [width-1:0] wR1, wR2, wR3;
+		wire [1:0] wsel;
+		reg [width-1:0] wBus;
+		// Instantiate controller module
+		controlbusmux controller_module ( .clk (clk), .reset (reset), .swap (swap),
+		.R1in (wR1in), .R2in (wR2in), .R3in (wR3in),
+		.done (wdone), .sel (wsel));
+		// Instantiate registers
+		regn #(.n (width)) R1 (.D (wBus), .clk (clk), .reset (reset), .en (wR1in), .Q (wR1));
+		regn #(.n (width)) R2 (.D (wBus), .clk (clk), .reset (reset), .en (wR2in), .Q (wR2));
+		regn #(.n (width)) R3 (.D (wBus), .clk (clk), .reset (reset), .en (wR3in), .Q (wR3));
+		// Bus with a multiplexer
+		always @ (*) begin
+			wBus = wR1;
+			case (wsel)
+				IDLE: wBus = wR1;
+				R2TOR3: wBus = wR2;
+				R1TOR2: wBus = wR1;
+				R3TOR1: wBus = wR3;
+				default: wBus = wR1;
+			endcase
+		end
+endmodule
+\end{vhdl}
+
+\section{Alternative ways to impelment Adders}
+A Full Adder in behavioral Verilog, can be modelled as such:
+
+\begin{minipage}[htp]{0.45\textwidth}	
+	\begin{vhdl}
+module fulladd (a, b, c_in, s, c_out);
+	input a, b, c_in;
+	output s, c_out;
+	assign s = a ^ b ^ c_in;
+	assign c_out = (a & b) | (a & c_in) | (b & c_in);
+endmodule
+	\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{circuits/8.4.2.png}
+	\end{center}	
+\end{minipage}
+
+\subsection{Ripple Carry Adder Using a For Loop (Verilog)}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
+To implement a Ripple-Carry Adder, we set the next carry to the $C_{out}$ of the current stage, and calculate the current sum as before.
+\newline
+\vspace*{10px}
+\begin{minipage}[htp]{0.45\textwidth}	
+	\begin{vhdl}
+module ripplecarry (Cin, A, B, S, Cout);
+	parameter n = 32;
+	input Cin;
+	input [n-1:0] A, B;
+	output reg [n-1:0] S;
+	output reg Cout;
+	reg [n:0] C; // internal wires
+	integer k; // loop iterator, an integer
+	always @(*) begin
+		C[0] = Cin;
+		for (k = 0; k < n; k = k+1) begin
+		S[k] = A[k] ^ B[k] ^ C[k];
+		C[k+1] = (A[k] & B[k]) | (A[k] & C[k]) | (B[k] & C[k]);
+	end
+	Cout = C[n];
+	end
+endmodule
+	\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=1.3\textwidth]{circuits/10.2.4_2.png}
+	\end{center}	
+\end{minipage}
+
+\subsection{Generate Construct (Verilog)}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
+The Verilog \texttt{generate} construct allows module instantiation within \texttt{for} loops and \texttt{if-else} statements. Key points include:
+
+\begin{itemize}
+    \item[-] If a \texttt{for} loop is included in the \texttt{generate} block, the loop index variable must be of type \texttt{genvar}.
+    \item[-] A \texttt{genvar} is an integer variable that:
+    \begin{itemize}
+        \item[] Can only have values $\geq 0$.
+        \item[] Can only be used inside \texttt{generate} blocks.
+    \end{itemize}
+    \item[-] The \texttt{generate} construct enables combining \texttt{for} loops with module instantiations effectively.
+\end{itemize}
+\vfill
+\subsection{Ripple-Carry Adder with a generate Construct (Verilog)}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
+
+\begin{minipage}[htp]{1\textwidth}
+	\begin{vhdl}
+module ripplecarrygenerate (Cin, A, B, S, Cout);
+	parameter n = 32;
+	input Cin;
+	input [n-1:0] A, B;
+	output [n-1:0] S; // must match the type of fulladd port .s
+	output Cout; // must match the type of fulladd port c_out
+	genvar g; // generate loop iterator, must have genvar type
+	wire [n:0] C; // must match the type of fulladd ports .c_in, c_out
+	assign C[0] = Cin;
+	// generate block
+	generate // optional keyword, helps readability
+	for (g = 0; g < n; g = g + 1) begin
+	fulladd stage (.a (A[g]), .b (B[g]), .c_in (C[g]), .s (S[g]), .c_out (C[g + 1]));
+	end
+	endgenerate // optional keyword, helps readability
+	assign Cout = C[n];
+endmodule
+	\end{vhdl}
+\end{minipage}
+\section{Serial Adders}
+\textit{Serial Adders are adders that add bits serially, one bit at a time, if speed is not prority it's a cost effective way to add numbers.}
+\subsection{Circuit}
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{itemize}
+		\item[-] Shift-right registers output one bit of \texttt{a} and \texttt{b} at a time.
+		\item[-] A down-counter (timer) counts the number of cycles needed for addition, corresponding to the number of bit pairs to add.
+		\item[-] The \texttt{INIT} signal loads new values into all shift registers and reinitializes the timer.
+	\end{itemize}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{circuits/18.3.1.png}
+	\end{center}
+\end{minipage}
+\subsection{Serial Adder Mealy FSM}
+A Mealy FSM Serial Adder follows the following algorithm:
+
+\begin{minipage}[htp]{0.45\textwidth}
+
+	\begin{justify}
+
+			- Initialize the shift registers and the timer (INIT input)
+			\newline
+			- Load (in parallel) vectors A and B in their respective shift registers
+			\newline
+			- Initialize the timer
+			\newline
+			- Clear the contents of the sum register (all zeros)
+			\newline
+			- In each clock cycle
+			\newline
+			\begin{itemize}
+				\setlength\itemsep{-5px}
+				\item[*] Add a pair of bits (one bit of A and one bit of B) using the Adder FSM
+				\item[*] Shift the resulting sum bit into the Sum register
+				\item[*] Shift the vectors A and B to prepare the next pair of bits
+				\item[*] Decrement the counter
+			\end{itemize}
+			- Stop when the timer finished counting
+	\end{justify}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+The Adder FSM has the following states:
+\newline
+- \texttt{S0} = 0
+\newline
+- \texttt{S1} = 1
+\newline
+\textit{With $S_0$ and $S_1$ representing the carry generated by the sum of the previous bits}
+\newline
+We get the following State/output tables:
+\newline
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/18.3.2.png}
+	\includegraphics[width=0.9\textwidth]{circuits/18.3.2_2.png}
+\end{center}
+\end{minipage}
+
+\subsection{Serial Adder Mealy FSM (Verilog)}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
+\begin{minipage}[htp]{1\textwidth}
+\begin{vhdl}
+module serialadderfsm (input a, b, init, reset, clk,output reg sum);
+	parameter n = 8;
+	parameter S0 = 1'b0, S1 = 1'b1;
+	reg S_next, S;
+	always @(*) begin
+		S_next = S0;
+		case (S)
+		S0: begin
+			if (init) S_next = S0;
+			else if (a & b) S_next = S1;
+			else S_next = S0;
+		end
+		S1: begin
+			if (init) S_next = S0;
+			else if (~a & ~b) S_next = S0;
+			else S_next = S1;
+		end
+		default: S_next = S0;
+	endcase
+	end	
+	// State memory, Power-on asynchronous reset
+	always @ (posedge clk or posedge reset) begin
+		if (reset) S <= S0;
+		else S <= S_next;
+	end
+	// Output logic
+	always @(*) begin
+		if (S == S0) sum = a ^ b;
+		else sum = ~(a ^ b);
+	end
+endmodule
+\end{vhdl}
+\end{minipage}
+
+\section{From Verilg to Circuits}
+
+\textit{We have been writing Verilog models from their circuit drawing or their description and functionality, we will now be doing the inverse, given a Verilog model we will turn the model back to its circuit and explain its functionality.}
+\newline
+\textit{Enough with the talking, here's the Verilog program we will be looking at:}
+\begin{vhdl}
+module guesswhat (clk, resetn, la, s, Data, B, done);
+parameter n = 8;
+input clk, resetn, la, s;
+input [n-1:0] Data;
+output reg [3:0] B;
+output reg done;
+
+parameter S1 = 2'b00, S2 = 2'b01, S3 = 2'b10;
+integer k;
+reg [n-1:0] A;
+wire z;
+reg [1:0] S_next, S;
+reg ea, eb, lb;
+
+// State transition logic
+always @(*) begin
+	S_next = S1;
+	case (S)
+	S1: if (!s) S_next = S1;
+		else S_next = S2;
+	S2: if (z == 0) S_next = S2;
+		else S_next = S3;
+	S3: if (s) S_next = S3;
+		else S_next = S1;
+	default: S_next = 2'bxx;
+	endcase
+end
+
+// Output control logic
+always @(*) begin
+	ea = 0;
+	lb = 0;
+	eb = 0;
+	done = 0;
+	case (S)
+	S1: lb = 1;
+	S2: begin
+		ea = 1;
+		if (A[0]) eb = 1;
+		else eb = 0;
+	end
+	S3: done = 1;
+	endcase
+end
+\end{vhdl}
+
+\begin{minipage}[htp]{1\textwidth}
+	\begin{vhdl}
+// State register
+always @(posedge clk or negedge resetn) begin
+if (!resetn) S <= S1;
+else S <= S_next;
+end
+
+// Output B register
+always @(posedge clk or negedge resetn) begin
+if (!resetn) B <= 0;
+else if (lb) B <= 0;
+else if (eb) B <= B + 1;
+end
+
+// Register A logic
+always @(posedge clk or negedge resetn) begin
+if (!resetn) A <= 0;
+else if (la) A <= Data;
+else if (ea) begin
+for (k = n - 1; k > 0; k = k - 1) begin
+A[k-1] <= A[k];
+end
+A[n-1] <= 1'b0;
+end
+end
+
+// Zero detect logic
+assign z = ~| A;
+endmodule
+// END
+	\end{vhdl}
+\end{minipage}
+\textit{Now, we can analyse this step by step, starting with the \texttt{guesswhat} declaration:}\newline 
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{vhdl}
+module guesswhat (clk, resetn, la, s, Data, B, done);
+parameter n = 8;
+input clk, resetn, la, s;
+input [n-1:0] Data;
+output reg [3:0] B;
+output reg done;
+parameter S1 = 2'b00, S2 = 2'b01, S3 = 2'b10;
+integer k;
+reg [n-1:0] A;
+wire z;
+reg [1:0] S_next, S;
+reg ea, eb, lb;
+//continues...
+\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{justify}
+\textbf{Step 1:} Start by analyzing the module interfaces, parameters, and internal signals (wires) and variables (reg, integer).
+\begin{itemize}
+	\item[-] The output, \texttt{B}, has a width different from the Data input.
+	\item[-] $S1$,$S2$,$S3$, are likely states of an FSM
+	\item[-] integer k is likely a loop iterator
+	\item[-] and A is a register of the same width as Data input
+\end{itemize}
+\end{justify}
+\end{minipage}
+\newline
+\subsubsection{Next State Logic}
+\begin{minipage}[htp]{0.45\textwidth}
+	
+\begin{vhdl}
+//...
+always @(*) begin
+	S_next = S1;
+	case (S)
+		S1: if (!s) S_next = S1;
+		else S_next = S2;
+		S2: if (z == 0) S_next = S2;
+		else S_next = S3;
+		S3: if (s) S_next = S3;
+		else S_next = S1;
+		default: S_next = 2'bxx;
+	endcase
+end
+// continues...
+\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{justify}
+\textbf{Step 2:} We analyze the Next State Logic, which is likely part of an FSM.
+\begin{itemize}
+	\item[-] The FSM has three states, S1, S2, and S3.
+	\item[-] The FSM transitions are based on the values of the input signals s and z.
+\end{itemize}
+Giving use the following state diagram
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{circuits/18.4.png}
+\end{center}
+\end{justify}
+\end{minipage}
+\subsubsection{FSM Output Logic}
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{vhdl}
+//...
+always @(*) begin
+	ea = 0;
+	lb = 0;
+	eb = 0;
+	done = 0;
+	case (S)
+	S1: lb = 1;
+	S2: begin
+			ea = 1;
+			if (A[0]) eb = 1;
+			else eb = 0;
+		end
+	S3: done = 1;
+	endcase
+end
+// continues...
+\end{vhdl}
+\end{minipage}
+\hfill\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+The FSM Output Logic will likelt look like this:
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{circuits/18.4_2.png}
+\end{center}
+
+- S1: \texttt{lb} = 1, others zero. \newline
+- S2 : \texttt{ea} = 1, \texttt{eb} = A[0], others zero. \newline
+- S3 : \texttt{done} = 1, others zero. \newline
+\end{minipage}
+
+\subsubsection{Sequential Circuits}
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{vhdl}
+// ...
+always @(posedge clk or negedge resetn) begin
+	if (!resetn) S <= S1;
+	else S <= S_next;
+	end
+// continues...
+\end{vhdl}
+\end{minipage}
+\hfill\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{justify}
+	\texttt{\textbf{FSM State Register }}\\
+	- \textbf{negedge} in the sensitivity list: \\
+	\texttt{resetn} is an asynchronous reset active low, external signal.
+
+	- State after power-on reset: \textbf{S1}; \\
+	Hence, \textbf{S1} is the default state.
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{circuits/18.4_3.png}
+	\end{center}
+\end{justify}
+\end{minipage}
+\newline
+
+\begin{minipage}[htp]{0.4\textwidth}
+\begin{vhdl}
+// ...
+always @(posedge clk or negedge resetn) begin
+	if (!resetn) B <= 0;
+	else if (lb) B <= 0;
+	else if (eb) B <= B + 1;
+end
+// continues...
+\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{justify}
+	\texttt{\textbf{B is the output of a counter}}
+	\begin{itemize}
+		\item[-] \textbf{1b} clears it (loads all zeros)
+		\begin{itemize}
+			\item[*] In \textbf{S1} state
+		\end{itemize}
+		\item[-] \textbf{eb} enables it (allows counting)
+		\begin{itemize}
+			\item[*] In \textbf{S2} state, if \textbf{A[0]} is \textbf{1}
+		\end{itemize}
+		\item[-] \textbf{B + 1}: up counter
+	\end{itemize}
+\end{justify}
+\end{minipage}
+\newline
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{vhdl}
+// ...
+always @(posedge clk or negedge resetn) begin
+	if (!resetn) A <= 0;
+	else if (la) A <= Data;
+	else if (ea) begin
+		for (k = n - 1; k >0; k = k - 1) begin
+			A[k-1] <= A[k];
+		end
+		A[n-1] <= 1'b0;
+	end
+end
+// continues...
+\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{justify}
+	 Shift register \textbf{A}
+	\begin{itemize}
+		\item[-] \textbf{resetn}: asynchronous reset
+		\begin{itemize}
+			\item Active low, external signal
+		\end{itemize}
+		\item[-] \textbf{la} initializes it (loads Data)
+		\begin{itemize}
+			\item \textbf{la} is an external signal
+			\item \textbf{Data} is also external
+		\end{itemize}
+		\item[-] \textbf{for} loop performs shift right
+		\begin{itemize}
+			\item Most significant bits cleared (replaced by \textbf{1'b0})
+		\end{itemize}
+		\item[-] \textbf{ea} enables shift right
+		\begin{itemize}
+			\item In state \textbf{S2}, while up-counter \textbf{B} is enabled too
+		\end{itemize}
+	\end{itemize}
+\end{justify}
+\end{minipage}
+\subsection{Combinational Logic}
+\textit{Now that we have a broad idea of the circuit, we need to understand when it stops}\newline
+
+\begin{minipage}[htp]{0.45\textwidth}
+\begin{vhdl}
+//...
+assign z = ~| A;
+endmodule
+// END
+\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	The last assignment in the module, \( z = \sim| A \), uses the Verilog reduction NOR operator, which sets \( z \) to 1 when all bits of vector \( A \) (the output of the shift register) are zero.
+\end{minipage}
+
+\section{Verilog Reduction Operators}
+ \textit{Note: See the chapter at the end of the notes for all content on Verilog (\hyperref[Verilog]{Verilog chapter}).}
+
+
+Reduction operators in Verilog are unary operators that perform bitwise operations across all bits of a vector operand to produce a single-bit result.
+
+
+
+
+\begin{center}
+	\begin{tabular}{|l|l|}
+
+		\hline	
+		Operator & Description \\
+		\hline	
+		\texttt{\&} & reduction and \\		\hline	
+		\texttt{$\sim$\&} & reduction nand \\		\hline	
+		\texttt{|} & reduction or \\		\hline	
+		\texttt{$\sim$|} & reduction nor \\		\hline	
+		\texttt{\^} & reduction xor \\		\hline	
+		\texttt{$\sim$\^} & reduction xnor \\		\hline	
+		\end{tabular}
+	\end{center}
+		
+
+
+\subsection*{Examples}
+Consider the vector \( A = 8'b10101111 \):
+
+\begin{itemize}
+    \item[-] \textbf{Example 1:} \( z = \&A \)
+
+\texttt{z = (((((((1 \& 1) \& 1) \& 1) \& 0) \& 1) \& 0) \& 1) = 0}
+    \item[-] \textbf{Example 2:} \texttt{z = \texttt{$\sim$}\texttt{\^}A} \\
+
+\texttt{z = \texttt{$\sim$}(((((((1 \texttt{\^} 1) \texttt{\^} 1) \texttt{\^} 1) \texttt{\^} 0) \texttt{\^} 1) \texttt{\^} 0) \texttt{\^} 1) = 1  \\}
+
+\end{itemize}
+
 
 \chapter{All of Verilog}
 \label{Verilog}\begin{center}\vspace*{1cm}\begin{center}\textbf{Concatenation of all Verilog Content}\end{center}\text{You'll find links to this chapter at the beginning of sections about Verilog.} \newline \textit{Note: This chapter is generated using a Mojo script, you may find some spacing or formatting issues at times, I'm actively working on a fix for this.} \end{center}\newpage
@@ -7564,6 +8224,7 @@ output [3:0] f;        // 4-bit output named f
 			      	\end{verbatim}
 			      	
 			      	\subsection{Example - Full adder in Verilog}
+					  \label{sec:fulladder}
 			      	\noindent
 			      	\begin{adjustbox}{valign=t,minipage={.5\textwidth}}
 			      		\begin{vhdl}
@@ -8426,7 +9087,7 @@ endmodule
 				\hline
 				Current State $S$ & Input & Next state $S_{next}$ & Output \\
 				\hline
-				S & w & $S_next$ & z \\
+				S & w & $S_{next}$ & z \\
 				\hline
 				
 				A & 0 & A & 0 \\
@@ -8486,6 +9147,8 @@ endmodule
 
 \textit{This part of the course might seem a litttttle bit more advanced, as it applies the last few chapters at a higher level.} \newline 
 \textit{You do need to recall two things, what a Tri-State Driver is (only allows current to flow when the enable signal is active) and what a Bus with Tri-State drivers is, basically allows multiple modules(things) to be connected to a single "bus", again, current of the bus only flows when the enable signal is active.}
+\newline
+\textit{Also, don't expect understanding the thinking behind going from an Idea to an Actual Verilog program without having done the exercices}
 
 \section{Using a Bus with Tri-State Drivers (Verilog)}
 
@@ -8594,29 +9257,283 @@ And an asynchronous power-on reset
 \end{minipage}
 \newline
 \vfill
-Now using the FSM controller, the bus and the reg:
-\begin{vhdl}
-module regswap (clk, reset, swap);
-	parameter width = 8;
+
+\begin{minipage}[htp]{1\textwidth}
+	Now using the FSM controller, the bus and the reg, we can defined the swapping module as such:
+	\begin{vhdl}
+	module regswap (clk, reset, swap);
+		parameter width = 8;
+		input clk, reset, swap;
+		wire wR1in, wR1out, wR2in, wR2out, wR3in, wR3out, wdone;
+		wire [width-1:0] wR1, wR2, wR3, wBus;
+	
+		// Instantiate controller module
+		control controller_module ( .clk (clk), .reset (reset), .swap (swap),
+		.R1in (wR1in), .R1out (wR1out), .R2in (wR2in), .R2out (wR2out),
+		.R3in (wR3in), .R3out (wR3out), .done (wdone));
+	
+		// Instantiate registers
+		regn #(.n (width)) R1 (.D (wBus), .clk (clk), .reset (reset), .en (wR1in), .Q (wR1));
+		regn #(.n (width)) R2 (.D (wBus), .clk (clk), .reset (reset), .en (wR2in), .Q (wR2));
+		regn #(.n (width)) R3 (.D (wBus), .clk (clk), .reset (reset), .en (wR3in), .Q (wR3));
+	
+		// Bus with tri-state drivers
+		bustri #(.n (width)) bustri1 (.w (wR1), .en (wR1out), .f (wBus));
+		bustri #(.n (width)) bustri2 (.w (wR2), .en (wR2out), .f (wBus));
+		bustri #(.n (width)) bustri3 (.w (wR3), .en (wR3out), .f (wBus));
+	endmodule
+	\end{vhdl}
+\end{minipage}
+
+
+\section{Using a Bus with MUXes (Verilog)}
+
+\begin{minipage}[htp]{0.6\textwidth}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{circuits/18.1.2.png}
+	\end{center}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.3\textwidth}
+We have the following FSM States:
+\begin{verbatim}
+IDLE: No swapping
+R2TOR3: First copy
+R1TOR2: Second copy
+R3TOR1: Third copy
+\end{verbatim}	
+\end{minipage}
+\newline
+With the following algorithm for swapping:
+\begin{verbatim}
+1 - Swap starts → Copy data from R2 to R3
+2 - Copy data from R1 to R2
+3 - Copy contents of R3 to R1 → Swap ends
+\end{verbatim}
+And an asynchronous power-on reset
+
+
+\begin{minipage}[htp]{1\textwidth}
+	Translating this in Verilog gives us,
+	\begin{vhdl}
+module controlbusmux (clk, reset, swap, R1in, R2in, R3in, done, sel);
 	input clk, reset, swap;
-	wire wR1in, wR1out, wR2in, wR2out, wR3in, wR3out, wdone;
-	wire [width-1:0] wR1, wR2, wR3, wBus;
-
-	// Instantiate controller module
-	control controller_module ( .clk (clk), .reset (reset), .swap (swap),
-	.R1in (wR1in), .R1out (wR1out), .R2in (wR2in), .R2out (wR2out),
-	.R3in (wR3in), .R3out (wR3out), .done (wdone));
-
-	// Instantiate registers
-	regn #(.n (width)) R1 (.D (wBus), .clk (clk), .reset (reset), .en (wR1in), .Q (wR1));
-	regn #(.n (width)) R2 (.D (wBus), .clk (clk), .reset (reset), .en (wR2in), .Q (wR2));
-	regn #(.n (width)) R3 (.D (wBus), .clk (clk), .reset (reset), .en (wR3in), .Q (wR3));
-
-	// Bus with tri-state drivers
-	bustri #(.n (width)) bustri1 (.w (wR1), .en (wR1out), .f (wBus));
-	bustri #(.n (width)) bustri2 (.w (wR2), .en (wR2out), .f (wBus));
-	bustri #(.n (width)) bustri3 (.w (wR3), .en (wR3out), .f (wBus));
+	output reg R1in, R2in, R3in, done;
+	output reg [1:0] sel;
+	parameter IDLE = 2'b00, R2TOR3 = 2'b01, R1TOR2 = 2'b10, R3TOR1 = 2'b11;
+	reg [1:0] S_next, S;
+	// Next-state logic
+	always @ (*) begin
+		S_next = IDLE;
+		case (S)
+		IDLE: if (swap) S_next = R2TOR3;
+			  else S_next = IDLE;
+		R2TOR3: S_next = R1TOR2;
+		R1TOR2: S_next = R3TOR1;
+		R3TOR1: S_next = IDLE;
+		default: S_next = IDLE;
+		endcase
+	end
+	// State memory
+	always @ (posedge clk or posedge reset) begin
+		if (reset) S <= IDLE;
+		else S <= S_next;
+	end
+	// Output logic
+	always @ (*) begin
+		R1in = (S == R3TOR1);
+		R2in = (S == R1TOR2);
+		R3in = (S == R2TOR3);
+		done = (S == R3TOR1);
+		sel = S;
+	end
 endmodule
 \end{vhdl}
+\end{minipage}
+
+Giving us the following implementation for reg swpping with a bus of MUXes :
+\begin{vhdl}
+module regswapbusmux (clk, reset, swap);
+		parameter width = 8;
+		parameter IDLE = 2'b00, R2TOR3 = 2'b01;
+		parameter R1TOR2 = 2'b10, R3TOR1 = 2'b11;
+		input clk, reset, swap;
+		wire wR1in, wR2in, wR3in, wdone;
+		wire [width-1:0] wR1, wR2, wR3;
+		wire [1:0] wsel;
+		reg [width-1:0] wBus;
+		// Instantiate controller module
+		controlbusmux controller_module ( .clk (clk), .reset (reset), .swap (swap),
+		.R1in (wR1in), .R2in (wR2in), .R3in (wR3in),
+		.done (wdone), .sel (wsel));
+		// Instantiate registers
+		regn #(.n (width)) R1 (.D (wBus), .clk (clk), .reset (reset), .en (wR1in), .Q (wR1));
+		regn #(.n (width)) R2 (.D (wBus), .clk (clk), .reset (reset), .en (wR2in), .Q (wR2));
+		regn #(.n (width)) R3 (.D (wBus), .clk (clk), .reset (reset), .en (wR3in), .Q (wR3));
+		// Bus with a multiplexer
+		always @ (*) begin
+			wBus = wR1;
+			case (wsel)
+				IDLE: wBus = wR1;
+				R2TOR3: wBus = wR2;
+				R1TOR2: wBus = wR1;
+				R3TOR1: wBus = wR3;
+				default: wBus = wR1;
+			endcase
+		end
+endmodule
+\end{vhdl}
+
+
+\section{Ripple Carry Adder Using a For Loop (Verilog)}
+To implement a Ripple-Carry Adder, we set the next carry to the $C_{out}$ of the current stage, and calculate the current sum as before.
+\newline
+\vspace*{10px}
+\begin{minipage}[htp]{0.45\textwidth}	
+	\begin{vhdl}
+module ripplecarry (Cin, A, B, S, Cout);
+	parameter n = 32;
+	input Cin;
+	input [n-1:0] A, B;
+	output reg [n-1:0] S;
+	output reg Cout;
+	reg [n:0] C; // internal wires
+	integer k; // loop iterator, an integer
+	always @(*) begin
+		C[0] = Cin;
+		for (k = 0; k < n; k = k+1) begin
+		S[k] = A[k] ^ B[k] ^ C[k];
+		C[k+1] = (A[k] & B[k]) | (A[k] & C[k]) | (B[k] & C[k]);
+	end
+	Cout = C[n];
+	end
+endmodule
+	\end{vhdl}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[htp]{0.45\textwidth}
+	\begin{center}
+		\includegraphics[width=1.3\textwidth]{circuits/10.2.4_2.png}
+	\end{center}	
+\end{minipage}
+
+
+\section{Generate Construct (Verilog)}
+The Verilog \texttt{generate} construct allows module instantiation within \texttt{for} loops and \texttt{if-else} statements. Key points include:
+
+\begin{itemize}
+    \item[-] If a \texttt{for} loop is included in the \texttt{generate} block, the loop index variable must be of type \texttt{genvar}.
+    \item[-] A \texttt{genvar} is an integer variable that:
+    \begin{itemize}
+        \item[] Can only have values $\geq 0$.
+        \item[] Can only be used inside \texttt{generate} blocks.
+    \end{itemize}
+    \item[-] The \texttt{generate} construct enables combining \texttt{for} loops with module instantiations effectively.
+\end{itemize}
+\vfill
+
+\section{Ripple-Carry Adder with a generate Construct (Verilog)}
+
+\begin{minipage}[htp]{1\textwidth}
+	\begin{vhdl}
+module ripplecarrygenerate (Cin, A, B, S, Cout);
+	parameter n = 32;
+	input Cin;
+	input [n-1:0] A, B;
+	output [n-1:0] S; // must match the type of fulladd port .s
+	output Cout; // must match the type of fulladd port c_out
+	genvar g; // generate loop iterator, must have genvar type
+	wire [n:0] C; // must match the type of fulladd ports .c_in, c_out
+	assign C[0] = Cin;
+	// generate block
+	generate // optional keyword, helps readability
+	for (g = 0; g < n; g = g + 1) begin
+	fulladd stage (.a (A[g]), .b (B[g]), .c_in (C[g]), .s (S[g]), .c_out (C[g + 1]));
+	end
+	endgenerate // optional keyword, helps readability
+	assign Cout = C[n];
+endmodule
+	\end{vhdl}
+\end{minipage}
+
+\section{Serial Adder Mealy FSM (Verilog)}
+\begin{minipage}[htp]{1\textwidth}
+\begin{vhdl}
+module serialadderfsm (input a, b, init, reset, clk,output reg sum);
+	parameter n = 8;
+	parameter S0 = 1'b0, S1 = 1'b1;
+	reg S_next, S;
+	always @(*) begin
+		S_next = S0;
+		case (S)
+		S0: begin
+			if (init) S_next = S0;
+			else if (a & b) S_next = S1;
+			else S_next = S0;
+		end
+		S1: begin
+			if (init) S_next = S0;
+			else if (~a & ~b) S_next = S0;
+			else S_next = S1;
+		end
+		default: S_next = S0;
+	endcase
+	end	
+	// State memory, Power-on asynchronous reset
+	always @ (posedge clk or posedge reset) begin
+		if (reset) S <= S0;
+		else S <= S_next;
+	end
+	// Output logic
+	always @(*) begin
+		if (S == S0) sum = a ^ b;
+		else sum = ~(a ^ b);
+	end
+endmodule
+\end{vhdl}
+\end{minipage}
+
+
+\section{Verilog Reduction Operators}
+
+Reduction operators in Verilog are unary operators that perform bitwise operations across all bits of a vector operand to produce a single-bit result.
+
+
+
+
+\begin{center}
+	\begin{tabular}{|l|l|}
+
+		\hline	
+		Operator & Description \\
+		\hline	
+		\texttt{\&} & reduction and \\		\hline	
+		\texttt{$\sim$\&} & reduction nand \\		\hline	
+		\texttt{|} & reduction or \\		\hline	
+		\texttt{$\sim$|} & reduction nor \\		\hline	
+		\texttt{\^} & reduction xor \\		\hline	
+		\texttt{$\sim$\^} & reduction xnor \\		\hline	
+		\end{tabular}
+	\end{center}
+		
+
+
+\subsection*{Examples}
+Consider the vector \( A = 8'b10101111 \):
+
+\begin{itemize}
+    \item[-] \textbf{Example 1:} \( z = \&A \)
+
+\texttt{z = (((((((1 \& 1) \& 1) \& 1) \& 0) \& 1) \& 0) \& 1) = 0}
+    \item[-] \textbf{Example 2:} \texttt{z = \texttt{$\sim$}\texttt{\^}A} \\
+
+\texttt{z = \texttt{$\sim$}(((((((1 \texttt{\^} 1) \texttt{\^} 1) \texttt{\^} 1) \texttt{\^} 0) \texttt{\^} 1) \texttt{\^} 0) \texttt{\^} 1) = 1  \\}
+
+\end{itemize}
+
 \end{document}
 \end{document}
